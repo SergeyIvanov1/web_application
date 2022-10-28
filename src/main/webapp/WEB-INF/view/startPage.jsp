@@ -26,14 +26,12 @@
         <nav>
             <br>
             <div><a href="/cryptanalyzer">Cryptanalyzer</a></div>
-
-            <br><br>
-
+            <br>
             <div><a href="/allEmployee">all-employees</a></div>
             <br>
-<%--            <div><a href="#">Forum</a></div>--%>
-<%--            <br>--%>
-            <div><a href="#">Solution for module 4 task</a></div>
+            <%--            <div><a href="#">Forum</a></div>--%>
+            <%--            <br>--%>
+            <div><a href="#">Solution for module 3</a></div>
             <br>
         </nav>
 
@@ -79,13 +77,13 @@
 
                 <br><br>
 
-                <form action="../../views/jsp_for_remove/unnamed.jsp" method="post">
-                    <label>Name:
-                        <input type="text" name="name"><br/>
-                    </label>
+<%--                <form action="../../views/jsp_for_remove/unnamed.jsp" method="post">--%>
+<%--                    <label>Name:--%>
+<%--                        <input type="text" name="name"><br/>--%>
+<%--                    </label>--%>
 
-                    <button type="submit">Submit</button>
-                </form>
+<%--                    <button type="submit">Submit</button>--%>
+<%--                </form>--%>
 
                 <br><br>
                 <p>Determinations:</p>
@@ -113,100 +111,107 @@
                 </dl>
 
 
-<%--                            <div class="accordion accordion-flush" id="accordionFlushExample">--%>
-<%--                                <div class="accordion-item">--%>
-<%--                                    <h2 class="accordion-header" id="flush-headingOne">--%>
-<%--                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"--%>
-<%--                                                data-bs-target="#flush-collapseOne" aria-expanded="false"--%>
-<%--                                                aria-controls="flush-collapseOne">--%>
-<%--                                            <strong>Encryption</strong>--%>
-<%--                                        </button>--%>
-<%--                                    </h2>--%>
-<%--                                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"--%>
-<%--                                         data-bs-parent="#accordionFlushExample">--%>
-<%--                                        <div class="accordion-body"><em>Text from first indicated file is encoding to second file.</em>--%>
-<%--                                        </div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="accordion-item">--%>
-<%--                                    <h2 class="accordion-header" id="flush-headingTwo">--%>
-<%--                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"--%>
-<%--                                                data-bs-target="#flush-collapseTwo" aria-expanded="false"--%>
-<%--                                                aria-controls="flush-collapseTwo">--%>
-<%--                                            <strong>Decryption with key</strong>--%>
-<%--                                        </button>--%>
-<%--                                    </h2>--%>
-<%--                                    <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"--%>
-<%--                                         data-bs-parent="#accordionFlushExample">--%>
-<%--                                        <div class="accordion-body"><em>The program will request the key for decryption.</em></div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="accordion-item">--%>
-<%--                                    <h2 class="accordion-header" id="flush-headingThree">--%>
-<%--                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"--%>
-<%--                                                data-bs-target="#flush-collapseThree" aria-expanded="false"--%>
-<%--                                                aria-controls="flush-collapseThree">--%>
-<%--                                            <strong>Manual decryption "Brute Force" method's</strong>--%>
-<%--                                        </button>--%>
-<%--                                    </h2>--%>
-<%--                                    <div id="flush-collapseThree" class="accordion-collapse collapse"--%>
-<%--                                         aria-labelledby="flush-headingThree"--%>
-<%--                                         data-bs-parent="#accordionFlushExample">--%>
-<%--                                        <div class="accordion-body"><em>Decryption will make to indicated directory.--%>
-<%--                                            Amount of files depends from amount of language's letters (possible keys).</em></div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="accordion-item">--%>
-<%--                                    <h2 class="accordion-header" id="flush-headingFour">--%>
-<%--                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"--%>
-<%--                                                data-bs-target="#flush-collapseFour" aria-expanded="false"--%>
-<%--                                                aria-controls="flush-collapseFour">--%>
-<%--                                            <strong>Auto Decryption "Brute Force" method's</strong>--%>
-<%--                                        </button>--%>
-<%--                                    </h2>--%>
-<%--                                    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"--%>
-<%--                                         data-bs-parent="#accordionFlushExample">--%>
-<%--                                        <div class="accordion-body"><em>Program will use all possible keys in order.--%>
-<%--                                            Each of decrypted text will automatically verify to correct decryption,--%>
-<%--                                            using most frequently words of language. Decryption will make to indicate file.</em></div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="accordion-item">--%>
-<%--                                    <h2 class="accordion-header" id="flush-headingFive">--%>
-<%--                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"--%>
-<%--                                                data-bs-target="#flush-collapseFive" aria-expanded="false"--%>
-<%--                                                aria-controls="flush-collapseFive">--%>
-<%--                                            <strong>Manual decryption with statistic</strong>--%>
-<%--                                        </button>--%>
-<%--                                    </h2>--%>
-<%--                                    <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive"--%>
-<%--                                         data-bs-parent="#accordionFlushExample">--%>
-<%--                                        <div class="accordion-body"><em>The program gets most frequent letter of encrypted text and took--%>
-<%--                                            it for--%>
-<%--                                            six the--%>
-<%--                                            greatest frequent letters of alphabets in order. The key is difference between letter's--%>
-<%--                                            indexes.--%>
-<%--                                            Decryption will make to indicate directory into different files.</em></div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                                <div class="accordion-item">--%>
-<%--                                    <h2 class="accordion-header" id="flush-headingSix">--%>
-<%--                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"--%>
-<%--                                                data-bs-target="#flush-collapseSix" aria-expanded="false"--%>
-<%--                                                aria-controls="flush-collapseSix">--%>
-<%--                                            <strong>Auto decryption with statistic</strong>--%>
-<%--                                        </button>--%>
-<%--                                    </h2>--%>
-<%--                                    <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix"--%>
-<%--                                         data-bs-parent="#accordionFlushExample">--%>
-<%--                                        <div class="accordion-body"><em>The program works like previous function,--%>
-<%--                                            but decryption will make to indicate file after automatically verify to correct decryption,--%>
-<%--                                            using most frequently words of language.</em></div>--%>
-<%--                                    </div>--%>
-<%--                                </div>--%>
-<%--                            </div>--%>
-
-
+                <div class="accordion accordion-flush" id="accordionFlushExample">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseOne" aria-expanded="false"
+                                    aria-controls="flush-collapseOne">
+                                <strong>Encryption</strong>
+                            </button>
+                        </h2>
+                        <div id="flush-collapseOne" class="accordion-collapse collapse"
+                             aria-labelledby="flush-headingOne"
+                             data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body"><em>Text from first indicated file is encoding to second
+                                file.</em>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseTwo" aria-expanded="false"
+                                    aria-controls="flush-collapseTwo">
+                                <strong>Decryption with key</strong>
+                            </button>
+                        </h2>
+                        <div id="flush-collapseTwo" class="accordion-collapse collapse"
+                             aria-labelledby="flush-headingTwo"
+                             data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body"><em>The program will request the key for decryption.</em></div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseThree" aria-expanded="false"
+                                    aria-controls="flush-collapseThree">
+                                <strong>Manual decryption "Brute Force" method's</strong>
+                            </button>
+                        </h2>
+                        <div id="flush-collapseThree" class="accordion-collapse collapse"
+                             aria-labelledby="flush-headingThree"
+                             data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body"><em>Decryption will make to indicated directory.
+                                Amount of files depends from amount of language's letters (possible keys).</em></div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseFour" aria-expanded="false"
+                                    aria-controls="flush-collapseFour">
+                                <strong>Auto Decryption "Brute Force" method's</strong>
+                            </button>
+                        </h2>
+                        <div id="flush-collapseFour" class="accordion-collapse collapse"
+                             aria-labelledby="flush-headingFour"
+                             data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body"><em>Program will use all possible keys in order.
+                                Each of decrypted text will automatically verify to correct decryption,
+                                using most frequently words of language. Decryption will make to indicate file.</em>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingFive">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseFive" aria-expanded="false"
+                                    aria-controls="flush-collapseFive">
+                                <strong>Manual decryption with statistic</strong>
+                            </button>
+                        </h2>
+                        <div id="flush-collapseFive" class="accordion-collapse collapse"
+                             aria-labelledby="flush-headingFive"
+                             data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body"><em>The program gets most frequent letter of encrypted text and
+                                took
+                                it for
+                                six the
+                                greatest frequent letters of alphabets in order. The key is difference between letter's
+                                indexes.
+                                Decryption will make to indicate directory into different files.</em></div>
+                        </div>
+                    </div>
+                    <div class="accordion-item">
+                        <h2 class="accordion-header" id="flush-headingSix">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#flush-collapseSix" aria-expanded="false"
+                                    aria-controls="flush-collapseSix">
+                                <strong>Auto decryption with statistic</strong>
+                            </button>
+                        </h2>
+                        <div id="flush-collapseSix" class="accordion-collapse collapse"
+                             aria-labelledby="flush-headingSix"
+                             data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body"><em>The program works like previous function,
+                                but decryption will make to indicate file after automatically verify to correct
+                                decryption,
+                                using most frequently words of language.</em></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
     </div>

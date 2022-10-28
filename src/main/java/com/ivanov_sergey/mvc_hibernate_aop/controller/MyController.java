@@ -18,58 +18,47 @@ public class MyController {
     private EmployeeService employeeService;
 
     @RequestMapping("/")
-    public String startPage(Model model){
-
-        List<Employee> allEmployees = employeeService.getAllEmployees();
-        model.addAttribute("allEmps", allEmployees);
-
+    public String toStartPage(){
         return "startPage";
     }
 
     @RequestMapping("/cryptanalyzer")
-    public String cryptanalyzer(Model model){
-
+    public String toCryptanalyzerPage(){
         return "cryptanalyzer";
     }
 
     @RequestMapping("/allEmployee")
     public String allEmployees(Model model){
-
         List<Employee> allEmployees = employeeService.getAllEmployees();
         model.addAttribute("allEmps", allEmployees);
-
         return "all-employees";
     }
 
     @RequestMapping("/addNewEmployee")
     public String addNewEmployee(Model model){
-
         Employee employee = new Employee();
         model.addAttribute("employee", employee);
-
         return "employee-info";
     }
 
     @RequestMapping("/updateInfo")
     public String updateEmployee(@RequestParam("empId") int id, Model model){
-
         Employee employee = employeeService.getEmployee(id);
         model.addAttribute("employee", employee);
-
         return "employee-info";
     }
 
     @RequestMapping("/saveEmployee")
     public String saveEmployee(@ModelAttribute("employee") Employee employee){
-
         employeeService.saveEmployee(employee);
-
+//        return "all-employees";
         return "redirect:/";
     }
 
     @RequestMapping("/deleteEmployee")
     public String DeleteEmployee(@RequestParam("empId") int id){
         employeeService.deleteEmployee(id);
+//        return "all-employees";
         return "redirect:/";
     }
 }

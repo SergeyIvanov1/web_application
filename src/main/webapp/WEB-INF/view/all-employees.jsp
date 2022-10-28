@@ -1,6 +1,13 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <body>
+
+<br>
+<div><a href="/">Main page</a></div>
+<br>
+<div><a href="/cryptanalyzer">Cryptanalyzer</a></div>
+
+<br><br>
 <h2>All employees</h2>
 
 <br>
