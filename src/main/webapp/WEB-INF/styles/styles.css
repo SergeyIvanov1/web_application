@@ -1,0 +1,62 @@
+div#tablecont {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+div#tablecont > div {
+    display: table-row
+}
+
+div#tablecont > div > * {
+    display: table-cell;
+    vertical-align: top;
+}
+
+nav {
+    /*background-color: lemonchiffon;*/
+    background-color: #474A51;
+    width: 150px;
+    padding: 10px;
+    /*color: darkgrey;*/
+}
+
+body {
+    background-color: lightslategrey;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+h2 {
+    text-align: center;
+}
+
+h5 {
+    text-align: center;
+}
+
+header {
+    background-color: #474A51;
+}
+
+main {
+    text-align: justify;
+}
+
+footer {
+    background-color: #474A51;
+    text-align: right;
+}
+
+nav, header, footer {
+    border: 2px solid darkslateblue;
+}
+
+div.button_crypto {
+    /*background-color: bisque;*/
+    color: darkgrey;
+}
+
+div.main_margin {
+    margin-left: 30px;
+}
