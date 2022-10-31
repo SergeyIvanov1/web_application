@@ -6,6 +6,7 @@ import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import com.ivanov_sergey.mvc_hibernate_aop.entity.Employee;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ public class EmployeeDAOImpl implements EmployeeDAO{
     @Autowired
     private SessionFactory sessionFactory;
 
-//    @Transactional
+    @Transactional
     public List<Employee> getAllEmployees() {
         Session session = sessionFactory.getCurrentSession();
 //        List<Employee> allEmployees = session.createQuery("from Employee", Employee.class)

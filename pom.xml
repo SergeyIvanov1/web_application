@@ -1,25 +1,17 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>ru.sergeyivanov.spring.mvc</groupId>
-  <artifactId>spring_course_mvc_hibernate_aop</artifactId>
-  <packaging>war</packaging>
+  <groupId>com.sergeyivanov</groupId>
+  <artifactId>web-application</artifactId>
+  <packaging>jar</packaging>
   <version>1.0-SNAPSHOT</version>
   <properties>
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
   </properties>
-  <name>web_application</name>
-  <url>http://maven.apache.org</url>
+  <name>web-application</name>
 
   <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
-
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
@@ -77,6 +69,6 @@
 
   </dependencies>
   <build>
-    <finalName>spring_course_mvc_hibernate_aop</finalName>
+    <finalName>${project.artifactId}</finalName>
   </build>
 </project>
