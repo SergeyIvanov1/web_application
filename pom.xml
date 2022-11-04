@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.sergeyivanov</groupId>
   <artifactId>web-application</artifactId>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
   <properties>
     <maven.compiler.source>17</maven.compiler.source>
@@ -73,15 +73,8 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <version>3.0.1</version>
-        <executions>
-          <execution>
-            <id>copy-dependencies</id>
-            <phase>package</phase>
-            <goals><goal>copy-dependencies</goal></goals>
-          </execution>
-        </executions>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.3.1</version>
       </plugin>
     </plugins>
   </build>
