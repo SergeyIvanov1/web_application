@@ -17,6 +17,12 @@
 <div id="tablecont">
     <div>
         <nav>
+            <br>
+            <div><a href="/">Main page</a></div>
+            <br>
+            <div><a href="/allEmployee">Account</a></div>
+
+            <br><br>
             <br><br>
 
             <div class="button_crypto">

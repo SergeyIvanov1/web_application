@@ -12,6 +12,7 @@ import com.ivanov_sergey.mvc_hibernate_aop.service.EmployeeService;
 import java.util.List;
 
 @Controller
+//@RequestMapping("/web-application")
 public class MyController {
 
     @Autowired

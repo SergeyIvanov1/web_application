@@ -1,0 +1,27 @@
+version: "3.9"
+services:
+  myapp:
+    build: .
+    ports:
+      - "7777:8080"
+    depends_on:
+      - mysql_db
+  mysql_db:
+    image: "mysql:8.0"
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: bestuser
+      MYSQL_DATABASE: my_db
+      MYSQL_USER: bestuser
+      MYSQL_PASSWORD: bestuser
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./src/main/resources/db/init.sql:/data/application/init.sql
+    command: --init-file /data/application/init.sql
+volumes:
+  mysql_data:
+
+#      mysql:/var/lib/mysql
+
+
