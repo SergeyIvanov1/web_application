@@ -1,7 +1,5 @@
 # CREATE DATABASE my_db;
-ALTER USER 'bestuser' IDENTIFIED WITH mysql_native_password BY 'bestuser';
-# ALTER USER 'root' IDENTIFIED WITH mysql_native_password BY 'bestuser';
-flush privileges;
+
 USE my_db;
 
 CREATE TABLE users (
@@ -30,6 +28,8 @@ INSERT INTO my_db.employees (name, surname, department, salary)
 VALUES
     ('Oleg', 'Ivanov', 'Sales', 700),
     ('Sergey', 'Ivanov', 'IT', 500),
+    ('Nikolay', 'Vozov', 'IT', 600),
+    ('Anton', 'Sizov', 'IT', 400),
     ('Nina', 'Sidorova', 'HR', 850);
 
 INSERT INTO my_db.users (username, password, enabled)
@@ -44,3 +44,8 @@ VALUES
     ('elena', 'ROLE_HR'),
     ('ivan', 'ROLE_HR'),
     ('ivan', 'ROLE_MANAGER');
+
+GRANT ALL PRIVILEGES ON my_db.* TO 'bestuser'@'%';
+# ALTER USER 'bestuser' IDENTIFIED WITH mysql_native_password BY 'bestuser';
+# ALTER USER 'root' IDENTIFIED WITH mysql_native_password BY 'bestuser';
+flush privileges;

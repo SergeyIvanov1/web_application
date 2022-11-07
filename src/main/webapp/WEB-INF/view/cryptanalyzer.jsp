@@ -62,6 +62,7 @@
                 %>
                     <%--                можно попробовать {/encrypt} - ({form}) вместо /encrypt и тогда количество форм можно будет сократить--%>
                 <br><br>
+                <h3>Encryption</h3>
                 <form action="/encrypt" method="post" enctype="multipart/form-data">
                     <p>Upload file
                         <input type="file" name="file" accept=".txt"></p>
@@ -74,6 +75,7 @@
                     case "decryption_with_key":
                 %>
                 <br><br>
+                <h3>Decryption with key</h3>
                 <form action="/decryption_with_key" method="post" enctype="multipart/form-data">
                     <p>Upload file
                         <input type="file" name="file" accept=".txt"></p>
@@ -87,6 +89,7 @@
                     case "manual_decryption_brute_force":
                 %>
                 <br><br>
+                <h3>Manual decryption brute force method's</h3>
                 <form action="/manual_decryption_brute_force" method="post" enctype="multipart/form-data">
                     <p>Upload file
                         <input type="file" name="file" accept=".txt"></p>
@@ -97,6 +100,7 @@
                     case "manual_decryption_statistic_analise":
                 %>
                 <br><br>
+                <h3>Manual decryption statistic analise method's</h3>
                 <form action="/manual_decryption_statistic_analise" method="post" enctype="multipart/form-data">
                     <p>Upload file
                         <input type="file" name="file" accept=".txt"></p>
@@ -108,6 +112,7 @@
                     case "auto_decryption_brute_force":
                 %>
                 <br><br>
+                <h3>Auto decryption brute force method's</h3>
                 <form action="/auto_decryption_brute_force" method="post" enctype="multipart/form-data">
                     <p>Upload file
                         <input type="file" name="file" accept=".txt"></p>
@@ -118,6 +123,7 @@
                     case "auto_decryption_statistic_analise":
                 %>
                 <br><br>
+                <h3>Auto decryption statistic analise method's</h3>
                 <form action="/auto_decryption_statistic_analise" method="post" enctype="multipart/form-data">
                     <p>Upload file
                         <input type="file" name="file" accept=".txt"></p>

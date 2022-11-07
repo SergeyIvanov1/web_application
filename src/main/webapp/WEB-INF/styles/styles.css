@@ -31,9 +31,17 @@ A {
     color: #F5F5F5;
     text-decoration: none;
 }
-A:visited {color: #BEBEBE}
+
+A:visited {
+    color: #BEBEBE;
+    text-decoration: underline;!important;
+}
+
 A:active {color: limegreen}
-A:hover {color: lightgreen}
+
+A:hover {
+    color: lightgreen
+}
 
 h2 {
     text-align: center;

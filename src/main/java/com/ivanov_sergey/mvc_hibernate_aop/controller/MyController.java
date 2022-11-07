@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.ivanov_sergey.mvc_hibernate_aop.entity.Employee;
 import com.ivanov_sergey.mvc_hibernate_aop.service.EmployeeService;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -53,13 +54,13 @@ public class MyController {
     public String saveEmployee(@ModelAttribute("employee") Employee employee){
         employeeService.saveEmployee(employee);
 //        return "all-employees";
-        return "redirect:/";
+        return "redirect:/allEmployee";
     }
 
     @RequestMapping("/deleteEmployee")
     public String DeleteEmployee(@RequestParam("empId") int id){
         employeeService.deleteEmployee(id);
 //        return "all-employees";
-        return "redirect:/";
+        return "redirect:/allEmployee";
     }
 }
