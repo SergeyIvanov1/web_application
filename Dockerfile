@@ -8,7 +8,7 @@ FROM tomcat:9.0
 #    -v mysql:/var/lib/mysql \
 #    mysql:8
 ##    --restart unless-stopped \
-
+RUN mvn clean install
 COPY ./target/ROOT.war /usr/local/tomcat/webapps/
 
 #ARG JAR_FILE=target/web-application.jar

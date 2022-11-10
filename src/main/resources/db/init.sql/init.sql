@@ -45,6 +45,7 @@ VALUES
     ('ivan', 'ROLE_HR'),
     ('ivan', 'ROLE_MANAGER');
 
-create user 'bestuser'@'%' identified by 'bestuser';
-grant all privileges on *.* to 'bestuser'@'%' with grant option;
+GRANT ALL PRIVILEGES ON my_db.* TO 'bestuser'@'%';
+# ALTER USER 'bestuser' IDENTIFIED WITH mysql_native_password BY 'bestuser';
+# ALTER USER 'root' IDENTIFIED WITH mysql_native_password BY 'bestuser';
 flush privileges;

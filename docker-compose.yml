@@ -1,4 +1,4 @@
-version: "3.9"
+version: "3"
 services:
   app:
     build: .
@@ -8,18 +8,20 @@ services:
     volumes:
       - ./:/app
     environment:
-      MYSQL_HOST: mysql
-      MYSQL_USER: bestuser
-      MYSQL_PASSWORD: bestuser
-      MYSQL_DB: my_db
+      DATABASE_HOST: mysql
+      DATABASE_USER: bestuser
+      DATABASE_PASSWORD: bestuser
+      DATABASE_NAME: my_db
+      DATABASE_PORT: 3306
     depends_on:
       - mysql
-    links:
-      - mysql:mysql
+#    links:
+#      - mysql:mysql
   mysql:
     image: "mysql:8.0"
-    ports:
-      - "3307:3306"
+#    restart: always
+#    ports:
+#      - "6603:3306"
     volumes:
       - mysql_data:/var/lib/mysql
       - ./src/main/resources/init.sql:/data/application/init.sql
