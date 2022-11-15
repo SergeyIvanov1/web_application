@@ -3,7 +3,7 @@ services:
   app:
     build: .
     ports:
-      - "7777:8080"
+      - "80:8080"
     working_dir: /app
     volumes:
       - ./:/app
@@ -15,13 +15,8 @@ services:
       DATABASE_PORT: 3306
     depends_on:
       - mysql
-#    links:
-#      - mysql:mysql
   mysql:
     image: "mysql:8.0"
-#    restart: always
-#    ports:
-#      - "6603:3306"
     volumes:
       - mysql_data:/var/lib/mysql
       - ./src/main/resources/init.sql:/data/application/init.sql
@@ -33,15 +28,5 @@ services:
       MYSQL_PASSWORD: bestuser
 volumes:
   mysql_data:
-#    environment:
-#      MYSQL_ROOT_PASSWORD: bestuser
-#      MYSQL_DATABASE: my_db
-#      MYSQL_USER: bestuser
-#      MYSQL_PASSWORD: bestuser
-#    volumes:
-#      - mysql_data:/var/lib/mysql
-#      - ./src/main/resources/db/init.sql:/data/application/init.sql
-#    command: --init-file /data/application/init.sql
-#      mysql:/var/lib/mysql
 
 

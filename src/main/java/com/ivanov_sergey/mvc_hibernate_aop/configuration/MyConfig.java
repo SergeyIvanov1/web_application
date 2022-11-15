@@ -29,8 +29,8 @@ public class MyConfig { //here in this class we are pass data from applicationCo
         ComboPooledDataSource dataSource = new ComboPooledDataSource();
         try {
             dataSource.setDriverClass("com.mysql.cj.jdbc.Driver");
-//            dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/my_db?allowPublicKeyRetrieval=true&useSSL=false");
-            dataSource.setJdbcUrl("jdbc:mysql://web_application-mysql-1:3306/my_db?allowPublicKeyRetrieval=true&useSSL=false");
+            dataSource.setJdbcUrl("jdbc:mysql://localhost:3306/my_db?allowPublicKeyRetrieval=true&useSSL=false");
+//            dataSource.setJdbcUrl("jdbc:mysql://web_application-mysql-1:3306/my_db?allowPublicKeyRetrieval=true&useSSL=false");
             dataSource.setUser("bestuser");
             dataSource.setPassword("bestuser");
         } catch (PropertyVetoException e) {
