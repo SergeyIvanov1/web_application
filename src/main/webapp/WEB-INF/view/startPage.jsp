@@ -31,7 +31,7 @@
             <br>
             <%--            <div><a href="#">Forum</a></div>--%>
             <%--            <br>--%>
-            <div><a href="#">Solution for module 3</a></div>
+            <div><a href="module">Solution for module 3</a></div>
             <br>
         </nav>
 
