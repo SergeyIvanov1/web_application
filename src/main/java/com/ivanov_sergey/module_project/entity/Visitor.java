@@ -23,6 +23,9 @@ public class Visitor {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "count_of_games")
+    private int countOfGames;
+
     public Visitor(String name) {
         this.name = name;
     }

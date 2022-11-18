@@ -27,4 +27,9 @@ public class ModuleServiceImpl implements ModuleService {
     public void saveVisitor(Visitor visitor) {
         moduleDAO.saveVisitor(visitor);
     }
+
+    @Override
+    public void increaseCountOfGame(Visitor visitor) {
+        moduleDAO.increaseCountOfGame(visitor);
+    }
 }

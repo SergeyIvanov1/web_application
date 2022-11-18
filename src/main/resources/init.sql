@@ -55,6 +55,7 @@ CREATE TABLE my_db.visitors
 (
     id   int NOT NULL AUTO_INCREMENT,
     text varchar(100),
+    count_of_games int,
     PRIMARY KEY (id)
 );
 

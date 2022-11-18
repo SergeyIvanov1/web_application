@@ -82,4 +82,15 @@ public class ModuleDAOImpl implements ModuleDAO {
         session.save(visitor);
         session.getTransaction().commit();
     }
+
+    @Override
+    public void increaseCountOfGame(Visitor visitor) {
+        int countOfGames = visitor.getCountOfGames();
+        int id = visitor.getId();
+        session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        session.createQuery("update Visitor set countOfGames = " + countOfGames + " where id = id"
+            ).executeUpdate();
+        session.getTransaction().commit();
+    }
 }

@@ -10,5 +10,5 @@ public interface ModuleService {
     public Optional<Question> getQuestion(String nextQuestion);
     public Optional<Visitor> getVisitor(String nameVisitor);
     public void saveVisitor(Visitor visitor);
-
+    public void increaseCountOfGame(Visitor visitor);
 }

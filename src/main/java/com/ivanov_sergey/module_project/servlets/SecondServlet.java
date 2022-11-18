@@ -49,7 +49,18 @@ public class SecondServlet extends HttpServlet {
         } else {
             visitor = optional.get();
         }
+
+        String endGame = req.getParameter("endGame");
+
+        if (endGame != null){
+            moduleService.increaseCountOfGame(visitor);
+        }
+
+        int countOfGames = visitor.getCountOfGames();
         session.setAttribute("visitor", visitor);
+        session.setAttribute("clientIPAddress", getClientIPAddress(req));
+        session.setAttribute("name", visitorName);
+        session.setAttribute("countOfGames", countOfGames);
 
         requestDispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/module_project_view/main_page.jsp");
@@ -71,5 +82,16 @@ public class SecondServlet extends HttpServlet {
         RequestDispatcher requestDispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/module_project_view/main_page.jsp");
         requestDispatcher.forward(req, resp);
+    }
+
+    private String getClientIPAddress(HttpServletRequest request){
+        String remoteAddress = "";
+        if (request != null){
+            remoteAddress = request.getHeader("X-FORWARDED-FOR");
+            if (remoteAddress == null || "".equals(remoteAddress)){
+                remoteAddress = request.getRemoteAddr();
+            }
+        }
+        return remoteAddress;
     }
 }
