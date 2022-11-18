@@ -51,6 +51,13 @@ CREATE TABLE my_db.join_table
     FOREIGN KEY (answer_id) references my_db.answers (id)
 );
 
+CREATE TABLE my_db.visitors
+(
+    id   int NOT NULL AUTO_INCREMENT,
+    text varchar(100),
+    PRIMARY KEY (id)
+);
+
 INSERT INTO my_db.employees (name, surname, department, salary)
 VALUES ('Oleg', 'Ivanov', 'Sales', 700),
        ('Sergey', 'Ivanov', 'IT', 500),
@@ -78,7 +85,7 @@ VALUES ('Ты потерял память. Прнять вызов?'),
        ('Тебя вернули домой. Победа'),
        ('Твою ложь разоблачили. Поражение');
 
-INSERT INTO my_db.answers (text,  next_question)
+INSERT INTO my_db.answers (text, next_question)
 VALUES ('Отклонить вызов', 'Ты отклонил вызов. Поражение'),
        ('Принять вызов', 'Ты принял вызов. Поднимешься на мостик к капитану?'),
        ('Подняться на мостик', 'Ты поднялся на мостик. Ты кто?'),

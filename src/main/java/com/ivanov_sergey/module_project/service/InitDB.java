@@ -20,7 +20,7 @@ public class InitDB {
 //        Answer answer5 = new Answer("Рассказать правду о себе", "Тебя вернули домой. Победа");
 //        Answer answer6 = new Answer("Солгать о себе", "Твою ложь разоблачили. Поражение");
 
-        Question question1 = new Question("Tou are loose memory. Take the challenge?");
+        Question question1 = new Question("You are loose memory. Take the challenge?");
         Question question2 = new Question("You accepted the challenge. Will you go up to the bridge to the captain?");
         Question question3 = new Question("You declined the call. Defeat");
         Question question4 = new Question("You went up to the bridge. Who are you?");
@@ -31,7 +31,7 @@ public class InitDB {
         Answer answer1 = new Answer("Reject a call", "You declined the call. Defeat");
         Answer answer2 = new Answer("Take the challenge", "You accepted the challenge. Will you go up to the bridge to the captain?");
         Answer answer3 = new Answer("Climb to the bridge", "You went up to the bridge. Who are you?");
-        Answer answer4 = new Answer("Refuse to go up to the bridge", "You did not negotiate. Defeat?");
+        Answer answer4 = new Answer("Refuse to go up to the bridge", "You did not negotiate. Defeat");
         Answer answer5 = new Answer("Tell the truth about yourself", "You have been brought home. Victory");
         Answer answer6 = new Answer("Lie about yourself", "Your lies have been exposed. Defeat");
 

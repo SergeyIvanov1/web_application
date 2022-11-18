@@ -11,18 +11,25 @@
 <br>
 <h1>${question.text}</h1>
 <%--<p>${answers}</p>--%>
+<p>el = ${visitor}</p>
+<p>sessionScope = ${sessionScope.visitor}</p>
 
-<form action="questions" method="POST">
-    <c:if test="${answers.size() > 0}">
-<%--        <p>${answers}</p>--%>
+<c:if test="${answers.size() > 0}">
+    <form action="questions" method="POST">
         <c:forEach var="answer" items="${answers}">
-            <input type="radio" name="nextQuestion" value="${answer.nextQuestion}"/>${answer.text}
+            <input type="radio" name="nextQuestion" value="${answer.nextQuestion}" required/>${answer.text}
             <br>
         </c:forEach>
         <br>
         <input type="submit" value="Send"/>
-    </c:if>
-</form>
+    </form>
+</c:if>
+<c:if test="${answers.size() == 0}">
+    <form action="questions" method="GET">
+        <p>Come back to first question:</p>
+        <input type="submit" value="Submit"/>
+    </form>
+</c:if>
 
 
 </body>
