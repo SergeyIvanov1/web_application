@@ -3,9 +3,9 @@
 <body>
 
 <br>
-<div><a href="/">Main page</a></div>
+<div><a href="">Main page</a></div>
 <br>
-<div><a href="/cryptanalyzer">Cryptanalyzer</a></div>
+<div><a href="cryptanalyzer">Cryptanalyzer</a></div>
 
 <br><br>
 <h2>All employees</h2>

@@ -8,12 +8,13 @@
 <body>
 <jsp:include page="parts/header.jsp" />
 
-<%--<h1>Question: ${requestScope.get("question")}</h1>--%>
+<br>
+<div><a href="">Main page</a></div>
+<div><a href="cryptanalyzer">Cryptanalyzer</a></div>
+<div><a href="module">Hello page</a></div>
+<br>
 <br>
 <h1>${question.text}</h1>
-<%--<p>${answers}</p>--%>
-<p>el = ${visitor}</p>
-<p>sessionScope = ${sessionScope.visitor}</p>
 
 <c:if test="${answers.size() > 0}">
     <form action="questions" method="POST">
