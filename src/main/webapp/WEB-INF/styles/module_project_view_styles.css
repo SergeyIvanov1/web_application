@@ -1,0 +1,7 @@
+input.nice_button {
+    background-color: skyblue;
+    border-color: cornflowerblue;
+    font-size: x-small;
+}
+input:focus {border: thin solid black;}
+input:invalid {border: thin solid rgb(192, 98, 98);}

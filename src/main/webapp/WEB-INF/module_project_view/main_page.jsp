@@ -4,38 +4,37 @@
 <html>
 <head>
     <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
+    <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 </head>
 <body>
-<jsp:include page="parts/header.jsp" />
+<jsp:include page="parts/header.jsp"/>
 
 <br>
-<div><a href="">Main page</a></div>
-<div><a href="cryptanalyzer">Cryptanalyzer</a></div>
-<div><a href="module">Hello page</a></div>
-<br>
-<br>
-<h1>${question.text}</h1>
+<div class="container">
+    <h1>${question.text}</h1>
 
-<c:if test="${answers.size() > 0}">
-    <form action="questions" method="POST">
-        <c:forEach var="answer" items="${answers}">
-            <input type="radio" name="nextQuestion" value="${answer.nextQuestion}" required/>${answer.text}
+    <c:if test="${answers.size() > 0}">
+        <form action="questions" method="POST">
+            <c:forEach var="answer" items="${answers}">
+                <input type="radio" name="nextQuestion" value="${answer.nextQuestion}" required/>${ answer.text}
+                <br>
+            </c:forEach>
             <br>
-        </c:forEach>
-        <br>
-        <input type="submit" value="Send"/>
-    </form>
-</c:if>
-<c:if test="${answers.size() == 0}">
-    <form action="questions" method="GET">
-        <p>Come back to first question:</p>
-        <input type="hidden" name="endGame" value="gameEnded">
-        <input type="hidden" name="visitorName" value="${name}">
-        <input type="submit" value="Submit" />
-    </form>
-</c:if>
-<br>
-
+            <input class="nice_button" type="submit" value="Send"/>
+        </form>
+    </c:if>
+    <c:if test="${answers.size() == 0}">
+        <form action="questions" method="GET">
+            <input type="hidden" name="endGame" value="gameEnded">
+            <input type="hidden" name="visitorName" value="${name}">
+            <input class="nice_button" type="submit" value="Come back to first question"/>
+        </form>
+    </c:if>
+    <br>
+</div>
+<jsp:include page="parts/footer.jsp"/>
 
 </body>
 </html>
