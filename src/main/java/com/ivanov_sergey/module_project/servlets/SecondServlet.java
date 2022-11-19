@@ -5,6 +5,8 @@ import com.ivanov_sergey.module_project.entity.Question;
 import com.ivanov_sergey.module_project.entity.Visitor;
 import com.ivanov_sergey.module_project.service.ModuleService;
 import com.ivanov_sergey.module_project.service.ModuleServiceImpl;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -19,20 +21,33 @@ import java.util.Optional;
 
 @WebServlet("/questions")
 public class SecondServlet extends HttpServlet {
+    static final Logger LOGGER = LogManager.getRootLogger();
     public static final int INITIAL_ID = 1;
     ModuleService moduleService = new ModuleServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        LOGGER.debug("SecondServlet, doGet started");
+        HttpSession session = req.getSession();
+
         Question question = moduleService.getQuestion(INITIAL_ID);
         List<Answer> answers = question.getAnswers();
-
         req.setAttribute("question", question);
         req.setAttribute("answers", answers);
 
         String visitorName = req.getParameter("visitorName");
+        System.out.println("visitorName = " + visitorName);
+        String endGame = req.getParameter("endGame");
+        System.out.println("endGame = " + endGame);
 
-        HttpSession session = req.getSession();
+        Visitor visitor = getVisitor(visitorName);
+
+        int countOfGames;
+        if (endGame != null){
+            countOfGames = moduleService.increaseCountOfGame(visitor);
+            session.setAttribute("countOfGames", countOfGames);
+        }
+
         RequestDispatcher requestDispatcher;
         if (session.getAttribute("visitor") != null) {
             requestDispatcher = getServletContext()
@@ -41,26 +56,12 @@ public class SecondServlet extends HttpServlet {
             return;
         }
 
-        Optional<Visitor> optional = moduleService.getVisitor(visitorName);
-        Visitor visitor;
-        if (optional.isEmpty()) {
-            visitor = new Visitor(visitorName);
-            moduleService.saveVisitor(visitor);
-        } else {
-            visitor = optional.get();
-        }
+        System.out.println("test");
 
-        String endGame = req.getParameter("endGame");
-
-        if (endGame != null){
-            moduleService.increaseCountOfGame(visitor);
-        }
-
-        int countOfGames = visitor.getCountOfGames();
         session.setAttribute("visitor", visitor);
         session.setAttribute("clientIPAddress", getClientIPAddress(req));
         session.setAttribute("name", visitorName);
-        session.setAttribute("countOfGames", countOfGames);
+        session.setAttribute("countOfGames", visitor.getCountOfGames());
 
         requestDispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/module_project_view/main_page.jsp");
@@ -69,6 +70,7 @@ public class SecondServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        LOGGER.debug("SecondServlet, doPost started");
         String nextQuestion = req.getParameter("nextQuestion");
 
         Optional<Question> optional = moduleService.getQuestion(nextQuestion);
@@ -93,5 +95,17 @@ public class SecondServlet extends HttpServlet {
             }
         }
         return remoteAddress;
+    }
+
+    private Visitor getVisitor(String visitorName) {
+        Optional<Visitor> optional = moduleService.getVisitor(visitorName);
+        Visitor visitor;
+        if (optional.isEmpty()) {
+            visitor = new Visitor(visitorName);
+            moduleService.saveVisitor(visitor);
+        } else {
+            visitor = optional.get();
+        }
+        return visitor;
     }
 }

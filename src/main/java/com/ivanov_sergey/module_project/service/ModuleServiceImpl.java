@@ -29,7 +29,7 @@ public class ModuleServiceImpl implements ModuleService {
     }
 
     @Override
-    public void increaseCountOfGame(Visitor visitor) {
-        moduleDAO.increaseCountOfGame(visitor);
+    public Integer increaseCountOfGame(Visitor visitor) {
+        return moduleDAO.increaseCountOfGame(visitor);
     }
 }

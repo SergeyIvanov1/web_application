@@ -6,6 +6,7 @@
     <title>Title</title>
 </head>
 <body>
+<jsp:include page="parts/header.jsp" />
 
 <%--<h1>Question: ${requestScope.get("question")}</h1>--%>
 <br>
@@ -28,14 +29,12 @@
     <form action="questions" method="GET">
         <p>Come back to first question:</p>
         <input type="hidden" name="endGame" value="gameEnded">
-        <input type="submit" value="Submit"/>
+        <input type="hidden" name="visitorName" value="${name}">
+        <input type="submit" value="Submit" />
     </form>
 </c:if>
 <br>
-<h3>Statistic:</h3>
-<div>Ip address: ${clientIPAddress}</div>
-<div>Name in the game: ${name}</div>
-<div>Count of games: ${countOfGames}</div>
+
 
 </body>
 </html>

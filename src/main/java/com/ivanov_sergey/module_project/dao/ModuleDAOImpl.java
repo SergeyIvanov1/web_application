@@ -84,13 +84,17 @@ public class ModuleDAOImpl implements ModuleDAO {
     }
 
     @Override
-    public void increaseCountOfGame(Visitor visitor) {
+    public Integer increaseCountOfGame(Visitor visitor) {
         int countOfGames = visitor.getCountOfGames();
+        System.out.println("countOfGames1 = " + countOfGames);
+        countOfGames++;
         int id = visitor.getId();
         session = sessionFactory.getCurrentSession();
         session.beginTransaction();
-        session.createQuery("update Visitor set countOfGames = " + countOfGames + " where id = id"
+        session.createQuery("update Visitor set countOfGames = " + countOfGames + " where id = " + id
             ).executeUpdate();
+        System.out.println("countOfGames2 = " + countOfGames);
         session.getTransaction().commit();
+        return countOfGames;
     }
 }
