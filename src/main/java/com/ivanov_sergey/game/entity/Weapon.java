@@ -12,13 +12,16 @@ import javax.persistence.*;
 @ToString
 @NoArgsConstructor
 @Entity
-@Table(name = "armors")
+@Table(name = "weapons")
 public class Weapon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @Column(name = "text")
-    private String text;
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "location_id")
+    private int locationId;
 }

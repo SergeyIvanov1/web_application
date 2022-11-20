@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.List;
@@ -23,18 +25,37 @@ public class Location {
     @Column(name = "name")
     private String name;
 
-//    @OneToMany(cascade = CascadeType.ALL,
-//            fetch = FetchType.EAGER)
-//    @JoinColumn(name = "personage_id")
-//    List<Personage> personages;
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinColumn(name = "location_id")
+    List<Personage> personages;
 
 //    @OneToMany(cascade = CascadeType.ALL,
 //            fetch = FetchType.EAGER)
 //    @JoinColumn(name = "location_id")
 //    List<Location> nextLocations;
 
-//    @OneToMany(cascade = CascadeType.ALL,
-//            fetch = FetchType.EAGER)
-//    @JoinColumn(name = "location_id")
-//    List<Location> things;
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinColumn(name = "location_id")
+    List<Armor> armors;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinColumn(name = "location_id")
+    List<Potion> potions;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinColumn(name = "location_id")
+    List<Key> keys;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinColumn(name = "location_id")
+    List<Weapon> weapons;
+
+    public Location(String name) {
+        this.name = name;
+    }
 }

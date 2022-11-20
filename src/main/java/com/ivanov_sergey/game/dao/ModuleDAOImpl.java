@@ -1,8 +1,6 @@
 package com.ivanov_sergey.game.dao;
 
-import com.ivanov_sergey.game.entity.Hero;
-import com.ivanov_sergey.game.entity.Location;
-import com.ivanov_sergey.game.entity.Personage;
+import com.ivanov_sergey.game.entity.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -22,6 +20,10 @@ public class ModuleDAOImpl implements ModuleDAO {
                 .addAnnotatedClass(Location.class)
                 .addAnnotatedClass(Hero.class)
                 .addAnnotatedClass(Personage.class)
+                .addAnnotatedClass(Armor.class)
+                .addAnnotatedClass(Key.class)
+                .addAnnotatedClass(Potion.class)
+                .addAnnotatedClass(Weapon.class)
                 .buildSessionFactory();
     }
 
