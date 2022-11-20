@@ -33,6 +33,8 @@
             <%--            <br>--%>
             <div><a href="module">Solution for module 3</a></div>
             <br>
+            <div><a href="start_game">Game</a></div>
+            <br>
         </nav>
 
         <main>

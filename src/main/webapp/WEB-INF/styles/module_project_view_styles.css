@@ -5,3 +5,5 @@ input.nice_button {
 }
 input:focus {border: thin solid black;}
 input:invalid {border: thin solid rgb(192, 98, 98);}
+
+h1 {text-shadow: 3px 3px 5px rgb(141, 153, 207);}

@@ -59,6 +59,51 @@ CREATE TABLE my_db.visitors
     PRIMARY KEY (id)
 );
 
+CREATE TABLE my_db.personages
+(
+    id   int NOT NULL AUTO_INCREMENT,
+    name varchar(100),
+    health int,
+    strength int,
+    dexterity int,
+    location_id int,
+    PRIMARY KEY (id)
+);
+
+INSERT INTO my_db.personages (name, health, strength, dexterity)
+VALUES ('Aragon', 100, 50, 70),
+       ('Gendalf', 150, 70, 80);
+
+CREATE TABLE my_db.locations
+(
+    id   int NOT NULL AUTO_INCREMENT,
+    name varchar(100),
+#     next_location_id int,
+#     strength int,
+#     dexterity int,
+    PRIMARY KEY (id)
+);
+
+INSERT INTO my_db.locations (name)
+VALUES ('Living room'),
+       ('Kitchen room');
+
+CREATE TABLE my_db.heroes
+(
+    id   int NOT NULL AUTO_INCREMENT,
+    name varchar(100),
+    count_of_games int,
+    health int DEFAULT 200,
+    strength int  DEFAULT 200,
+    dexterity int  DEFAULT 50,
+    current_location varchar(100),
+    PRIMARY KEY (id)
+);
+
+# INSERT INTO my_db.heroes (name, health, strength, dexterity)
+# VALUES ('Aragon', 100, 50, 70),
+#        ('Gendalf', 150, 70, 80);
+
 INSERT INTO my_db.employees (name, surname, department, salary)
 VALUES ('Oleg', 'Ivanov', 'Sales', 700),
        ('Sergey', 'Ivanov', 'IT', 500),

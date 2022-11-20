@@ -33,6 +33,8 @@
         </form>
     </c:if>
     <br>
+    <br>
+    <br>
 </div>
 <jsp:include page="parts/footer.jsp"/>
 
