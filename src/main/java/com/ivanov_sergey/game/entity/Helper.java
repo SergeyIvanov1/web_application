@@ -12,8 +12,8 @@ import javax.persistence.*;
 @ToString
 @NoArgsConstructor
 @Entity
-@Table(name = "potions")
-public class Key {
+@Table(name = "helpers")
+public class Helper {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

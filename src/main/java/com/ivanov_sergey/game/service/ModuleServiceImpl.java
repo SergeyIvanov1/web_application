@@ -3,6 +3,7 @@ package com.ivanov_sergey.game.service;
 import com.ivanov_sergey.game.dao.ModuleDAOImpl;
 import com.ivanov_sergey.game.entity.Hero;
 import com.ivanov_sergey.game.entity.Location;
+import com.ivanov_sergey.game.repository.Repository;
 
 import java.util.Optional;
 
@@ -31,5 +32,10 @@ public class ModuleServiceImpl implements ModuleService {
     @Override
     public Integer increaseCountOfGame(Hero hero) {
         return moduleDAO.increaseCountOfGame(hero);
+    }
+
+    @Override
+    public Repository getRepository(int id) {
+        return moduleDAO.getRepository(id);
     }
 }

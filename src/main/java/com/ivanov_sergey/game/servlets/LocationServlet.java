@@ -3,6 +3,7 @@ package com.ivanov_sergey.game.servlets;
 import com.ivanov_sergey.game.entity.Hero;
 import com.ivanov_sergey.game.entity.Location;
 import com.ivanov_sergey.game.entity.Personage;
+import com.ivanov_sergey.game.repository.Repository;
 import com.ivanov_sergey.game.service.ModuleService;
 import com.ivanov_sergey.game.service.ModuleServiceImpl;
 import org.apache.logging.log4j.LogManager;
@@ -28,20 +29,28 @@ public class LocationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         LOGGER.debug("LocationServlet, doGet started");
-        HttpSession session = req.getSession();
 
-        Location location = moduleService.getLocation(INITIAL_ID);
+        HttpSession session = req.getSession();
+        Repository repository = moduleService.getRepository(INITIAL_ID);
+        List<Location> locations = repository.getLocations();
+//        Location location = moduleService.getLocation(INITIAL_ID);
+        Location location = locations.get(0);
+        Location location2 = locations.get(1);
+        location2.getPotions().clear();
+        req.setAttribute("location2", location2);
+        req.setAttribute("repository", repository);
+
         List<Personage> personages = location.getPersonages();
-        req.setAttribute("location", location);
-        req.setAttribute("personages", personages);
 
         String heroName = req.getParameter("heroName");
         System.out.println("heroName = " + heroName);
         String endGame = req.getParameter("endGame");
         System.out.println("endGame = " + endGame);
-
         Hero hero = getHero(heroName);
+
         hero.setCurrentLocation(location.getName());
+        req.setAttribute("location", location);
+        req.setAttribute("personages", personages);
 
         int countOfGames;
         if (endGame != null){
@@ -103,6 +112,7 @@ public class LocationServlet extends HttpServlet {
         Hero hero;
         if (optional.isEmpty()) {
             hero = new Hero(heroName);
+            hero.initValuesOfFields();
             moduleService.saveHero(hero);
         } else {
             hero = optional.get();

@@ -15,7 +15,7 @@
 <form action="location" method="GET">
     Create nick name for hero: <input name="heroName" required/>
     <br><br>
-    <input class="nice_button" type="submit" value="Walk to first location"/>
+    <input class="nice_button" type="submit" value="Begin game"/>
 </form>
 <br><br>
 <form action="remove_attribute" method="GET">

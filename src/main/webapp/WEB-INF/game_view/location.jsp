@@ -77,9 +77,15 @@
 </div>
 <div class="container">
     ${hero}
-    <br>
-    <br>
+
+    <br><br>
     ${location}
+
+    <br><br>
+    ${location2}
+
+    <br><br>
+    ${repository}
 </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

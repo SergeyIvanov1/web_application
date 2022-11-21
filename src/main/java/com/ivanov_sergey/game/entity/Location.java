@@ -26,15 +26,13 @@ public class Location {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "repository_id")
+    private String repositoryId;
+
     @OneToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "location_id")
     List<Personage> personages;
-
-//    @OneToMany(cascade = CascadeType.ALL,
-//            fetch = FetchType.EAGER)
-//    @JoinColumn(name = "location_id")
-//    List<Location> nextLocations;
 
     @OneToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
@@ -49,12 +47,12 @@ public class Location {
     @OneToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "location_id")
-    List<Key> keys;
+    List<Weapon> weapons;
 
     @OneToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "location_id")
-    List<Weapon> weapons;
+    List<Helper> helpers;
 
     public Location(String name) {
         this.name = name;

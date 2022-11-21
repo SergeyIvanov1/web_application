@@ -1,6 +1,7 @@
 package com.ivanov_sergey.game.dao;
 
 import com.ivanov_sergey.game.entity.*;
+import com.ivanov_sergey.game.repository.Repository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -21,9 +22,10 @@ public class ModuleDAOImpl implements ModuleDAO {
                 .addAnnotatedClass(Hero.class)
                 .addAnnotatedClass(Personage.class)
                 .addAnnotatedClass(Armor.class)
-                .addAnnotatedClass(Key.class)
                 .addAnnotatedClass(Potion.class)
                 .addAnnotatedClass(Weapon.class)
+                .addAnnotatedClass(Repository.class)
+                .addAnnotatedClass(Helper.class)
                 .buildSessionFactory();
     }
 
@@ -34,6 +36,15 @@ public class ModuleDAOImpl implements ModuleDAO {
         Location location = session.get(Location.class, id);
         session.getTransaction().commit();
         return location;
+    }
+
+    @Override
+    public Repository getRepository(int id) {
+        session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Repository repository = session.get(Repository.class, id);
+        session.getTransaction().commit();
+        return repository;
     }
 
     @Override

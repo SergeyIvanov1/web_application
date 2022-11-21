@@ -42,4 +42,10 @@ public class Hero {
     public Hero(String name) {
         this.name = name;
     }
+
+    public void initValuesOfFields(){
+        this.health = 200;
+        this.strength = 200;
+        this.dexterity = 50;
+    }
 }
