@@ -27,19 +27,18 @@
                     Show statistic
                 </button>
                 <br><br>
-                <h3>Personages on location:</h3>
-                <br>
+                <c:if test="${personages.size() > 0}">
 
-                <c:if test="${answers.size() > 0}">
-                    <form action="questions" method="POST">
-                        <c:forEach var="answer" items="${answers}">
-                            <input type="radio" name="nextQuestion" value="${answer.nextQuestion}"
-                                   required/>${ answer.text}
-                            <br>
-                        </c:forEach>
-                        <br>
-                        <input class="nice_button" type="submit" value="Send"/>
-                    </form>
+                    <h3>Personages on location:</h3>
+                    <br>
+
+                    <c:forEach var="personage" items="${personages}">
+                        <form action="personage" method="POST">
+                                <%--                            <input type="hidden" name="endGame" value="gameEnded">--%>
+                            <input type="hidden" name="personageName" value="${personage.name}">
+                            <input class="nice_button" type="submit" value="${personage.name}"/>
+                        </form>
+                    </c:forEach>
                 </c:if>
             </div>
         </div>
@@ -50,6 +49,21 @@
             <div class="container">
                 <h1>${location.name}</h1>
             </div>
+            <br><br>
+            <c:if test="${answers.size() > 0}">
+                <form action="questions" method="POST">
+                    <c:forEach var="answer" items="${answers}">
+                        Introduce yourself: <input name="visitorName" required/>
+                        <br><br>
+                        <input class="nice_button" type="submit" value="Introduce"/>
+                        <%--                        <input type="radio" name="nextQuestion" value="${answer.nextQuestion}"--%>
+                        <%--                               required/>${ answer.text}--%>
+                        <%--                        <br>--%>
+                    </c:forEach>
+                    <br>
+                    <input class="nice_button" type="submit" value="Send"/>
+                </form>
+            </c:if>
         </div>
 
 
@@ -61,12 +75,12 @@
 
     </div>
 </div>
-
-${hero}
-<br>
-<br>
-${location}
-
+<div class="container">
+    ${hero}
+    <br>
+    <br>
+    ${location}
+</div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">

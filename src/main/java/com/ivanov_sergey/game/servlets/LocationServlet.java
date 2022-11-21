@@ -31,9 +31,9 @@ public class LocationServlet extends HttpServlet {
         HttpSession session = req.getSession();
 
         Location location = moduleService.getLocation(INITIAL_ID);
-//        List<Personage> personages = location.getPersonages();
+        List<Personage> personages = location.getPersonages();
         req.setAttribute("location", location);
-//        req.setAttribute("personages", personages);
+        req.setAttribute("personages", personages);
 
         String heroName = req.getParameter("heroName");
         System.out.println("heroName = " + heroName);
@@ -41,6 +41,7 @@ public class LocationServlet extends HttpServlet {
         System.out.println("endGame = " + endGame);
 
         Hero hero = getHero(heroName);
+        hero.setCurrentLocation(location.getName());
 
         int countOfGames;
         if (endGame != null){
