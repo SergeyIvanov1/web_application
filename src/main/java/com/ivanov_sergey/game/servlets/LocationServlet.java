@@ -1,9 +1,10 @@
 package com.ivanov_sergey.game.servlets;
 
 import com.ivanov_sergey.game.entity.Hero;
+import com.ivanov_sergey.game.entity.Inventory;
 import com.ivanov_sergey.game.entity.Location;
-import com.ivanov_sergey.game.entity.Personage;
 import com.ivanov_sergey.game.repository.Repository;
+import com.ivanov_sergey.game.service.HandleService;
 import com.ivanov_sergey.game.service.ModuleService;
 import com.ivanov_sergey.game.service.ModuleServiceImpl;
 import org.apache.logging.log4j.LogManager;
@@ -30,31 +31,23 @@ public class LocationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         LOGGER.debug("LocationServlet, doGet started");
+        HandleService handleService = new HandleService();
 
         HttpSession session = req.getSession();
         Repository repository = moduleService.getRepository(INITIAL_ID);
-        List<Location> locations = repository.getLocations();
-//        Location location = moduleService.getLocation(INITIAL_ID);
-        Location location = locations.get(STARTING_ROOM);
-//        Location location2 = locations.get(1);
-//        location2.getPotions().clear();
-//        req.setAttribute("location2", location2);
-//        req.setAttribute("repository", repository);
-
-        List<Personage> personages = location.getPersonages();
-
         String heroName = req.getParameter("heroName");
-        System.out.println("heroName = " + heroName);
         String endGame = req.getParameter("endGame");
-        System.out.println("endGame = " + endGame);
         Hero hero = getHero(heroName);
+        List<Location> locations = repository.getLocations();
+        Location currentLocation = locations.get(STARTING_ROOM);
+//        List<Personage> personages = location.getPersonages();
 
-        hero.setCurrentLocation(location.getName());
-        req.setAttribute("location", location);
-        req.setAttribute("personages", personages);
+        hero.setCurrentLocation(currentLocation.getName());
+        req.setAttribute("currentLocation", currentLocation);
+        session.setAttribute("locations", locations);
 
         int countOfGames;
-        if (endGame != null){
+        if (endGame != null) {
             countOfGames = moduleService.increaseCountOfGame(hero);
             session.setAttribute("countOfGames", countOfGames);
         }
@@ -68,11 +61,12 @@ public class LocationServlet extends HttpServlet {
         }
 
         System.out.println("test");
-
+        session.setAttribute("repository", repository);
         session.setAttribute("hero", hero);
         session.setAttribute("clientIPAddress", getClientIPAddress(req));
         session.setAttribute("name", heroName);
         session.setAttribute("countOfGames", hero.getCountOfGames());
+        handleService.setAttributesToRequest(req, currentLocation.getName());
 
         requestDispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/game_view/location.jsp");
@@ -82,26 +76,33 @@ public class LocationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         LOGGER.debug("LocationServlet, doPost started");
-        String nextLocation = req.getParameter("nextLocation");
 
-        Optional<Location> optional = moduleService.getLocation(nextLocation);
-        Location location;
-        if (optional.isPresent()) {
-            location = optional.get();
-//            List<Personage> personages = location.getPersonages();
-            req.setAttribute("location", location);
-//            req.setAttribute("personages", personages);
-        }
+        String nextLocationName = req.getParameter("nextLocationName");
+        HttpSession session = req.getSession();
+        List<Location> locations = (List<Location>) session.getAttribute("locations");
+        Optional<Location> optional = locations.stream()
+                .filter((location) -> nextLocationName.equals(location.getName()))
+                .findFirst();
+        optional.ifPresent(currentLocation -> {
+            req.setAttribute("currentLocation", currentLocation);
+            req.setAttribute("armors", currentLocation.getArmors());
+            req.setAttribute("potions", currentLocation.getPotions());
+            req.setAttribute("helpers", currentLocation.getHelpers());
+            req.setAttribute("weapons", currentLocation.getWeapons());
+        });
+
+
+
         RequestDispatcher requestDispatcher = getServletContext()
-                .getRequestDispatcher("/WEB-INF/module_project_view/main_page.jsp");
+                .getRequestDispatcher("/WEB-INF/game_view/location.jsp");
         requestDispatcher.forward(req, resp);
     }
 
-    private String getClientIPAddress(HttpServletRequest request){
+    private String getClientIPAddress(HttpServletRequest request) {
         String remoteAddress = "";
-        if (request != null){
+        if (request != null) {
             remoteAddress = request.getHeader("X-FORWARDED-FOR");
-            if (remoteAddress == null || "".equals(remoteAddress)){
+            if (remoteAddress == null || "".equals(remoteAddress)) {
                 remoteAddress = request.getRemoteAddr();
             }
         }
@@ -114,6 +115,7 @@ public class LocationServlet extends HttpServlet {
         if (optional.isEmpty()) {
             hero = new Hero(heroName);
             hero.initValuesOfFields();
+            hero.setInventory(new Inventory(heroName));
             moduleService.saveHero(hero);
         } else {
             hero = optional.get();

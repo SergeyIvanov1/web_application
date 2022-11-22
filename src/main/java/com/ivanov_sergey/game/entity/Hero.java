@@ -38,7 +38,7 @@ public class Hero {
     @Column(name = "current_location")
     private String currentLocation;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "inventory_id")
     private Inventory inventory;
 
@@ -47,7 +47,7 @@ public class Hero {
     }
 
     public void initValuesOfFields(){
-        this.health = 200;
+        this.health = 300;
         this.strength = 200;
         this.dexterity = 50;
     }

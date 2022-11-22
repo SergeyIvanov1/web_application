@@ -1,9 +1,6 @@
 package com.ivanov_sergey.game.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -44,4 +41,8 @@ public class Inventory {
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "inventory_id")
     List<Helper> helpers;
+
+    public Inventory(String name) {
+        this.name = name;
+    }
 }
