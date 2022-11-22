@@ -24,6 +24,7 @@ import java.util.Optional;
 public class LocationServlet extends HttpServlet {
     static final Logger LOGGER = LogManager.getRootLogger();
     public static final int INITIAL_ID = 1;
+    public static final int STARTING_ROOM = 0;
     ModuleService moduleService = new ModuleServiceImpl();
 
     @Override
@@ -34,11 +35,11 @@ public class LocationServlet extends HttpServlet {
         Repository repository = moduleService.getRepository(INITIAL_ID);
         List<Location> locations = repository.getLocations();
 //        Location location = moduleService.getLocation(INITIAL_ID);
-        Location location = locations.get(0);
-        Location location2 = locations.get(1);
-        location2.getPotions().clear();
-        req.setAttribute("location2", location2);
-        req.setAttribute("repository", repository);
+        Location location = locations.get(STARTING_ROOM);
+//        Location location2 = locations.get(1);
+//        location2.getPotions().clear();
+//        req.setAttribute("location2", location2);
+//        req.setAttribute("repository", repository);
 
         List<Personage> personages = location.getPersonages();
 

@@ -18,7 +18,7 @@
     <input class="nice_button" type="submit" value="Begin game"/>
 </form>
 <br><br>
-<form action="remove_attribute" method="GET">
+<form action="remove_attribute_of_session" method="GET">
     <p>Clear the session:</p>
     <input class="nice_button" type="submit" value="Clear"/>
 </form>

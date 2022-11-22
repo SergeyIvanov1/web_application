@@ -19,7 +19,7 @@ public class RemoveAttributeSession extends HttpServlet {
         session.removeAttribute("hero");
 
         requestDispatcher = getServletContext()
-                .getRequestDispatcher("/WEB-INF/module_project_view/hello_page.jsp");
+                .getRequestDispatcher("/WEB-INF/game_view/start_game_page.jsp");
         requestDispatcher.forward(req, resp);
     }
 }

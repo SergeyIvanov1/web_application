@@ -1,11 +1,11 @@
 package com.ivanov_sergey.game.entity;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -14,6 +14,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "heroes")
 public class Hero {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -35,9 +36,11 @@ public class Hero {
     private int dexterity;
 
     @Column(name = "current_location")
-    String currentLocation;
+    private String currentLocation;
 
-//    private List<> inventory;
+    @OneToOne
+    @JoinColumn(name = "inventory_id")
+    private Inventory inventory;
 
     public Hero(String name) {
         this.name = name;
