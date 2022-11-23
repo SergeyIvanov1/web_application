@@ -20,10 +20,10 @@ public class ThingsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String currentLocation = req.getParameter("currentLocation");
-        String armorName = req.getParameter("armorName");
-        String potionName = req.getParameter("potionName");
-        String helperName = req.getParameter("helperName");
-        String weaponName = req.getParameter("weaponName");
+//        String armorName = req.getParameter("armorName");
+//        String potionName = req.getParameter("potionName");
+//        String helperName = req.getParameter("helperName");
+//        String weaponName = req.getParameter("weaponName");
         HttpSession session = req.getSession();
         List<Location> locations = (List<Location>) session.getAttribute("locations");
         Optional<Location> optional = locations.stream()
@@ -37,8 +37,8 @@ public class ThingsServlet extends HttpServlet {
             req.setAttribute("weapons", returnLocation.getWeapons());
         });
 
-        Hero hero = (Hero) session.getAttribute("hero");
-        Repository repository = (Repository) session.getAttribute("repository");
+//        Hero hero = (Hero) session.getAttribute("hero");
+//        Repository repository = (Repository) session.getAttribute("repository");
 //        repository.getLocations()
 
         RequestDispatcher requestDispatcher = getServletContext()

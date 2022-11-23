@@ -61,11 +61,19 @@
                     <br>
 
                     <c:forEach var="personage" items="${currentLocation.getPersonages()}">
-                        <form action="personage" method="POST">
-                                <%--                            <input type="hidden" name="endGame" value="gameEnded">--%>
-                            <input type="hidden" name="personageName" value="${personage.name}">
-                            <input class="nice_button" type="submit" value="${personage.name}"/>
-                        </form>
+                        <div>${personage.name}
+                            <form action="conversation" method="GET">
+                                    <%--                            <input type="hidden" name="endGame" value="gameEnded">--%>
+                                <input type="hidden" name="personageName" value="${personage.name}">
+                                <input type="hidden" name="lastLocation" value="${currentLocation.getName()}">
+                                <input class="nice_button" type="submit" value="Speak"/>
+                            </form>
+                            <form action="#" method="POST">
+                                    <%--                            <input type="hidden" name="endGame" value="gameEnded">--%>
+                                <input type="hidden" name="personageName" value="${personage.name}">
+                                <input class="nice_button" type="submit" value="Attack"/>
+                            </form>
+                        </div>
                     </c:forEach>
                 </c:if>
             </div>
@@ -97,9 +105,9 @@
                 <c:set var="armors_is_present" scope="page" value="${!armors.isEmpty()}"/>
                 <c:if test="${armors_is_present}">
                     <h6>Armors on location:</h6>
-<%--                    <p>!armors.isEmpty(): ${!armors.isEmpty()}</p>>--%>
-<%--                    <p>armors_is_present: ${armors_is_present}</p>>--%>
-<%--                    <p>armors: ${armors}</p>>--%>
+                    <%--                    <p>!armors.isEmpty(): ${!armors.isEmpty()}</p>>--%>
+                    <%--                    <p>armors_is_present: ${armors_is_present}</p>>--%>
+                    <%--                    <p>armors: ${armors}</p>>--%>
                     <br>
                     <c:forEach var="armor" items="${armors}">
                         <form action="things" method="POST">

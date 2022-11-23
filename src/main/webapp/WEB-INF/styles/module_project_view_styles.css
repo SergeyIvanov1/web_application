@@ -11,3 +11,8 @@ h1 {text-shadow: 3px 3px 5px rgb(141, 153, 207);}
 div {
     border: grey thin solid;
 }
+
+img {
+    width: 150px;
+    height: 550px;
+}

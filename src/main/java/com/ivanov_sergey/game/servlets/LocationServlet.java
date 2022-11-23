@@ -30,7 +30,7 @@ public class LocationServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LOGGER.debug("LocationServlet, doGet started");
+//        LOGGER.debug("LocationServlet, doGet started");
         HandleService handleService = new HandleService();
 
         HttpSession session = req.getSession();
@@ -75,7 +75,7 @@ public class LocationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LOGGER.debug("LocationServlet, doPost started");
+//        LOGGER.debug("LocationServlet, doPost started");
 
         String nextLocationName = req.getParameter("nextLocationName");
         HttpSession session = req.getSession();

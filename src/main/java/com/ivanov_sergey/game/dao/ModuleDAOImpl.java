@@ -27,6 +27,8 @@ public class ModuleDAOImpl implements ModuleDAO {
                 .addAnnotatedClass(Repository.class)
                 .addAnnotatedClass(Helper.class)
                 .addAnnotatedClass(Inventory.class)
+                .addAnnotatedClass(Issue.class)
+                .addAnnotatedClass(Reply.class)
                 .buildSessionFactory();
     }
 

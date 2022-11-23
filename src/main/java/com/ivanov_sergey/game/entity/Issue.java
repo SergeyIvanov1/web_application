@@ -1,5 +1,6 @@
 package com.ivanov_sergey.game.entity;
 
+import com.ivanov_sergey.module_project.entity.Answer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,30 +16,22 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 @Entity
-@Table(name = "personages")
-public class Personage {
+@Table(name = "issues")
+public class Issue {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "text")
+    private String text;
 
-    @Column(name = "health")
-    private int health;
-
-    @Column(name = "strength")
-    private int strength;
-
-    @Column(name = "dexterity")
-    private int dexterity;
-
-    @Column(name = "location_id")
-    private int locationId;
+    @Column(name = "personage_id")
+    private int personageId;
 
     @OneToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
-    @JoinColumn(name = "personage_id")
-    List<Issue> issues;
+    @JoinColumn(name = "issue_id")
+    private List<Reply> replies;
 }

@@ -32,9 +32,6 @@ public class Answer {
     )
     List<Question> questions;
 
-//    public Answer() {
-//    }
-
     public Answer(String text, String nextQuestion) {
         this.text = text;
         this.nextQuestion = nextQuestion;
@@ -44,52 +41,10 @@ public class Answer {
         this.text = text;
     }
 
-//    @Override
-//    public String toString() {
-//        return "Answer{" +
-//                "id=" + id +
-//                ", text='" + text + '\'' +
-//                ", nextQuestion='" + nextQuestion + '\'' +
-//                ", questions=" + questions +
-//                '}';
-//    }
-
     public void addQuestionToAnswer(Question question){
         if (questions == null){
             questions = new ArrayList<>();
         }
         questions.add(question);
     }
-
-//    public int getId() {
-//        return id;
-//    }
-//
-//    public void setId(int id) {
-//        this.id = id;
-//    }
-//
-//    public String getText() {
-//        return text;
-//    }
-//
-//    public void setText(String text) {
-//        this.text = text;
-//    }
-//
-//    public String getNextQuestion() {
-//        return nextQuestion;
-//    }
-//
-//    public void setNextQuestion(String nextQuestion) {
-//        this.nextQuestion = nextQuestion;
-//    }
-//
-//    public List<Question> getQuestions() {
-//        return questions;
-//    }
-//
-//    public void setQuestions(List<Question> questions) {
-//        this.questions = questions;
-//    }
 }
