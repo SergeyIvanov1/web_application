@@ -31,7 +31,6 @@ public class LocationServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 //        LOGGER.debug("LocationServlet, doGet started");
-        HandleService handleService = new HandleService();
 
         HttpSession session = req.getSession();
         Repository repository = moduleService.getRepository(INITIAL_ID);
@@ -59,6 +58,8 @@ public class LocationServlet extends HttpServlet {
             requestDispatcher.forward(req, resp);
             return;
         }
+
+        HandleService handleService = new HandleService();
 
         System.out.println("test");
         session.setAttribute("repository", repository);
