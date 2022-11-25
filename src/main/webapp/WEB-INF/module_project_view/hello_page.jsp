@@ -19,7 +19,7 @@
 
 <div class="container">
     <div class="clearfix">
-        <img src="resources/space_ship.jpeg" class="col-md-6 float-md-end mb-3 ms-md-3" alt="space_ship">
+        <img src="${pageContext.request.contextPath}/images/ship.jpeg" class="col-md-6 float-md-end mb-3 ms-md-3" alt="space_ship">
 
         <h1>Prologue</h1>
         <p>You are standing at the space port and you are reading up of your sheep board. Do you dreamed about this?</p>

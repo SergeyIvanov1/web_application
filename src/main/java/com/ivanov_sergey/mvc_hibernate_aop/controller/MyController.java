@@ -13,13 +13,12 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @Controller
-//@RequestMapping("/web-application")
 public class MyController {
 
     @Autowired
     private EmployeeService employeeService;
 
-    @RequestMapping("/")
+    @RequestMapping("")
     public String toStartPage(){
         return "startPage";
     }
@@ -53,14 +52,12 @@ public class MyController {
     @RequestMapping("/saveEmployee")
     public String saveEmployee(@ModelAttribute("employee") Employee employee){
         employeeService.saveEmployee(employee);
-//        return "all-employees";
         return "redirect:/allEmployee";
     }
 
     @RequestMapping("/deleteEmployee")
     public String DeleteEmployee(@RequestParam("empId") int id){
         employeeService.deleteEmployee(id);
-//        return "all-employees";
         return "redirect:/allEmployee";
     }
 }
