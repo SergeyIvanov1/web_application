@@ -66,4 +66,37 @@ public class LocationServiceImpl implements LocationService {
     public Storage getRepository() {
         return repository;
     }
+
+    public Personage getPersonage(String personageName, String lastLocation){
+        Optional<Personage> optional = getLocation(lastLocation)
+                .getPersonages()
+                .stream()
+                .filter(personage -> personageName.equals(personage.getName()))
+                .findFirst();
+        if (optional.isPresent()) {
+            return optional.get();
+        } else {
+            throw new RuntimeException("Personage is not found. LastLocation = " + lastLocation +
+                    ", personageName = " + personageName);
+        }
+    }
+
+    public Issue getIssue(String personageName, String nextQuestion, String lastLocation){
+        Optional<Issue> optional = getPersonage(personageName, lastLocation)
+                .getIssues()
+                .stream()
+                .filter(issue -> nextQuestion.equals(issue.getText()))
+                .findFirst();
+        if (optional.isPresent()) {
+            return optional.get();
+        } else {
+            throw new RuntimeException("Issue is not found. LastLocation = " + lastLocation +
+                    ", personageName = " + personageName +
+                    ", nextQuestion = " + nextQuestion);
+        }
+    }
+
+    public Issue getFirstIssue(Personage personage, int index){
+        return personage.getIssues().get(index);
+    }
 }

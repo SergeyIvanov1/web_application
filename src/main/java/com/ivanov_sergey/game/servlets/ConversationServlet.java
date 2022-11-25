@@ -1,11 +1,13 @@
 package com.ivanov_sergey.game.servlets;
 
-import com.ivanov_sergey.game.entity.Issue;
-import com.ivanov_sergey.game.entity.Location;
+import com.ivanov_sergey.game.entity.Personage;
+import com.ivanov_sergey.game.service.LocationServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,17 +15,25 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.List;
-import java.util.Optional;
 
 @WebServlet("/conversation")
 public class ConversationServlet extends HttpServlet {
     static final Logger LOGGER = LogManager.getRootLogger();
     private final int INITIAL_INDEX = 0;
 
+    LocationServiceImpl service;
+
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        ServletContext servletContext = config.getServletContext();
+        service = (LocationServiceImpl) servletContext.getAttribute("locationService");
+        System.out.println("service = " + service);
+    }
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LOGGER.debug("LocationServlet, doGet started");
+        LOGGER.debug("ConversationServlet, doGet started");
 
         String lastLocation = req.getParameter("lastLocation");
         HttpSession session = req.getSession();
@@ -31,20 +41,22 @@ public class ConversationServlet extends HttpServlet {
         String personageName = req.getParameter("personageName");
         req.setAttribute("personageName", personageName);
 
-        List<Location> locations = (List<Location>) session.getAttribute("locations");
-        Optional<Location> optional = locations.stream()
-                .filter((location) -> lastLocation.equals(location.getName()))
-                .findFirst();
-        optional.ifPresent(location -> {
-            req.setAttribute("issue", location.getPersonages()
-                    .stream()
-                    .filter(personage -> personageName.equals(personage.getName()))
-                    .findFirst()
-                    .get()
-                    .getIssues()
-                    .get(INITIAL_INDEX));
-        });
+        Personage personage = service.getPersonage(personageName, lastLocation);
+        req.setAttribute("issue", service.getFirstIssue(personage, INITIAL_INDEX));
 
+//        List<Location> locations = (List<Location>) session.getAttribute("locations");
+//        Optional<Location> optional = locations.stream()
+//                .filter((location) -> lastLocation.equals(location.getName()))
+//                .findFirst();
+//        optional.ifPresent(location -> {
+//            req.setAttribute("issue", location.getPersonages()
+//                    .stream()
+//                    .filter(personage -> personageName.equals(personage.getName()))
+//                    .findFirst()
+//                    .get()
+//                    .getIssues()
+//                    .get(INITIAL_INDEX));
+//        });
         RequestDispatcher requestDispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/game_view/conversation.jsp");
         requestDispatcher.forward(req, resp);
@@ -52,31 +64,33 @@ public class ConversationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        LOGGER.debug("LocationServlet, doGet started");
-        HttpSession session = req.getSession();
+        String lastLocation = req.getParameter("lastLocation");
         String personageName = req.getParameter("personageName");
         String nextQuestion = req.getParameter("nextQuestion");
-        req.setAttribute("personageName", personageName);
-        System.out.println("personageName =" + personageName);
+        LOGGER.debug("ConversationServlet, doPost started. " +
+                "LastLocation = " + lastLocation + ", personageName = " + personageName + ", nextQuestion = " + nextQuestion);
 
-        List<Location> locations = (List<Location>) session.getAttribute("locations");
-        String lastLocation = (String) session.getAttribute("lastLocation");
-        Optional<Issue> optional = locations.stream()
-                .filter((location) -> lastLocation.equals(location.getName()))
-                .findFirst()
-                .get()
-                .getPersonages()
-                .stream()
-                .filter(personage -> personageName.equals(personage.getName()))
-                .findFirst()
-                .get()
-                .getIssues()
-                .stream()
-                .filter(issue -> nextQuestion.equals(issue.getText()))
-                .findFirst();
-        optional.ifPresent(issue -> {
-            req.setAttribute("issue", issue);
-        });
+        req.setAttribute("personageName", personageName);
+        req.setAttribute("lastLocation", lastLocation);
+        req.setAttribute("issue", service.getIssue(personageName, nextQuestion, lastLocation));
+//        List<Location> locations = (List<Location>) session.getAttribute("locations");
+//        String lastLocation = (String) session.getAttribute("lastLocation");
+//        Optional<Issue> optional = locations.stream()
+//                .filter((location) -> lastLocation.equals(location.getName()))
+//                .findFirst()
+//                .get()
+//                .getPersonages()
+//                .stream()
+//                .filter(personage -> personageName.equals(personage.getName()))
+//                .findFirst()
+//                .get()
+//                .getIssues()
+//                .stream()
+//                .filter(issue -> nextQuestion.equals(issue.getText()))
+//                .findFirst();
+//        optional.ifPresent(issue -> {
+//            req.setAttribute("issue", issue);
+//        });
 
         RequestDispatcher requestDispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/game_view/conversation.jsp");

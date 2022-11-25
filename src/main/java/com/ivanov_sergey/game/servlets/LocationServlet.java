@@ -64,9 +64,8 @@ public class LocationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        LOGGER.debug("LocationServlet, doPost started");
-
         String nextLocationName = req.getParameter("nextLocationName");
+        LOGGER.debug("LocationServlet, doPost is started with nextLocationName = " + nextLocationName);
 
             req.setAttribute("currentLocation", service.getLocation(nextLocationName));
             req.setAttribute("armors", service.getArmors(nextLocationName));

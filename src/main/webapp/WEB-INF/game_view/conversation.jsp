@@ -71,6 +71,7 @@
                     <c:forEach var="reply" items="${issue.getReplies()}">
                         <div>
                             <form action="conversation" method="POST">
+                                <input type="hidden" name="lastLocation" value="${lastLocation}">
                                 <input type="hidden" name="personageName" value="${personageName}">
                                 <input type="hidden" name="nextQuestion" value="${reply.getNextQuestion()}">
                                 <input class="nice_button" type="submit" value="${reply.getText()}"/>

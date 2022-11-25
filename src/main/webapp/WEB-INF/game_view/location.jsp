@@ -53,7 +53,6 @@
                 <c:set var="personages_is_present" scope="page" value="${!currentLocation.getPersonages().isEmpty()}"/>
 
                 <c:if test="${personages_is_present}">
-
                     <h6>Personages on location:</h6>
                     <c:forEach var="personage" items="${currentLocation.getPersonages()}">
                         <div>${personage.name}
@@ -97,7 +96,6 @@
                 <c:set var="armors_is_present" scope="page" value="${!armors.isEmpty()}"/>
                 <c:if test="${armors_is_present}">
                     <h6>Armors:</h6>
-<%--                    <br>--%>
                     <c:forEach var="armor" items="${armors}">
                         <form action="things" method="POST">
                             <input type="hidden" name="currentLocation" value="${currentLocation.getName()}">
@@ -106,14 +104,10 @@
                         </form>
                     </c:forEach>
                 </c:if>
-                <%--            </div>--%>
 
-                <%--            <div class="container">--%>
-<%--                <br><br>--%>
                 <c:set var="potions_is_present" scope="page" value="${!potions.isEmpty()}"/>
                 <c:if test="${potions_is_present}">
                     <h6>Potions:</h6>
-<%--                    <br>--%>
                     <c:forEach var="potion" items="${potions}">
                         <form action="things" method="POST">
                             <input type="hidden" name="currentLocation" value="${currentLocation.getName()}">
@@ -122,14 +116,10 @@
                         </form>
                     </c:forEach>
                 </c:if>
-                <%--            </div>--%>
 
-                <%--            <div class="container">--%>
-<%--                <br><br>--%>
                 <c:set var="helpers_is_present" scope="page" value="${!helpers.isEmpty()}"/>
                 <c:if test="${helpers_is_present}">
                     <h6>Helpers:</h6>
-<%--                    <br>--%>
                     <c:forEach var="helper" items="${helpers}">
                         <form action="things" method="POST">
                             <input type="hidden" name="currentLocation" value="${currentLocation.getName()}">
@@ -138,14 +128,10 @@
                         </form>
                     </c:forEach>
                 </c:if>
-                <%--            </div>--%>
 
-                <%--            <div class="container">--%>
-<%--                <br><br>--%>
                 <c:set var="weapons_is_present" scope="page" value="${!weapons.isEmpty()}"/>
                 <c:if test="${weapons_is_present}">
                     <h6>Weapons:</h6>
-<%--                    <br>--%>
                     <c:forEach var="weapon" items="${weapons}">
                         <form action="things" method="POST">
                             <input type="hidden" name="currentLocation" value="${currentLocation.getName()}">
