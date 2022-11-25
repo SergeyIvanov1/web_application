@@ -1,8 +1,6 @@
 package com.ivanov_sergey.game.servlets;
 
-import com.ivanov_sergey.game.entity.Hero;
 import com.ivanov_sergey.game.entity.Location;
-import com.ivanov_sergey.game.repository.Repository;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -20,10 +18,6 @@ public class ThingsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String currentLocation = req.getParameter("currentLocation");
-//        String armorName = req.getParameter("armorName");
-//        String potionName = req.getParameter("potionName");
-//        String helperName = req.getParameter("helperName");
-//        String weaponName = req.getParameter("weaponName");
         HttpSession session = req.getSession();
         List<Location> locations = (List<Location>) session.getAttribute("locations");
         Optional<Location> optional = locations.stream()
@@ -36,10 +30,6 @@ public class ThingsServlet extends HttpServlet {
             req.setAttribute("helpers", returnLocation.getHelpers());
             req.setAttribute("weapons", returnLocation.getWeapons());
         });
-
-//        Hero hero = (Hero) session.getAttribute("hero");
-//        Repository repository = (Repository) session.getAttribute("repository");
-//        repository.getLocations()
 
         RequestDispatcher requestDispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/game_view/location.jsp");

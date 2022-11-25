@@ -2,6 +2,7 @@ package com.ivanov_sergey.game.service;
 
 import com.ivanov_sergey.game.dao.ModuleDAOImpl;
 import com.ivanov_sergey.game.entity.Hero;
+import com.ivanov_sergey.game.entity.Inventory;
 import com.ivanov_sergey.game.entity.Location;
 import com.ivanov_sergey.game.repository.Repository;
 
@@ -20,8 +21,18 @@ public class ModuleServiceImpl implements ModuleService {
     }
 
     @Override
-    public Optional<Hero> getHero(String nameHero){
-        return moduleDAO.getHero(nameHero);
+    public Hero getOrCreateHero(String nameHero){
+        Optional<Hero> optional = moduleDAO.getHero(nameHero);
+        Hero hero;
+        if (optional.isEmpty()) {
+            hero = new Hero(nameHero);
+            hero.initValuesOfFields();
+            hero.setInventory(new Inventory(nameHero));
+            moduleDAO.saveHero(hero);
+        } else {
+            hero = optional.get();
+        }
+        return hero;
     }
 
     @Override
@@ -35,7 +46,8 @@ public class ModuleServiceImpl implements ModuleService {
     }
 
     @Override
-    public Repository getRepository(int id) {
+    public Repository fillRepositoryDBData(int id) {
         return moduleDAO.getRepository(id);
     }
+
 }

@@ -17,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "repositoryes")
-public class Repository {
+public class Repository implements Storage {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

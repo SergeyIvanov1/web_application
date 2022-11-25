@@ -65,11 +65,6 @@ public class ModuleDAOImpl implements ModuleDAO {
         }
         session.getTransaction().commit();
         return optional;
-//        Question question = query.getResultList().get(0);
-//
-////        Question question = session.get(Question.class, question1.getId());
-//        session.getTransaction().commit();
-//        return question;
     }
 
     @Override
@@ -87,8 +82,6 @@ public class ModuleDAOImpl implements ModuleDAO {
         }
         session.getTransaction().commit();
         return optional;
-//        Visitor question = session.get(Visitor.class, visitor.getId());
-//        return visitor;
     }
 
     @Override

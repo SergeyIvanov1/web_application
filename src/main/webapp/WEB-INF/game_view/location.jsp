@@ -29,7 +29,6 @@
                 </div>
             </div>
 
-
             <div class="col">
                 <br>
                 <div class="container">
@@ -42,7 +41,6 @@
 
                 </div>
             </div>
-
         </div>
     </div>
 </header>
@@ -53,23 +51,19 @@
             <div class="container">
                 <br><br>
                 <c:set var="personages_is_present" scope="page" value="${!currentLocation.getPersonages().isEmpty()}"/>
-                <%--                <h3>personages : </h3>${personages}--%>
 
                 <c:if test="${personages_is_present}">
 
                     <h6>Personages on location:</h6>
-                    <br>
-
                     <c:forEach var="personage" items="${currentLocation.getPersonages()}">
                         <div>${personage.name}
+                            <br>
                             <form action="conversation" method="GET">
-                                    <%--                            <input type="hidden" name="endGame" value="gameEnded">--%>
                                 <input type="hidden" name="personageName" value="${personage.name}">
                                 <input type="hidden" name="lastLocation" value="${currentLocation.getName()}">
                                 <input class="nice_button" type="submit" value="Speak"/>
                             </form>
                             <form action="#" method="POST">
-                                    <%--                            <input type="hidden" name="endGame" value="gameEnded">--%>
                                 <input type="hidden" name="personageName" value="${personage.name}">
                                 <input class="nice_button" type="submit" value="Attack"/>
                             </form>
@@ -79,15 +73,13 @@
             </div>
         </div>
 
-
         <div class="col">
             <div class="container">
                 <br><br>
                 <c:set var="locations_is_present" scope="page" value="${!locations.isEmpty()}"/>
-
                 <c:if test="${locations_is_present}">
                     <h6>Available locations:</h6>
-                    <br>
+<%--                    <br>--%>
                     <c:forEach var="location" items="${locations}">
                         <form action="location" method="POST">
                                 <%--<input type="hidden" name="endGame" value="gameEnded">--%>
@@ -104,11 +96,8 @@
                 <br><br>
                 <c:set var="armors_is_present" scope="page" value="${!armors.isEmpty()}"/>
                 <c:if test="${armors_is_present}">
-                    <h6>Armors on location:</h6>
-                    <%--                    <p>!armors.isEmpty(): ${!armors.isEmpty()}</p>>--%>
-                    <%--                    <p>armors_is_present: ${armors_is_present}</p>>--%>
-                    <%--                    <p>armors: ${armors}</p>>--%>
-                    <br>
+                    <h6>Armors:</h6>
+<%--                    <br>--%>
                     <c:forEach var="armor" items="${armors}">
                         <form action="things" method="POST">
                             <input type="hidden" name="currentLocation" value="${currentLocation.getName()}">
@@ -117,14 +106,14 @@
                         </form>
                     </c:forEach>
                 </c:if>
-            </div>
+                <%--            </div>--%>
 
-            <div class="container">
-                <br><br>
+                <%--            <div class="container">--%>
+<%--                <br><br>--%>
                 <c:set var="potions_is_present" scope="page" value="${!potions.isEmpty()}"/>
                 <c:if test="${potions_is_present}">
-                    <h6>Potions on location:</h6>
-                    <br>
+                    <h6>Potions:</h6>
+<%--                    <br>--%>
                     <c:forEach var="potion" items="${potions}">
                         <form action="things" method="POST">
                             <input type="hidden" name="currentLocation" value="${currentLocation.getName()}">
@@ -133,14 +122,14 @@
                         </form>
                     </c:forEach>
                 </c:if>
-            </div>
+                <%--            </div>--%>
 
-            <div class="container">
-                <br><br>
+                <%--            <div class="container">--%>
+<%--                <br><br>--%>
                 <c:set var="helpers_is_present" scope="page" value="${!helpers.isEmpty()}"/>
                 <c:if test="${helpers_is_present}">
-                    <h6>Helpers on location:</h6>
-                    <br>
+                    <h6>Helpers:</h6>
+<%--                    <br>--%>
                     <c:forEach var="helper" items="${helpers}">
                         <form action="things" method="POST">
                             <input type="hidden" name="currentLocation" value="${currentLocation.getName()}">
@@ -149,14 +138,14 @@
                         </form>
                     </c:forEach>
                 </c:if>
-            </div>
+                <%--            </div>--%>
 
-            <div class="container">
-                <br><br>
+                <%--            <div class="container">--%>
+<%--                <br><br>--%>
                 <c:set var="weapons_is_present" scope="page" value="${!weapons.isEmpty()}"/>
                 <c:if test="${weapons_is_present}">
-                    <h6>Weapons on location:</h6>
-                    <br>
+                    <h6>Weapons:</h6>
+<%--                    <br>--%>
                     <c:forEach var="weapon" items="${weapons}">
                         <form action="things" method="POST">
                             <input type="hidden" name="currentLocation" value="${currentLocation.getName()}">
@@ -167,24 +156,14 @@
                 </c:if>
             </div>
         </div>
-
     </div>
 </div>
-
 
 <br><br><br><br>
 <footer>
     <div class="container">
         <h3> hero: </h3>
         ${hero}
-
-        <%--    <br><br>--%>
-        <%--    <h3> location: </h3>--%>
-        <%--    ${location}--%>
-
-        <%--    <br><br>--%>
-        <%--    <h3> location2: </h3>--%>
-        <%--    ${location2}--%>
 
         <br><br>
         <h3> repository: </h3>${repository}
@@ -203,8 +182,6 @@
                     <div>Count of games: ${countOfGames}</div>
                 </div>
                 <div class="modal-footer">
-                    <%--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>--%>
-                    <%--                <button type="button" class="btn btn-primary">Save changes</button>--%>
                 </div>
             </div>
         </div>

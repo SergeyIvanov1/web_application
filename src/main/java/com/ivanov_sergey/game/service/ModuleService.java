@@ -9,8 +9,8 @@ import java.util.Optional;
 public interface ModuleService {
     public Location getLocation(int id);
     public Optional<Location> getLocation(String nextLocation);
-    public Optional<Hero> getHero(String nameHero);
+    public Hero getOrCreateHero(String nameHero);
     public void saveHero(Hero hero);
     public Integer increaseCountOfGame(Hero visitor);
-    public Repository getRepository(int id);
+    public Repository fillRepositoryDBData(int id);
 }

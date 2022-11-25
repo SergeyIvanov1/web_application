@@ -2,8 +2,6 @@ package com.ivanov_sergey.game.servlets;
 
 import com.ivanov_sergey.game.entity.Issue;
 import com.ivanov_sergey.game.entity.Location;
-import com.ivanov_sergey.game.service.ModuleService;
-import com.ivanov_sergey.game.service.ModuleServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -25,7 +23,8 @@ public class ConversationServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//        LOGGER.debug("LocationServlet, doGet started");
+        LOGGER.debug("LocationServlet, doGet started");
+
         String lastLocation = req.getParameter("lastLocation");
         HttpSession session = req.getSession();
         session.setAttribute("lastLocation", lastLocation);
@@ -44,10 +43,8 @@ public class ConversationServlet extends HttpServlet {
                     .get()
                     .getIssues()
                     .get(INITIAL_INDEX));
-//            req.setAttribute("potions", location.getPotions());
         });
 
-//
         RequestDispatcher requestDispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/game_view/conversation.jsp");
         requestDispatcher.forward(req, resp);
