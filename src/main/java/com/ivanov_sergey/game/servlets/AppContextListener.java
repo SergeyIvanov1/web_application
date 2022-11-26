@@ -1,6 +1,5 @@
 package com.ivanov_sergey.game.servlets;
 
-import com.ivanov_sergey.game.repository.Repository;
 import com.ivanov_sergey.game.repository.Storage;
 import com.ivanov_sergey.game.service.LocationService;
 import com.ivanov_sergey.game.service.LocationServiceImpl;
@@ -11,13 +10,6 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import javax.servlet.http.HttpSession;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.util.List;
 
 @WebListener
 public class AppContextListener implements ServletContextListener {
@@ -31,7 +23,6 @@ public class AppContextListener implements ServletContextListener {
         LocationService locationService = new LocationServiceImpl(repository);
 
         servletContext.setAttribute("locationService", locationService);
-
 
 //        try {
 //            URL resource = servletContext.getResource("/config.json");

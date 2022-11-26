@@ -31,7 +31,6 @@ public class LocationServlet extends HttpServlet {
         super.init(config);
         ServletContext servletContext = config.getServletContext();
         service = (LocationServiceImpl) servletContext.getAttribute("locationService");
-        System.out.println("service = " + service);
     }
 
     @Override

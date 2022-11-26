@@ -29,7 +29,7 @@
             <div class="col">
                 <div class="container">
                     <c:set var = "interlocutor" scope = "page" value = "${personageName}"/>
-                    <c:url var = "forester_page" value = "/images/Forester.jpeg"/>
+<%--                    <c:url var = "forester_page" value = "/images/Forester.jpeg"/>--%>
 <%--                    <p>Your salary is : <c:out value = "${salary}"/></p>--%>
                     <c:choose>
                         <c:when test = "${interlocutor == 'Guarder'}">
@@ -67,6 +67,7 @@
 
             <div class="col">
                 <div class="container">
+                    <br><br>
                     <h6>${issue.getText()}</h6>
                     <c:forEach var="reply" items="${issue.getReplies()}">
                         <div>

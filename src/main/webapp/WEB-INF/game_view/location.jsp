@@ -67,6 +67,7 @@
                                 <input class="nice_button" type="submit" value="Attack"/>
                             </form>
                         </div>
+                        <h6>Quest: ${personage.getQuests()}</h6>
                     </c:forEach>
                 </c:if>
             </div>

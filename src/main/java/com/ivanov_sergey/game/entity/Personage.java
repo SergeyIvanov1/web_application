@@ -41,4 +41,9 @@ public class Personage {
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "personage_id")
     List<Issue> issues;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinColumn(name = "personage_id")
+    List<Quest> quests;
 }

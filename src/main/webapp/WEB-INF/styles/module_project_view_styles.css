@@ -6,13 +6,28 @@ input.nice_button {
 input:focus {border: thin solid black;}
 input:invalid {border: thin solid rgb(192, 98, 98);}
 
-h1 {text-shadow: 3px 3px 5px rgb(141, 153, 207);}
+h1 {
+    text-shadow: 3px 3px 5px rgb(141, 153, 207);
+
+}
+
+h2 {
+    margin-left: auto;
+    margin-right: auto;
+    width: 6em
+}
 
 div {
     border: grey thin solid;
 }
 
 img {
-    width: 30%;
-    height: 60%;
+    width: 300px;
+    height: 600px;
+}
+
+body {
+    background-color: lightgrey;
+    background-size: cover;
+    background-attachment: fixed;
 }

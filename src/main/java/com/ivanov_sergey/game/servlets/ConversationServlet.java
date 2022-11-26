@@ -44,19 +44,6 @@ public class ConversationServlet extends HttpServlet {
         Personage personage = service.getPersonage(personageName, lastLocation);
         req.setAttribute("issue", service.getFirstIssue(personage, INITIAL_INDEX));
 
-//        List<Location> locations = (List<Location>) session.getAttribute("locations");
-//        Optional<Location> optional = locations.stream()
-//                .filter((location) -> lastLocation.equals(location.getName()))
-//                .findFirst();
-//        optional.ifPresent(location -> {
-//            req.setAttribute("issue", location.getPersonages()
-//                    .stream()
-//                    .filter(personage -> personageName.equals(personage.getName()))
-//                    .findFirst()
-//                    .get()
-//                    .getIssues()
-//                    .get(INITIAL_INDEX));
-//        });
         RequestDispatcher requestDispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/game_view/conversation.jsp");
         requestDispatcher.forward(req, resp);
@@ -68,31 +55,22 @@ public class ConversationServlet extends HttpServlet {
         String personageName = req.getParameter("personageName");
         String nextQuestion = req.getParameter("nextQuestion");
         LOGGER.debug("ConversationServlet, doPost started. " +
-                "LastLocation = " + lastLocation + ", personageName = " + personageName + ", nextQuestion = " + nextQuestion);
+                "LastLocation = " + lastLocation + ", personageName = " + personageName +
+                ", nextQuestion = " + nextQuestion);
+
 
         req.setAttribute("personageName", personageName);
         req.setAttribute("lastLocation", lastLocation);
-        req.setAttribute("issue", service.getIssue(personageName, nextQuestion, lastLocation));
-//        List<Location> locations = (List<Location>) session.getAttribute("locations");
-//        String lastLocation = (String) session.getAttribute("lastLocation");
-//        Optional<Issue> optional = locations.stream()
-//                .filter((location) -> lastLocation.equals(location.getName()))
-//                .findFirst()
-//                .get()
-//                .getPersonages()
-//                .stream()
-//                .filter(personage -> personageName.equals(personage.getName()))
-//                .findFirst()
-//                .get()
-//                .getIssues()
-//                .stream()
-//                .filter(issue -> nextQuestion.equals(issue.getText()))
-//                .findFirst();
-//        optional.ifPresent(issue -> {
-//            req.setAttribute("issue", issue);
-//        });
 
-        RequestDispatcher requestDispatcher = getServletContext()
+        RequestDispatcher requestDispatcher;
+        if ("fight".equals(nextQuestion)){
+            requestDispatcher = getServletContext()
+                    .getRequestDispatcher("/WEB-INF/game_view/fight.jsp");
+            requestDispatcher.forward(req, resp);
+        }
+        req.setAttribute("issue", service.getIssue(personageName, nextQuestion, lastLocation));
+
+        requestDispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/game_view/conversation.jsp");
         requestDispatcher.forward(req, resp);
     }

@@ -21,4 +21,10 @@ public class Quest {
 
     @Column(name = "text")
     private String text;
+
+    @Column(name = "is_finished")
+    private boolean isFinished;
+
+    @Column(name = "personage_id")
+    private int personageId;
 }
