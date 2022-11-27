@@ -29,8 +29,6 @@
             <br>
             <div><a href="/allEmployee">all-employees</a></div>
             <br>
-            <%--            <div><a href="#">Forum</a></div>--%>
-            <%--            <br>--%>
             <div><a href="module">Solution for module 3</a></div>
             <br>
             <div><a href="start_game">Game</a></div>
@@ -78,14 +76,6 @@
                 </form>
 
                 <br><br>
-
-<%--                <form action="../../views/jsp_for_remove/unnamed.jsp" method="post">--%>
-<%--                    <label>Name:--%>
-<%--                        <input type="text" name="name"><br/>--%>
-<%--                    </label>--%>
-
-<%--                    <button type="submit">Submit</button>--%>
-<%--                </form>--%>
 
                 <br><br>
                 <p>Determinations:</p>
@@ -218,12 +208,5 @@
         </main>
     </div>
 </div>
-
-<footer>
-    <br>
-    <p> Here is footer</p>
-    <br>
-</footer>
-
 </body>
 </html>

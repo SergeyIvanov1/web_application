@@ -26,9 +26,7 @@
             <br><br>
 
             <div class="button_crypto">
-<%--                <seсurity:authorize access="hasRole('HR')">--%>
                 <a href="/encrypt">Encryption</a>
-<%--                <seсurity:authorize/>--%>
             </div>
             <br>
             <div class="button_crypto"><a href="/decryption_with_key">Decryption with key</a></div>
@@ -80,7 +78,6 @@
                     <p>Upload file
                         <input type="file" name="file" accept=".txt"></p>
                     <p><label for="key">Input key</label>
-                            <%--                        здесь key2? --%>
                         <input type="text" name="key" id="key2" required></p>
                     <p><input type="submit" name="button" value="Encrypt"></p>
                 </form>
@@ -104,7 +101,6 @@
                 <form action="/manual_decryption_statistic_analise" method="post" enctype="multipart/form-data">
                     <p>Upload file
                         <input type="file" name="file" accept=".txt"></p>
-                        <%--                    здесь вместо encrypt - decrypt? --%>
                     <p><input type="submit" name="button" value="Encrypt"></p>
                 </form>
                 <%

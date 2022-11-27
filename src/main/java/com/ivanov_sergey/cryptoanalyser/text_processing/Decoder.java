@@ -110,12 +110,10 @@ public class Decoder {
             throws IOException, ServletException {
 
         char[] frequentLetters = TextProcessing.getArrayGreatestFrequentLettersOfAlphabets(TextProcessing.language);
-
-        int indexOfMostFrequentLetterOfText = TextProcessing.getIndex(TextProcessing.getMostFrequentLetterOfText(req),
-                TextProcessing.language);
+        int indexOfMostFrequentLetterOfText = TextProcessing.getIndex(
+                TextProcessing.getMostFrequentLetterOfText(req), TextProcessing.language);
 
         for (char frequentLetter : frequentLetters) {
-
             int foundKey = indexOfMostFrequentLetterOfText
                     - TextProcessing.getIndex(frequentLetter, TextProcessing.language);
 
@@ -126,12 +124,10 @@ public class Decoder {
             }
             stringBuilder.setLength(0);
         }
-
         if (stringBuilder.length() == 0){
             stringBuilder.append("Decryption is not successfully");
         }
     }
-
     public static void autoDecryptionWithStatistic(HttpServletRequest req, StringBuilder stringBuilder) throws ServletException, IOException {
 
         char[] chars = TextProcessing.getArrayGreatestFrequentLettersOfAlphabets(TextProcessing.language);
