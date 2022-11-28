@@ -17,10 +17,9 @@
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous">
 </script>
+<jsp:include page="parts/game_header.jsp"/>
+
 <div class="container">
-    <br><br>
-    <div><a href="location">Location</a></div>
-    <br>
     <div class="container">
         <h2>${personageName}</h2>
     </div>

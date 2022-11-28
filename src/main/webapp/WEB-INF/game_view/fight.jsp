@@ -15,32 +15,101 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
+<jsp:include page="parts/game_header.jsp"/>
 
-
-<div class="container">
-    <br><br>
-    <h1>Fighting</h1>
-    <div><a href="location">Location</a></div>
+<div class="container text-center">
     <br>
-    <div class="container">
+    <h1>Fighting</h1>
 
-    </div>
-    <div class="container text-center">
-        <div class="row">
-            <div class="col">
-                <div class="container">
-                    <br><br>
-                    <h2>${heroName}</h2>
+    <div class="row">
+        <div class="col">
+            <br>
+            <h2>${name}</h2>
+            <p>health:</p>
+            <div class="row">
+                <div class="col">
+                    <p>strength:<br>
+                        dexterity:</p>
+                    <c:set var="armors_is_present" scope="page" value="${!armors.isEmpty()}"/>
+                    <c:if test="${armors_is_present}">
+                        <h6>Armors:</h6>
+                        <c:forEach var="armor" items="${armors}">
+                            <form action="things" method="POST">
+                                <input type="hidden" name="currentLocation" value="${currentLocation.getName()}">
+                                <input type="hidden" name="armorName" value="${armor.name}">
+                                <input class="nice_button" type="submit" value="${armor.name}"/>
+                            </form>
+                        </c:forEach>
+                    </c:if>
 
+                    <c:set var="potions_is_present" scope="page" value="${!potions.isEmpty()}"/>
+                    <c:if test="${potions_is_present}">
+                        <h6>Potions:</h6>
+                        <c:forEach var="potion" items="${potions}">
+                            <form action="things" method="POST">
+                                <input type="hidden" name="currentLocation" value="${currentLocation.getName()}">
+                                <input type="hidden" name="potionName" value="${potion.name}">
+                                <input class="nice_button" type="submit" value="${potion.name}"/>
+                            </form>
+                        </c:forEach>
+                    </c:if>
+
+                    <c:set var="helpers_is_present" scope="page" value="${!helpers.isEmpty()}"/>
+                    <c:if test="${helpers_is_present}">
+                        <h6>Helpers:</h6>
+                        <c:forEach var="helper" items="${helpers}">
+                            <form action="things" method="POST">
+                                <input type="hidden" name="currentLocation" value="${currentLocation.getName()}">
+                                <input type="hidden" name="helperName" value="${helper.name}">
+                                <input class="nice_button" type="submit" value="${helper.name}"/>
+                            </form>
+                        </c:forEach>
+                    </c:if>
+
+                    <c:set var="weapons_is_present" scope="page" value="${!weapons.isEmpty()}"/>
+                    <c:if test="${weapons_is_present}">
+                        <h6>Weapons:</h6>
+                        <c:forEach var="weapon" items="${weapons}">
+                            <form action="things" method="POST">
+                                <input type="hidden" name="currentLocation" value="${currentLocation.getName()}">
+                                <input type="hidden" name="weaponName" value="${weapon.name}">
+                                <input class="nice_button" type="submit" value="${weapon.name}"/>
+                            </form>
+                        </c:forEach>
+                    </c:if>
+                </div>
+                <div class="col">
+                    <form action="param.jsp" method="POST">
+                        Block:<br>
+                        <input type="radio" name="Head" value="JavaSE" checked/>Head<br>
+                        <input type="radio" name="Body" value="JavaFX"/>Body<br>
+                        <input type="radio" name="Legs" value="JavaEE"/>Legs
+                        <br><br>
+                        <input type="submit" value="Submit"/>
+                    </form>
+                </div>
+                <div class="col">
+                    <form action="param.jsp" method="POST">
+                        Attack:<br>
+                        <input type="radio" name="Head" value="JavaSE" checked/>Head<br>
+                        <input type="radio" name="Body" value="JavaFX"/>Body<br>
+                        <input type="radio" name="Legs" value="JavaEE"/>Legs
+                        <br><br>
+                        <input type="submit" value="Submit"/>
+                    </form>
                 </div>
             </div>
+        </div>
 
-            <div class="col">
-                <div class="container">
-                    <br><br>
-                    <h2>${personageName}</h2>
-                    <%--                    <c:forEach var="reply" items="${issue.getReplies()}">--%>
-                    <div class="container">
+        <div class="col">
+            <div class="container">
+                <br>
+                <h2>${personageName}</h2>
+                <%--                    <c:forEach var="reply" items="${issue.getReplies()}">--%>
+                <p>health:</p>
+                <div class="row">
+                    <div class="col">
+
                         <c:set var="interlocutor" scope="page" value="${personageName}"/>
                         <c:choose>
                             <c:when test="${interlocutor == 'Guarder'}">
@@ -75,20 +144,19 @@
                             <%--                        </c:otherwise>--%>
                         </c:choose>
                     </div>
-                    <div class="container">
-                        <p>personageName</p>
-                        <p>health</p>
-                        <p>strength</p>
-                        <p>dexterity</p>
-<%--                        <form action="conversation" method="POST">--%>
-<%--                            <input type="hidden" name="lastLocation" value="${lastLocation}">--%>
-<%--                            <input type="hidden" name="personageName" value="${personageName}">--%>
-<%--                            <input type="hidden" name="nextQuestion" value="${reply.getNextQuestion()}">--%>
-<%--                            <input class="nice_button" type="submit" value="${reply.getText()}"/>--%>
-<%--                        </form>--%>
+                    <div class="col">
+
+                        <p>strength:</p>
+                        <p>dexterity:</p>
+                        <%--                        <form action="conversation" method="POST">--%>
+                        <%--                            <input type="hidden" name="lastLocation" value="${lastLocation}">--%>
+                        <%--                            <input type="hidden" name="personageName" value="${personageName}">--%>
+                        <%--                            <input type="hidden" name="nextQuestion" value="${reply.getNextQuestion()}">--%>
+                        <%--                            <input class="nice_button" type="submit" value="${reply.getText()}"/>--%>
+                        <%--                        </form>--%>
                     </div>
-                    <%--                    </c:forEach>--%>
                 </div>
+                <%--                    </c:forEach>--%>
             </div>
         </div>
     </div>
