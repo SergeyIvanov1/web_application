@@ -3,9 +3,7 @@ package com.ivanov_sergey.game.servlets;
 import com.ivanov_sergey.game.entity.Hero;
 import com.ivanov_sergey.game.entity.Inventory;
 import com.ivanov_sergey.game.entity.Personage;
-import com.ivanov_sergey.game.service.LocationServiceImpl;
-import com.ivanov_sergey.game.service.ModuleService;
-import com.ivanov_sergey.game.service.ModuleServiceImpl;
+import com.ivanov_sergey.game.service.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -38,20 +36,31 @@ public class KickServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String personageName = req.getParameter("personageName");
         String lastLocation = req.getParameter("lastLocation");
-
-        LOGGER.debug("KickServlet, doPost is started with nextLocationName = " + lastLocation
-                + "personageName " + personageName);
-
         String attack = req.getParameter("attack");
         String block = req.getParameter("block");
+        LOGGER.debug("KickServlet, doPost is started with " +
+                "nextLocationName = " + lastLocation +
+                "nextLocationName = " + lastLocation +
+                "attack = " + attack
+                + "block = " + block);
 
         HttpSession session = req.getSession();
         Hero hero = (Hero) session.getAttribute("hero");
-        Inventory heroInventory = hero.getInventory();
         Personage personage = service.getPersonage(personageName, lastLocation);
 
-        RequestDispatcher requestDispatcher = getServletContext()
-                .getRequestDispatcher("/WEB-INF/game_view/fight.jsp");
-        requestDispatcher.forward(req, resp);
+
+
+
+        Inventory heroInventory = hero.getInventory();
+        req.setAttribute("personageName", personageName);
+        req.setAttribute("lastLocation", lastLocation);
+        resp.sendRedirect(req.getContextPath() + "/fight");
+
+
+//        RequestDispatcher requestDispatcher = getServletContext()
+//                .getRequestDispatcher("/WEB-INF/game_view/fight.jsp");
+//        requestDispatcher.forward(req, resp);
     }
+
+
 }

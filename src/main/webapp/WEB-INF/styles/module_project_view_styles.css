@@ -48,6 +48,20 @@ body.background {
     background: lightgrey fixed;
 }
 
+div.accordion-collapse {
+    background-size: cover;
+    background: darkgrey fixed;
+}
+div.accordion-item {
+    background-size: cover;
+    background: slategrey fixed;
+}
+
+button.accordion-button {
+    background-size: cover;
+    background: slategrey fixed;
+}
+
 /*div.col {*/
 /*    background-size: cover;*/
 /*    background: lightgrey fixed;*/

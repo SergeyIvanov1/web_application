@@ -22,7 +22,7 @@
 <div class="container text-center border">
     <br>
     <h1>Fighting</h1>
-    <form action="kick" method="POST">
+    <form action="fight" method="POST">
         <div class="row border">
             <div class="col border">
                 <br>
@@ -64,7 +64,7 @@
                         </c:forEach>
                         <%--                    </c:if>--%>
                         <button type="button" class="btn btn-default btn-sm"
-                                onclick="window.location.href = '/addNewEmployee'">
+                                onclick="window.location.href = '/addNewEmployee'" title="water">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-droplet"
                                  viewBox="0 0 16 16">
@@ -74,7 +74,7 @@
                                       d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
                             </svg>
                         </button>
-                        <button type="button" class="btn btn-default btn-sm">
+                        <button type="button" class="btn btn-default btn-sm" title="cocktail">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-cup-straw"
                                  viewBox="0 0 16 16">
@@ -82,7 +82,7 @@
                             </svg>
                         </button>
 
-                        <button type="button" class="btn btn-default btn-sm">
+                        <button type="button" class="btn btn-default btn-sm" title="coffee">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                  class="bi bi-cup-hot"
                                  viewBox="0 0 16 16">
@@ -197,11 +197,12 @@
         <br>
         <input type="hidden" name="personageName" value="${personageName}">
         <input type="hidden" name="lastLocation" value="${lastLocation}">
+        <input type="hidden" name="kick" value="kick">
         <input type="submit" value="Kick ${personageName}"/>
     </form>
     <br>
     <br>
 </div>
-
+<jsp:include page="parts/footer_game.jsp"/>
 </body>
 </html>

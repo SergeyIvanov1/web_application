@@ -55,20 +55,6 @@ Each of decrypted text will verify of program to correct decryption,
 using statistic most frequently words of language. 
 Program will choose right decoded text and show it on page.
 
-[//]: # (##### "Manual decryption with statistic". )
-
-[//]: # ()
-[//]: # (The program gets the  text and is searching most frequent letters of encrypted text.)
-
-[//]: # ()
-[//]: # (By statistics exist  the greatest frequent letters of alphabets, which are using in practice. )
-
-[//]: # (The program is taking first six in order and calculate indexes of letters, )
-
-[//]: # (the key is difference between letter's of indexes. )
-
-[//]: # (Program will choose right decoded text by most frequent words of language and show it on page.)
-
 ##### Auto decryption with statistic. 
 
 The program gets the  text and is searching most frequent letters of encrypted text.
