@@ -6,7 +6,7 @@
 <head>
     <title>Start game</title>
 </head>
-<body>
+<body class="background">
 
 <br>
 <br>

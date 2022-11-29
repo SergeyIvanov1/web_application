@@ -6,6 +6,14 @@ input.nice_button {
 input:focus {border: thin solid black;}
 input:invalid {border: thin solid rgb(192, 98, 98);}
 
+button.btn-sm {
+    border: thin solid antiquewhite;
+}
+
+button.btn-sm:hover {
+    border: thin solid greenyellow;
+}
+
 h1 {
     text-shadow: 3px 3px 5px rgb(141, 153, 207);
 
@@ -17,9 +25,13 @@ h2 {
     width: 6em
 }
 
-div {
-    border: grey thin solid;
+div.border {
+    border: blue thin solid;
 }
+
+/*div {*/
+/*    border: grey thin solid;*/
+/*}*/
 
 img {
     width: 300px;
@@ -31,8 +43,24 @@ img.img-fluid {
     height: 150px;
 }
 
-body {
-    background-color: lightgrey;
+body.background {
     background-size: cover;
-    background-attachment: fixed;
+    background: lightgrey fixed;
+}
+
+/*div.col {*/
+/*    background-size: cover;*/
+/*    background: lightgrey fixed;*/
+/*}*/
+/*div.container {*/
+/*    background-size: cover;*/
+/*    background: lightblue fixed;*/
+/*}*/
+
+div.progress-bar {
+    text-align: center;
+}
+
+option {
+    background-color: #bacbe6;
 }

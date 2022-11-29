@@ -2,6 +2,7 @@ package com.ivanov_sergey.game.service;
 
 import com.ivanov_sergey.game.entity.*;
 import com.ivanov_sergey.game.repository.Storage;
+import com.ivanov_sergey.game.service.exceptions.LocationInvalidParameters;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
@@ -27,25 +28,31 @@ public class LocationServiceImpl implements LocationService {
 
     @Override
     public List<Armor> getArmors(String locationName) {
+        checkParameterByNull(locationName);
+
         return getLocation(locationName).getArmors();
     }
 
     @Override
     public List<Potion> getPotions(String locationName) {
+        checkParameterByNull(locationName);
         return getLocation(locationName).getPotions();
     }
 
     @Override
     public List<Helper> getHelpers(String locationName) {
+        checkParameterByNull(locationName);
         return getLocation(locationName).getHelpers();
     }
 
     @Override
     public List<Weapon> getWeapons(String locationName) {
+        checkParameterByNull(locationName);
         return getLocation(locationName).getWeapons();
     }
 
     public Location getLocation(String locationName) {
+        checkParameterByNull(locationName);
         Optional<Location> optional = repository.getLocations()
                 .stream()
                 .filter((location) -> locationName.equals(location.getName()))
@@ -97,6 +104,21 @@ public class LocationServiceImpl implements LocationService {
     }
 
     public Issue getFirstIssue(Personage personage, int index){
-        return personage.getIssues().get(index);
+        if (personage == null){throw new LocationInvalidParameters("First parameter - personage is null");}
+        if (index < 0){throw new LocationInvalidParameters("Second parameter - index is negative");}
+
+        Issue issue;
+        try {
+            issue = personage.getIssues().get(index);
+        } catch (IndexOutOfBoundsException ex){
+            throw new LocationInvalidParameters("Parameter index is out of list range", ex);
+        }
+        return issue;
+    }
+
+    public void checkParameterByNull(String parameter) {
+        if (parameter == null){
+            throw new LocationInvalidParameters("Parameter is null");
+        }
     }
 }

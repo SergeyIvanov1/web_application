@@ -23,8 +23,11 @@ public class Hero {
     @Column(name = "count_of_games")
     private int CountOfGames;
 
-    @Column(name = "health")
-    private int health;
+    @Column(name = "max_health")
+    private int maxHealth;
+
+    @Column(name = "current_health")
+    private int currentHealth;
 
     @Column(name = "strength")
     private int strength;
@@ -44,8 +47,9 @@ public class Hero {
     }
 
     public void initValuesOfFields(){
-        this.health = 300;
-        this.strength = 200;
+        this.maxHealth = 300;
+        this.currentHealth = 300;
+        this.strength = 20;
         this.dexterity = 50;
     }
 }

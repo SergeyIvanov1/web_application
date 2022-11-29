@@ -1,10 +1,7 @@
 package com.ivanov_sergey.game.servlets;
 
 import com.ivanov_sergey.game.repository.Storage;
-import com.ivanov_sergey.game.service.LocationService;
-import com.ivanov_sergey.game.service.LocationServiceImpl;
-import com.ivanov_sergey.game.service.ModuleService;
-import com.ivanov_sergey.game.service.ModuleServiceImpl;
+import com.ivanov_sergey.game.service.*;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
@@ -21,8 +18,10 @@ public class AppContextListener implements ServletContextListener {
         ServletContext servletContext = servletContextEvent.getServletContext();
         Storage repository = moduleService.fillRepositoryDBData(INITIAL_ID);
         LocationService locationService = new LocationServiceImpl(repository);
+        FightingService fightingService = new FightingServiceImpl(repository);
 
         servletContext.setAttribute("locationService", locationService);
+        servletContext.setAttribute("fightingService", fightingService);
 
 //        try {
 //            URL resource = servletContext.getResource("/config.json");

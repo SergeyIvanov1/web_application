@@ -12,7 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
-<body>
+<body class="background">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
@@ -24,9 +24,9 @@
         </div>
     </div>
 </header>
-<div class="container text-center">
-    <div class="row">
-        <div class="col">
+<div class="container text-center border">
+    <div class="row border">
+        <div class="col border">
             <div class="container">
                 <br><br>
                 <c:set var="personages_is_present" scope="page" value="${!currentLocation.getPersonages().isEmpty()}"/>
@@ -53,7 +53,7 @@
             </div>
         </div>
 
-        <div class="col">
+        <div class="col border">
             <div class="container">
                 <br><br>
                 <c:set var="locations_is_present" scope="page" value="${!locations.isEmpty()}"/>
@@ -71,7 +71,7 @@
             </div>
         </div>
 
-        <div class="col">
+        <div class="col border">
             <div class="container">
                 <br><br>
                 <c:set var="armors_is_present" scope="page" value="${!armors.isEmpty()}"/>

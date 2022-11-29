@@ -25,8 +25,11 @@ public class Personage {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "health")
-    private int health;
+    @Column(name = "max_health")
+    private int maxHealth;
+
+    @Column(name = "current_health")
+    private int currentHealth;
 
     @Column(name = "strength")
     private int strength;

@@ -3,6 +3,7 @@
 <style>
     <%@include file="/WEB-INF/styles/module_project_view_styles.css" %>
 </style>
+
 <html>
 <head>
     <title>Fight</title>
@@ -11,105 +12,145 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
 </head>
-<body>
+
+<body class="background">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
 <jsp:include page="parts/game_header.jsp"/>
 
-<div class="container text-center">
+<div class="container text-center border">
     <br>
     <h1>Fighting</h1>
+    <form action="kick" method="POST">
+        <div class="row border">
+            <div class="col border">
+                <br>
+                <h2>${heroName}</h2>
+                <p>health: ${heroCurrentHealth}/${heroHealth}</p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-label="Example with label"
+                         style="width: ${heroCurrentPercentOfHealth}%;" aria-valuenow="${heroCurrentHealth}"
+                         aria-valuemin="0" aria-valuemax="${heroHealth}">${heroCurrentPercentOfHealth}%
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <p>strength: ${heroStrength}</p>
+                        <p>dexterity: ${heroDexterity}</p>
 
-    <div class="row">
-        <div class="col">
-            <br>
-            <h2>${name}</h2>
-            <p>health:</p>
-            <div class="row">
-                <div class="col">
-                    <p>strength:<br>
-                        dexterity:</p>
-                    <c:set var="armors_is_present" scope="page" value="${!armors.isEmpty()}"/>
-                    <c:if test="${armors_is_present}">
-                        <h6>Armors:</h6>
-                        <c:forEach var="armor" items="${armors}">
-                            <form action="things" method="POST">
-                                <input type="hidden" name="currentLocation" value="${currentLocation.getName()}">
-                                <input type="hidden" name="armorName" value="${armor.name}">
-                                <input class="nice_button" type="submit" value="${armor.name}"/>
-                            </form>
-                        </c:forEach>
-                    </c:if>
-
-                    <c:set var="potions_is_present" scope="page" value="${!potions.isEmpty()}"/>
-                    <c:if test="${potions_is_present}">
+                        <%--                        <c:set var="potions_is_present" scope="page" value="${!heroPotions.isEmpty()}"/>--%>
+                        <%--                        <c:if test="${potions_is_present}">--%>
                         <h6>Potions:</h6>
-                        <c:forEach var="potion" items="${potions}">
+                        <c:forEach var="potion" items="${heroPotions}">
                             <form action="things" method="POST">
-                                <input type="hidden" name="currentLocation" value="${currentLocation.getName()}">
+                                <input type="hidden" name="lastLocation" value="${lastLocation}">
                                 <input type="hidden" name="potionName" value="${potion.name}">
                                 <input class="nice_button" type="submit" value="${potion.name}"/>
                             </form>
                         </c:forEach>
-                    </c:if>
+                        <%--                        </c:if>--%>
 
-                    <c:set var="helpers_is_present" scope="page" value="${!helpers.isEmpty()}"/>
-                    <c:if test="${helpers_is_present}">
+                        <%--                    <c:set var="helpers_is_present" scope="page" value="${!helpers.isEmpty()}"/>--%>
+                        <%--                    <c:if test="${helpers_is_present}">--%>
                         <h6>Helpers:</h6>
-                        <c:forEach var="helper" items="${helpers}">
+                        <c:forEach var="helper" items="${heroHelpers}">
                             <form action="things" method="POST">
-                                <input type="hidden" name="currentLocation" value="${currentLocation.getName()}">
+                                <input type="hidden" name="lastLocation" value="${clastLocation}">
                                 <input type="hidden" name="helperName" value="${helper.name}">
                                 <input class="nice_button" type="submit" value="${helper.name}"/>
                             </form>
                         </c:forEach>
-                    </c:if>
+                        <%--                    </c:if>--%>
+                        <button type="button" class="btn btn-default btn-sm"
+                                onclick="window.location.href = '/addNewEmployee'">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-droplet"
+                                 viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                      d="M7.21.8C7.69.295 8 0 8 0c.109.363.234.708.371 1.038.812 1.946 2.073 3.35 3.197 4.6C12.878 7.096 14 8.345 14 10a6 6 0 0 1-12 0C2 6.668 5.58 2.517 7.21.8zm.413 1.021A31.25 31.25 0 0 0 5.794 3.99c-.726.95-1.436 2.008-1.96 3.07C3.304 8.133 3 9.138 3 10a5 5 0 0 0 10 0c0-1.201-.796-2.157-2.181-3.7l-.03-.032C9.75 5.11 8.5 3.72 7.623 1.82z"/>
+                                <path fill-rule="evenodd"
+                                      d="M4.553 7.776c.82-1.641 1.717-2.753 2.093-3.13l.708.708c-.29.29-1.128 1.311-1.907 2.87l-.894-.448z"/>
+                            </svg>
+                        </button>
+                        <button type="button" class="btn btn-default btn-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-cup-straw"
+                                 viewBox="0 0 16 16">
+                                <path d="M13.902.334a.5.5 0 0 1-.28.65l-2.254.902-.4 1.927c.376.095.715.215.972.367.228.135.56.396.56.82 0 .046-.004.09-.011.132l-.962 9.068a1.28 1.28 0 0 1-.524.93c-.488.34-1.494.87-3.01.87-1.516 0-2.522-.53-3.01-.87a1.28 1.28 0 0 1-.524-.93L3.51 5.132A.78.78 0 0 1 3.5 5c0-.424.332-.685.56-.82.262-.154.607-.276.99-.372C5.824 3.614 6.867 3.5 8 3.5c.712 0 1.389.045 1.985.127l.464-2.215a.5.5 0 0 1 .303-.356l2.5-1a.5.5 0 0 1 .65.278zM9.768 4.607A13.991 13.991 0 0 0 8 4.5c-1.076 0-2.033.11-2.707.278A3.284 3.284 0 0 0 4.645 5c.146.073.362.15.648.222C5.967 5.39 6.924 5.5 8 5.5c.571 0 1.109-.03 1.588-.085l.18-.808zm.292 1.756C9.445 6.45 8.742 6.5 8 6.5c-1.133 0-2.176-.114-2.95-.308a5.514 5.514 0 0 1-.435-.127l.838 8.03c.013.121.06.186.102.215.357.249 1.168.69 2.438.69 1.27 0 2.081-.441 2.438-.69.042-.029.09-.094.102-.215l.852-8.03a5.517 5.517 0 0 1-.435.127 8.88 8.88 0 0 1-.89.17zM4.467 4.884s.003.002.005.006l-.005-.006zm7.066 0-.005.006c.002-.004.005-.006.005-.006zM11.354 5a3.174 3.174 0 0 0-.604-.21l-.099.445.055-.013c.286-.072.502-.149.648-.222z"/>
+                            </svg>
+                        </button>
 
-                    <c:set var="weapons_is_present" scope="page" value="${!weapons.isEmpty()}"/>
-                    <c:if test="${weapons_is_present}">
-                        <h6>Weapons:</h6>
-                        <c:forEach var="weapon" items="${weapons}">
+                        <button type="button" class="btn btn-default btn-sm">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 class="bi bi-cup-hot"
+                                 viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                      d="M.5 6a.5.5 0 0 0-.488.608l1.652 7.434A2.5 2.5 0 0 0 4.104 16h5.792a2.5 2.5 0 0 0 2.44-1.958l.131-.59a3 3 0 0 0 1.3-5.854l.221-.99A.5.5 0 0 0 13.5 6H.5ZM13 12.5a2.01 2.01 0 0 1-.316-.025l.867-3.898A2.001 2.001 0 0 1 13 12.5ZM2.64 13.825 1.123 7h11.754l-1.517 6.825A1.5 1.5 0 0 1 9.896 15H4.104a1.5 1.5 0 0 1-1.464-1.175Z"/>
+                                <path d="m4.4.8-.003.004-.014.019a4.167 4.167 0 0 0-.204.31 2.327 2.327 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.593.593 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3.31 3.31 0 0 1-.202.388 5.444 5.444 0 0 1-.253.382l-.018.025-.005.008-.002.002A.5.5 0 0 1 3.6 4.2l.003-.004.014-.019a4.149 4.149 0 0 0 .204-.31 2.06 2.06 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.593.593 0 0 0-.09-.252A4.334 4.334 0 0 0 3.6 2.8l-.01-.012a5.099 5.099 0 0 1-.37-.543A1.53 1.53 0 0 1 3 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a5.446 5.446 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 4.4.8Zm3 0-.003.004-.014.019a4.167 4.167 0 0 0-.204.31 2.327 2.327 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.593.593 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3.31 3.31 0 0 1-.202.388 5.444 5.444 0 0 1-.253.382l-.018.025-.005.008-.002.002A.5.5 0 0 1 6.6 4.2l.003-.004.014-.019a4.149 4.149 0 0 0 .204-.31 2.06 2.06 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.593.593 0 0 0-.09-.252A4.334 4.334 0 0 0 6.6 2.8l-.01-.012a5.099 5.099 0 0 1-.37-.543A1.53 1.53 0 0 1 6 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a5.446 5.446 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 7.4.8Zm3 0-.003.004-.014.019a4.077 4.077 0 0 0-.204.31 2.337 2.337 0 0 0-.141.267c-.026.06-.034.092-.037.103v.004a.593.593 0 0 0 .091.248c.075.133.178.272.308.445l.01.012c.118.158.26.347.37.543.112.2.22.455.22.745 0 .188-.065.368-.119.494a3.198 3.198 0 0 1-.202.388 5.385 5.385 0 0 1-.252.382l-.019.025-.005.008-.002.002A.5.5 0 0 1 9.6 4.2l.003-.004.014-.019a4.149 4.149 0 0 0 .204-.31 2.06 2.06 0 0 0 .141-.267c.026-.06.034-.092.037-.103a.593.593 0 0 0-.09-.252A4.334 4.334 0 0 0 9.6 2.8l-.01-.012a5.099 5.099 0 0 1-.37-.543A1.53 1.53 0 0 1 9 1.5c0-.188.065-.368.119-.494.059-.138.134-.274.202-.388a5.446 5.446 0 0 1 .253-.382l.025-.035A.5.5 0 0 1 10.4.8Z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="col">
+                            <p>Block:</p>
+                            <select name="block" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                <option selected>Select</option>
+                                <option value="head">Head</option>
+                                <option value="body">Body</option>
+                                <option value="legs">Legs</option>
+                            </select>
+                        <br>
+                        <%--                    <c:set var="armors_is_present" scope="page" value="${!armors.isEmpty()}"/>--%>
+                        <%--                    <c:if test="${armors_is_present}">--%>
+                        <h6>Armors:</h6>
+                        <c:forEach var="armor" items="${heroArmors}">
                             <form action="things" method="POST">
-                                <input type="hidden" name="currentLocation" value="${currentLocation.getName()}">
+                                <input type="hidden" name="lastLocation" value="${lastLocation}">
+                                <input type="hidden" name="armorName" value="${armor.name}">
+                                <input class="nice_button" type="submit" value="${armor.name}"/>
+                            </form>
+                        </c:forEach>
+                        <%--                    </c:if>--%>
+                    </div>
+                    <div class="col">
+                        <p> Attack:</p>
+                            <select name="attack" class="form-select form-select-sm" aria-label=".form-select-sm example">
+                                <option selected>Select</option>
+                                <option value="head">Head</option>
+                                <option value="body">Body</option>
+                                <option value="legs">Legs</option>
+                            </select>
+                        <br>
+                        <%--                    <c:set var="weapons_is_present" scope="page" value="${!weapons.isEmpty()}"/>--%>
+                        <%--                    <c:if test="${weapons_is_present}">--%>
+                        <h6>Weapons:</h6>
+                        <c:forEach var="weapon" items="${heroWeapons}">
+                            <form action="things" method="POST">
+                                <input type="hidden" name="lastLocation" value="${lastLocation}">
                                 <input type="hidden" name="weaponName" value="${weapon.name}">
                                 <input class="nice_button" type="submit" value="${weapon.name}"/>
                             </form>
                         </c:forEach>
-                    </c:if>
-                </div>
-                <div class="col">
-                    <form action="param.jsp" method="POST">
-                        Block:<br>
-                        <input type="radio" name="Head" value="JavaSE" checked/>Head<br>
-                        <input type="radio" name="Body" value="JavaFX"/>Body<br>
-                        <input type="radio" name="Legs" value="JavaEE"/>Legs
-                        <br><br>
-                        <input type="submit" value="Submit"/>
-                    </form>
-                </div>
-                <div class="col">
-                    <form action="param.jsp" method="POST">
-                        Attack:<br>
-                        <input type="radio" name="Head" value="JavaSE" checked/>Head<br>
-                        <input type="radio" name="Body" value="JavaFX"/>Body<br>
-                        <input type="radio" name="Legs" value="JavaEE"/>Legs
-                        <br><br>
-                        <input type="submit" value="Submit"/>
-                    </form>
+                        <%--                    </c:if>--%>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col">
-            <div class="container">
+            <div class="col border">
                 <br>
                 <h2>${personageName}</h2>
                 <%--                    <c:forEach var="reply" items="${issue.getReplies()}">--%>
-                <p>health:</p>
+                <p>health: ${personageCurrentHealth}/${personageHealth}</p>
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" aria-label="Example with label"
+                         style="width: ${personageCurrentPercentOfHealth}%;" aria-valuenow="${personageCurrentHealth}"
+                         aria-valuemin="0" aria-valuemax="${personageHealth}">${personageCurrentPercentOfHealth}%
+                    </div>
+                </div>
+                <br>
                 <div class="row">
                     <div class="col">
-
                         <c:set var="interlocutor" scope="page" value="${personageName}"/>
                         <c:choose>
                             <c:when test="${interlocutor == 'Guarder'}">
@@ -145,21 +186,22 @@
                         </c:choose>
                     </div>
                     <div class="col">
-
-                        <p>strength:</p>
-                        <p>dexterity:</p>
-                        <%--                        <form action="conversation" method="POST">--%>
-                        <%--                            <input type="hidden" name="lastLocation" value="${lastLocation}">--%>
-                        <%--                            <input type="hidden" name="personageName" value="${personageName}">--%>
-                        <%--                            <input type="hidden" name="nextQuestion" value="${reply.getNextQuestion()}">--%>
-                        <%--                            <input class="nice_button" type="submit" value="${reply.getText()}"/>--%>
-                        <%--                        </form>--%>
+                        <p>strength: ${personageStrength}</p>
+                        <p>dexterity: ${personageDexterity}</p>
                     </div>
                 </div>
                 <%--                    </c:forEach>--%>
             </div>
+            <%--        </div>--%>
         </div>
-    </div>
+        <br>
+        <input type="hidden" name="personageName" value="${personageName}">
+        <input type="hidden" name="lastLocation" value="${lastLocation}">
+        <input type="submit" value="Kick ${personageName}"/>
+    </form>
+    <br>
+    <br>
 </div>
+
 </body>
 </html>
