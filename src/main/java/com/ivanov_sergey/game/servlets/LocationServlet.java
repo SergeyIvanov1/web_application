@@ -18,6 +18,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 @WebServlet("/location")
 public class LocationServlet extends HttpServlet {
@@ -35,10 +38,13 @@ public class LocationServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MM-dd-yyyy, HH-mm");
+        String timeOfCreateGame = dateTimeFormatter.format(LocalDateTime.now());
         HttpSession session = req.getSession();
 
         String heroName = req.getParameter("heroName");
         Hero hero = moduleService.getOrCreateHero(heroName);
+        List<Hero> heroes = moduleService.getAllHero();
         LOGGER.debug("LocationServlet, game started with hero = " + heroName);
 
         Location currentLocation = service.getLocation(STARTING_ROOM);
@@ -52,9 +58,11 @@ public class LocationServlet extends HttpServlet {
         session.setAttribute("locations", service.getLocations());
         session.setAttribute("repository", service.getRepository());
         session.setAttribute("hero", hero);
+        session.setAttribute("heroes", heroes);
         session.setAttribute("clientIPAddress", service.getClientIPAddress(req));
         session.setAttribute("name", heroName);
-        session.setAttribute("countOfGames", hero.getCountOfGames());
+        session.setAttribute("countOfGames", hero.getCountOfEndedGames());
+        session.setAttribute("timeOfCreateGame", timeOfCreateGame);
 
         RequestDispatcher requestDispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/game_view/location.jsp");

@@ -201,7 +201,6 @@
         <input type="submit" value="Kick ${personageName}"/>
     </form>
     <br>
-    <br>
 </div>
 <jsp:include page="parts/footer_game.jsp"/>
 </body>

@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import com.ivanov_sergey.mvc_hibernate_aop.entity.Employee;
 import com.ivanov_sergey.mvc_hibernate_aop.service.EmployeeService;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 

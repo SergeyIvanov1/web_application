@@ -20,8 +20,11 @@ public class Hero {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "count_of_games")
-    private int CountOfGames;
+    @Column(name = "count_of_ended_games")
+    private int countOfEndedGames;
+
+    @Column(name = "count_of_killed_personages")
+    private int countOfKilledPersonages;
 
     @Column(name = "max_health")
     private int maxHealth;

@@ -38,10 +38,6 @@
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Show statistic
             </button>
-
-            <%--            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">--%>
-            <%--                Show statistic--%>
-            <%--            </button>--%>
         </div>
     </div>
 </div>
@@ -56,12 +52,11 @@
             <div class="modal-body">
                 <div><strong>Global</strong></div>
                 <div>Ip address: ${clientIPAddress}</div>
+                <div>Time of starting this game: ${timeOfCreateGame}</div>
                 <div>Name in the game: ${name}</div>
-                <div>Count of games: ${countOfGames}</div><br>
-                <div><strong>Individual</strong></div>
-                <div>Ip address: ${clientIPAddress}</div>
-                <div>Name in the game: ${name}</div>
-                <div>Count of games: ${countOfGames}</div>
+                <div>Count of ended games: ${hero.getCountOfEndedGames()}</div><br>
+                <div>Count of killed personages: ${count_of_killed_personages_in_game}</div>
+                <div>Common of count killed personages during all games: ${hero.getCountOfKilledPersonages()}</div>
             </div>
             <div class="modal-footer">
                 <%--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>--%>
@@ -70,25 +65,6 @@
         </div>
     </div>
 </div>
-
-<%--<div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel2" aria-hidden="true">--%>
-<%--    <div class="modal-dialog">--%>
-<%--        <div class="modal-content">--%>
-<%--            <div class="modal-header">--%>
-<%--                <h1 class="modal-title fs-5" id="exampleModalLabel2">Statistic:</h1>--%>
-<%--                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>--%>
-<%--            </div>--%>
-<%--            <div class="modal-body">--%>
-<%--                <div>Name in the game: ${name}</div>--%>
-<%--                <div>Count of games: ${countOfGames}</div>--%>
-<%--            </div>--%>
-<%--            <div class="modal-footer">--%>
-<%--                &lt;%&ndash;                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>&ndash;%&gt;--%>
-<%--                &lt;%&ndash;                <button type="button" class="btn btn-primary">Save changes</button>&ndash;%&gt;--%>
-<%--            </div>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--</div>--%>
 
 </body>
 </html>

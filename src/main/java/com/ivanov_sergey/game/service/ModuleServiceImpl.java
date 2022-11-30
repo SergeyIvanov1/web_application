@@ -6,6 +6,7 @@ import com.ivanov_sergey.game.entity.Inventory;
 import com.ivanov_sergey.game.entity.Location;
 import com.ivanov_sergey.game.repository.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 public class ModuleServiceImpl implements ModuleService {
@@ -48,6 +49,11 @@ public class ModuleServiceImpl implements ModuleService {
     @Override
     public Repository fillRepositoryDBData(int id) {
         return moduleDAO.getRepository(id);
+    }
+
+    @Override
+    public List<Hero> getAllHero() {
+        return moduleDAO.getAllHero();
     }
 
 }

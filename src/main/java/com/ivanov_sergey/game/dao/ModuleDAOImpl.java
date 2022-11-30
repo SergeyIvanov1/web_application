@@ -86,6 +86,16 @@ public class ModuleDAOImpl implements ModuleDAO {
     }
 
     @Override
+    public List<Hero> getAllHero() {
+        session = sessionFactory.getCurrentSession();
+        session.beginTransaction();
+        Query<Hero> query = session.createQuery("from Hero", Hero.class);
+        List<Hero> resultList = query.getResultList();
+
+        return resultList;
+    }
+
+    @Override
     public void saveHero(Hero hero) {
         session = sessionFactory.getCurrentSession();
         session.beginTransaction();
@@ -95,7 +105,7 @@ public class ModuleDAOImpl implements ModuleDAO {
 
     @Override
     public Integer increaseCountOfGame(Hero hero) {
-        int countOfGames = hero.getCountOfGames();
+        int countOfGames = hero.getCountOfEndedGames();
         System.out.println("countOfGames1 = " + countOfGames);
         countOfGames++;
         int id = hero.getId();
