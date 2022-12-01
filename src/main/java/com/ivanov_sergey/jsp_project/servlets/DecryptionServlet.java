@@ -17,6 +17,8 @@ public class DecryptionServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("getForm", "decryption_with_key");
+        req.setAttribute("nameAction", "Decryption with key");
+        req.setAttribute("needKey", "needKey");
         RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/WEB-INF/view/cryptanalyzer.jsp");
         requestDispatcher.forward(req, resp);
     }

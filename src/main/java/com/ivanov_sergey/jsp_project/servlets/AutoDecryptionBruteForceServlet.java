@@ -17,6 +17,7 @@ public class AutoDecryptionBruteForceServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("getForm", "auto_decryption_brute_force");
+        req.setAttribute("nameAction", "Auto decryption brute force method");
         RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/WEB-INF/view/cryptanalyzer.jsp");
         requestDispatcher.forward(req, resp);
     }

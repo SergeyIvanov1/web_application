@@ -105,7 +105,7 @@
                         <div class="accordion-body">
                             Hero has health, strength and dexterity.
                             Health determines amount of life.
-                            Strength shows power of kick during fighting.
+                            Strength shows power of kick during fight.
                             Dexterity determines chance do not get kick in fight.
 
                             Hero has inventory there he storage things, which he find.
@@ -166,7 +166,7 @@
                         <div class="accordion-body">
                             While is fighting hero can to kick opponent to head, body or legs.
                             Also he can to close head, body or legs himself.
-                            Opponent also can kick hero to head, body or legs. and to close head,
+                            Opponent also can kick hero to head, body or legs and to close head,
                             body or legs himself.
                             If kick was to closed part, health is not decrease.
                             Also is chance, what hero or opponent can not to get kick (dexterity).

@@ -17,6 +17,7 @@ public class ManualDecryptionBruteForceServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("getForm", "manual_decryption_brute_force");
+        req.setAttribute("nameAction", "Manual decryption brute force method");
         RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/WEB-INF/view/cryptanalyzer.jsp");
         requestDispatcher.forward(req, resp);
     }

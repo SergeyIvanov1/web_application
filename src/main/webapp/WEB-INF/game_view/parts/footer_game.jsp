@@ -17,18 +17,16 @@
 <body>
 <div class="container text-center border">
     <div class="row border">
-        <div class="col">
 
-        </div>
         <div class="col">
             <!-- Scrollable modal -->
             <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
-                Global statistic
+                Global
             </button>
 
             <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="staticBackdropLabel">Global statistic</h5>
+                    <h5 class="offcanvas-title" id="staticBackdropLabel">Global</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
@@ -54,6 +52,25 @@
                             </tbody>
                         </table>
                     </div>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+
+        </div>
+        <div class="col">
+
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+                History of fighting
+            </button>
+
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasRightLabel">History of fighting</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    ...
                 </div>
             </div>
         </div>

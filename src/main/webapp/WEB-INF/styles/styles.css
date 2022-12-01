@@ -73,6 +73,11 @@ div.button_crypto {
     color: darkgrey;
 }
 
-div.main_margin {
-    margin-left: 30px;
+/*div.main_margin {*/
+/*    margin-left: 30px;*/
+/*}*/
+
+div.container {
+    margin: 10px;
+    padding: 20px;
 }

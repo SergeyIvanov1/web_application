@@ -128,13 +128,13 @@
 
 <br><br><br><br>
 <footer>
-    <div class="container">
-        <h3> hero: </h3>
-        ${hero}
+<%--    <div class="container">--%>
+<%--        <h3> hero: </h3>--%>
+<%--        ${hero}--%>
 
-        <br><br>
-        <h3> repository: </h3>${repository}
-    </div>
+<%--        <br><br>--%>
+<%--        <h3> repository: </h3>${repository}--%>
+<%--    </div>--%>
 
 </footer>
 </body>

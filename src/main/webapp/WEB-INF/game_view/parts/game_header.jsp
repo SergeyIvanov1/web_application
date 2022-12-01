@@ -23,7 +23,7 @@
                     <a class="nav-link" aria-current="page" href="start_game">Start game page</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="#">NextLink</a>
                 </li>
             </ul>
         </div>
@@ -36,7 +36,7 @@
         </div>
         <div class="col">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Show statistic
+                Statistic
             </button>
         </div>
     </div>

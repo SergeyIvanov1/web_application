@@ -18,7 +18,9 @@ import java.io.IOException;
 public class EncryptServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("getForm", "encrypt_form");
+        req.setAttribute("getForm", "encrypt");
+        req.setAttribute("nameAction", "Encryption");
+        req.setAttribute("needKey", "needKey");
         RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/WEB-INF/view/cryptanalyzer.jsp");
         requestDispatcher.forward(req, resp);
     }
@@ -31,12 +33,6 @@ public class EncryptServlet extends HttpServlet {
         int key = Integer.parseInt(req.getParameter("key"));
 
         Coder.encryption(req, stringBuilder, key);
-
-
-//        MultipartRequest m = new MultipartRequest(request, "C:\temp");
-
-//        out.print("File uploaded successfully");
-
 
         String string = stringBuilder.toString();
 
