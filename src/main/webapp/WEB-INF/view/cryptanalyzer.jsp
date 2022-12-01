@@ -17,20 +17,20 @@
     <div>
         <nav>
             <br>
-            <div><a href="/">Main page</a></div>
+            <div><a href="${pageContext.request.contextPath}/">Main page</a></div>
             <br><br>
 
-            <div class="button_crypto"><a href="/encrypt">Encryption</a></div>
+            <div class="button_crypto"><a href="${pageContext.request.contextPath}/encrypt">Encryption</a></div>
             <br>
-            <div class="button_crypto"><a href="/decryption_with_key">Decryption with key</a></div>
+            <div class="button_crypto"><a href="${pageContext.request.contextPath}/decryption_with_key">Decryption with key</a></div>
             <br>
-            <div class="button_crypto"><a href="/manual_decryption_brute_force">Manual decryption brute force
+            <div class="button_crypto"><a href="${pageContext.request.contextPath}/manual_decryption_brute_force">Manual decryption brute force
                 method's</a></div>
             <br>
-            <div class="button_crypto"><a href="/auto_decryption_brute_force">Auto decryption brute force method's</a>
+            <div class="button_crypto"><a href="${pageContext.request.contextPath}/auto_decryption_brute_force">Auto decryption brute force method's</a>
             </div>
             <br>
-            <div class="button_crypto"><a href="/auto_decryption_statistic_analise">Auto decryption statistic
+            <div class="button_crypto"><a href="${pageContext.request.contextPath}/auto_decryption_statistic_analise">Auto decryption statistic
                 analise method's</a></div>
             <br>
         </nav>
@@ -40,10 +40,9 @@
 
                 <div class="container">
                     <br><br>
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkk3IAJvB7sjEEOv1vpBgDzdk6p84jzmCbyg&usqp=CAU"
-                         class="img-fluid" alt="image">
-
-                    <br><br>
+                    <img src="${pageContext.request.contextPath}/images/crypto.jpeg" class="img-fluid" alt="image">
+                    <br>
+                    <br>
                     <h2>Description program:</h2>
                     <p>Application encodes and decodes text Caesar's cipher.</p>
                     <p>In first part of application you can to get crypto analyzer.</p>
@@ -55,9 +54,7 @@
                 <br><br>
             </c:if>
 
-
             <c:choose>
-
                 <c:when test="${nameAction == 'Encryption'}">
                     <c:set var="description" scope="page" value="For encode text you need specify the key of encoding.
                                 The program encode the text and return encoded text."/>
@@ -97,7 +94,6 @@
                 </c:when>
             </c:choose>
 
-
             <div class="container">
                 <c:if test="${getForm != null}">
 
@@ -105,7 +101,7 @@
                     <c:out value="${description}"/>
                     <br>
                     <br>
-                    <form action="/${getForm}" method="post" enctype="multipart/form-data">
+                    <form action="${pageContext.request.contextPath}/${getForm}" method="post" enctype="multipart/form-data">
                         <p>Upload file
                             <input type="file" name="file" accept=".txt"></p>
                         <c:if test="${needKey != null}">
@@ -121,13 +117,12 @@
                     <p><strong>Result:</strong></p>
                     ${encrypt}
                 </c:if>
-
-
             </div>
         </main>
     </div>
 </div>
 </body>
+
 <footer>
     <br>
     <p>Footer </p>

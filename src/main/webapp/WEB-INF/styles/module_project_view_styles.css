@@ -29,14 +29,10 @@ div.border {
     border: blue thin solid;
 }
 
-/*div {*/
-/*    border: grey thin solid;*/
+/*img {*/
+/*    width: 1200px;*/
+/*    height: 300px;*/
 /*}*/
-
-img {
-    width: 1200px;
-    height: 300px;
-}
 
 div.container img {
     width: 500px;
@@ -47,11 +43,6 @@ div.col img {
     width: 250px;
     height: 300px;
 }
-
-/*img.img-fluid {*/
-/*    width: 100px;*/
-/*    height: 150px;*/
-/*}*/
 
 body.background {
     background-size: cover;
@@ -77,15 +68,6 @@ h2.accordion-header {
     background: slategrey fixed;
 }
 
-/*div.col {*/
-/*    background-size: cover;*/
-/*    background: lightgrey fixed;*/
-/*}*/
-/*div.container {*/
-/*    background-size: cover;*/
-/*    background: lightblue fixed;*/
-/*}*/
-
 div.progress-bar {
     text-align: center;
 }
@@ -93,16 +75,6 @@ div.progress-bar {
 option {
     background-color: #bacbe6;
 }
-
-/*table.statistic, table.statistic th, table.statistic td {*/
-/*    border: grey thin solid;*/
-/*    padding: 4px;*/
-/*}*/
-
-/*table.statistic thead th {*/
-/*    color: white;*/
-/*    background-color: grey;*/
-/*}*/
 
 div.offcanvas {
     background-color: #bacbe6;

@@ -6,9 +6,9 @@
     <title>Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
-    <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 </head>
 <body>
+<script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
 <jsp:include page="parts/header.jsp"/>
 
 <br>
@@ -16,7 +16,7 @@
     <h1>${question.text}</h1>
 
     <c:if test="${answers.size() > 0}">
-        <form action="questions" method="POST">
+        <form action="${pageContext.request.contextPath}/questions" method="POST">
             <c:forEach var="answer" items="${answers}">
                 <input type="radio" name="nextQuestion" value="${answer.nextQuestion}" required/>${ answer.text}
                 <br>
@@ -26,7 +26,7 @@
         </form>
     </c:if>
     <c:if test="${answers.size() == 0}">
-        <form action="questions" method="GET">
+        <form action="${pageContext.request.contextPath}/questions" method="GET">
             <input type="hidden" name="endGame" value="gameEnded">
             <input type="hidden" name="visitorName" value="${name}">
             <input class="nice_button" type="submit" value="Come back to first question"/>

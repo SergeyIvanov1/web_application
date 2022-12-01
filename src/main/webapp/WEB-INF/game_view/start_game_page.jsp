@@ -6,15 +6,13 @@
 <head>
     <title>Start game</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%--    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">--%>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
 </head>
 <body class="background">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
-
+<%--<script src="${pageContext.request.contextPath}/js/bootstrap.js"--%>
+<%--        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"--%>
+<%--        crossorigin="anonymous"></script>--%>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 <div class="container text-center border">
     <div class="row border ">
         <div class="col border">
@@ -27,7 +25,7 @@
                     <div class="collapse navbar-collapse" id="navbarNavDarkDropdown">
                         <ul class="navbar-nav">
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="${pageContext.request.contextPath}/#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Actions
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-dark">
@@ -50,7 +48,7 @@
                 <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
                     Sign in
                 </button>
-                <form action="location" class="dropdown-menu p-4">
+                <form action="${pageContext.request.contextPath}/location" class="dropdown-menu p-4">
                     <div class="mb-3">
                         <label for="exampleDropdownFormName2" class="form-label">Nick name</label>
                         <input type="text" class="form-control" id="exampleDropdownFormName2" placeholder="Your nick" name="heroName" required>

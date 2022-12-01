@@ -8,13 +8,11 @@
 <head>
     <title>Fight</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%--    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">--%>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
 </head>
 
 <body class="background">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+<script src="${pageContext.request.contextPath}/js/bootstrap.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
 <jsp:include page="parts/game_header.jsp"/>
@@ -22,7 +20,7 @@
 <div class="container text-center border">
     <br>
     <h1>Fighting</h1>
-    <form action="fight" method="POST">
+    <form action="${pageContext.request.contextPath}/fight" method="POST">
         <div class="row border">
             <div class="col border">
                 <br>
@@ -44,7 +42,7 @@
                         <%--                        <c:if test="${potions_is_present}">--%>
                         <h6>Potions:</h6>
                         <c:forEach var="potion" items="${heroPotions}">
-                            <form action="things" method="POST">
+                            <form action="${pageContext.request.contextPath}/things" method="POST">
                                 <input type="hidden" name="lastLocation" value="${lastLocation}">
                                 <input type="hidden" name="potionName" value="${potion.name}">
                                 <input class="nice_button" type="submit" value="${potion.name}"/>
@@ -82,29 +80,30 @@
 
                         <%--                    <c:set var="helpers_is_present" scope="page" value="${!helpers.isEmpty()}"/>--%>
                         <%--                    <c:if test="${helpers_is_present}">--%>
+                        <br>
                         <h6>Helpers:</h6>
                         <c:forEach var="helper" items="${heroHelpers}">
-                            <form action="things" method="POST">
+                            <form action="${pageContext.request.contextPath}/things" method="POST">
                                 <input type="hidden" name="lastLocation" value="${clastLocation}">
                                 <input type="hidden" name="helperName" value="${helper.name}">
                                 <input class="nice_button" type="submit" value="${helper.name}"/>
                             </form>
                         </c:forEach>
                         <button type="button" class="btn btn-default btn-sm"
-                                onclick="window.location.href = '/addNewEmployee'" title="key">
+                                onclick="window.location.href = '${pageContext.request.contextPath}/addNewEmployee'" title="key">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key" viewBox="0 0 16 16">
                                 <path d="M0 8a4 4 0 0 1 7.465-2H14a.5.5 0 0 1 .354.146l1.5 1.5a.5.5 0 0 1 0 .708l-1.5 1.5a.5.5 0 0 1-.708 0L13 9.207l-.646.647a.5.5 0 0 1-.708 0L11 9.207l-.646.647a.5.5 0 0 1-.708 0L9 9.207l-.646.647A.5.5 0 0 1 8 10h-.535A4 4 0 0 1 0 8zm4-3a3 3 0 1 0 2.712 4.285A.5.5 0 0 1 7.163 9h.63l.853-.854a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.646-.647a.5.5 0 0 1 .708 0l.646.647.793-.793-1-1h-6.63a.5.5 0 0 1-.451-.285A3 3 0 0 0 4 5z"/>
                                 <path d="M4 8a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
                             </svg>
                         </button>
                         <button type="button" class="btn btn-default btn-sm"
-                                onclick="window.location.href = '/addNewEmployee'" title="present">
+                                onclick="window.location.href = '${pageContext.request.contextPath}/addNewEmployee'" title="present">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-gift" viewBox="0 0 16 16">
                                 <path d="M3 2.5a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1 5 0v.006c0 .07 0 .27-.038.494H15a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 1 14.5V7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h2.038A2.968 2.968 0 0 1 3 2.506V2.5zm1.068.5H7v-.5a1.5 1.5 0 1 0-3 0c0 .085.002.274.045.43a.522.522 0 0 0 .023.07zM9 3h2.932a.56.56 0 0 0 .023-.07c.043-.156.045-.345.045-.43a1.5 1.5 0 0 0-3 0V3zM1 4v2h6V4H1zm8 0v2h6V4H9zm5 3H9v8h4.5a.5.5 0 0 0 .5-.5V7zm-7 8V7H2v7.5a.5.5 0 0 0 .5.5H7z"/>
                             </svg>
                         </button>
                         <button type="button" class="btn btn-default btn-sm"
-                                onclick="window.location.href = '/addNewEmployee'" title="cookie">
+                                onclick="window.location.href = '${pageContext.request.contextPath}/addNewEmployee'" title="cookie">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-flower1" viewBox="0 0 16 16">
                                 <path d="M6.174 1.184a2 2 0 0 1 3.652 0A2 2 0 0 1 12.99 3.01a2 2 0 0 1 1.826 3.164 2 2 0 0 1 0 3.652 2 2 0 0 1-1.826 3.164 2 2 0 0 1-3.164 1.826 2 2 0 0 1-3.652 0A2 2 0 0 1 3.01 12.99a2 2 0 0 1-1.826-3.164 2 2 0 0 1 0-3.652A2 2 0 0 1 3.01 3.01a2 2 0 0 1 3.164-1.826zM8 1a1 1 0 0 0-.998 1.03l.01.091c.012.077.029.176.054.296.049.241.122.542.213.887.182.688.428 1.513.676 2.314L8 5.762l.045-.144c.248-.8.494-1.626.676-2.314.091-.345.164-.646.213-.887a4.997 4.997 0 0 0 .064-.386L9 2a1 1 0 0 0-1-1zM2 9l.03-.002.091-.01a4.99 4.99 0 0 0 .296-.054c.241-.049.542-.122.887-.213a60.59 60.59 0 0 0 2.314-.676L5.762 8l-.144-.045a60.59 60.59 0 0 0-2.314-.676 16.705 16.705 0 0 0-.887-.213 4.99 4.99 0 0 0-.386-.064L2 7a1 1 0 1 0 0 2zm7 5-.002-.03a5.005 5.005 0 0 0-.064-.386 16.398 16.398 0 0 0-.213-.888 60.582 60.582 0 0 0-.676-2.314L8 10.238l-.045.144c-.248.8-.494 1.626-.676 2.314-.091.345-.164.646-.213.887a4.996 4.996 0 0 0-.064.386L7 14a1 1 0 1 0 2 0zm-5.696-2.134.025-.017a5.001 5.001 0 0 0 .303-.248c.184-.164.408-.377.661-.629A60.614 60.614 0 0 0 5.96 9.23l.103-.111-.147.033a60.88 60.88 0 0 0-2.343.572c-.344.093-.64.18-.874.258a5.063 5.063 0 0 0-.367.138l-.027.014a1 1 0 1 0 1 1.732zM4.5 14.062a1 1 0 0 0 1.366-.366l.014-.027c.01-.02.021-.048.036-.084a5.09 5.09 0 0 0 .102-.283c.078-.233.165-.53.258-.874a60.6 60.6 0 0 0 .572-2.343l.033-.147-.11.102a60.848 60.848 0 0 0-1.743 1.667 17.07 17.07 0 0 0-.629.66 5.06 5.06 0 0 0-.248.304l-.017.025a1 1 0 0 0 .366 1.366zm9.196-8.196a1 1 0 0 0-1-1.732l-.025.017a4.951 4.951 0 0 0-.303.248 16.69 16.69 0 0 0-.661.629A60.72 60.72 0 0 0 10.04 6.77l-.102.111.147-.033a60.6 60.6 0 0 0 2.342-.572c.345-.093.642-.18.875-.258a4.993 4.993 0 0 0 .367-.138.53.53 0 0 0 .027-.014zM11.5 1.938a1 1 0 0 0-1.366.366l-.014.027c-.01.02-.021.048-.036.084a5.09 5.09 0 0 0-.102.283c-.078.233-.165.53-.258.875a60.62 60.62 0 0 0-.572 2.342l-.033.147.11-.102a60.848 60.848 0 0 0 1.743-1.667c.252-.253.465-.477.629-.66a5.001 5.001 0 0 0 .248-.304l.017-.025a1 1 0 0 0-.366-1.366zM14 9a1 1 0 0 0 0-2l-.03.002a4.996 4.996 0 0 0-.386.064c-.242.049-.543.122-.888.213-.688.182-1.513.428-2.314.676L10.238 8l.144.045c.8.248 1.626.494 2.314.676.345.091.646.164.887.213a4.996 4.996 0 0 0 .386.064L14 9zM1.938 4.5a1 1 0 0 0 .393 1.38l.084.035c.072.03.166.064.283.103.233.078.53.165.874.258a60.88 60.88 0 0 0 2.343.572l.147.033-.103-.111a60.584 60.584 0 0 0-1.666-1.742 16.705 16.705 0 0 0-.66-.629 4.996 4.996 0 0 0-.304-.248l-.025-.017a1 1 0 0 0-1.366.366zm2.196-1.196.017.025a4.996 4.996 0 0 0 .248.303c.164.184.377.408.629.661A60.597 60.597 0 0 0 6.77 5.96l.111.102-.033-.147a60.602 60.602 0 0 0-.572-2.342c-.093-.345-.18-.642-.258-.875a5.006 5.006 0 0 0-.138-.367l-.014-.027a1 1 0 1 0-1.732 1zm9.928 8.196a1 1 0 0 0-.366-1.366l-.027-.014a5 5 0 0 0-.367-.138c-.233-.078-.53-.165-.875-.258a60.619 60.619 0 0 0-2.342-.572l-.147-.033.102.111a60.73 60.73 0 0 0 1.667 1.742c.253.252.477.465.66.629a4.946 4.946 0 0 0 .304.248l.025.017a1 1 0 0 0 1.366-.366zm-3.928 2.196a1 1 0 0 0 1.732-1l-.017-.025a5.065 5.065 0 0 0-.248-.303 16.705 16.705 0 0 0-.629-.661A60.462 60.462 0 0 0 9.23 10.04l-.111-.102.033.147a60.6 60.6 0 0 0 .572 2.342c.093.345.18.642.258.875a4.985 4.985 0 0 0 .138.367.575.575 0 0 0 .014.027zM8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
                             </svg>
@@ -126,21 +125,21 @@
                         <%--                    <c:if test="${armors_is_present}">--%>
                         <h6>Armors:</h6>
                         <c:forEach var="armor" items="${heroArmors}">
-                            <form action="things" method="POST">
+                            <form action="${pageContext.request.contextPath}/things" method="POST">
                                 <input type="hidden" name="lastLocation" value="${lastLocation}">
                                 <input type="hidden" name="armorName" value="${armor.name}">
                                 <input class="nice_button" type="submit" value="${armor.name}"/>
                             </form>
                         </c:forEach>
                         <button type="button" class="btn btn-default btn-sm"
-                                onclick="window.location.href = '/addNewEmployee'" title="shield">
+                                onclick="window.location.href = '${pageContext.request.contextPath}/addNewEmployee'" title="shield">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shield-shaded" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M8 14.933a.615.615 0 0 0 .1-.025c.076-.023.174-.061.294-.118.24-.113.547-.29.893-.533a10.726 10.726 0 0 0 2.287-2.233c1.527-1.997 2.807-5.031 2.253-9.188a.48.48 0 0 0-.328-.39c-.651-.213-1.75-.56-2.837-.855C9.552 1.29 8.531 1.067 8 1.067v13.866zM5.072.56C6.157.265 7.31 0 8 0s1.843.265 2.928.56c1.11.3 2.229.655 2.887.87a1.54 1.54 0 0 1 1.044 1.262c.596 4.477-.787 7.795-2.465 9.99a11.775 11.775 0 0 1-2.517 2.453 7.159 7.159 0 0 1-1.048.625c-.28.132-.581.24-.829.24s-.548-.108-.829-.24a7.158 7.158 0 0 1-1.048-.625 11.777 11.777 0 0 1-2.517-2.453C1.928 10.487.545 7.169 1.141 2.692A1.54 1.54 0 0 1 2.185 1.43 62.456 62.456 0 0 1 5.072.56z"/>
                             </svg>
                         </button>
 
                         <button type="button" class="btn btn-default btn-sm"
-                                onclick="window.location.href = '/addNewEmployee'" title="magic hauberk">
+                                onclick="window.location.href = '${pageContext.request.contextPath}/addNewEmployee'" title="magic hauberk">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-magic" viewBox="0 0 16 16">
                                 <path d="M9.5 2.672a.5.5 0 1 0 1 0V.843a.5.5 0 0 0-1 0v1.829Zm4.5.035A.5.5 0 0 0 13.293 2L12 3.293a.5.5 0 1 0 .707.707L14 2.707ZM7.293 4A.5.5 0 1 0 8 3.293L6.707 2A.5.5 0 0 0 6 2.707L7.293 4Zm-.621 2.5a.5.5 0 1 0 0-1H4.843a.5.5 0 1 0 0 1h1.829Zm8.485 0a.5.5 0 1 0 0-1h-1.829a.5.5 0 0 0 0 1h1.829ZM13.293 10A.5.5 0 1 0 14 9.293L12.707 8a.5.5 0 1 0-.707.707L13.293 10ZM9.5 11.157a.5.5 0 0 0 1 0V9.328a.5.5 0 0 0-1 0v1.829Zm1.854-5.097a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L8.646 5.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0l1.293-1.293Zm-3 3a.5.5 0 0 0 0-.706l-.708-.708a.5.5 0 0 0-.707 0L.646 13.94a.5.5 0 0 0 0 .707l.708.708a.5.5 0 0 0 .707 0L8.354 9.06Z"/>
                             </svg>
@@ -160,26 +159,26 @@
                         <%--                    <c:if test="${weapons_is_present}">--%>
                         <h6>Weapons:</h6>
                         <c:forEach var="weapon" items="${heroWeapons}">
-                            <form action="things" method="POST">
+                            <form action="${pageContext.request.contextPath}/things" method="POST">
                                 <input type="hidden" name="lastLocation" value="${lastLocation}">
                                 <input type="hidden" name="weaponName" value="${weapon.name}">
                                 <input class="nice_button" type="submit" value="${weapon.name}"/>
                             </form>
                         </c:forEach>
                         <button type="button" class="btn btn-default btn-sm"
-                                onclick="window.location.href = '/addNewEmployee'" title="stick">
+                                onclick="window.location.href = '${pageContext.request.contextPath}/addNewEmployee'" title="stick">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-slash-lg" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"/>
                             </svg>
                         </button>
                         <button type="button" class="btn btn-default btn-sm"
-                                onclick="window.location.href = '/addNewEmployee'" title="wrench">
+                                onclick="window.location.href = '${pageContext.request.contextPath}/addNewEmployee'" title="wrench">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-wrench" viewBox="0 0 16 16">
                                 <path d="M.102 2.223A3.004 3.004 0 0 0 3.78 5.897l6.341 6.252A3.003 3.003 0 0 0 13 16a3 3 0 1 0-.851-5.878L5.897 3.781A3.004 3.004 0 0 0 2.223.1l2.141 2.142L4 4l-1.757.364L.102 2.223zm13.37 9.019.528.026.287.445.445.287.026.529L15 13l-.242.471-.026.529-.445.287-.287.445-.529.026L13 15l-.471-.242-.529-.026-.287-.445-.445-.287-.026-.529L11 13l.242-.471.026-.529.445-.287.287-.445.529-.026L13 11l.471.242z"/>
                             </svg>
                         </button>
                         <button type="button" class="btn btn-default btn-sm"
-                                onclick="window.location.href = '/addNewEmployee'" title="stun gun">
+                                onclick="window.location.href = '${pageContext.request.contextPath}/addNewEmployee'" title="stun gun">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lightning" viewBox="0 0 16 16">
                                 <path d="M5.52.359A.5.5 0 0 1 6 0h4a.5.5 0 0 1 .474.658L8.694 6H12.5a.5.5 0 0 1 .395.807l-7 9a.5.5 0 0 1-.873-.454L6.823 9.5H3.5a.5.5 0 0 1-.48-.641l2.5-8.5zM6.374 1 4.168 8.5H7.5a.5.5 0 0 1 .478.647L6.78 13.04 11.478 7H8a.5.5 0 0 1-.474-.658L9.306 1H6.374z"/>
                             </svg>
@@ -206,32 +205,25 @@
                         <c:set var="interlocutor" scope="page" value="${personageName}"/>
                         <c:choose>
                             <c:when test="${interlocutor == 'Guarder'}">
-                                <img src="data:image/jpeg;base64,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"
-                                     class="img-fluid" alt="Guarder">
+                                <img src="${pageContext.request.contextPath}/images/guarder.jpeg" class="img-fluid" alt="Tramp">
                             </c:when>
                             <c:when test="${interlocutor == 'Forester'}">
-                                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_J0KdxIQAT1vDfAaqYMMKC6IkN_S8zkOnww&usqp=CAU"
-                                     class="img-fluid" alt="Forester">
+                                <img src="${pageContext.request.contextPath}/images/forester.jpeg" class="img-fluid" alt="Tramp">
                             </c:when>
                             <c:when test="${interlocutor == 'Escaped prisoner'}">
-                                <img src="https://avatars.mds.yandex.net/i?id=b141aa83e59dd735e50b52e31df15dae64cb56cb-6946760-images-thumbs&n=13"
-                                     class="img-fluid" alt="Escaped prisoner">
+                                <img src="${pageContext.request.contextPath}/images/escaped_prisoner.jpeg" class="img-fluid" alt="Tramp">
                             </c:when>
                             <c:when test="${interlocutor == 'Gnome'}">
-                                <img src="https://avatars.mds.yandex.net/i?id=b022b8a2f13d8a98910c01420662ecd2-4869221-images-thumbs&n=13"
-                                     class="img-fluid" alt="Gnome">
+                                <img src="${pageContext.request.contextPath}/images/gnome.jpeg" class="img-fluid" alt="Tramp">
                             </c:when>
                             <c:when test="${interlocutor == 'Tramp'}">
-                                <img src="https://avatars.mds.yandex.net/i?id=991ebbc4cb86b7d2bd23fc010cdfe209-5482778-images-thumbs&n=13"
-                                     class="img-fluid" alt="Tramp">
+                                <img src="${pageContext.request.contextPath}/images/tramp.jpeg" class="img-fluid" alt="Tramp">
                             </c:when>
                             <c:when test="${interlocutor == 'Hermit'}">
-                                <img src="https://avatars.mds.yandex.net/i?id=29885c28c20745a08beb84ef4d408c40-5888854-images-thumbs&n=13"
-                                     class="img-fluid" alt="Hermit">
+                                <img src="${pageContext.request.contextPath}/images/hermit.jpeg" class="img-fluid" alt="Tramp">
                             </c:when>
                             <c:when test="${interlocutor == 'Cheater'}">
-                                <img src="https://avatars.mds.yandex.net/i?id=2b880afd424803dc6c3cb487c895eb8c8ca54a9b-5232923-images-thumbs&n=13"
-                                     class="img-fluid" alt="Cheater">
+                                <img src="${pageContext.request.contextPath}/images/cheater.jpeg" class="img-fluid" alt="Tramp">
                             </c:when>
                             <%--                        <c:otherwise>--%>
                             <%--                        </c:otherwise>--%>

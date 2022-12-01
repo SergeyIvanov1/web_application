@@ -8,12 +8,10 @@
 <head>
     <title>Location</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%--    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">--%>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
 </head>
 <body class="background">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+<script src="${pageContext.request.contextPath}/js/bootstrap.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
 <jsp:include page="parts/game_header.jsp"/>
@@ -36,12 +34,12 @@
                     <c:forEach var="personage" items="${currentLocation.getPersonages()}">
                         <div>${personage.name}
                             <br>
-                            <form action="conversation" method="GET">
+                            <form action="${pageContext.request.contextPath}/conversation" method="GET">
                                 <input type="hidden" name="personageName" value="${personage.name}">
                                 <input type="hidden" name="lastLocation" value="${currentLocation.getName()}">
                                 <input class="nice_button" type="submit" value="Speak"/>
                             </form>
-                            <form action="fight" method="POST">
+                            <form action="${pageContext.request.contextPath}/fight" method="POST">
                                 <input type="hidden" name="personageName" value="${personage.name}">
                                 <input type="hidden" name="lastLocation" value="${currentLocation.getName()}">
                                 <input class="nice_button" type="submit" value="Attack"/>
@@ -61,7 +59,7 @@
                     <h6>Available locations:</h6>
                     <%--                    <br>--%>
                     <c:forEach var="location" items="${locations}">
-                        <form action="location" method="POST">
+                        <form action="${pageContext.request.contextPath}/location" method="POST">
                                 <%--<input type="hidden" name="endGame" value="gameEnded">--%>
                             <input type="hidden" name="nextLocationName" value="${location.name}">
                             <input class="nice_button" type="submit" value="${location.name}"/>
@@ -78,7 +76,7 @@
                 <c:if test="${armors_is_present}">
                     <h6>Armors:</h6>
                     <c:forEach var="armor" items="${armors}">
-                        <form action="things" method="POST">
+                        <form action="${pageContext.request.contextPath}/things" method="POST">
                             <input type="hidden" name="currentLocation" value="${currentLocation.getName()}">
                             <input type="hidden" name="armorName" value="${armor.name}">
                             <input class="nice_button" type="submit" value="${armor.name}"/>
@@ -90,7 +88,7 @@
                 <c:if test="${potions_is_present}">
                     <h6>Potions:</h6>
                     <c:forEach var="potion" items="${potions}">
-                        <form action="things" method="POST">
+                        <form action="${pageContext.request.contextPath}/things" method="POST">
                             <input type="hidden" name="currentLocation" value="${currentLocation.getName()}">
                             <input type="hidden" name="potionName" value="${potion.name}">
                             <input class="nice_button" type="submit" value="${potion.name}"/>
@@ -102,7 +100,7 @@
                 <c:if test="${helpers_is_present}">
                     <h6>Helpers:</h6>
                     <c:forEach var="helper" items="${helpers}">
-                        <form action="things" method="POST">
+                        <form action="${pageContext.request.contextPath}/things" method="POST">
                             <input type="hidden" name="currentLocation" value="${currentLocation.getName()}">
                             <input type="hidden" name="helperName" value="${helper.name}">
                             <input class="nice_button" type="submit" value="${helper.name}"/>
@@ -114,7 +112,7 @@
                 <c:if test="${weapons_is_present}">
                     <h6>Weapons:</h6>
                     <c:forEach var="weapon" items="${weapons}">
-                        <form action="things" method="POST">
+                        <form action="${pageContext.request.contextPath}/things" method="POST">
                             <input type="hidden" name="currentLocation" value="${currentLocation.getName()}">
                             <input type="hidden" name="weaponName" value="${weapon.name}">
                             <input class="nice_button" type="submit" value="${weapon.name}"/>
@@ -127,15 +125,5 @@
 </div>
 
 <br><br><br><br>
-<footer>
-<%--    <div class="container">--%>
-<%--        <h3> hero: </h3>--%>
-<%--        ${hero}--%>
-
-<%--        <br><br>--%>
-<%--        <h3> repository: </h3>${repository}--%>
-<%--    </div>--%>
-
-</footer>
 </body>
 </html>

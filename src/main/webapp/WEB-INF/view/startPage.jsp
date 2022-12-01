@@ -21,13 +21,12 @@
     <div>
         <nav>
             <br>
-            <div><a href="/cryptanalyzer">Cryptanalyzer</a></div>
+            <div><a href="${pageContext.request.contextPath}/cryptanalyzer">Cryptanalyzer</a></div>
+<%--            <div><a href="/allEmployee">all-employees</a></div>--%>
             <br>
-            <div><a href="/allEmployee">all-employees</a></div>
+            <div><a href="${pageContext.request.contextPath}/module">Solution for module 3</a></div>
             <br>
-            <div><a href="module">Solution for module 3</a></div>
-            <br>
-            <div><a href="start_game">Game</a></div>
+            <div><a href="${pageContext.request.contextPath}/start_game">Game</a></div>
             <br>
         </nav>
 
