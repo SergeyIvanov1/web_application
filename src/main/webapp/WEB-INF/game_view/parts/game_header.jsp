@@ -31,10 +31,14 @@
 
         </div>
         <div class="col">
-
-
+<%--            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalMap">--%>
+<%--                Map--%>
+<%--            </button>--%>
         </div>
         <div class="col">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalMap">
+                Map
+            </button>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Statistic
             </button>
@@ -57,6 +61,24 @@
                 <div>Count of ended games: ${hero.getCountOfEndedGames()}</div><br>
                 <div>Count of killed personages: ${count_of_killed_personages_in_game}</div>
                 <div>Common of count killed personages during all games: ${hero.getCountOfKilledPersonages()}</div>
+            </div>
+            <div class="modal-footer">
+                <%--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>--%>
+                <%--                <button type="button" class="btn btn-primary">Save changes</button>--%>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModalMap" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabelMap">Statistic:</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <img src="${pageContext.request.contextPath}/images/Map.png" class="img-fluid" alt="Map">
             </div>
             <div class="modal-footer">
                 <%--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>--%>

@@ -39,7 +39,7 @@
 
                 <h4>Application is using next technologies:</h4>
                 <p>Java 17, Lombok, Tomcat 9, Maven, Log4j, Junit, Mockito, MySQL, Hibernate,
-                    Docker-compose, HTML, CSS, Servlet, JSTL, Spring MVC, CI.</p>
+                    Docker-compose, HTML, CSS, Servlet, JSTL, CI.</p>
 
                 <h4>Launch application:</h4>
                 <p><a href="http://myapp-s.com:8080">http://myapp-s.com:8080</a></p>

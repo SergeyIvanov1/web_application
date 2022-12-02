@@ -1,6 +1,8 @@
 package com.ivanov_sergey.jsp_project.servlets;
 
 import com.ivanov_sergey.cryptoanalyser.text_processing.Decoder;
+import com.ivanov_sergey.jsp_project.service.CryptoService;
+import com.ivanov_sergey.jsp_project.service.CryptoServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +16,9 @@ import java.io.IOException;
 @WebServlet("/auto_decryption_brute_force")
 @MultipartConfig
 public class AutoDecryptionBruteForceServlet extends HttpServlet {
+
+    CryptoService service = new CryptoServiceImpl();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("getForm", "auto_decryption_brute_force");
@@ -25,12 +30,9 @@ public class AutoDecryptionBruteForceServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        StringBuilder stringBuilder = new StringBuilder();
+        String encrypt = service.autoDecryptionBruteForce(req);
 
-        Decoder.autoDecryptionBruteForce(req, stringBuilder);
-
-        String string = stringBuilder.toString();
-        req.setAttribute("encrypt", string);
+        req.setAttribute("encrypt", encrypt);
         RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/WEB-INF/view/cryptanalyzer.jsp");
         requestDispatcher.forward(req, resp);
     }

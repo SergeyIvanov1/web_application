@@ -91,3 +91,7 @@ table tr td:first-child::before {
     min-width: 1em;
     margin-right: 0.5em;
 }
+
+div.modal-content {
+    background-color: #bacbe6;
+}

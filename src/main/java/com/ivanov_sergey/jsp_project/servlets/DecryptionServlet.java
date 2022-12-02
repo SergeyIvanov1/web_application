@@ -1,6 +1,8 @@
 package com.ivanov_sergey.jsp_project.servlets;
 
 import com.ivanov_sergey.cryptoanalyser.text_processing.Decoder;
+import com.ivanov_sergey.jsp_project.service.CryptoService;
+import com.ivanov_sergey.jsp_project.service.CryptoServiceImpl;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,6 +16,9 @@ import java.io.IOException;
 @WebServlet("/decryption_with_key")
 @MultipartConfig
 public class DecryptionServlet extends HttpServlet {
+
+    CryptoService service = new CryptoServiceImpl();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("getForm", "decryption_with_key");
@@ -26,13 +31,8 @@ public class DecryptionServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        StringBuilder stringBuilder = new StringBuilder();
+        String string = service.decryptionWithKey(req);
 
-        int key = Integer.parseInt(req.getParameter("key"));
-
-        Decoder.decryptionWithKey(req, stringBuilder, key);
-
-        String string = stringBuilder.toString();
         req.setAttribute("encrypt", string);
         RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/WEB-INF/view/cryptanalyzer.jsp");
         requestDispatcher.forward(req, resp);
