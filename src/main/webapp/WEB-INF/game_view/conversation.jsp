@@ -39,13 +39,13 @@
                             <img src="${pageContext.request.contextPath}/images/gnome.jpeg" class="img-fluid" alt="Tramp">
                         </c:when>
                         <c:when test="${interlocutor == 'Tramp'}">
-                            <img src="${pageContext.request.contextPath}/images/tramp.jpeg" class="img-fluid" alt="Tramp">
+                            <img src="${pageContext.request.contextPath}/images/tramp2.jpeg" class="img-fluid" alt="Tramp">
                         </c:when>
                         <c:when test="${interlocutor == 'Hermit'}">
-                            <img src="${pageContext.request.contextPath}/images/hermit.jpeg" class="img-fluid" alt="Tramp">
+                            <img src="${pageContext.request.contextPath}/images/hermit2.jpeg" class="img-fluid" alt="Tramp">
                         </c:when>
                         <c:when test="${interlocutor == 'Cheater'}">
-                            <img src="${pageContext.request.contextPath}/images/cheater.jpeg" class="img-fluid" alt="Tramp">
+                            <img src="${pageContext.request.contextPath}/images/cheater2.jpeg" class="img-fluid" alt="Tramp">
                         </c:when>
                     </c:choose>
                 </div>

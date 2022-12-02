@@ -25,7 +25,7 @@ import java.util.List;
 @WebServlet("/location")
 public class LocationServlet extends HttpServlet {
     static final Logger LOGGER = LogManager.getRootLogger();
-    public static final String STARTING_ROOM = "Starting room";
+    public static final String STARTING_ROOM = "Gates";
     ModuleService moduleService = new ModuleServiceImpl();
     LocationServiceImpl service;
 

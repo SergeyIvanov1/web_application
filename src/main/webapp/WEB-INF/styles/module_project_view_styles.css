@@ -80,13 +80,13 @@ div.offcanvas {
     background-color: #bacbe6;
 }
 
-table tbody {
+table.statistic tbody {
     counter-reset: rowNumber;
 }
-table tbody tr {
+table.statistic tbody tr {
     counter-increment: rowNumber;
 }
-table tr td:first-child::before {
+table.statistic tr td:first-child::before {
     content: counter(rowNumber);
     min-width: 1em;
     margin-right: 0.5em;
@@ -95,3 +95,40 @@ table tr td:first-child::before {
 div.modal-content {
     background-color: #bacbe6;
 }
+table.inventory  {
+    background-color: lightgoldenrodyellow;
+    vertical-align: center;
+    text-align: center;
+    margin: auto;
+}
+
+/*.my_svg {*/
+/*    width: 6px;*/
+/*    height: 6px;*/
+/*}*/
+
+table.inventory td {
+    background-color: lightyellow;
+}
+
+table.inventory, table.inventory th, table.inventory td {
+    border: grey thin solid;
+    padding: 4px;
+}
+
+table.inventory thead th {
+    color: burlywood;
+    background-color: grey;
+}
+
+
+div.container img.box {
+    width: 150px;
+    height: 100px;
+}
+
+div.container img.box1 {
+    width: 21px;
+    height: 21px;
+}
+

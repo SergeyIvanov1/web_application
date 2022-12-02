@@ -8,7 +8,7 @@
 <head>
     <title>Location</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
 </head>
 <body class="background">
 <script src="${pageContext.request.contextPath}/js/bootstrap.js"
@@ -26,14 +26,46 @@
     <div class="row border">
         <div class="col border">
             <div class="container">
-                <br><br>
+                <br>
                 <c:set var="personages_is_present" scope="page" value="${!currentLocation.getPersonages().isEmpty()}"/>
-
                 <c:if test="${personages_is_present}">
-                    <h6>Personages on location:</h6>
                     <c:forEach var="personage" items="${currentLocation.getPersonages()}">
                         <div>${personage.name}
-                            <br>
+                            <br><br>
+                            <c:set var="interlocutor" scope="page" value="${personage.name}"/>
+                            <c:choose>
+                                <c:when test="${interlocutor == 'Guarder'}">
+                                    <img src="${pageContext.request.contextPath}/images/guarder.jpeg" class="img-fluid"
+                                         alt="Tramp">
+                                </c:when>
+                                <c:when test="${interlocutor == 'Forester'}">
+                                    <img src="${pageContext.request.contextPath}/images/forester.jpeg" class="img-fluid"
+                                         alt="Tramp">
+                                </c:when>
+                                <c:when test="${interlocutor == 'Escaped prisoner'}">
+                                    <img src="${pageContext.request.contextPath}/images/escaped_prisoner.jpeg"
+                                         class="img-fluid" alt="Tramp">
+                                </c:when>
+                                <c:when test="${interlocutor == 'Gnome'}">
+                                    <img src="${pageContext.request.contextPath}/images/gnome.jpeg" class="img-fluid"
+                                         alt="Tramp">
+                                </c:when>
+                                <c:when test="${interlocutor == 'Tramp'}">
+                                    <img src="${pageContext.request.contextPath}/images/tramp2.jpeg" class="img-fluid"
+                                         alt="Tramp">
+                                </c:when>
+                                <c:when test="${interlocutor == 'Hermit'}">
+                                    <img src="${pageContext.request.contextPath}/images/hermit2.jpeg" class="img-fluid"
+                                         alt="Tramp">
+                                </c:when>
+                                <c:when test="${interlocutor == 'Cheater'}">
+                                    <img src="${pageContext.request.contextPath}/images/cheater2.jpeg" class="img-fluid"
+                                         alt="Tramp">
+                                </c:when>
+                                <%--                        <c:otherwise>--%>
+                                <%--                        </c:otherwise>--%>
+                            </c:choose>
+                            <br><br>
                             <form action="${pageContext.request.contextPath}/conversation" method="GET">
                                 <input type="hidden" name="personageName" value="${personage.name}">
                                 <input type="hidden" name="lastLocation" value="${currentLocation.getName()}">
@@ -53,11 +85,45 @@
 
         <div class="col border">
             <div class="container">
-                <br><br>
                 <c:set var="locations_is_present" scope="page" value="${!locations.isEmpty()}"/>
                 <c:if test="${locations_is_present}">
+
+                    <br><br><br>
+                    <c:set var="thisLocation" scope="page" value="${currentLocation.getName()}"/>
+                    <c:choose>
+                        <c:when test="${thisLocation == 'Gates'}">
+                            <img src="${pageContext.request.contextPath}/images/gate.jpeg" class="img-fluid"
+                                 alt="Tramp">
+                        </c:when>
+                        <c:when test="${thisLocation == 'Forest'}">
+                            <img src="${pageContext.request.contextPath}/images/forest.jpeg" class="img-fluid"
+                                 alt="Tramp">
+                        </c:when>
+                        <c:when test="${thisLocation == 'Town'}">
+                            <img src="${pageContext.request.contextPath}/images/town.jpeg" class="img-fluid"
+                                 alt="Tramp">
+                        </c:when>
+                        <c:when test="${thisLocation == 'Mountain'}">
+                            <img src="${pageContext.request.contextPath}/images/mountain.jpeg" class="img-fluid"
+                                 alt="Tramp">
+                        </c:when>
+                        <c:when test="${thisLocation == 'Field'}">
+                            <img src="${pageContext.request.contextPath}/images/field2.jpeg" class="img-fluid"
+                                 alt="Tramp">
+                        </c:when>
+                        <c:when test="${thisLocation == 'Swamp'}">
+                            <img src="${pageContext.request.contextPath}/images/swamp.jpeg" class="img-fluid"
+                                 alt="Tramp">
+                        </c:when>
+                        <c:when test="${thisLocation == 'Village'}">
+                            <img src="${pageContext.request.contextPath}/images/village.jpeg" class="img-fluid"
+                                 alt="Tramp">
+                        </c:when>
+                        <%--                        <c:otherwise>--%>
+                        <%--                        </c:otherwise>--%>
+                    </c:choose>
+                    <br><br>
                     <h6>Available locations:</h6>
-                    <%--                    <br>--%>
                     <c:forEach var="location" items="${locations}">
                         <form action="${pageContext.request.contextPath}/location" method="POST">
                                 <%--<input type="hidden" name="endGame" value="gameEnded">--%>
@@ -71,25 +137,78 @@
 
         <div class="col border">
             <div class="container">
+                <br><br><br>
+                <form action="${pageContext.request.contextPath}/things" method="post">
+                    <input type="hidden" name="nextLocationName" value="${currentLocation.getName()}">
+                    <button class="btn btn-default btn-sm my_svg box" title="coffee" type="submit" value="Submit">
+                        <img class="box" src="${pageContext.request.contextPath}/images/box3.jpg" alt="Box">
+                    </button>
+                </form>
                 <br><br>
+                <c:set var="boxIsOpened" scope="page" value="${boxIsOpened != null}"/>
+                <c:if test="${boxIsOpened}">
+                    <table class="inventory">
+                        <thead>
+                        <tr>
+                            <th>Armor</th>
+                            <th>Potion</th>
+                            <th>Helper</th>
+                            <th>Weapon</th>
+                        </tr>
+                        </thead>
+
+                        <tbody>
+                        <tr>
+                            <td></td><td>48,4</td><td>52,3</td><td>52,3</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <form action="${pageContext.request.contextPath}/things" method="post">
+                                    <input type="hidden" name="nextLocationName" value="${currentLocation.getName()}">
+                                    <button class="btn btn-default btn-sm my_svg box" title="coffee" type="submit"
+                                            value="Submit">
+                                        <img src="${pageContext.request.contextPath}/images/svg/cup-hot.svg"
+                                             class="box1"
+                                             alt="Box">
+                                    </button>
+                                </form>
+                            </td>
+                            <td>48,9</td>
+                            <td>53,9</td>
+                            <td>53,9</td>
+                        </tr>
+                        <tr>
+                            <td>152</td>
+                            <td>51</td>
+                            <td>58,7</td>
+                            <td>58,7</td>
+                        </tr>
+
+                        </tbody>
+
+                    </table>
+                    <br>
+                </c:if>
+
                 <c:set var="armors_is_present" scope="page" value="${!armors.isEmpty()}"/>
+
                 <c:if test="${armors_is_present}">
-                    <h6>Armors:</h6>
+                    <%--                    <h6>Armors:</h6>--%>
                     <c:forEach var="armor" items="${armors}">
                         <form action="${pageContext.request.contextPath}/things" method="POST">
-                            <input type="hidden" name="currentLocation" value="${currentLocation.getName()}">
+                            <input type="hidden" name="nextLocationName"
+                                   value="${currentLocation.getName()}">
                             <input type="hidden" name="armorName" value="${armor.name}">
                             <input class="nice_button" type="submit" value="${armor.name}"/>
                         </form>
                     </c:forEach>
                 </c:if>
-
                 <c:set var="potions_is_present" scope="page" value="${!potions.isEmpty()}"/>
                 <c:if test="${potions_is_present}">
-                    <h6>Potions:</h6>
+                    <%--                    <h6>Potions:</h6>--%>
                     <c:forEach var="potion" items="${potions}">
                         <form action="${pageContext.request.contextPath}/things" method="POST">
-                            <input type="hidden" name="currentLocation" value="${currentLocation.getName()}">
+                            <input type="hidden" name="nextLocationName" value="${currentLocation.getName()}">
                             <input type="hidden" name="potionName" value="${potion.name}">
                             <input class="nice_button" type="submit" value="${potion.name}"/>
                         </form>
@@ -98,25 +217,28 @@
 
                 <c:set var="helpers_is_present" scope="page" value="${!helpers.isEmpty()}"/>
                 <c:if test="${helpers_is_present}">
-                    <h6>Helpers:</h6>
+                    <%--                    <h6>Helpers:</h6>--%>
                     <c:forEach var="helper" items="${helpers}">
                         <form action="${pageContext.request.contextPath}/things" method="POST">
-                            <input type="hidden" name="currentLocation" value="${currentLocation.getName()}">
+                            <input type="hidden" name="nextLocationName"
+                                   value="${currentLocation.getName()}">
                             <input type="hidden" name="helperName" value="${helper.name}">
                             <input class="nice_button" type="submit" value="${helper.name}"/>
                         </form>
                     </c:forEach>
                 </c:if>
-
                 <c:set var="weapons_is_present" scope="page" value="${!weapons.isEmpty()}"/>
                 <c:if test="${weapons_is_present}">
-                    <h6>Weapons:</h6>
+                    <%--                    <h6>Weapons:</h6>--%>
                     <c:forEach var="weapon" items="${weapons}">
-                        <form action="${pageContext.request.contextPath}/things" method="POST">
-                            <input type="hidden" name="currentLocation" value="${currentLocation.getName()}">
-                            <input type="hidden" name="weaponName" value="${weapon.name}">
-                            <input class="nice_button" type="submit" value="${weapon.name}"/>
-                        </form>
+                        <td>
+                            <form action="${pageContext.request.contextPath}/things" method="POST">
+                                <input type="hidden" name="nextLocationName"
+                                       value="${currentLocation.getName()}">
+                                <input type="hidden" name="weaponName" value="${weapon.name}">
+                                <input class="nice_button" type="submit" value="${weapon.name}"/>
+                            </form>
+                        </td>
                     </c:forEach>
                 </c:if>
             </div>
