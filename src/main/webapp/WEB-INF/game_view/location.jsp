@@ -42,8 +42,8 @@
                                     <img src="${pageContext.request.contextPath}/images/forester.jpeg" class="img-fluid"
                                          alt="Tramp">
                                 </c:when>
-                                <c:when test="${interlocutor == 'Escaped prisoner'}">
-                                    <img src="${pageContext.request.contextPath}/images/escaped_prisoner.jpeg"
+                                <c:when test="${interlocutor == 'Prisoner'}">
+                                    <img src="${pageContext.request.contextPath}/images/Prisoner.jpeg"
                                          class="img-fluid" alt="Tramp">
                                 </c:when>
                                 <c:when test="${interlocutor == 'Gnome'}">
@@ -157,7 +157,7 @@
                                     <form action="${pageContext.request.contextPath}/things" method="post">
                                         <input type="hidden" name="nextLocationName"
                                                value="${currentLocation.getName()}">
-                                        <input type="hidden" name="helperName" value="${armor.name}">
+                                        <input type="hidden" name="transferredThing" value="${armor.name}">
                                         <button class="btn btn-default btn-sm my_svg box" title="${armor.name}"
                                                 type="submit"
                                                 value="Submit">
@@ -177,7 +177,7 @@
                                     <form action="${pageContext.request.contextPath}/things" method="post">
                                         <input type="hidden" name="nextLocationName"
                                                value="${currentLocation.getName()}">
-                                        <input type="hidden" name="helperName" value="${potion.name}">
+                                        <input type="hidden" name="transferredThing" value="${potion.name}">
                                         <button class="btn btn-default btn-sm my_svg box" title="${potion.name}"
                                                 type="submit"
                                                 value="Submit">
@@ -197,7 +197,7 @@
                                     <form action="${pageContext.request.contextPath}/things" method="post">
                                         <input type="hidden" name="nextLocationName"
                                                value="${currentLocation.getName()}">
-                                        <input type="hidden" name="helperName" value="${helper.name}">
+                                        <input type="hidden" name="transferredThing" value="${helper.name}">
                                         <button class="btn btn-default btn-sm my_svg box" title="${helper.name}"
                                                 type="submit"
                                                 value="Submit">
@@ -218,7 +218,7 @@
                                     <form action="${pageContext.request.contextPath}/things" method="post">
                                         <input type="hidden" name="nextLocationName"
                                                value="${currentLocation.getName()}">
-                                        <input type="hidden" name="helperName" value="${weapon.name}">
+                                        <input type="hidden" name="transferredThing" value="${weapon.name}">
                                         <button class="btn btn-default btn-sm my_svg box" title="${weapon.name}"
                                                 type="submit"
                                                 value="Submit">

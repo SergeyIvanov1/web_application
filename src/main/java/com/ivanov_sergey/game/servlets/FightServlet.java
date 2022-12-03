@@ -46,7 +46,12 @@ public class FightServlet extends HttpServlet {
         HttpSession session = req.getSession();
         Hero hero = (Hero) session.getAttribute("hero");
         Inventory heroInventory = hero.getInventory();
+        Personage personage = service.getPersonage(personageName, lastLocation);
 
+        if(kick != null) {
+            fightingService.heroKickPersonage(hero, personage, attack);
+            fightingService.personageKickHero(hero, personage, block);
+        }
 
         int heroCurrentHealth = hero.getCurrentHealth();
         req.setAttribute("heroName", hero.getName());
@@ -59,7 +64,6 @@ public class FightServlet extends HttpServlet {
         req.setAttribute("heroPotions", heroInventory.getPotions());
         req.setAttribute("heroWeapons", heroInventory.getWeapons());
 
-        Personage personage = service.getPersonage(personageName, lastLocation);
         int personageCurrentHealth = personage.getCurrentHealth();
         req.setAttribute("personageName", personageName);
         req.setAttribute("personageHealth", personage.getMaxHealth());
@@ -68,11 +72,6 @@ public class FightServlet extends HttpServlet {
         req.setAttribute("personageStrength", personage.getStrength());
         req.setAttribute("personageDexterity", personage.getDexterity());
         req.setAttribute("lastLocation", lastLocation);
-
-        if(kick != null) {
-            fightingService.heroKickPersonage(hero, personage, attack);
-            fightingService.personageKickHero(hero, personage, block);
-        }
 
         RequestDispatcher requestDispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/game_view/fight.jsp");

@@ -11,9 +11,10 @@
 </head>
 
 <body class="background">
-<script src="${pageContext.request.contextPath}/js/bootstrap.js"
-        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
-        crossorigin="anonymous"></script>
+<%--<script src="${pageContext.request.contextPath}/js/bootstrap.js"--%>
+<%--        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"--%>
+<%--        crossorigin="anonymous"></script>--%>
+<script src="${pageContext.request.contextPath}/js/bootstrap.bundle.js"></script>
 <jsp:include page="parts/game_header.jsp"/>
 
 <div class="container">
@@ -32,8 +33,8 @@
                         <c:when test="${interlocutor == 'Forester'}">
                             <img src="${pageContext.request.contextPath}/images/forester.jpeg" class="img-fluid" alt="Tramp">
                         </c:when>
-                        <c:when test="${interlocutor == 'Escaped prisoner'}">
-                            <img src="${pageContext.request.contextPath}/images/escaped_prisoner.jpeg" class="img-fluid" alt="Tramp">
+                        <c:when test="${interlocutor == 'Prisoner'}">
+                            <img src="${pageContext.request.contextPath}/images/Prisoner.jpeg" class="img-fluid" alt="Tramp">
                         </c:when>
                         <c:when test="${interlocutor == 'Gnome'}">
                             <img src="${pageContext.request.contextPath}/images/gnome.jpeg" class="img-fluid" alt="Tramp">

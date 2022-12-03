@@ -190,7 +190,7 @@ button.title {
     /*width: 98px;*/
     width: 25%;
     border: 1px solid black;
-    height: 120px;
+    height: 165px;
     border-right: 0;
 }
 
@@ -198,19 +198,19 @@ button.title {
     /*width: 98px;*/
     width: 25%;
     border: 1px solid black;
-    height: 120px;
+    height: 165px;
 }
 #con-inv3{
     /*width: 98px;*/
     width: 25%;
     border: 1px solid black;
     border-left: 0;
-    height: 120px;
+    height: 165px;
 }
 #con-inv4{
     /*width: 98px;*/
     width: 25%;
     border: 1px solid black;
     border-left: 0;
-    height: 120px;
+    height: 165px;
 }

@@ -128,7 +128,7 @@ CREATE TABLE my_db.personages
 INSERT INTO my_db.personages (name, max_health, current_health, strength, dexterity, location_id)
 VALUES ('Guarder', 100, 100, 50, 70, 1),
        ('Forester', 50, 50, 40, 40, 2),
-       ('Escaped-prisoner', 40, 40, 20, 50, 3),
+       ('Prisoner', 40, 40, 20, 50, 3),
        ('Gnome', 80, 80, 10, 20, 4),
        ('Tramp', 80, 80, 30, 30, 5),
        ('Hermit', 80, 80, 30, 30, 6),

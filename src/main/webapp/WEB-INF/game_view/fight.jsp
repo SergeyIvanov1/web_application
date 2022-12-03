@@ -41,13 +41,13 @@
                         <%--                        <c:set var="potions_is_present" scope="page" value="${!heroPotions.isEmpty()}"/>--%>
                         <%--                        <c:if test="${potions_is_present}">--%>
                         <h6>Potions:</h6>
-                        <c:forEach var="potion" items="${heroPotions}">
-                            <form action="${pageContext.request.contextPath}/things" method="POST">
-                                <input type="hidden" name="lastLocation" value="${lastLocation}">
-                                <input type="hidden" name="potionName" value="${potion.name}">
-                                <input class="nice_button" type="submit" value="${potion.name}"/>
-                            </form>
-                        </c:forEach>
+<%--                        <c:forEach var="potion" items="${heroPotions}">--%>
+<%--                            <form action="${pageContext.request.contextPath}/things" method="POST">--%>
+<%--                                <input type="hidden" name="lastLocation" value="${lastLocation}">--%>
+<%--                                <input type="hidden" name="potionName" value="${potion.name}">--%>
+<%--                                <input class="nice_button" type="submit" value="${potion.name}"/>--%>
+<%--                            </form>--%>
+<%--                        </c:forEach>--%>
                         <button type="button" class="btn btn-default btn-sm"
                                 onclick="window.location.href = '/addNewEmployee'" title="water">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -83,13 +83,13 @@
                         <br>
                         <br>
                         <h6>Helpers:</h6>
-                        <c:forEach var="helper" items="${heroHelpers}">
-                            <form action="${pageContext.request.contextPath}/things" method="POST">
-                                <input type="hidden" name="lastLocation" value="${clastLocation}">
-                                <input type="hidden" name="helperName" value="${helper.name}">
-                                <input class="nice_button" type="submit" value="${helper.name}"/>
-                            </form>
-                        </c:forEach>
+<%--                        <c:forEach var="helper" items="${heroHelpers}">--%>
+<%--                            <form action="${pageContext.request.contextPath}/things" method="POST">--%>
+<%--                                <input type="hidden" name="lastLocation" value="${clastLocation}">--%>
+<%--                                <input type="hidden" name="helperName" value="${helper.name}">--%>
+<%--                                <input class="nice_button" type="submit" value="${helper.name}"/>--%>
+<%--                            </form>--%>
+<%--                        </c:forEach>--%>
                         <button type="button" class="btn btn-default btn-sm"
                                 onclick="window.location.href = '${pageContext.request.contextPath}/addNewEmployee'"
                                 title="key">
@@ -131,13 +131,13 @@
                         <%--                    <c:set var="armors_is_present" scope="page" value="${!armors.isEmpty()}"/>--%>
                         <%--                    <c:if test="${armors_is_present}">--%>
                         <h6>Use armor:</h6>
-                        <c:forEach var="armor" items="${heroArmors}">
-                            <form action="${pageContext.request.contextPath}/things" method="POST">
-                                <input type="hidden" name="lastLocation" value="${lastLocation}">
-                                <input type="hidden" name="armorName" value="${armor.name}">
-                                <input class="nice_button" type="submit" value="${armor.name}"/>
-                            </form>
-                        </c:forEach>
+<%--                        <c:forEach var="armor" items="${heroArmors}">--%>
+<%--                            <form action="${pageContext.request.contextPath}/things" method="POST">--%>
+<%--                                <input type="hidden" name="lastLocation" value="${lastLocation}">--%>
+<%--                                <input type="hidden" name="armorName" value="${armor.name}">--%>
+<%--                                <input class="nice_button" type="submit" value="${armor.name}"/>--%>
+<%--                            </form>--%>
+<%--                        </c:forEach>--%>
                         <button type="button" class="btn btn-default btn-sm"
                                 onclick="window.location.href = '${pageContext.request.contextPath}/addNewEmployee'"
                                 title="shield">
@@ -170,13 +170,13 @@
                         <%--                    <c:set var="weapons_is_present" scope="page" value="${!weapons.isEmpty()}"/>--%>
                         <%--                    <c:if test="${weapons_is_present}">--%>
                         <h6>Use weapon:</h6>
-                        <c:forEach var="weapon" items="${heroWeapons}">
-                            <form action="${pageContext.request.contextPath}/things" method="POST">
-                                <input type="hidden" name="lastLocation" value="${lastLocation}">
-                                <input type="hidden" name="weaponName" value="${weapon.name}">
-                                <input class="nice_button" type="submit" value="${weapon.name}"/>
-                            </form>
-                        </c:forEach>
+<%--                        <c:forEach var="weapon" items="${heroWeapons}">--%>
+<%--                            <form action="${pageContext.request.contextPath}/things" method="POST">--%>
+<%--                                <input type="hidden" name="lastLocation" value="${lastLocation}">--%>
+<%--                                <input type="hidden" name="weaponName" value="${weapon.name}">--%>
+<%--                                <input class="nice_button" type="submit" value="${weapon.name}"/>--%>
+<%--                            </form>--%>
+<%--                        </c:forEach>--%>
                         <button type="button" class="btn btn-default btn-sm"
                                 onclick="window.location.href = '${pageContext.request.contextPath}/addNewEmployee'"
                                 title="stick">
@@ -231,8 +231,8 @@
                                 <img src="${pageContext.request.contextPath}/images/forester.jpeg" class="img-fluid"
                                      alt="Tramp">
                             </c:when>
-                            <c:when test="${interlocutor == 'Escaped prisoner'}">
-                                <img src="${pageContext.request.contextPath}/images/escaped_prisoner.jpeg"
+                            <c:when test="${interlocutor == 'Prisoner'}">
+                                <img src="${pageContext.request.contextPath}/images/Prisoner.jpeg"
                                      class="img-fluid" alt="Tramp">
                             </c:when>
                             <c:when test="${interlocutor == 'Gnome'}">

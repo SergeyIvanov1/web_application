@@ -9,9 +9,9 @@
     <title>Main page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%--        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">--%>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+            <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
+<%--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"--%>
+<%--          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">--%>
 </head>
 
 <body>
@@ -41,12 +41,12 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <c:forEach var="hero" items="${heroes}">
+                            <c:forEach var="heroFromDB" items="${heroes}">
                                 <tr>
                                     <td></td>
-                                    <td>${hero.getName()}</td>
-                                    <td>${hero.getCountOfEndedGames()}</td>
-                                    <td>${hero.getCountOfKilledPersonages()}</td>
+                                    <td>${heroFromDB.getName()}</td>
+                                    <td>${heroFromDB.getCountOfEndedGames()}</td>
+                                    <td>${heroFromDB.getCountOfKilledPersonages()}</td>
                                 </tr>
                             </c:forEach>
                             </tbody>
@@ -73,9 +73,11 @@
                     <div class="container_inventory">
                         <div id="con-inv1">
                             <H6>Armor</H6>
-                            <c:set var="armors_is_present" scope="page" value="${!armors.isEmpty()}"/>
+<%--                            <c:set var="armors" scope="page" value="${hero.getArmors()}"/>--%>
+<%--                            <c:set var="armors_is_present" scope="page" value="${!hero.getArmors().isEmpty()}"/>--%>
+                            <c:set var="armors_is_present" scope="page" value="${!heroArmors.isEmpty()}"/>
                             <c:if test="${armors_is_present}">
-                                <c:forEach var="armor" items="${armors}">
+                                <c:forEach var="armor" items="${heroArmors}">
                                     <form action="${pageContext.request.contextPath}/things" method="post">
                                         <input type="hidden" name="nextLocationName"
                                                value="${currentLocation.getName()}">
@@ -93,9 +95,9 @@
                         </div>
                         <div id="con-inv2">
                             <h6>Potion</h6>
-                            <c:set var="potions_is_present" scope="page" value="${!potions.isEmpty()}"/>
+                            <c:set var="potions_is_present" scope="page" value="${!heroPotions.isEmpty()}"/>
                             <c:if test="${potions_is_present}">
-                                <c:forEach var="potion" items="${potions}">
+                                <c:forEach var="potion" items="${heroPotions}">
                                     <form action="${pageContext.request.contextPath}/things" method="post">
                                         <input type="hidden" name="nextLocationName"
                                                value="${currentLocation.getName()}">
@@ -113,9 +115,9 @@
                         </div>
                         <div id="con-inv3">
                             <h6>Helpers</h6>
-                            <c:set var="helpers_is_present" scope="page" value="${!helpers.isEmpty()}"/>
+                            <c:set var="helpers_is_present" scope="page" value="${!heroHelpers.isEmpty()}"/>
                             <c:if test="${helpers_is_present}">
-                                <c:forEach var="helper" items="${helpers}">
+                                <c:forEach var="helper" items="${heroHelpers}">
                                     <form action="${pageContext.request.contextPath}/things" method="post">
                                         <input type="hidden" name="nextLocationName"
                                                value="${currentLocation.getName()}">
@@ -130,13 +132,13 @@
                                     </form>
                                 </c:forEach>
                             </c:if>
-                            </form>
+<%--                            </form>--%>
                         </div>
                         <div id="con-inv4">
                             <h6>Weapon</h6>
-                            <c:set var="weapons_is_present" scope="page" value="${!weapons.isEmpty()}"/>
+                            <c:set var="weapons_is_present" scope="page" value="${!heroWeapons.isEmpty()}"/>
                             <c:if test="${weapons_is_present}">
-                                <c:forEach var="weapon" items="${weapons}">
+                                <c:forEach var="weapon" items="${heroWeapons}">
                                     <form action="${pageContext.request.contextPath}/things" method="post">
                                         <input type="hidden" name="nextLocationName"
                                                value="${currentLocation.getName()}">
