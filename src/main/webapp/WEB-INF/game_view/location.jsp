@@ -151,92 +151,86 @@
                     <div class="container2">
                         <div id="con1">
                             <H6>Armor</H6>
-                            <form action="${pageContext.request.contextPath}/things" method="post">
-                                <input type="hidden" name="nextLocationName"
-                                       value="${currentLocation.getName()}">
-                                <button class="btn btn-default btn-sm my_svg box" title="coffee"
-                                        type="submit"
-                                        value="Submit">
-                                    <img src="${pageContext.request.contextPath}/images/svg/cup-hot.svg"
-                                         class="box1"
-                                         alt="Box">
-                                </button>
+                            <c:set var="armors_is_present" scope="page" value="${!armors.isEmpty()}"/>
+                            <c:if test="${armors_is_present}">
+                                <c:forEach var="armor" items="${armors}">
+                                    <form action="${pageContext.request.contextPath}/things" method="post">
+                                        <input type="hidden" name="nextLocationName"
+                                               value="${currentLocation.getName()}">
+                                        <input type="hidden" name="helperName" value="${armor.name}">
+                                        <button class="btn btn-default btn-sm my_svg box" title="${armor.name}"
+                                                type="submit"
+                                                value="Submit">
+                                            <img src="${pageContext.request.contextPath}/images/svg/${armor.name}.svg"
+                                                 class="box1"
+                                                 alt="Box">
+                                        </button>
+                                    </form>
+                                </c:forEach>
+                            </c:if>
+                        </div>
+                        <div id="con2">
+                            <h6>Potion</h6>
+                            <c:set var="potions_is_present" scope="page" value="${!potions.isEmpty()}"/>
+                            <c:if test="${potions_is_present}">
+                                <c:forEach var="potion" items="${potions}">
+                                    <form action="${pageContext.request.contextPath}/things" method="post">
+                                        <input type="hidden" name="nextLocationName"
+                                               value="${currentLocation.getName()}">
+                                        <input type="hidden" name="helperName" value="${potion.name}">
+                                        <button class="btn btn-default btn-sm my_svg box" title="${potion.name}"
+                                                type="submit"
+                                                value="Submit">
+                                            <img src="${pageContext.request.contextPath}/images/svg/${potion.name}.svg"
+                                                 class="box1"
+                                                 alt="Box">
+                                        </button>
+                                    </form>
+                                </c:forEach>
+                            </c:if>
+                        </div>
+                        <div id="con3">
+                            <h6>Helpers</h6>
+                            <c:set var="helpers_is_present" scope="page" value="${!helpers.isEmpty()}"/>
+                            <c:if test="${helpers_is_present}">
+                                <c:forEach var="helper" items="${helpers}">
+                                    <form action="${pageContext.request.contextPath}/things" method="post">
+                                        <input type="hidden" name="nextLocationName"
+                                               value="${currentLocation.getName()}">
+                                        <input type="hidden" name="helperName" value="${helper.name}">
+                                        <button class="btn btn-default btn-sm my_svg box" title="${helper.name}"
+                                                type="submit"
+                                                value="Submit">
+                                            <img src="${pageContext.request.contextPath}/images/svg/${helper.name}.svg"
+                                                 class="box1"
+                                                 alt="Box">
+                                        </button>
+                                    </form>
+                                </c:forEach>
+                            </c:if>
                             </form>
                         </div>
-                        <div id="con2">Potion</div>
-                        <div id="con3">Helpers</div>
-                        <div id="con4">Weapon</div>
+                        <div id="con4">
+                            <h6>Weapon</h6>
+                            <c:set var="weapons_is_present" scope="page" value="${!weapons.isEmpty()}"/>
+                            <c:if test="${weapons_is_present}">
+                                <c:forEach var="weapon" items="${weapons}">
+                                    <form action="${pageContext.request.contextPath}/things" method="post">
+                                        <input type="hidden" name="nextLocationName"
+                                               value="${currentLocation.getName()}">
+                                        <input type="hidden" name="helperName" value="${weapon.name}">
+                                        <button class="btn btn-default btn-sm my_svg box" title="${weapon.name}"
+                                                type="submit"
+                                                value="Submit">
+                                            <img src="${pageContext.request.contextPath}/images/svg/${weapon.name}.svg"
+                                                 class="box1"
+                                                 alt="Box">
+                                        </button>
+                                    </form>
+                                </c:forEach>
+                            </c:if>
+                        </div>
                     </div>
-<%--                    <div class="parent">--%>
-<%--                        <div>--%>
-<%--                            <h6>Armor</h6>--%>
-<%--                            <br>--%>
-<%--                            <c:set var="armors_is_present" scope="page" value="${!armors.isEmpty()}"/>--%>
-<%--                            <c:if test="${armors_is_present}">--%>
-<%--                                <c:forEach var="armor" items="${armors}">--%>
-<%--                                    <form action="${pageContext.request.contextPath}/things" method="post">--%>
-<%--                                        <input type="hidden" name="nextLocationName"--%>
-<%--                                               value="${currentLocation.getName()}">--%>
-<%--                                        <button class="btn btn-default btn-sm my_svg box" title="coffee"--%>
-<%--                                                type="submit"--%>
-<%--                                                value="Submit">--%>
-<%--                                            <img src="${pageContext.request.contextPath}/images/svg/cup-hot.svg"--%>
-<%--                                                 class="box1"--%>
-<%--                                                 alt="Box">--%>
-<%--                                        </button>--%>
-<%--                                    </form>--%>
-<%--                                </c:forEach>--%>
-<%--                            </c:if>--%>
-<%--                        </div>--%>
-
-<%--                        <div>--%>
-<%--                            <h6>Potion</h6>--%>
-<%--                            <br>--%>
-<%--                            <c:set var="potions_is_present" scope="page" value="${!potions.isEmpty()}"/>--%>
-<%--                            <c:if test="${potions_is_present}">--%>
-<%--                                <c:forEach var="potion" items="${potions}">--%>
-<%--                                    <form action="${pageContext.request.contextPath}/things" method="POST">--%>
-<%--                                        <input type="hidden" name="nextLocationName"--%>
-<%--                                               value="${currentLocation.getName()}">--%>
-<%--                                        <input type="hidden" name="potionName" value="${potion.name}">--%>
-<%--                                        <input class="nice_button" type="submit" value="${potion.name}"/>--%>
-<%--                                    </form>--%>
-<%--                                </c:forEach>--%>
-<%--                            </c:if>--%>
-<%--                        </div>--%>
-
-<%--                        <div>--%>
-<%--                            <h6>Helpers</h6>--%>
-<%--                            <br>--%>
-<%--                            <c:set var="helpers_is_present" scope="page" value="${!helpers.isEmpty()}"/>--%>
-<%--                            <c:if test="${helpers_is_present}">--%>
-<%--                                <c:forEach var="helper" items="${helpers}">--%>
-<%--                                    <form action="${pageContext.request.contextPath}/things" method="POST">--%>
-<%--                                        <input type="hidden" name="nextLocationName"--%>
-<%--                                               value="${currentLocation.getName()}">--%>
-<%--                                        <input type="hidden" name="helperName" value="${helper.name}">--%>
-<%--                                        <input class="nice_button" type="submit" value="${helper.name}"/>--%>
-<%--                                    </form>--%>
-<%--                                </c:forEach>--%>
-<%--                            </c:if>--%>
-<%--                        </div>--%>
-
-<%--                        <div>--%>
-<%--                            <h6>Weapon</h6>--%>
-<%--                            <br>--%>
-<%--                            <c:set var="weapons_is_present" scope="page" value="${!weapons.isEmpty()}"/>--%>
-<%--                            <c:if test="${weapons_is_present}">--%>
-<%--                                <c:forEach var="weapon" items="${weapons}">--%>
-<%--                                    <form action="${pageContext.request.contextPath}/things" method="POST">--%>
-<%--                                        <input type="hidden" name="nextLocationName"--%>
-<%--                                               value="${currentLocation.getName()}">--%>
-<%--                                        <input type="hidden" name="weaponName" value="${weapon.name}">--%>
-<%--                                        <input class="nice_button" type="submit" value="${weapon.name}"/>--%>
-<%--                                    </form>--%>
-<%--                                </c:forEach>--%>
-<%--                            </c:if>--%>
-<%--                        </div>--%>
-<%--                    </div>--%>
                 </c:if>
             </div>
         </div>

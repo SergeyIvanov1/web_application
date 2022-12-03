@@ -23,7 +23,7 @@ CREATE TABLE my_db.weapons
 
 INSERT INTO my_db.weapons (name, location_id)
 VALUES ('stick', 1),
-       ('stun gun', 2),
+       ('stun-gun', 2),
        ('wrench', 6);
 
 -- ________________________
@@ -38,7 +38,7 @@ CREATE TABLE my_db.potions
 );
 
 INSERT INTO my_db.potions (name, location_id)
-VALUES ('coffe', 1),
+VALUES ('coffee', 1),
        ('koktail', 2),
        ('water', 4);
 
@@ -55,7 +55,7 @@ CREATE TABLE my_db.armors
 
 INSERT INTO my_db.armors (name, location_id)
 VALUES ('shield', 2),
-       ('hauberk', 4);
+       ('magic-hauberk', 4);
 
 -- ________________________
 
@@ -128,7 +128,7 @@ CREATE TABLE my_db.personages
 INSERT INTO my_db.personages (name, max_health, current_health, strength, dexterity, location_id)
 VALUES ('Guarder', 100, 100, 50, 70, 1),
        ('Forester', 50, 50, 40, 40, 2),
-       ('Escaped prisoner', 40, 40, 20, 50, 3),
+       ('Escaped-prisoner', 40, 40, 20, 50, 3),
        ('Gnome', 80, 80, 10, 20, 4),
        ('Tramp', 80, 80, 30, 30, 5),
        ('Hermit', 80, 80, 30, 30, 6),

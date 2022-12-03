@@ -25,7 +25,7 @@
             <div class="col border">
                 <br>
                 <h2>${heroName}</h2>
-                <p>health: ${heroCurrentHealth}/${heroHealth}</p>
+                <p>Health: ${heroCurrentHealth}/${heroHealth}</p>
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" aria-label="Example with label"
                          style="width: ${heroCurrentPercentOfHealth}%;" aria-valuenow="${heroCurrentHealth}"
@@ -35,8 +35,8 @@
                 <br>
                 <div class="row">
                     <div class="col">
-                        <p>strength: ${heroStrength}</p>
-                        <p>dexterity: ${heroDexterity}</p>
+                        <p>Strength: ${heroStrength}</p>
+                        <p>Dexterity: ${heroDexterity}</p>
                         <br>
                         <%--                        <c:set var="potions_is_present" scope="page" value="${!heroPotions.isEmpty()}"/>--%>
                         <%--                        <c:if test="${potions_is_present}">--%>
@@ -130,7 +130,7 @@
                         <br>
                         <%--                    <c:set var="armors_is_present" scope="page" value="${!armors.isEmpty()}"/>--%>
                         <%--                    <c:if test="${armors_is_present}">--%>
-                        <h6>Armors:</h6>
+                        <h6>Use armor:</h6>
                         <c:forEach var="armor" items="${heroArmors}">
                             <form action="${pageContext.request.contextPath}/things" method="POST">
                                 <input type="hidden" name="lastLocation" value="${lastLocation}">
@@ -169,7 +169,7 @@
                         <br>
                         <%--                    <c:set var="weapons_is_present" scope="page" value="${!weapons.isEmpty()}"/>--%>
                         <%--                    <c:if test="${weapons_is_present}">--%>
-                        <h6>Weapons:</h6>
+                        <h6>Use weapon:</h6>
                         <c:forEach var="weapon" items="${heroWeapons}">
                             <form action="${pageContext.request.contextPath}/things" method="POST">
                                 <input type="hidden" name="lastLocation" value="${lastLocation}">
@@ -211,7 +211,7 @@
                 <br>
                 <h2>${personageName}</h2>
                 <%--                    <c:forEach var="reply" items="${issue.getReplies()}">--%>
-                <p>health: ${personageCurrentHealth}/${personageHealth}</p>
+                <p>Health: ${personageCurrentHealth}/${personageHealth}</p>
                 <div class="progress">
                     <div class="progress-bar" role="progressbar" aria-label="Example with label"
                          style="width: ${personageCurrentPercentOfHealth}%;" aria-valuenow="${personageCurrentHealth}"
@@ -256,8 +256,8 @@
                         </c:choose>
                     </div>
                     <div class="col">
-                        <p>strength: ${personageStrength}</p>
-                        <p>dexterity: ${personageDexterity}</p>
+                        <p>Strength: ${personageStrength}</p>
+                        <p>Dexterity: ${personageDexterity}</p>
                     </div>
                 </div>
                 <%--                    </c:forEach>--%>

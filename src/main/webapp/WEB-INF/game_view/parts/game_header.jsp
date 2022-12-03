@@ -54,7 +54,6 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <div><strong>Global</strong></div>
                 <div>Ip address: ${clientIPAddress}</div>
                 <div>Time of starting this game: ${timeOfCreateGame}</div>
                 <div>Name in the game: ${name}</div>
