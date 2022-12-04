@@ -24,18 +24,16 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="start_game">Start game page</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
-                </li>
+<%--                <li class="nav-item">--%>
+<%--                    <a class="nav-link" href="#">Link</a>--%>
+<%--                </li>--%>
             </ul>
         </div>
         <div class="col">
 
         </div>
         <div class="col">
-<%--            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalMap">--%>
-<%--                Map--%>
-<%--            </button>--%>
+            
         </div>
         <div class="col">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalMap">

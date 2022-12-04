@@ -56,6 +56,7 @@ public class LocationServlet extends HttpServlet {
         req.setAttribute("weapons", service.getWeapons(currentLocation.getName()));
 
         session.setAttribute("locations", service.getLocations());
+        session.setAttribute("currentLocal", currentLocation.getName());
         session.setAttribute("repository", service.getRepository());
         session.setAttribute("hero", hero);
         session.setAttribute("heroes", heroes);
@@ -72,6 +73,10 @@ public class LocationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String nextLocationName = req.getParameter("nextLocationName");
+        HttpSession httpSession = req.getSession();
+        httpSession.setAttribute("currentLocal", nextLocationName);
+        System.out.println("LocationServlet, doPost, nextLocationName = " + nextLocationName);
+
         LOGGER.debug("LocationServlet, doPost is started with nextLocationName = " + nextLocationName);
 
             req.setAttribute("currentLocation", service.getLocation(nextLocationName));

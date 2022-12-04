@@ -75,6 +75,10 @@ public class LocationServiceImpl implements LocationService {
     }
 
     public Personage getPersonage(String personageName, String lastLocation){
+
+        System.out.println("LocationServiceImpl, getPersonage, lastLocation = " + lastLocation);
+        System.out.println("LocationServiceImpl, getPersonage, personageName = " + personageName);
+
         Optional<Personage> optional = getLocation(lastLocation)
                 .getPersonages()
                 .stream()

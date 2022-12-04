@@ -140,6 +140,7 @@
                 <br><br><br>
                 <form action="${pageContext.request.contextPath}/things" method="post">
                     <input type="hidden" name="nextLocationName" value="${currentLocation.getName()}">
+
                     <button class="btn btn-default btn-sm my_svg box" title="coffee" type="submit" value="Submit">
                         <img class="box" src="${pageContext.request.contextPath}/images/box3.jpg" alt="Box">
                     </button>

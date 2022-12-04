@@ -2,6 +2,7 @@ package com.ivanov_sergey.game.servlets;
 
 import com.ivanov_sergey.game.entity.Hero;
 import com.ivanov_sergey.game.entity.Inventory;
+import com.ivanov_sergey.game.entity.Location;
 import com.ivanov_sergey.game.entity.Personage;
 import com.ivanov_sergey.game.service.*;
 import org.apache.logging.log4j.LogManager;
@@ -24,6 +25,7 @@ public class FightServlet extends HttpServlet {
 
     ModuleService moduleService = new ModuleServiceImpl();
     FightingService fightingService = new FightingServiceImpl();
+    ThingsService thingsService = new ThingsServiceImpl();
 
     LocationServiceImpl service;
 
@@ -41,16 +43,26 @@ public class FightServlet extends HttpServlet {
         String attack = req.getParameter("attack");
         String block = req.getParameter("block");
         String kick = req.getParameter("kick");
+        String thing = req.getParameter("useThing");
         LOGGER.debug("LocationServlet, doPost is started with nextLocationName = " + lastLocation);
 
         HttpSession session = req.getSession();
+        String currentLocal = (String) session.getAttribute("currentLocal");
         Hero hero = (Hero) session.getAttribute("hero");
         Inventory heroInventory = hero.getInventory();
-        Personage personage = service.getPersonage(personageName, lastLocation);
+
+        Personage personage = service.getPersonage(personageName, currentLocal);
+        Location location = service.getLocation(currentLocal);
 
         if(kick != null) {
             fightingService.heroKickPersonage(hero, personage, attack);
             fightingService.personageKickHero(hero, personage, block);
+        }
+
+        if(thing != null) {
+            thingsService.useThing(thing, location, hero);
+
+            System.out.println("thing = " + thing);
         }
 
         int heroCurrentHealth = hero.getCurrentHealth();
@@ -71,7 +83,7 @@ public class FightServlet extends HttpServlet {
         req.setAttribute("personageCurrentPercentOfHealth", personageCurrentHealth * 100 / personage.getMaxHealth());
         req.setAttribute("personageStrength", personage.getStrength());
         req.setAttribute("personageDexterity", personage.getDexterity());
-        req.setAttribute("lastLocation", lastLocation);
+        session.setAttribute("lastLocation", lastLocation);
 
         RequestDispatcher requestDispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/game_view/fight.jsp");

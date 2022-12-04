@@ -54,8 +54,14 @@ public class ThingsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
+        String currentLocal = (String) session.getAttribute("currentLocal");
         String nextLocationName = req.getParameter("nextLocationName");
+//        String personageName = req.getParameter("personageName");
         String transferredThing = req.getParameter("transferredThing");
+        String useArmor = req.getParameter("useArmor");
+        String usePotion = req.getParameter("usePotion");
+        String useHelper = req.getParameter("useHelper");
+        String useWeapon = req.getParameter("useWeapon");
 
         LOGGER.debug("ThingsServlet, doPost is started with nextLocationName = " + nextLocationName);
 
@@ -65,10 +71,6 @@ public class ThingsServlet extends HttpServlet {
         List<Potion> potions = service.getPotions(nextLocationName);
         List<Helper> helpers = service.getHelpers(nextLocationName);
         List<Weapon> weapons = service.getWeapons(nextLocationName);
-
-        if (transferredThing != null){
-            thingsService.transferThingToInventory(transferredThing, location, hero);
-        }
 
         req.setAttribute("currentLocation", location);
         req.setAttribute("armors", armors);
@@ -81,6 +83,10 @@ public class ThingsServlet extends HttpServlet {
         session.setAttribute("heroPotions", hero.getInventory().getPotions());
         session.setAttribute("heroHelpers", hero.getInventory().getHelpers());
         session.setAttribute("heroWeapons", hero.getInventory().getWeapons());
+
+        if (transferredThing != null){
+            thingsService.transferThingFromBoxToInventory(transferredThing, location, hero);
+        }
 
         RequestDispatcher requestDispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/game_view/location.jsp");

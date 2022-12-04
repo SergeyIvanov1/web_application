@@ -22,6 +22,9 @@ public class Armor {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "value")
+    private int value;
+
     @Column(name = "location_id")
     private int locationId;
 }

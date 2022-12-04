@@ -16,15 +16,16 @@ CREATE TABLE my_db.weapons
 (
     id   int NOT NULL AUTO_INCREMENT,
     name varchar(20),
+    value int,
     location_id int,
     inventory_id int,
     PRIMARY KEY (id)
 );
 
-INSERT INTO my_db.weapons (name, location_id)
-VALUES ('stick', 1),
-       ('stun-gun', 2),
-       ('wrench', 6);
+INSERT INTO my_db.weapons (name, value, location_id)
+VALUES ('stick', 5, 1),
+       ('stun-gun', 10, 2),
+       ('wrench', 20,6);
 
 -- ________________________
 
@@ -32,15 +33,16 @@ CREATE TABLE my_db.potions
 (
     id   int NOT NULL AUTO_INCREMENT,
     name varchar(20),
+    value int,
     location_id int,
     inventory_id int,
     PRIMARY KEY (id)
 );
 
-INSERT INTO my_db.potions (name, location_id)
-VALUES ('coffee', 1),
-       ('koktail', 2),
-       ('water', 4);
+INSERT INTO my_db.potions (name, value, location_id)
+VALUES ('coffee', 20, 1),
+       ('koktail', 40, 2),
+       ('water', 10, 4);
 
 -- ________________________
 
@@ -48,14 +50,15 @@ CREATE TABLE my_db.armors
 (
     id   int NOT NULL AUTO_INCREMENT,
     name varchar(20),
+    value int,
     location_id int,
     inventory_id int,
     PRIMARY KEY (id)
 );
 
-INSERT INTO my_db.armors (name, location_id)
-VALUES ('shield', 2),
-       ('magic-hauberk', 4);
+INSERT INTO my_db.armors (name, value, location_id)
+VALUES ('shield', 20, 2),
+       ('magic-hauberk', 40, 4);
 
 -- ________________________
 
