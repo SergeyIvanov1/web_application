@@ -58,10 +58,10 @@ public class ThingsServlet extends HttpServlet {
         String nextLocationName = req.getParameter("nextLocationName");
 //        String personageName = req.getParameter("personageName");
         String transferredThing = req.getParameter("transferredThing");
-        String useArmor = req.getParameter("useArmor");
-        String usePotion = req.getParameter("usePotion");
-        String useHelper = req.getParameter("useHelper");
-        String useWeapon = req.getParameter("useWeapon");
+//        String useArmor = req.getParameter("useArmor");
+//        String usePotion = req.getParameter("usePotion");
+//        String useHelper = req.getParameter("useHelper");
+//        String useWeapon = req.getParameter("useWeapon");
 
         LOGGER.debug("ThingsServlet, doPost is started with nextLocationName = " + nextLocationName);
 

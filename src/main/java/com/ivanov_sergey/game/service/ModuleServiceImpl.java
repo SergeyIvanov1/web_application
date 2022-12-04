@@ -5,6 +5,7 @@ import com.ivanov_sergey.game.entity.Hero;
 import com.ivanov_sergey.game.entity.Inventory;
 import com.ivanov_sergey.game.entity.Location;
 import com.ivanov_sergey.game.repository.Repository;
+import com.ivanov_sergey.game.service.exceptions.LocationInvalidParameters;
 
 import java.util.List;
 import java.util.Optional;
@@ -23,6 +24,9 @@ public class ModuleServiceImpl implements ModuleService {
 
     @Override
     public Hero getOrCreateHero(String nameHero){
+        if (nameHero == null){
+            throw new LocationInvalidParameters("Parameter nameHero is null");
+        }
         Optional<Hero> optional = moduleDAO.getHero(nameHero);
         Hero hero;
         if (optional.isEmpty()) {

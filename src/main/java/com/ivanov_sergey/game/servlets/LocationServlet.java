@@ -43,11 +43,19 @@ public class LocationServlet extends HttpServlet {
         HttpSession session = req.getSession();
 
         String heroName = req.getParameter("heroName");
-        Hero hero = moduleService.getOrCreateHero(heroName);
-        List<Hero> heroes = moduleService.getAllHero();
-        LOGGER.debug("LocationServlet, game started with hero = " + heroName);
-
-        Location currentLocation = service.getLocation(STARTING_ROOM);
+        Hero hero;
+        Location currentLocation;
+        List<Hero> heroes;
+        if (heroName == null){
+            hero = (Hero) session.getAttribute("hero");
+            currentLocation = service.getLocation((String) session.getAttribute("currentLocal"));
+            heroes = (List<Hero>) session.getAttribute("heroes");
+        } else {
+            hero = moduleService.getOrCreateHero(heroName);
+            heroes = moduleService.getAllHero();
+            LOGGER.debug("LocationServlet, game started with hero = " + heroName);
+            currentLocation = service.getLocation(STARTING_ROOM);
+        }
 
         req.setAttribute("currentLocation", currentLocation);
         req.setAttribute("armors", service.getArmors(currentLocation.getName()));
@@ -61,7 +69,7 @@ public class LocationServlet extends HttpServlet {
         session.setAttribute("hero", hero);
         session.setAttribute("heroes", heroes);
         session.setAttribute("clientIPAddress", service.getClientIPAddress(req));
-        session.setAttribute("name", heroName);
+        session.setAttribute("name", hero.getName());
         session.setAttribute("countOfGames", hero.getCountOfEndedGames());
         session.setAttribute("timeOfCreateGame", timeOfCreateGame);
 

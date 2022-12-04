@@ -19,14 +19,8 @@
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page" href="start_game">Start game page</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="${pageContext.request.contextPath}/location">Back to ${currentLocal}</a>
-                </li>
             </ul>
         </div>
-<%--        <div class="col">--%>
-
-<%--        </div>--%>
         <div class="col">
             
         </div>

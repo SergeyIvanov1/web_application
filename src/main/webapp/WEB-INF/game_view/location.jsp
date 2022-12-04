@@ -14,7 +14,7 @@
 <script src="${pageContext.request.contextPath}/js/bootstrap.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
-<jsp:include page="parts/game_header.jsp"/>
+<jsp:include page="parts/header_for_location.jsp"/>
 <header>
     <div class="container text-center">
         <div class="row">
@@ -237,7 +237,7 @@
         </div>
     </div>
 </div>
-
+<jsp:include page="parts/footer_location_and_conversation.jsp"/>
 <br><br><br><br>
 </body>
 </html>

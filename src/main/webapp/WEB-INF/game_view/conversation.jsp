@@ -71,5 +71,6 @@
         </div>
     </div>
 </div>
+<jsp:include page="parts/footer_location_and_conversation.jsp"/>
 </body>
 </html>

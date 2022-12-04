@@ -60,6 +60,11 @@ public class FightServlet extends HttpServlet {
         if(kick != null) {
             personageReport = fightingService.heroKickPersonage(hero, personage, attack);
             heroReport = fightingService.personageKickHero(hero, personage, block);
+            if (hero.getCurrentHealth() == 0) {
+                RequestDispatcher requestDispatcher = getServletContext()
+                        .getRequestDispatcher("/WEB-INF/game_view/defeated.jsp");
+                requestDispatcher.forward(req, resp);
+            }
         }
 
         if(thing != null) {
