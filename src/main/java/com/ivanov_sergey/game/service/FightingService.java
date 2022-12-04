@@ -5,6 +5,6 @@ import com.ivanov_sergey.game.entity.Personage;
 
 public interface FightingService {
 
-    public void personageKickHero(Hero hero, Personage personage, String block);
-    public void heroKickPersonage(Hero hero, Personage personage, String attack);
+    public String personageKickHero(Hero hero, Personage personage, String block);
+    public String heroKickPersonage(Hero hero, Personage personage, String attack);
 }

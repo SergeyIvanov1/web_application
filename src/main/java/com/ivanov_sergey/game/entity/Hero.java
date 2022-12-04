@@ -3,6 +3,8 @@ package com.ivanov_sergey.game.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -45,13 +47,27 @@ public class Hero {
     @JoinColumn(name = "inventory_id")
     private Inventory inventory;
 
+    //    @OneToMany(cascade = CascadeType.ALL)
+//    @LazyCollection(LazyCollectionOption.FALSE)
+//    @JoinColumn(name = "hero_id")
+//    List<Armor> usingArmors;
+    @Transient
+    List<Armor> usingArmors = new ArrayList<>();
+    //
+//    @OneToMany(cascade = CascadeType.ALL)
+//    @LazyCollection(LazyCollectionOption.FALSE)
+//    @JoinColumn(name = "hero_id")
+//    List<Weapon> usingWeapons;
+    @Transient
+    List<Weapon> usingWeapons = new ArrayList<>();
+
     public Hero(String name) {
         this.name = name;
     }
 
-    public void initValuesOfFields(){
-        this.maxHealth = 300;
-        this.currentHealth = 300;
+    public void initValuesOfFields() {
+        this.maxHealth = 150;
+        this.currentHealth = 150;
         this.strength = 20;
         this.dexterity = 50;
     }

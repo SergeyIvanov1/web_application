@@ -54,18 +54,21 @@ public class FightServlet extends HttpServlet {
         Personage personage = service.getPersonage(personageName, currentLocal);
         Location location = service.getLocation(currentLocal);
 
+        String heroReport = "";
+        String personageReport = "";
+
         if(kick != null) {
-            fightingService.heroKickPersonage(hero, personage, attack);
-            fightingService.personageKickHero(hero, personage, block);
+            personageReport = fightingService.heroKickPersonage(hero, personage, attack);
+            heroReport = fightingService.personageKickHero(hero, personage, block);
         }
 
         if(thing != null) {
-            thingsService.useThing(thing, location, hero);
-
-            System.out.println("thing = " + thing);
+            heroReport = thingsService.useThing(thing, location, hero);
         }
 
         int heroCurrentHealth = hero.getCurrentHealth();
+        req.setAttribute("heroReport", heroReport);
+        req.setAttribute("personageReport", personageReport);
         req.setAttribute("heroName", hero.getName());
         req.setAttribute("heroHealth", hero.getMaxHealth());
         req.setAttribute("heroCurrentHealth", heroCurrentHealth);
@@ -83,6 +86,8 @@ public class FightServlet extends HttpServlet {
         req.setAttribute("personageCurrentPercentOfHealth", personageCurrentHealth * 100 / personage.getMaxHealth());
         req.setAttribute("personageStrength", personage.getStrength());
         req.setAttribute("personageDexterity", personage.getDexterity());
+        req.setAttribute("usingArmors", hero.getUsingArmors());
+        req.setAttribute("usingWeapons", hero.getUsingWeapons());
         session.setAttribute("lastLocation", lastLocation);
 
         RequestDispatcher requestDispatcher = getServletContext()

@@ -78,12 +78,12 @@
                             <c:set var="armors_is_present" scope="page" value="${!heroArmors.isEmpty()}"/>
                             <c:if test="${armors_is_present}">
                                 <c:forEach var="armor" items="${heroArmors}">
-                                    <form action="${pageContext.request.contextPath}/things" method="post">
+                                    <form action="${pageContext.request.contextPath}/fight" method="post">
                                         <input type="hidden" name="nextLocationName"
                                                value="${lastLocation}">
-                                        <input type="hidden" name="useArmor" value="${armor.name}">
+                                        <input type="hidden" name="useThing" value="${armor.name}">
                                         <input type="hidden" name="personageName" value="${personageName}">
-                                        <button class="btn btn-default btn-sm my_svg box" title="${armor.name}"
+                                        <button class="btn btn-default btn-sm my_svg box" title="${armor.name} +${armor.value} dexterity"
                                                 type="submit"
                                                 value="Submit">
                                             <img src="${pageContext.request.contextPath}/images/svg/${armor.name}.svg"
@@ -105,7 +105,7 @@
                                         <input type="hidden" name="useThing" value="${potion.name}">
                                         <input type="hidden" name="personageName" value="${personageName}">
 
-                                        <button class="btn btn-default btn-sm my_svg box" title="${potion.name}"
+                                        <button class="btn btn-default btn-sm my_svg box" title="${potion.name} +${potion.value} health"
                                                 type="submit"
                                                 value="Submit">
                                             <img src="${pageContext.request.contextPath}/images/svg/${potion.name}.svg"
@@ -121,10 +121,10 @@
                             <c:set var="helpers_is_present" scope="page" value="${!heroHelpers.isEmpty()}"/>
                             <c:if test="${helpers_is_present}">
                                 <c:forEach var="helper" items="${heroHelpers}">
-                                    <form action="${pageContext.request.contextPath}/things" method="post">
+                                    <form action="${pageContext.request.contextPath}/fight" method="post">
                                         <input type="hidden" name="nextLocationName"
                                                value="${lastLocation}">
-                                        <input type="hidden" name="useHelper" value="${helper.name}">
+                                        <input type="hidden" name="useThing" value="${helper.name}">
                                         <input type="hidden" name="personageName" value="${personageName}">
                                         <button class="btn btn-default btn-sm my_svg box" title="${helper.name}"
                                                 type="submit"
@@ -143,12 +143,13 @@
                             <c:set var="weapons_is_present" scope="page" value="${!heroWeapons.isEmpty()}"/>
                             <c:if test="${weapons_is_present}">
                                 <c:forEach var="weapon" items="${heroWeapons}">
-                                    <form action="${pageContext.request.contextPath}/things" method="post">
+                                    <form action="${pageContext.request.contextPath}/fight" method="post">
                                         <input type="hidden" name="nextLocationName"
                                                value="${lastLocation}">
-                                        <input type="hidden" name="useWeapon" value="${weapon.name}">
+                                        <input type="hidden" name="useThing" value="${weapon.name}">
                                         <input type="hidden" name="personageName" value="${personageName}">
-                                        <button class="btn btn-default btn-sm my_svg box" title="${weapon.name}"
+
+                                        <button class="btn btn-default btn-sm my_svg box" title="${weapon.name} +${weapon.value} strength"
                                                 type="submit"
                                                 value="Submit">
                                             <img src="${pageContext.request.contextPath}/images/svg/${weapon.name}.svg"
