@@ -17,15 +17,16 @@ CREATE TABLE my_db.weapons
 (
     id   int NOT NULL AUTO_INCREMENT,
     name varchar(20),
+    value int,
     location_id int,
     inventory_id int,
     PRIMARY KEY (id)
 );
 
-INSERT INTO my_db.weapons (name, location_id)
-VALUES ('stick', 1),
-       ('stun-gun', 2),
-       ('wrench', 6);
+INSERT INTO my_db.weapons (name, value, location_id)
+VALUES ('stick', 5, 1),
+       ('stun-gun', 10, 2),
+       ('wrench', 20,6);
 
 -- ________________________
 
@@ -33,15 +34,16 @@ CREATE TABLE my_db.potions
 (
     id   int NOT NULL AUTO_INCREMENT,
     name varchar(20),
+    value int,
     location_id int,
     inventory_id int,
     PRIMARY KEY (id)
 );
 
-INSERT INTO my_db.potions (name, location_id)
-VALUES ('coffe', 1),
-       ('koktail', 2),
-       ('water', 4);
+INSERT INTO my_db.potions (name, value, location_id)
+VALUES ('coffee', 20, 1),
+       ('koktail', 40, 2),
+       ('water', 10, 4);
 
 -- ________________________
 
@@ -49,14 +51,15 @@ CREATE TABLE my_db.armors
 (
     id   int NOT NULL AUTO_INCREMENT,
     name varchar(20),
+    value int,
     location_id int,
     inventory_id int,
     PRIMARY KEY (id)
 );
 
-INSERT INTO my_db.armors (name, location_id)
-VALUES ('shield', 2),
-       ('magic-hauberk', 4);
+INSERT INTO my_db.armors (name, value, location_id)
+VALUES ('shield', 20, 2),
+       ('magic-hauberk', 40, 4);
 
 -- ________________________
 
@@ -129,7 +132,7 @@ CREATE TABLE my_db.personages
 INSERT INTO my_db.personages (name, max_health, current_health, strength, dexterity, location_id)
 VALUES ('Guarder', 100, 100, 50, 70, 1),
        ('Forester', 50, 50, 40, 40, 2),
-       ('Escaped-prisoner', 40, 40, 20, 50, 3),
+       ('Prisoner', 40, 40, 20, 50, 3),
        ('Gnome', 80, 80, 10, 20, 4),
        ('Tramp', 80, 80, 30, 30, 5),
        ('Hermit', 80, 80, 30, 30, 6),
@@ -376,8 +379,6 @@ VALUES
     (3, 6);
 
 -- ________________________
-
-
 
 
 create user 'bestuser'@'%' identified by 'bestuser';

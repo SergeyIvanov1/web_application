@@ -57,6 +57,11 @@
                     <br><br>
                     <h6>${issue.getText()}</h6>
                     <c:forEach var="reply" items="${issue.getReplies()}">
+<%--                        <c:if test="${reply.getNextQuestion() == 'fight'}">--%>
+<%--                            <p><c:param name="lastLocation" value="${lastLocation}"/></p>--%>
+<%--                            <p><c:param name="personageName" value="${personageName}"/></p>--%>
+<%--                            <c:redirect url="fight"/>--%>
+<%--                        </c:if>--%>
                         <div>
                             <form action="${pageContext.request.contextPath}/conversation" method="POST">
                                 <input type="hidden" name="lastLocation" value="${lastLocation}">

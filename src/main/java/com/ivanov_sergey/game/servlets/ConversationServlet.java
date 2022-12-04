@@ -63,11 +63,6 @@ public class ConversationServlet extends HttpServlet {
         req.setAttribute("lastLocation", lastLocation);
 
         RequestDispatcher requestDispatcher;
-        if ("fight".equals(nextQuestion)){
-            requestDispatcher = getServletContext()
-                    .getRequestDispatcher("/WEB-INF/game_view/fight.jsp");
-            requestDispatcher.forward(req, resp);
-        }
         req.setAttribute("issue", service.getIssue(personageName, nextQuestion, lastLocation));
 
         requestDispatcher = getServletContext()
