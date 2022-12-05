@@ -47,17 +47,8 @@ public class Hero {
     @JoinColumn(name = "inventory_id")
     private Inventory inventory;
 
-    //    @OneToMany(cascade = CascadeType.ALL)
-//    @LazyCollection(LazyCollectionOption.FALSE)
-//    @JoinColumn(name = "hero_id")
-//    List<Armor> usingArmors;
     @Transient
     List<Armor> usingArmors = new ArrayList<>();
-    //
-//    @OneToMany(cascade = CascadeType.ALL)
-//    @LazyCollection(LazyCollectionOption.FALSE)
-//    @JoinColumn(name = "hero_id")
-//    List<Weapon> usingWeapons;
     @Transient
     List<Weapon> usingWeapons = new ArrayList<>();
 

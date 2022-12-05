@@ -15,13 +15,14 @@ public class AppContextListener implements ServletContextListener {
     ModuleService moduleService = new ModuleServiceImpl();
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
-        ServletContext servletContext = servletContextEvent.getServletContext();
+            ServletContext servletContext = servletContextEvent.getServletContext();
         Storage repository = moduleService.fillRepositoryDBData(INITIAL_ID);
         LocationService locationService = new LocationServiceImpl(repository);
         FightingService fightingService = new FightingServiceImpl(repository);
 
         servletContext.setAttribute("locationService", locationService);
         servletContext.setAttribute("fightingService", fightingService);
+        servletContext.setAttribute("repository", repository);
 
 //        try {
 //            URL resource = servletContext.getResource("/config.json");
@@ -39,7 +40,5 @@ public class AppContextListener implements ServletContextListener {
     }
 
     @Override
-    public void contextDestroyed(ServletContextEvent servletContextEvent) {
-
-    }
+    public void contextDestroyed(ServletContextEvent servletContextEvent) {}
 }

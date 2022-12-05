@@ -12,12 +12,12 @@ Path to war file: web_application\target\ROOT.war
 
 Launch application: 
 
-http://myapp-s.com/8080
+http://myapp-s.com:8080
 
 Also you can use next commands:
 - clone repository https://github.com/SergeyIvanov1/web_application.git
 - Launch with Docker - (in working directory of terminal) use:
-  docker-compose up -d.
+  docker-compose up -d
 
 
 ## Crypto analyzer

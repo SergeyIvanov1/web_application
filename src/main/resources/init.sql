@@ -1,18 +1,4 @@
 CREATE DATABASE my_db;
-USE my_db;
-drop table my_db.weapons;
-drop table my_db.potions;
-
-drop table my_db.armors;
-drop table my_db.personages;
-
-drop table my_db.heroes;
-drop table my_db.locations;
-drop table my_db.inventories;
-drop table my_db.helpers;
-drop table my_db.repositoryes;
-drop table my_db.quests;
-
 CREATE TABLE my_db.weapons
 (
     id   int NOT NULL AUTO_INCREMENT,
@@ -177,9 +163,6 @@ CREATE TABLE my_db.quests
     PRIMARY KEY (id)
 );
 
-drop table my_db.issues;
-drop table my_db.replies;
-
 CREATE TABLE my_db.issues
 (
     id   int NOT NULL AUTO_INCREMENT,
@@ -238,66 +221,6 @@ VALUES ('Hi. I have a very important letter. I know what I can to find here a hu
 
 -- ________________________
 
-USE my_db;
-drop table my_db.authorities;
-drop table my_db.employees;
-drop table my_db.users;
-
-drop table my_db.join_table;
-drop table my_db.questions;
-drop table my_db.answers;
-
-drop table my_db.visitors;
-
-CREATE TABLE users
-(
-    username varchar(15),
-    password varchar(100),
-    enabled  tinyint(1),
-    PRIMARY KEY (username)
-);
-
-INSERT INTO my_db.users (username, password, enabled)
-VALUES ('zaur', '{noop}zaur', 1),
-       ('elena', '{noop}elena', 1),
-       ('ivan', '{noop}ivan', 1);
-
--- ________________________
-
-CREATE TABLE employees
-(
-    id         int NOT NULL AUTO_INCREMENT,
-    name       varchar(15),
-    surname    varchar(25),
-    department varchar(20),
-    salary     int,
-    PRIMARY KEY (id)
-);
-
-INSERT INTO my_db.employees (name, surname, department, salary)
-VALUES ('Oleg', 'Ivanov', 'Sales', 700),
-       ('Sergey', 'Ivanov', 'IT', 500),
-       ('Nikolay', 'Vozov', 'IT', 600),
-       ('Anton', 'Sizov', 'IT', 400),
-       ('Nina', 'Sidorova', 'HR', 850);
-
--- ________________________
-
-CREATE TABLE authorities
-(
-    username  varchar(15),
-    authority varchar(25),
-    FOREIGN KEY (username) references users (username)
-);
-
-INSERT INTO my_db.authorities (username, authority)
-VALUES ('zaur', 'ROLE_EMPLOYEE'),
-       ('elena', 'ROLE_HR'),
-       ('ivan', 'ROLE_HR'),
-       ('ivan', 'ROLE_MANAGER');
-
--- ________________________
-
 CREATE TABLE my_db.visitors
 (
     id            int NOT NULL AUTO_INCREMENT,
@@ -314,15 +237,6 @@ CREATE TABLE my_db.questions
     text varchar(100),
     PRIMARY KEY (id)
 );
-
--- INSERT INTO my_db.questions (text)
--- VALUES ('Ты потерял память. Прнять вызов?'),
---        ('Ты принял вызов. Поднимешься на мостик к капитану?'),
---        ('Ты отклонил вызов. Поражение'),
---        ('Ты поднялся на мостик. Ты кто?'),
---        ('Ты не пошел на переговоры. Поражение?'),
---        ('Тебя вернули домой. Победа'),
---        ('Твою ложь разоблачили. Поражение');
 
 
 INSERT INTO my_db.questions (text)
@@ -343,14 +257,6 @@ CREATE TABLE my_db.answers
     next_question varchar(100),
     PRIMARY KEY (id)
 );
-
--- INSERT INTO my_db.answers (text,  next_question)
--- VALUES ('Отклонить вызов', 'Ты отклонил вызов. Поражение'),
---        ('Принять вызов', 'Ты принял вызов. Поднимешься на мостик к капитану?'),
---        ('Подняться на мостик', 'Ты поднялся на мостик. Ты кто?'),
---        ('Отказаться подниматься на мостик', 'Ты не пошел на переговоры. Поражение?'),
---        ('Рассказать правду о себе', 'Тебя вернули домой. Победа'),
---        ('Солгать о себе', 'Твою ложь разоблачили. Поражение');
 
 INSERT INTO my_db.answers (text,  next_question)
 VALUES ('Reject a call', 'You declined the call. Defeat'),
