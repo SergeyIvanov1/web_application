@@ -4,7 +4,7 @@ import com.ivanov_sergey.game.dao.ModuleDAOImpl;
 import com.ivanov_sergey.game.entity.Hero;
 import com.ivanov_sergey.game.entity.Inventory;
 import com.ivanov_sergey.game.entity.Location;
-import com.ivanov_sergey.game.repository.Repository;
+import com.ivanov_sergey.game.entity.Repository;
 import com.ivanov_sergey.game.service.exceptions.LocationInvalidParameters;
 
 import java.util.List;

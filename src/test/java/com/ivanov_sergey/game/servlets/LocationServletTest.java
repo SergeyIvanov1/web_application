@@ -1,6 +1,6 @@
 package com.ivanov_sergey.game.servlets;
 
-import com.ivanov_sergey.game.repository.Repository;
+import com.ivanov_sergey.game.entity.Repository;
 import com.ivanov_sergey.game.service.ModuleService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

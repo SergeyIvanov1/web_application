@@ -1,7 +1,7 @@
 package com.ivanov_sergey.game.service;
 
 import com.ivanov_sergey.game.entity.*;
-import com.ivanov_sergey.game.repository.Storage;
+import com.ivanov_sergey.game.entity.Storage;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.ivanov_sergey.game.repository;
+package com.ivanov_sergey.game.entity;
 
 import com.ivanov_sergey.game.entity.*;
 

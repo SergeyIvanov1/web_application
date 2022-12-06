@@ -2,7 +2,7 @@ package com.ivanov_sergey.game.service;
 
 import com.ivanov_sergey.game.entity.Hero;
 import com.ivanov_sergey.game.entity.Location;
-import com.ivanov_sergey.game.repository.Repository;
+import com.ivanov_sergey.game.entity.Repository;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,6 +1,6 @@
 package com.ivanov_sergey.game.servlets;
 
-import com.ivanov_sergey.game.repository.Storage;
+import com.ivanov_sergey.game.entity.Storage;
 import com.ivanov_sergey.game.service.*;
 
 import javax.servlet.ServletContext;

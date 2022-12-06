@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 import com.ivanov_sergey.game.entity.Personage;
-import com.ivanov_sergey.game.repository.Storage;
+import com.ivanov_sergey.game.entity.Storage;
 import com.ivanov_sergey.game.service.exceptions.LocationInvalidParameters;
 
 public class FightingServiceImpl implements FightingService {

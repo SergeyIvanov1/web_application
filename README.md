@@ -12,7 +12,7 @@ Path to war file: web_application\target\ROOT.war
 
 Launch application: 
 
-http://myapp-s.com:8080
+http://myapp-s.com
 
 Also you can use next commands:
 - clone repository https://github.com/SergeyIvanov1/web_application.git

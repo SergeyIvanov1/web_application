@@ -42,7 +42,7 @@
                     Docker-compose, HTML, CSS, Servlet, JSTL, CI.</p>
 
                 <h4>Launch application:</h4>
-                <p><a href="http://myapp-s.com:8080">http://myapp-s.com:8080</a></p>
+                <p><a href="http://myapp-s.com:8080">http://myapp-s.com</a></p>
 
                 <p>Github: <a href="https://github.com/SergeyIvanov1/web_application/tree/dev">https://github.com/SergeyIvanov1/web_application/tree/dev</a></p>
                 <p>Path to war file: web_application\target\ROOT.war</p>

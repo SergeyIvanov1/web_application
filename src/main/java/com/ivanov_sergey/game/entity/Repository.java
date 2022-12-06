@@ -1,6 +1,5 @@
-package com.ivanov_sergey.game.repository;
+package com.ivanov_sergey.game.entity;
 
-import com.ivanov_sergey.game.entity.Location;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

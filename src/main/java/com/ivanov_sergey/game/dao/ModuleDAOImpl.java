@@ -1,7 +1,7 @@
 package com.ivanov_sergey.game.dao;
 
 import com.ivanov_sergey.game.entity.*;
-import com.ivanov_sergey.game.repository.Repository;
+import com.ivanov_sergey.game.entity.Repository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
