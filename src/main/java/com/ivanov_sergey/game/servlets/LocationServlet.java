@@ -26,7 +26,7 @@ import java.util.List;
 public class LocationServlet extends HttpServlet {
     static final Logger LOGGER = LogManager.getRootLogger();
     private static final String STARTING_ROOM = "Gates";
-    ModuleService moduleService = new ModuleServiceImpl();
+    ModuleService moduleService;
     LocationServiceImpl service;
 
     @Override
@@ -34,6 +34,7 @@ public class LocationServlet extends HttpServlet {
         super.init(config);
         ServletContext servletContext = config.getServletContext();
         service = (LocationServiceImpl) servletContext.getAttribute("locationService");
+        moduleService = (ModuleServiceImpl) servletContext.getAttribute("moduleService");
     }
 
     @Override

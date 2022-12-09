@@ -1,6 +1,5 @@
 package com.ivanov_sergey.game.servlets;
 
-import org.hibernate.Session;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;

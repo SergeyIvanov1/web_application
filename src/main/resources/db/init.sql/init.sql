@@ -290,7 +290,6 @@ VALUES
 
 -- ________________________
 
-
 create user 'bestuser'@'%' identified by 'bestuser';
 grant all privileges on *.* to 'bestuser'@'%' with grant option;
 flush privileges;

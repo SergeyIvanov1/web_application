@@ -56,12 +56,7 @@ public class ThingsServlet extends HttpServlet {
         HttpSession session = req.getSession();
         String currentLocal = (String) session.getAttribute("currentLocal");
         String nextLocationName = req.getParameter("nextLocationName");
-//        String personageName = req.getParameter("personageName");
         String transferredThing = req.getParameter("transferredThing");
-//        String useArmor = req.getParameter("useArmor");
-//        String usePotion = req.getParameter("usePotion");
-//        String useHelper = req.getParameter("useHelper");
-//        String useWeapon = req.getParameter("useWeapon");
 
         LOGGER.debug("ThingsServlet, doPost is started with nextLocationName = " + nextLocationName);
 

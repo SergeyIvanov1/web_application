@@ -62,8 +62,6 @@
                                     <img src="${pageContext.request.contextPath}/images/cheater2.jpeg" class="img-fluid"
                                          alt="Tramp">
                                 </c:when>
-                                <%--                        <c:otherwise>--%>
-                                <%--                        </c:otherwise>--%>
                             </c:choose>
                             <br><br>
                             <form action="${pageContext.request.contextPath}/conversation" method="GET">
@@ -119,14 +117,11 @@
                             <img src="${pageContext.request.contextPath}/images/village.jpeg" class="img-fluid"
                                  alt="Tramp">
                         </c:when>
-                        <%--                        <c:otherwise>--%>
-                        <%--                        </c:otherwise>--%>
                     </c:choose>
                     <br><br>
                     <h6>Available locations:</h6>
                     <c:forEach var="location" items="${locations}">
                         <form action="${pageContext.request.contextPath}/location" method="POST">
-                                <%--<input type="hidden" name="endGame" value="gameEnded">--%>
                             <input type="hidden" name="nextLocationName" value="${location.name}">
                             <input class="nice_button" type="submit" value="${location.name}"/>
                         </form>

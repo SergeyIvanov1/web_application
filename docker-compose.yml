@@ -28,5 +28,3 @@ services:
       MYSQL_PASSWORD: bestuser
 volumes:
   mysql_data:
-
-

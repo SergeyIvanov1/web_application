@@ -12,25 +12,29 @@ import java.util.Optional;
 
 public class ModuleDAOImpl implements ModuleDAO {
 
-    private SessionFactory sessionFactory;
+    private final SessionFactory sessionFactory;
     Session session;
 
-    {
-        sessionFactory = new Configuration()
-                .configure("hibernate.cfg.xml")
-                .addAnnotatedClass(Location.class)
-                .addAnnotatedClass(Hero.class)
-                .addAnnotatedClass(Personage.class)
-                .addAnnotatedClass(Armor.class)
-                .addAnnotatedClass(Potion.class)
-                .addAnnotatedClass(Weapon.class)
-                .addAnnotatedClass(Repository.class)
-                .addAnnotatedClass(Helper.class)
-                .addAnnotatedClass(Inventory.class)
-                .addAnnotatedClass(Issue.class)
-                .addAnnotatedClass(Reply.class)
-                .addAnnotatedClass(Quest.class)
-                .buildSessionFactory();
+//    {
+//        sessionFactory = new Configuration()
+//                .configure("hibernate.cfg.xml")
+//                .addAnnotatedClass(Location.class)
+//                .addAnnotatedClass(Hero.class)
+//                .addAnnotatedClass(Personage.class)
+//                .addAnnotatedClass(Armor.class)
+//                .addAnnotatedClass(Potion.class)
+//                .addAnnotatedClass(Weapon.class)
+//                .addAnnotatedClass(Repository.class)
+//                .addAnnotatedClass(Helper.class)
+//                .addAnnotatedClass(Inventory.class)
+//                .addAnnotatedClass(Issue.class)
+//                .addAnnotatedClass(Reply.class)
+//                .addAnnotatedClass(Quest.class)
+//                .buildSessionFactory();
+//    }
+
+    public ModuleDAOImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 
     @Override
@@ -105,16 +109,17 @@ public class ModuleDAOImpl implements ModuleDAO {
 
     @Override
     public Integer increaseCountOfGame(Hero hero) {
-        int countOfGames = hero.getCountOfEndedGames();
-        System.out.println("countOfGames1 = " + countOfGames);
-        countOfGames++;
-        int id = hero.getId();
-        session = sessionFactory.getCurrentSession();
-        session.beginTransaction();
-        session.createQuery("update Visitor set countOfGames = " + countOfGames + " where id = " + id
-            ).executeUpdate();
-        System.out.println("countOfGames2 = " + countOfGames);
-        session.getTransaction().commit();
-        return countOfGames;
+//        int countOfGames = hero.getCountOfEndedGames();
+//        System.out.println("countOfGames1 = " + countOfGames);
+//        countOfGames++;
+//        int id = hero.getId();
+//        session = sessionFactory.getCurrentSession();
+//        session.beginTransaction();
+//        session.createQuery("update Visitor set countOfGames = " + countOfGames + " where id = " + id
+//            ).executeUpdate();
+//        System.out.println("countOfGames2 = " + countOfGames);
+//        session.getTransaction().commit();
+//        return countOfGames;
+        return 0;
     }
 }

@@ -13,7 +13,6 @@
 <br>
 <br>
 <form action="${pageContext.request.contextPath}/start_game" method="get">
-<%--    <input type="hidden" name="transferredThing" value="${armor.name}">--%>
     <button class="btn btn-default btn-sm my_svg box" title="${armor.name}"
             type="submit"
             value="Submit">

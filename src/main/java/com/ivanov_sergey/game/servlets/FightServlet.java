@@ -23,7 +23,7 @@ import java.io.IOException;
 public class FightServlet extends HttpServlet {
     static final Logger LOGGER = LogManager.getRootLogger();
 
-    ModuleService moduleService = new ModuleServiceImpl();
+    ModuleService moduleService;
     FightingService fightingService = new FightingServiceImpl();
     ThingsService thingsService = new ThingsServiceImpl();
 
@@ -34,6 +34,7 @@ public class FightServlet extends HttpServlet {
         super.init(config);
         ServletContext servletContext = config.getServletContext();
         service = (LocationServiceImpl) servletContext.getAttribute("locationService");
+        moduleService = (ModuleServiceImpl) servletContext.getAttribute("moduleService");
     }
 
     @Override

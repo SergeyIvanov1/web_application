@@ -27,10 +27,4 @@ public class Armor {
 
     @Column(name = "location_id")
     private int locationId;
-//
-//    @Column(name = "inventory_id")
-//    private int inventoryId;
-//
-//    @Column(name = "hero_id")
-//    private int heroId;
 }

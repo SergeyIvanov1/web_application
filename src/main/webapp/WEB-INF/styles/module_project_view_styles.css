@@ -112,11 +112,6 @@ div.parent{
         border: grey thin solid;
 }
 
-/*table.inventory thead th {*/
-/*    color: burlywood;*/
-/*    background-color: grey;*/
-/*}*/
-
 .container2{
 
     display: flex;
@@ -131,35 +126,27 @@ div.parent{
     /*width: 98px;*/
     width: 25%;
     border: 1px solid black;
-    /*background-color: linen;*/
     height: 70px;
     border-right: 0;
 }
 
 #con2{
-    /*width: 98px;*/
     width: 25%;
     border: 1px solid black;
-    /*background-color: linen;*/
     height: 70px;
 }
 #con3{
-    /*width: 98px;*/
     width: 25%;
     border: 1px solid black;
     border-left: 0;
-    /*background-color: linen;*/
     height: 70px;
 }
 #con4{
-    /*width: 98px;*/
     width: 25%;
     border: 1px solid black;
     border-left: 0;
-    /*background-color: linen;*/
     height: 70px;
 }
-
 
 div.container img.box {
     width: 150px;
@@ -246,4 +233,3 @@ div.used-things {
     align-items: center;
     justify-content: center;
 }
-

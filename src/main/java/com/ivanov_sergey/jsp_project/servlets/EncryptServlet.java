@@ -1,6 +1,5 @@
 package com.ivanov_sergey.jsp_project.servlets;
 
-import com.ivanov_sergey.cryptoanalyser.text_processing.Coder;
 import com.ivanov_sergey.jsp_project.service.CryptoService;
 import com.ivanov_sergey.jsp_project.service.CryptoServiceImpl;
 
@@ -12,8 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-//import com.oreilly.servlet.MultipartRequest;
-//https://progler.ru/blog/servlet-zagruzka-fayla
 
 @WebServlet("/encrypt")
 @MultipartConfig

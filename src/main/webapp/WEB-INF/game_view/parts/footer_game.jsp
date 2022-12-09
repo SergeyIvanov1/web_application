@@ -10,8 +10,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
             <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
-<%--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"--%>
-<%--          integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">--%>
 </head>
 
 <body>
@@ -19,7 +17,6 @@
     <div class="row border">
 
         <div class="col">
-            <!-- Scrollable modal -->
             <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
                 Global statistic
             </button>
@@ -73,8 +70,6 @@
                     <div class="container_inventory">
                         <div id="con-inv1">
                             <H6>Armor</H6>
-<%--                            <c:set var="armors" scope="page" value="${hero.getArmors()}"/>--%>
-<%--                            <c:set var="armors_is_present" scope="page" value="${!hero.getArmors().isEmpty()}"/>--%>
                             <c:set var="armors_is_present" scope="page" value="${!heroArmors.isEmpty()}"/>
                             <c:if test="${armors_is_present}">
                                 <c:forEach var="armor" items="${heroArmors}">
@@ -136,7 +131,6 @@
                                     </form>
                                 </c:forEach>
                             </c:if>
-<%--                            </form>--%>
                         </div>
                         <div id="con-inv4">
                             <h6>Weapon</h6>

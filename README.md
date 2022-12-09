@@ -6,7 +6,7 @@ This project implements two parts:
 
 Application is using next technologies:
 Java 17, Lombok, Tomcat 9, Maven, Log4j, Junit, Mockito, MySQL, Hibernate, 
-Docker-compose, HTML, CSS, Servlet, JSTL, Spring MVC, CI.
+Docker-compose, HTML, CSS, Servlet, JSTL, CI.
 
 Path to war file: web_application\target\ROOT.war
 

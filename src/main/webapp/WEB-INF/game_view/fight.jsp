@@ -53,21 +53,12 @@
                         <h6>Used armor:</h6>
                         <div class="fight-tools">
                             <c:forEach var="armor" items="${usingArmors}">
-                                <%--                            <form action="${pageContext.request.contextPath}/things" method="post">--%>
-                                <%--                                <input type="hidden" name="nextLocationName"--%>
-                                <%--                                       value="${currentLocation.getName()}">--%>
-                                <%--                                <input type="hidden" name="usingArmor2" value="${armor.name}">--%>
-                                <%--                                <button class="btn btn-default btn-sm my_svg box" title="${armor.name}"--%>
-                                <%--                                        type="submit"--%>
-                                <%--                                        value="Submit">--%>
                                 <div class="used-things"><img
                                         src="${pageContext.request.contextPath}/images/svg/${armor.name}.svg"
                                         class="box1"
                                         alt="Box"
                                         title="${armor.name}">
                                 </div>
-                                <%--                                </button>--%>
-                                <%--                            </form>--%>
                             </c:forEach>
                         </div>
                     </div>
@@ -84,20 +75,11 @@
                         <h6>Used weapon:</h6>
                         <div class="fight-tools">
                             <c:forEach var="weapon" items="${usingWeapons}">
-                                <%--                                <form action="${pageContext.request.contextPath}/things" method="post">--%>
-                                <%--                                    <input type="hidden" name="nextLocationName"--%>
-                                <%--                                           value="${currentLocation.getName()}">--%>
-                                <%--                                    <input type="hidden" name="usingArmor2" value="${weapon.name}">--%>
-                                <%--                                    <button class="btn btn-default btn-sm my_svg box" title="${weapon.name}"--%>
-                                <%--                                            type="submit"--%>
-                                <%--                                            value="Submit">--%>
                                 <div class="used-things"><img
                                         src="${pageContext.request.contextPath}/images/svg/${weapon.name}.svg"
                                         class="box1"
                                         alt="Box"
                                 title="${weapon.name}"></div>
-                                <%--                                    </button>--%>
-                                <%--                                </form>--%>
                             </c:forEach>
                         </div>
                     </div>
@@ -147,8 +129,6 @@
                                 <img src="${pageContext.request.contextPath}/images/cheater2.jpeg" class="img-fluid"
                                      alt="Tramp">
                             </c:when>
-                            <%--                        <c:otherwise>--%>
-                            <%--                        </c:otherwise>--%>
                         </c:choose>
                     </div>
                     <div class="col">

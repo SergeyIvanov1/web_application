@@ -6,12 +6,20 @@ import com.ivanov_sergey.game.entity.Inventory;
 import com.ivanov_sergey.game.entity.Location;
 import com.ivanov_sergey.game.entity.Repository;
 import com.ivanov_sergey.game.service.exceptions.LocationInvalidParameters;
+import org.hibernate.SessionFactory;
 
 import java.util.List;
 import java.util.Optional;
 
 public class ModuleServiceImpl implements ModuleService {
-    ModuleDAOImpl moduleDAO = new ModuleDAOImpl();
+    SessionFactory sessionFactory;
+    ModuleDAOImpl moduleDAO;
+
+    public ModuleServiceImpl(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+        moduleDAO = new ModuleDAOImpl(sessionFactory);
+    }
+
     @Override
     public Location getLocation(int id) {
         return moduleDAO.getLocation(id);
@@ -59,5 +67,4 @@ public class ModuleServiceImpl implements ModuleService {
     public List<Hero> getAllHero() {
         return moduleDAO.getAllHero();
     }
-
 }

@@ -27,8 +27,6 @@
                                     Actions
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-dark">
-<%--                                    <li><a class="dropdown-item" href="#">Action</a></li>--%>
-<%--                                    <li><a class="dropdown-item" href="#">Another action</a></li>--%>
                                     <li><a class="dropdown-item" href="remove_attribute_of_session">Sign out</a></li>
                                 </ul>
                             </li>

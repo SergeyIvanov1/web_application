@@ -24,9 +24,6 @@
                 </li>
             </ul>
         </div>
-<%--        <div class="col">--%>
-
-<%--        </div>--%>
         <div class="col">
             
         </div>
@@ -57,8 +54,6 @@
                 <div>Common of count killed personages during all games: ${hero.getCountOfKilledPersonages()}</div>
             </div>
             <div class="modal-footer">
-                <%--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>--%>
-                <%--                <button type="button" class="btn btn-primary">Save changes</button>--%>
             </div>
         </div>
     </div>
@@ -75,8 +70,6 @@
                 <img src="${pageContext.request.contextPath}/images/Map.png" class="img-fluid" alt="Map">
             </div>
             <div class="modal-footer">
-                <%--                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Ok</button>--%>
-                <%--                <button type="button" class="btn btn-primary">Save changes</button>--%>
             </div>
         </div>
     </div>

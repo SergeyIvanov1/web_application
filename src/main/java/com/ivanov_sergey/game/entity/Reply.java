@@ -1,13 +1,11 @@
 package com.ivanov_sergey.game.entity;
 
-import com.ivanov_sergey.module_project.entity.Question;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Getter
 @Setter

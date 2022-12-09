@@ -1,6 +1,5 @@
 package com.ivanov_sergey.game.entity;
 
-import com.ivanov_sergey.module_project.entity.Answer;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

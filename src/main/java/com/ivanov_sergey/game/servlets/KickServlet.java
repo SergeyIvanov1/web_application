@@ -22,7 +22,7 @@ import java.io.IOException;
 public class KickServlet extends HttpServlet {
     static final Logger LOGGER = LogManager.getRootLogger();
 
-    ModuleService moduleService = new ModuleServiceImpl();
+    ModuleService moduleService;
     LocationServiceImpl service;
 
     @Override
@@ -30,6 +30,8 @@ public class KickServlet extends HttpServlet {
         super.init(config);
         ServletContext servletContext = config.getServletContext();
         service = (LocationServiceImpl) servletContext.getAttribute("locationService");
+        moduleService = (ModuleServiceImpl) servletContext.getAttribute("moduleService");
+
     }
 
     @Override
@@ -48,19 +50,9 @@ public class KickServlet extends HttpServlet {
         Hero hero = (Hero) session.getAttribute("hero");
         Personage personage = service.getPersonage(personageName, lastLocation);
 
-
-
-
         Inventory heroInventory = hero.getInventory();
         req.setAttribute("personageName", personageName);
         req.setAttribute("lastLocation", lastLocation);
         resp.sendRedirect(req.getContextPath() + "/fight");
-
-
-//        RequestDispatcher requestDispatcher = getServletContext()
-//                .getRequestDispatcher("/WEB-INF/game_view/fight.jsp");
-//        requestDispatcher.forward(req, resp);
     }
-
-
 }

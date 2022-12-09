@@ -1,9 +1,5 @@
 package com.ivanov_sergey.cryptoanalyser.text_processing;
 
-
-//import com.ivanovsergey.cryptoanalyser.exceptions.PathProcessingException;
-//import com.ivanovsergey.cryptoanalyser.exceptions.ReadWrightFileException;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Part;
@@ -294,61 +290,6 @@ public class TextProcessing {
         return null;
     }
 
-//    public static char getMostFrequentLetterOfText(String pathFrom) {
-//
-//        try (FileInputStream fileInputStream = new FileInputStream(pathFrom);
-//             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream))) {
-//
-//            HashMap<Character, Integer> mapa = new HashMap<>();
-//
-//            int value;
-//            while ((value = bufferedReader.read()) != -1) {
-//
-//                char wantedChar = Character.toLowerCase((char) value);
-//
-//                if (Character.isLetter(wantedChar)
-//                        && (TextProcessing.getIndex(wantedChar, TextProcessing.language) >= 0)) {
-//
-//                    if (mapa.containsKey(wantedChar)) {
-//                        mapa.put(wantedChar, mapa.get(wantedChar) + 1);
-//                    } else {
-//                        mapa.put(wantedChar, 1);
-//                    }
-//                }
-//            }
-//
-//            char maxRepetitions = 0;
-//            int max = 0;
-//
-//            Set<Map.Entry<Character, Integer>> entries = mapa.entrySet();
-//            for (Map.Entry<Character, Integer> pair : entries) {
-//                char character = pair.getKey();
-//                int amount = pair.getValue();
-//
-//                if (amount > max) {
-//
-//                    maxRepetitions = character;
-//                    max = amount;
-//                }
-//            }
-//            return maxRepetitions;
-//
-//        } catch (FileNotFoundException e) {
-//            String message = "File: \"" + pathFrom + "\" not found\n"
-//                    + e.getMessage();
-//            throw new PathProcessingException(message, e);
-//
-//        } catch (SecurityException e) {
-//            String message = "Invalid read access to the file: \"" + pathFrom
-//                    + "\"\nError details: " + e.getMessage();
-//            throw new PathProcessingException(message, e);
-//
-//        } catch (IOException e) {
-//            String message = "An Output error occurs with file " + pathFrom;
-//            throw new ReadWrightFileException(message, e);
-//        }
-//    }
-
     public static char getMostFrequentLetterOfText(HttpServletRequest req) throws ServletException, IOException {
 
         Part filePart = req.getPart("file");
@@ -388,15 +329,6 @@ public class TextProcessing {
                 }
             }
             return maxRepetitions;
-
-//        } catch (FileNotFoundException e) {
-//            throw new PathProcessingException("File: not found\n" + e.getMessage(), e);
-//
-//        } catch (SecurityException e) {
-//            throw new PathProcessingException("Invalid read access to the file: Error details: " + e.getMessage(), e);
-//
-//        } catch (IOException e) {
-//            throw new ReadWrightFileException("An Output error occurs with file", e);
         }
     }
 }

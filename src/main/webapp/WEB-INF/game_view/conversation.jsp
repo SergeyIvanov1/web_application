@@ -11,9 +11,6 @@
 </head>
 
 <body class="background">
-<%--<script src="${pageContext.request.contextPath}/js/bootstrap.js"--%>
-<%--        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"--%>
-<%--        crossorigin="anonymous"></script>--%>
 <script src="${pageContext.request.contextPath}/js/bootstrap.bundle.js"></script>
 <jsp:include page="parts/game_header.jsp"/>
 
@@ -57,11 +54,6 @@
                     <br><br>
                     <h6>${issue.getText()}</h6>
                     <c:forEach var="reply" items="${issue.getReplies()}">
-<%--                        <c:if test="${reply.getNextQuestion() == 'fight'}">--%>
-<%--                            <p><c:param name="lastLocation" value="${lastLocation}"/></p>--%>
-<%--                            <p><c:param name="personageName" value="${personageName}"/></p>--%>
-<%--                            <c:redirect url="fight"/>--%>
-<%--                        </c:if>--%>
                         <div>
                             <form action="${pageContext.request.contextPath}/conversation" method="POST">
                                 <input type="hidden" name="lastLocation" value="${lastLocation}">

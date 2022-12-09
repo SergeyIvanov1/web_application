@@ -1,6 +1,5 @@
 package com.ivanov_sergey.jsp_project.servlets;
 
-import com.ivanov_sergey.cryptoanalyser.text_processing.Decoder;
 import com.ivanov_sergey.jsp_project.service.CryptoService;
 import com.ivanov_sergey.jsp_project.service.CryptoServiceImpl;
 
