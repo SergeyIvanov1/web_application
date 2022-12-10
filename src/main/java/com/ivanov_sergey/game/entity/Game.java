@@ -13,13 +13,22 @@ import java.io.Serializable;
 @ToString
 @NoArgsConstructor
 @Entity
-@Table(name = "doors")
-public class Door implements Serializable {
+@Table(name = "games")
+public class Game implements Serializable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @Column(name = "text")
-    private String text;
+    @Column(name = "name")
+    private String name;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "hero_id")
+    Hero hero;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "repository_id")
+    Repository repository;
 }

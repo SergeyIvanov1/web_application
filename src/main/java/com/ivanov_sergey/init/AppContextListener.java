@@ -17,7 +17,6 @@ import javax.servlet.annotation.WebListener;
 @WebListener
 public class AppContextListener implements ServletContextListener {
     static final Logger LOGGER = LogManager.getRootLogger();
-
     public static final int INITIAL_ID = 1;
 
     ModuleService moduleService;
@@ -49,16 +48,11 @@ public class AppContextListener implements ServletContextListener {
         servletContextEvent.getServletContext().setAttribute("SessionFactory", sessionFactory);
         LOGGER.info("Hibernate SessionFactory Configured successfully");
 
-        moduleService = new ModuleServiceImpl(sessionFactory);
         ServletContext servletContext = servletContextEvent.getServletContext();
-        Storage repository = moduleService.fillRepositoryDBData(INITIAL_ID);
-        LocationService locationService = new LocationServiceImpl(repository);
-        FightingService fightingService = new FightingServiceImpl(repository);
-
+        moduleService = new ModuleServiceImpl(sessionFactory);
+        Storage mainRepo = moduleService.fillRepositoryDBData(INITIAL_ID);
         servletContext.setAttribute("moduleService", moduleService);
-        servletContext.setAttribute("locationService", locationService);
-        servletContext.setAttribute("fightingService", fightingService);
-        servletContext.setAttribute("repository", repository);
+        servletContext.setAttribute("mainRepo", mainRepo);
 
 //        try {
 //            URL resource = servletContext.getResource("/config.json");

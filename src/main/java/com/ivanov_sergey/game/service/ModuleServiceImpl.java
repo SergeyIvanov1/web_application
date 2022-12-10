@@ -1,13 +1,11 @@
 package com.ivanov_sergey.game.service;
 
 import com.ivanov_sergey.game.dao.ModuleDAOImpl;
-import com.ivanov_sergey.game.entity.Hero;
-import com.ivanov_sergey.game.entity.Inventory;
-import com.ivanov_sergey.game.entity.Location;
-import com.ivanov_sergey.game.entity.Repository;
+import com.ivanov_sergey.game.entity.*;
 import com.ivanov_sergey.game.service.exceptions.LocationInvalidParameters;
 import org.hibernate.SessionFactory;
 
+import java.io.*;
 import java.util.List;
 import java.util.Optional;
 
@@ -66,5 +64,30 @@ public class ModuleServiceImpl implements ModuleService {
     @Override
     public List<Hero> getAllHero() {
         return moduleDAO.getAllHero();
+    }
+
+     @Override
+    public <T extends Object> T copyObject(T sourceObject) {
+
+        T copyObject = null;
+
+        try {
+            ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+            ObjectOutputStream objectOutputStream = new ObjectOutputStream(byteArrayOutputStream);
+            objectOutputStream.writeObject(sourceObject);
+            objectOutputStream.flush();
+            objectOutputStream.close();
+            byteArrayOutputStream.close();
+            byte[] byteData = byteArrayOutputStream.toByteArray();
+            ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteData);
+            try {
+                copyObject = (T) new ObjectInputStream(byteArrayInputStream).readObject();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return copyObject;
     }
 }

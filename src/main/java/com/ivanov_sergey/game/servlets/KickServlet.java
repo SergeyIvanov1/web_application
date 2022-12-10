@@ -7,7 +7,6 @@ import com.ivanov_sergey.game.service.*;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -23,13 +22,12 @@ public class KickServlet extends HttpServlet {
     static final Logger LOGGER = LogManager.getRootLogger();
 
     ModuleService moduleService;
-    LocationServiceImpl service;
+    LocationServiceImpl locationService;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         ServletContext servletContext = config.getServletContext();
-        service = (LocationServiceImpl) servletContext.getAttribute("locationService");
         moduleService = (ModuleServiceImpl) servletContext.getAttribute("moduleService");
 
     }
@@ -46,9 +44,11 @@ public class KickServlet extends HttpServlet {
                 "attack = " + attack
                 + "block = " + block);
 
-        HttpSession session = req.getSession();
-        Hero hero = (Hero) session.getAttribute("hero");
-        Personage personage = service.getPersonage(personageName, lastLocation);
+        HttpSession httpSession = req.getSession();
+        locationService = (LocationServiceImpl)httpSession.getAttribute("locationService");
+
+        Hero hero = (Hero) httpSession.getAttribute("hero");
+        Personage personage = locationService.getPersonage(personageName, lastLocation);
 
         Inventory heroInventory = hero.getInventory();
         req.setAttribute("personageName", personageName);

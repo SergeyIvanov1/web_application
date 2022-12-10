@@ -9,10 +9,10 @@ import java.util.List;
 import java.util.Optional;
 
 public class LocationServiceImpl implements LocationService {
-    Storage repository;
+    Storage sessionRepo;
 
-    public LocationServiceImpl(Storage repository) {
-        this.repository = repository;
+    public LocationServiceImpl(Storage sessionRepo) {
+        this.sessionRepo = sessionRepo;
     }
 
     public String getClientIPAddress(HttpServletRequest request) {
@@ -53,7 +53,7 @@ public class LocationServiceImpl implements LocationService {
 
     public Location getLocation(String locationName) {
         checkParameterByNull(locationName);
-        Optional<Location> optional = repository.getLocations()
+        Optional<Location> optional = sessionRepo.getLocations()
                 .stream()
                 .filter((location) -> locationName.equals(location.getName()))
                 .findFirst();
@@ -67,11 +67,11 @@ public class LocationServiceImpl implements LocationService {
 
     @Override
     public List<Location> getLocations() {
-        return repository.getLocations();
+        return sessionRepo.getLocations();
     }
 
-    public Storage getRepository() {
-        return repository;
+    public Storage getSessionRepo() {
+        return sessionRepo;
     }
 
     public Personage getPersonage(String personageName, String lastLocation){

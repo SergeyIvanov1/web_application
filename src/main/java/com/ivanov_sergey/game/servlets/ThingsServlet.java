@@ -24,26 +24,28 @@ public class ThingsServlet extends HttpServlet {
 
     static final Logger LOGGER = LogManager.getRootLogger();
 
-    LocationServiceImpl service;
+    LocationServiceImpl locationService;
     ThingsService thingsService = new ThingsServiceImpl();
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         ServletContext servletContext = config.getServletContext();
-        service = (LocationServiceImpl) servletContext.getAttribute("locationService");
     }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String nextLocationName = req.getParameter("nextLocationName");
+        HttpSession httpSession = req.getSession();
         LOGGER.debug("ThingsServlet, doPost is started with nextLocationName = " + nextLocationName);
+        locationService = (LocationServiceImpl)httpSession.getAttribute("locationService");
 
-        req.setAttribute("currentLocation", service.getLocation(nextLocationName));
-        req.setAttribute("armors", service.getArmors(nextLocationName));
-        req.setAttribute("potions", service.getPotions(nextLocationName));
-        req.setAttribute("helpers", service.getHelpers(nextLocationName));
-        req.setAttribute("weapons", service.getWeapons(nextLocationName));
+
+        req.setAttribute("currentLocation", locationService.getLocation(nextLocationName));
+        req.setAttribute("armors", locationService.getArmors(nextLocationName));
+        req.setAttribute("potions", locationService.getPotions(nextLocationName));
+        req.setAttribute("helpers", locationService.getHelpers(nextLocationName));
+        req.setAttribute("weapons", locationService.getWeapons(nextLocationName));
         req.setAttribute("boxIsOpened", "boxIsOpened");
 
         RequestDispatcher requestDispatcher = getServletContext()
@@ -53,19 +55,21 @@ public class ThingsServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        HttpSession session = req.getSession();
-        String currentLocal = (String) session.getAttribute("currentLocal");
+        HttpSession httpSession = req.getSession();
+        locationService = (LocationServiceImpl)httpSession.getAttribute("locationService");
+
         String nextLocationName = req.getParameter("nextLocationName");
         String transferredThing = req.getParameter("transferredThing");
 
+
         LOGGER.debug("ThingsServlet, doPost is started with nextLocationName = " + nextLocationName);
 
-        Location location = service.getLocation(nextLocationName);
-        Hero hero = (Hero) session.getAttribute("hero");
-        List<Armor> armors = service.getArmors(nextLocationName);
-        List<Potion> potions = service.getPotions(nextLocationName);
-        List<Helper> helpers = service.getHelpers(nextLocationName);
-        List<Weapon> weapons = service.getWeapons(nextLocationName);
+        Location location = locationService.getLocation(nextLocationName);
+        Hero hero = (Hero) httpSession.getAttribute("hero");
+        List<Armor> armors = locationService.getArmors(nextLocationName);
+        List<Potion> potions = locationService.getPotions(nextLocationName);
+        List<Helper> helpers = locationService.getHelpers(nextLocationName);
+        List<Weapon> weapons = locationService.getWeapons(nextLocationName);
 
         req.setAttribute("currentLocation", location);
         req.setAttribute("armors", armors);
@@ -74,10 +78,10 @@ public class ThingsServlet extends HttpServlet {
         req.setAttribute("weapons", weapons);
         req.setAttribute("boxIsOpened", "boxIsOpened");
 
-        session.setAttribute("heroArmors", hero.getInventory().getArmors());
-        session.setAttribute("heroPotions", hero.getInventory().getPotions());
-        session.setAttribute("heroHelpers", hero.getInventory().getHelpers());
-        session.setAttribute("heroWeapons", hero.getInventory().getWeapons());
+        httpSession.setAttribute("heroArmors", hero.getInventory().getArmors());
+        httpSession.setAttribute("heroPotions", hero.getInventory().getPotions());
+        httpSession.setAttribute("heroHelpers", hero.getInventory().getHelpers());
+        httpSession.setAttribute("heroWeapons", hero.getInventory().getWeapons());
 
         if (transferredThing != null){
             thingsService.transferThingFromBoxToInventory(transferredThing, location, hero);

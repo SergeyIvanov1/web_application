@@ -8,6 +8,7 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.io.*;
 import java.util.List;
 
 @Getter
@@ -16,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "repositoryes")
-public class Repository implements Storage {
+public class Repository implements Storage, Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

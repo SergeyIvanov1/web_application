@@ -21,14 +21,11 @@ public class ConversationServlet extends HttpServlet {
     static final Logger LOGGER = LogManager.getRootLogger();
     private final int INITIAL_INDEX = 0;
 
-    LocationServiceImpl service;
+    LocationServiceImpl locationService;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        ServletContext servletContext = config.getServletContext();
-        service = (LocationServiceImpl) servletContext.getAttribute("locationService");
-        System.out.println("service = " + service);
     }
 
     @Override
@@ -36,13 +33,15 @@ public class ConversationServlet extends HttpServlet {
         LOGGER.debug("ConversationServlet, doGet started");
 
         String lastLocation = req.getParameter("lastLocation");
-        HttpSession session = req.getSession();
-        session.setAttribute("lastLocation", lastLocation);
+        HttpSession httpSession = req.getSession();
+        locationService = (LocationServiceImpl)httpSession.getAttribute("locationService");
+
+        httpSession.setAttribute("lastLocation", lastLocation);
         String personageName = req.getParameter("personageName");
         req.setAttribute("personageName", personageName);
 
-        Personage personage = service.getPersonage(personageName, lastLocation);
-        req.setAttribute("issue", service.getFirstIssue(personage, INITIAL_INDEX));
+        Personage personage = locationService.getPersonage(personageName, lastLocation);
+        req.setAttribute("issue", locationService.getFirstIssue(personage, INITIAL_INDEX));
 
         RequestDispatcher requestDispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/game_view/conversation.jsp");
@@ -58,12 +57,11 @@ public class ConversationServlet extends HttpServlet {
                 "LastLocation = " + lastLocation + ", personageName = " + personageName +
                 ", nextQuestion = " + nextQuestion);
 
-
         req.setAttribute("personageName", personageName);
         req.setAttribute("lastLocation", lastLocation);
 
         RequestDispatcher requestDispatcher;
-        req.setAttribute("issue", service.getIssue(personageName, nextQuestion, lastLocation));
+        req.setAttribute("issue", locationService.getIssue(personageName, nextQuestion, lastLocation));
 
         requestDispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/game_view/conversation.jsp");

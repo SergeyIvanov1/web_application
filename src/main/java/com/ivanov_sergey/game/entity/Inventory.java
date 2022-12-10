@@ -5,15 +5,16 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Getter
 @Setter
-@ToString
+//@ToString
 @NoArgsConstructor
 @Entity
 @Table(name = "inventories")
-public class Inventory {
+public class Inventory implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")

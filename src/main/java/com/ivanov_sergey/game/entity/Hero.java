@@ -3,6 +3,7 @@ package com.ivanov_sergey.game.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "heroes")
-public class Hero {
+public class Hero implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

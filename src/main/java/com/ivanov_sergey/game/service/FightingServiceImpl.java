@@ -14,7 +14,7 @@ public class FightingServiceImpl implements FightingService {
 
     private List<String> personageBloke;
     private List<String> personageAttack;
-    Storage repository;
+    Storage sessionRepo;
     Random random;
 
     public FightingServiceImpl() {
@@ -23,9 +23,9 @@ public class FightingServiceImpl implements FightingService {
         personageAttack = List.of("head", "body", "legs");
     }
 
-    public FightingServiceImpl(Storage repository) {
-        this.repository = repository;
-    }
+//    public FightingServiceImpl(Storage sessionRepo) {
+//        this.sessionRepo = sessionRepo;
+//    }
 
     public String personageKickHero(Hero hero, Personage personage, String block) {
         checkParametersByNull(hero, personage, block);

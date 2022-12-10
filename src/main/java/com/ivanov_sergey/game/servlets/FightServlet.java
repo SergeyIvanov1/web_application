@@ -27,13 +27,12 @@ public class FightServlet extends HttpServlet {
     FightingService fightingService = new FightingServiceImpl();
     ThingsService thingsService = new ThingsServiceImpl();
 
-    LocationServiceImpl service;
+    LocationServiceImpl locationService;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
         ServletContext servletContext = config.getServletContext();
-        service = (LocationServiceImpl) servletContext.getAttribute("locationService");
         moduleService = (ModuleServiceImpl) servletContext.getAttribute("moduleService");
     }
 
@@ -47,13 +46,15 @@ public class FightServlet extends HttpServlet {
         String thing = req.getParameter("useThing");
         LOGGER.debug("LocationServlet, doPost is started with nextLocationName = " + lastLocation);
 
-        HttpSession session = req.getSession();
-        String currentLocal = (String) session.getAttribute("currentLocal");
-        Hero hero = (Hero) session.getAttribute("hero");
+        HttpSession httpSession = req.getSession();
+        locationService = (LocationServiceImpl)httpSession.getAttribute("locationService");
+
+        String currentLocal = (String) httpSession.getAttribute("currentLocal");
+        Hero hero = (Hero) httpSession.getAttribute("hero");
         Inventory heroInventory = hero.getInventory();
 
-        Personage personage = service.getPersonage(personageName, currentLocal);
-        Location location = service.getLocation(currentLocal);
+        Personage personage = locationService.getPersonage(personageName, currentLocal);
+        Location location = locationService.getLocation(currentLocal);
 
         String heroReport = "";
         String personageReport = "";
@@ -94,7 +95,7 @@ public class FightServlet extends HttpServlet {
         req.setAttribute("personageDexterity", personage.getDexterity());
         req.setAttribute("usingArmors", hero.getUsingArmors());
         req.setAttribute("usingWeapons", hero.getUsingWeapons());
-        session.setAttribute("lastLocation", lastLocation);
+        httpSession.setAttribute("lastLocation", lastLocation);
 
         RequestDispatcher requestDispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/game_view/fight.jsp");

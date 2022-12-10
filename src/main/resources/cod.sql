@@ -12,6 +12,26 @@ drop table my_db.helpers;
 drop table my_db.repositoryes;
 drop table my_db.quests;
 
+drop table my_db.issues;
+drop table my_db.replies;
+
+-- ________________________
+
+CREATE TABLE my_db.games
+(
+    id   int NOT NULL AUTO_INCREMENT,
+    name varchar(100),
+    hero_id int,
+    repository_id int,
+    PRIMARY KEY (id),
+    FOREIGN KEY (hero_id) REFERENCES my_db.heroes(id),
+    FOREIGN KEY (repository_id) REFERENCES my_db.repositoryes(id)
+);
+
+# INSERT INTO my_db.games (name)
+# VALUES ('game');
+
+
 CREATE TABLE my_db.weapons
 (
     id   int NOT NULL AUTO_INCREMENT,
@@ -110,9 +130,9 @@ CREATE TABLE my_db.heroes
 );
 
 INSERT INTO my_db.heroes (name, count_of_ended_games, count_of_killed_personages, max_health, current_health, strength, dexterity, inventory_id)
-VALUES ('Hero', 0, 0, 300, 300, 20, 50, 1),
-       ('Po', 0, 0, 300, 300, 20, 50, 1),
-       ('Nick', 0, 0, 300, 300, 20, 50, 1);
+VALUES ('Hero', 0, 0, 150, 150, 20, 50, 1),
+       ('Po', 0, 0, 150, 150, 20, 50, 1),
+       ('Nick', 0, 0, 150, 150, 20, 50, 1);
 
 -- ________________________
 
@@ -129,7 +149,7 @@ CREATE TABLE my_db.personages
 );
 
 INSERT INTO my_db.personages (name, max_health, current_health, strength, dexterity, location_id)
-VALUES ('Guarder', 100, 100, 50, 70, 1),
+VALUES ('Guarder', 80, 100, 50, 70, 1),
        ('Forester', 50, 50, 40, 40, 2),
        ('Prisoner', 40, 40, 20, 50, 3),
        ('Gnome', 80, 80, 10, 20, 4),
@@ -175,9 +195,6 @@ CREATE TABLE my_db.quests
     personage_id int,
     PRIMARY KEY (id)
 );
-
-drop table my_db.issues;
-drop table my_db.replies;
 
 CREATE TABLE my_db.issues
 (
@@ -237,126 +254,3 @@ VALUES ('Hi. I have a very important letter. I know what I can to find here a hu
 
 -- ________________________
 
-USE my_db;
-drop table my_db.authorities;
-drop table my_db.employees;
-drop table my_db.users;
-
-drop table my_db.join_table;
-drop table my_db.questions;
-drop table my_db.answers;
-
-drop table my_db.visitors;
-
-CREATE TABLE users
-(
-    username varchar(15),
-    password varchar(100),
-    enabled  tinyint(1),
-    PRIMARY KEY (username)
-);
-
-INSERT INTO my_db.users (username, password, enabled)
-VALUES ('zaur', '{noop}zaur', 1),
-       ('elena', '{noop}elena', 1),
-       ('ivan', '{noop}ivan', 1);
-
--- ________________________
-
-CREATE TABLE employees
-(
-    id         int NOT NULL AUTO_INCREMENT,
-    name       varchar(15),
-    surname    varchar(25),
-    department varchar(20),
-    salary     int,
-    PRIMARY KEY (id)
-);
-
-INSERT INTO my_db.employees (name, surname, department, salary)
-VALUES ('Oleg', 'Ivanov', 'Sales', 700),
-       ('Sergey', 'Ivanov', 'IT', 500),
-       ('Nikolay', 'Vozov', 'IT', 600),
-       ('Anton', 'Sizov', 'IT', 400),
-       ('Nina', 'Sidorova', 'HR', 850);
-
--- ________________________
-
-CREATE TABLE authorities
-(
-    username  varchar(15),
-    authority varchar(25),
-    FOREIGN KEY (username) references users (username)
-);
-
-INSERT INTO my_db.authorities (username, authority)
-VALUES ('zaur', 'ROLE_EMPLOYEE'),
-       ('elena', 'ROLE_HR'),
-       ('ivan', 'ROLE_HR'),
-       ('ivan', 'ROLE_MANAGER');
-
--- ________________________
-
-CREATE TABLE my_db.visitors
-(
-    id            int NOT NULL AUTO_INCREMENT,
-    name          varchar(100),
-    count_of_games int,
-    PRIMARY KEY (id)
-);
-
--- ________________________
-
-CREATE TABLE my_db.questions
-(
-    id   int NOT NULL AUTO_INCREMENT,
-    text varchar(100),
-    PRIMARY KEY (id)
-);
-
-
-INSERT INTO my_db.questions (text)
-VALUES ('You are loose memory. Take the challenge?'),
-       ('You accepted the challenge. Will you go up to the bridge to the captain?'),
-       ('You declined the call. Defeat'),
-       ('You went up to the bridge. Who are you?'),
-       ('You did not negotiate. Defeat?'),
-       ('You have been brought home. Victory'),
-       ('Your lies have been exposed. Defeat');
-
--- ________________________
-
-CREATE TABLE my_db.answers
-(
-    id               int NOT NULL AUTO_INCREMENT,
-    text             varchar(100),
-    next_question varchar(100),
-    PRIMARY KEY (id)
-);
-
-
-INSERT INTO my_db.answers (text,  next_question)
-VALUES ('Reject a call', 'You declined the call. Defeat'),
-       ('Take the challenge', 'You accepted the challenge. Will you go up to the bridge to the captain?'),
-       ('Climb to the bridge', 'You went up to the bridge. Who are you?'),
-       ('Refuse to go up to the bridge', 'You did not negotiate. Defeat'),
-       ('Tell the truth about yourself', 'You have been brought home. Victory'),
-       ('Lie about yourself', 'Your lies have been exposed. Defeat');
-
--- ________________________
-CREATE TABLE my_db.join_table (
-                                  question_id int NOT NULL,
-                                  answer_id int NOT NULL,
-                                  PRIMARY KEY (question_id, answer_id),
-                                  FOREIGN KEY (question_id) references my_db.questions(id),
-                                  FOREIGN KEY (answer_id) references my_db.answers(id)
-) ;
-
-INSERT INTO my_db.join_table (question_id, answer_id)
-VALUES
-    (1, 1),
-    (1, 2),
-    (2, 3),
-    (2, 4),
-    (3, 5),
-    (3, 6);

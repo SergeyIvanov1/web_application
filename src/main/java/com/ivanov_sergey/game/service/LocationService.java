@@ -12,5 +12,5 @@ public interface LocationService extends Storage {
     public List<Weapon> getWeapons(String locationName);
     public Location getLocation(String locationName);
     public List<Location> getLocations();
-    public Storage getRepository();
+    public Storage getSessionRepo();
 }

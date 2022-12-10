@@ -8,15 +8,16 @@ import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Getter
 @Setter
-@ToString
+//@ToString
 @NoArgsConstructor
 @Entity
 @Table(name = "locations")
-public class Location {
+public class Location implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
