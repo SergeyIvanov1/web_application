@@ -4,6 +4,7 @@ drop table my_db.potions;
 
 drop table my_db.armors;
 drop table my_db.personages;
+drop table my_db.games;
 
 drop table my_db.heroes;
 drop table my_db.locations;
@@ -16,21 +17,6 @@ drop table my_db.issues;
 drop table my_db.replies;
 
 -- ________________________
-
-CREATE TABLE my_db.games
-(
-    id   int NOT NULL AUTO_INCREMENT,
-    name varchar(100),
-    hero_id int,
-    repository_id int,
-    PRIMARY KEY (id),
-    FOREIGN KEY (hero_id) REFERENCES my_db.heroes(id),
-    FOREIGN KEY (repository_id) REFERENCES my_db.repositoryes(id)
-);
-
-# INSERT INTO my_db.games (name)
-# VALUES ('game');
-
 
 CREATE TABLE my_db.weapons
 (
@@ -149,7 +135,7 @@ CREATE TABLE my_db.personages
 );
 
 INSERT INTO my_db.personages (name, max_health, current_health, strength, dexterity, location_id)
-VALUES ('Guarder', 80, 100, 50, 70, 1),
+VALUES ('Guarder', 80, 80, 50, 70, 1),
        ('Forester', 50, 50, 40, 40, 2),
        ('Prisoner', 40, 40, 20, 50, 3),
        ('Gnome', 80, 80, 10, 20, 4),
@@ -168,6 +154,22 @@ CREATE TABLE my_db.repositoryes
 
 INSERT INTO my_db.repositoryes (name)
 VALUES ('initial');
+
+-- ________________________
+
+CREATE TABLE my_db.games
+(
+    id   int NOT NULL AUTO_INCREMENT,
+    name varchar(100),
+    hero_id int,
+    repository_id int,
+    PRIMARY KEY (id),
+    FOREIGN KEY (hero_id) REFERENCES my_db.heroes(id),
+    FOREIGN KEY (repository_id) REFERENCES my_db.repositoryes(id)
+);
+
+# INSERT INTO my_db.games (name)
+# VALUES ('game');
 
 -- ________________________
 

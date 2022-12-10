@@ -16,7 +16,6 @@ button.btn-sm:hover {
 
 h1 {
     text-shadow: 3px 3px 5px rgb(141, 153, 207);
-
 }
 
 h2 {
@@ -90,7 +89,6 @@ table.statistic tr td:first-child::before {
 div.modal-content {
     background-color: #bacbe6;
 }
-/**/
 
 .parent > div {
     background: #eee;
@@ -232,4 +230,45 @@ div.used-things {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.container_defeat {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /*border: 1px solid black;*/
+    padding: 0;
+    /*background-color: slategrey;*/
+}
+
+#defeat1{
+    /*width: 98px;*/
+    width: 25%;
+    /*border: 1px solid black;*/
+    /*height: 165px;*/
+    border-right: 0;
+}
+
+#defeat2{
+    /*width: 98px;*/
+    width: 49%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+
+    /*border: 1px solid dimgrey;*/
+    /*height: 165px;*/
+}
+#defeat3{
+    /*width: 98px;*/
+    width: 25%;
+    /*border: 1px solid black;*/
+    border-left: 0;
+    /*height: 165px;*/
+}
+
+img.defeat {
+    width: 450px;
+    height: 350px;
 }

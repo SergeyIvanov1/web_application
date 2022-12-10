@@ -20,7 +20,6 @@ import java.io.IOException;
 public class StartGameServlet extends HttpServlet {
     Storage sessionRepo;
 
-
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
@@ -35,10 +34,16 @@ public class StartGameServlet extends HttpServlet {
         HttpSession session = req.getSession();
         session.setMaxInactiveInterval(24*60*60);
 
+        ModuleService moduleService = (ModuleServiceImpl)getServletContext().getAttribute("moduleService");
+        Repository mainRepo = (Repository)getServletContext().getAttribute("mainRepo");
+
+        sessionRepo = moduleService.copyObject(mainRepo);
         LocationService locationService = new LocationServiceImpl(sessionRepo);
+        FightingService fightingService = new FightingServiceImpl(sessionRepo);
 
         session.setAttribute("sessionRepo", sessionRepo);
         session.setAttribute("locationService", locationService);
+        session.setAttribute("fightingService", fightingService);
 
         RequestDispatcher requestDispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/game_view/start_game_page.jsp");

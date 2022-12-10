@@ -25,25 +25,25 @@
                     <c:set var="interlocutor" scope="page" value="${personageName}"/>
                     <c:choose>
                         <c:when test="${interlocutor == 'Guarder'}">
-                            <img src="${pageContext.request.contextPath}/images/guarder.jpeg" class="img-fluid" alt="Tramp">
+                            <img src="${pageContext.request.contextPath}/images/Guarder.jpeg" class="img-fluid" alt="Tramp">
                         </c:when>
                         <c:when test="${interlocutor == 'Forester'}">
-                            <img src="${pageContext.request.contextPath}/images/forester.jpeg" class="img-fluid" alt="Tramp">
+                            <img src="${pageContext.request.contextPath}/images/Forester.jpeg" class="img-fluid" alt="Tramp">
                         </c:when>
                         <c:when test="${interlocutor == 'Prisoner'}">
                             <img src="${pageContext.request.contextPath}/images/Prisoner.jpeg" class="img-fluid" alt="Tramp">
                         </c:when>
                         <c:when test="${interlocutor == 'Gnome'}">
-                            <img src="${pageContext.request.contextPath}/images/gnome.jpeg" class="img-fluid" alt="Tramp">
+                            <img src="${pageContext.request.contextPath}/images/Gnome.jpeg" class="img-fluid" alt="Tramp">
                         </c:when>
                         <c:when test="${interlocutor == 'Tramp'}">
-                            <img src="${pageContext.request.contextPath}/images/tramp2.jpeg" class="img-fluid" alt="Tramp">
+                            <img src="${pageContext.request.contextPath}/images/Tramp.jpeg" class="img-fluid" alt="Tramp">
                         </c:when>
                         <c:when test="${interlocutor == 'Hermit'}">
-                            <img src="${pageContext.request.contextPath}/images/hermit2.jpeg" class="img-fluid" alt="Tramp">
+                            <img src="${pageContext.request.contextPath}/images/Hermit.jpeg" class="img-fluid" alt="Tramp">
                         </c:when>
                         <c:when test="${interlocutor == 'Cheater'}">
-                            <img src="${pageContext.request.contextPath}/images/cheater2.jpeg" class="img-fluid" alt="Tramp">
+                            <img src="${pageContext.request.contextPath}/images/Cheater.jpeg" class="img-fluid" alt="Tramp">
                         </c:when>
                     </c:choose>
                 </div>

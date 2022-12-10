@@ -24,7 +24,7 @@ public class FightServlet extends HttpServlet {
     static final Logger LOGGER = LogManager.getRootLogger();
 
     ModuleService moduleService;
-    FightingService fightingService = new FightingServiceImpl();
+    FightingService fightingService;
     ThingsService thingsService = new ThingsServiceImpl();
 
     LocationServiceImpl locationService;
@@ -47,7 +47,8 @@ public class FightServlet extends HttpServlet {
         LOGGER.debug("LocationServlet, doPost is started with nextLocationName = " + lastLocation);
 
         HttpSession httpSession = req.getSession();
-        locationService = (LocationServiceImpl)httpSession.getAttribute("locationService");
+        locationService = (LocationServiceImpl) httpSession.getAttribute("locationService");
+        fightingService = (FightingServiceImpl) httpSession.getAttribute("fightingService");
 
         String currentLocal = (String) httpSession.getAttribute("currentLocal");
         Hero hero = (Hero) httpSession.getAttribute("hero");
@@ -59,42 +60,50 @@ public class FightServlet extends HttpServlet {
         String heroReport = "";
         String personageReport = "";
 
-        if(kick != null) {
+        if (kick != null) {
             personageReport = fightingService.heroKickPersonage(hero, personage, attack);
-            heroReport = fightingService.personageKickHero(hero, personage, block);
-            if (hero.getCurrentHealth() == 0) {
-                RequestDispatcher requestDispatcher = getServletContext()
-                        .getRequestDispatcher("/WEB-INF/game_view/defeated.jsp");
-                requestDispatcher.forward(req, resp);
+            if (personage.getCurrentHealth() == 0) {
+                fightingService.deletePersonage(personage, location);
+
+            } else {
+                heroReport = fightingService.personageKickHero(hero, personage, block);
+                if (hero.getCurrentHealth() == 0) {
+                    resp.sendRedirect(req.getContextPath() + "/defeated");
+                    return;
+                }
             }
         }
 
-        if(thing != null) {
+        if (thing != null) {
             heroReport = thingsService.useThing(thing, location, hero);
         }
 
         int heroCurrentHealth = hero.getCurrentHealth();
         req.setAttribute("heroReport", heroReport);
         req.setAttribute("personageReport", personageReport);
+
         req.setAttribute("heroName", hero.getName());
         req.setAttribute("heroHealth", hero.getMaxHealth());
         req.setAttribute("heroCurrentHealth", heroCurrentHealth);
         req.setAttribute("heroCurrentPercentOfHealth", heroCurrentHealth * 100 / hero.getMaxHealth());
         req.setAttribute("heroStrength", hero.getStrength());
         req.setAttribute("heroDexterity", hero.getDexterity());
+        req.setAttribute("usingArmors", hero.getUsingArmors());
+        req.setAttribute("usingWeapons", hero.getUsingWeapons());
         req.setAttribute("heroArmors", heroInventory.getArmors());
         req.setAttribute("heroPotions", heroInventory.getPotions());
         req.setAttribute("heroWeapons", heroInventory.getWeapons());
 
-        int personageCurrentHealth = personage.getCurrentHealth();
-        req.setAttribute("personageName", personageName);
-        req.setAttribute("personageHealth", personage.getMaxHealth());
-        req.setAttribute("personageCurrentHealth", personageCurrentHealth);
-        req.setAttribute("personageCurrentPercentOfHealth", personageCurrentHealth * 100 / personage.getMaxHealth());
-        req.setAttribute("personageStrength", personage.getStrength());
-        req.setAttribute("personageDexterity", personage.getDexterity());
-        req.setAttribute("usingArmors", hero.getUsingArmors());
-        req.setAttribute("usingWeapons", hero.getUsingWeapons());
+        if (personage.getCurrentHealth() != 0) {
+            int personageCurrentHealth = personage.getCurrentHealth();
+            req.setAttribute("personageName", personageName);
+            req.setAttribute("personageHealth", personage.getMaxHealth());
+            req.setAttribute("personageCurrentHealth", personageCurrentHealth);
+            req.setAttribute("personageCurrentPercentOfHealth", personageCurrentHealth * 100 / personage.getMaxHealth());
+            req.setAttribute("personageStrength", personage.getStrength());
+            req.setAttribute("personageDexterity", personage.getDexterity());
+
+        }
         httpSession.setAttribute("lastLocation", lastLocation);
 
         RequestDispatcher requestDispatcher = getServletContext()

@@ -50,8 +50,8 @@ public class AppContextListener implements ServletContextListener {
 
         ServletContext servletContext = servletContextEvent.getServletContext();
         moduleService = new ModuleServiceImpl(sessionFactory);
-        Storage mainRepo = moduleService.fillRepositoryDBData(INITIAL_ID);
         servletContext.setAttribute("moduleService", moduleService);
+        Storage mainRepo = moduleService.fillRepositoryDBData(INITIAL_ID);
         servletContext.setAttribute("mainRepo", mainRepo);
 
 //        try {

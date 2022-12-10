@@ -19,7 +19,8 @@ public class ThingsServiceImpl implements ThingsService{
         if (optional.isPresent()){
             armor = optional.get();
             location.getArmors().remove(armor);
-            hero.getInventory().getArmors().add(armor);
+            List<Armor> armors = hero.getInventory().getArmors();
+            armors.add(armor);
             return;
         }
 
@@ -30,7 +31,8 @@ public class ThingsServiceImpl implements ThingsService{
         if (optional2.isPresent()) {
             potion = optional2.get();
             location.getPotions().remove(potion);
-            hero.getInventory().getPotions().add(potion);
+            List<Potion> potions = hero.getInventory().getPotions();
+            potions.add(potion);
             return;
         }
 
@@ -41,7 +43,8 @@ public class ThingsServiceImpl implements ThingsService{
         if (optional3.isPresent()) {
             helper = optional3.get();
             location.getHelpers().remove(helper);
-            hero.getInventory().getHelpers().add(helper);
+            List<Helper> helpers = hero.getInventory().getHelpers();
+            helpers.add(helper);
             return;
         }
 
@@ -52,7 +55,8 @@ public class ThingsServiceImpl implements ThingsService{
         if (optional4.isPresent()) {
             weapon = optional4.get();
             location.getWeapons().remove(weapon);
-            hero.getInventory().getWeapons().add(weapon);
+            List<Weapon> weapons = hero.getInventory().getWeapons();
+            weapons.add(weapon);
         }
     }
 

@@ -33,36 +33,8 @@
                         <div>${personage.name}
                             <br><br>
                             <c:set var="interlocutor" scope="page" value="${personage.name}"/>
-                            <c:choose>
-                                <c:when test="${interlocutor == 'Guarder'}">
-                                    <img src="${pageContext.request.contextPath}/images/guarder.jpeg" class="img-fluid"
-                                         alt="Tramp">
-                                </c:when>
-                                <c:when test="${interlocutor == 'Forester'}">
-                                    <img src="${pageContext.request.contextPath}/images/forester.jpeg" class="img-fluid"
-                                         alt="Tramp">
-                                </c:when>
-                                <c:when test="${interlocutor == 'Prisoner'}">
-                                    <img src="${pageContext.request.contextPath}/images/Prisoner.jpeg"
-                                         class="img-fluid" alt="Tramp">
-                                </c:when>
-                                <c:when test="${interlocutor == 'Gnome'}">
-                                    <img src="${pageContext.request.contextPath}/images/gnome.jpeg" class="img-fluid"
-                                         alt="Tramp">
-                                </c:when>
-                                <c:when test="${interlocutor == 'Tramp'}">
-                                    <img src="${pageContext.request.contextPath}/images/tramp2.jpeg" class="img-fluid"
-                                         alt="Tramp">
-                                </c:when>
-                                <c:when test="${interlocutor == 'Hermit'}">
-                                    <img src="${pageContext.request.contextPath}/images/hermit2.jpeg" class="img-fluid"
-                                         alt="Tramp">
-                                </c:when>
-                                <c:when test="${interlocutor == 'Cheater'}">
-                                    <img src="${pageContext.request.contextPath}/images/cheater2.jpeg" class="img-fluid"
-                                         alt="Tramp">
-                                </c:when>
-                            </c:choose>
+                            <img src="${pageContext.request.contextPath}/images/${interlocutor}.jpeg" class="img-fluid"
+                                 alt="Tramp">
                             <br><br>
                             <form action="${pageContext.request.contextPath}/conversation" method="GET">
                                 <input type="hidden" name="personageName" value="${personage.name}">
@@ -78,6 +50,11 @@
                         <h6>Quest: ${personage.getQuests()}</h6>
                     </c:forEach>
                 </c:if>
+                <c:set var="personages_is_not_present" scope="page"
+                       value="${currentLocation.getPersonages().isEmpty()}"/>
+                <c:if test="${personages_is_not_present}">
+                    <h3>Personage killed</h3>
+                </c:if>
             </div>
         </div>
 
@@ -88,36 +65,7 @@
 
                     <br><br><br>
                     <c:set var="thisLocation" scope="page" value="${currentLocation.getName()}"/>
-                    <c:choose>
-                        <c:when test="${thisLocation == 'Gates'}">
-                            <img src="${pageContext.request.contextPath}/images/gate.jpeg" class="img-fluid"
-                                 alt="Tramp">
-                        </c:when>
-                        <c:when test="${thisLocation == 'Forest'}">
-                            <img src="${pageContext.request.contextPath}/images/forest.jpeg" class="img-fluid"
-                                 alt="Tramp">
-                        </c:when>
-                        <c:when test="${thisLocation == 'Town'}">
-                            <img src="${pageContext.request.contextPath}/images/town.jpeg" class="img-fluid"
-                                 alt="Tramp">
-                        </c:when>
-                        <c:when test="${thisLocation == 'Mountain'}">
-                            <img src="${pageContext.request.contextPath}/images/mountain.jpeg" class="img-fluid"
-                                 alt="Tramp">
-                        </c:when>
-                        <c:when test="${thisLocation == 'Field'}">
-                            <img src="${pageContext.request.contextPath}/images/field2.jpeg" class="img-fluid"
-                                 alt="Tramp">
-                        </c:when>
-                        <c:when test="${thisLocation == 'Swamp'}">
-                            <img src="${pageContext.request.contextPath}/images/swamp.jpeg" class="img-fluid"
-                                 alt="Tramp">
-                        </c:when>
-                        <c:when test="${thisLocation == 'Village'}">
-                            <img src="${pageContext.request.contextPath}/images/village.jpeg" class="img-fluid"
-                                 alt="Tramp">
-                        </c:when>
-                    </c:choose>
+                    <img src="${pageContext.request.contextPath}/images/${thisLocation}.jpeg" class="img-fluid" alt="Tramp">
                     <br><br>
                     <h6>Available locations:</h6>
                     <c:forEach var="location" items="${locations}">

@@ -27,7 +27,7 @@
                                     Actions
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-dark">
-                                    <li><a class="dropdown-item" href="remove_attribute_of_session">Sign out</a></li>
+                                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/reset_game">Sign out</a></li>
                                 </ul>
                             </li>
                         </ul>

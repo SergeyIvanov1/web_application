@@ -79,7 +79,7 @@
                                         src="${pageContext.request.contextPath}/images/svg/${weapon.name}.svg"
                                         class="box1"
                                         alt="Box"
-                                title="${weapon.name}"></div>
+                                        title="${weapon.name}"></div>
                             </c:forEach>
                         </div>
                     </div>
@@ -88,64 +88,76 @@
 
             <div class="col border">
                 <br>
-                <h2>${personageName}</h2>
-                <p>Health: ${personageCurrentHealth}/${personageHealth}</p>
-                <div class="progress">
-                    <div class="progress-bar" role="progressbar" aria-label="Example with label"
-                         style="width: ${personageCurrentPercentOfHealth}%;" aria-valuenow="${personageCurrentHealth}"
-                         aria-valuemin="0" aria-valuemax="${personageHealth}">${personageCurrentPercentOfHealth}%
-                    </div>
-                </div>
-                <br>
-                <div class="row">
-                    <div class="col">
-                        <c:set var="interlocutor" scope="page" value="${personageName}"/>
-                        <c:choose>
-                            <c:when test="${interlocutor == 'Guarder'}">
-                                <img src="${pageContext.request.contextPath}/images/guarder.jpeg" class="img-fluid"
-                                     alt="Tramp">
-                            </c:when>
-                            <c:when test="${interlocutor == 'Forester'}">
-                                <img src="${pageContext.request.contextPath}/images/forester.jpeg" class="img-fluid"
-                                     alt="Tramp">
-                            </c:when>
-                            <c:when test="${interlocutor == 'Prisoner'}">
-                                <img src="${pageContext.request.contextPath}/images/Prisoner.jpeg"
-                                     class="img-fluid" alt="Tramp">
-                            </c:when>
-                            <c:when test="${interlocutor == 'Gnome'}">
-                                <img src="${pageContext.request.contextPath}/images/gnome.jpeg" class="img-fluid"
-                                     alt="Tramp">
-                            </c:when>
-                            <c:when test="${interlocutor == 'Tramp'}">
-                                <img src="${pageContext.request.contextPath}/images/tramp2.jpeg" class="img-fluid"
-                                     alt="Tramp">
-                            </c:when>
-                            <c:when test="${interlocutor == 'Hermit'}">
-                                <img src="${pageContext.request.contextPath}/images/hermit2.jpeg" class="img-fluid"
-                                     alt="Tramp">
-                            </c:when>
-                            <c:when test="${interlocutor == 'Cheater'}">
-                                <img src="${pageContext.request.contextPath}/images/cheater2.jpeg" class="img-fluid"
-                                     alt="Tramp">
-                            </c:when>
-                        </c:choose>
-                    </div>
-                    <div class="col">
-                        <p>Strength: ${personageStrength}</p>
-                        <p>Dexterity: ${personageDexterity}</p>
-                        <div class="fighting-history">
-                            <p>${personageReport}</p>
+                <c:set var="personages_is_not_present" scope="page" value="${personageName == null}"/>
+                <c:if test="${personages_is_not_present}">
+                    <h3>Personage killed</h3>
+                </c:if>
+                <c:set var="personages_is_present" scope="page" value="${personageName != null}"/>
+                <c:if test="${personages_is_present}">
+                    <h2>${personageName}</h2>
+                    <p>Health: ${personageCurrentHealth}/${personageHealth}</p>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-label="Example with label"
+                             style="width: ${personageCurrentPercentOfHealth}%;"
+                             aria-valuenow="${personageCurrentHealth}"
+                             aria-valuemin="0" aria-valuemax="${personageHealth}">${personageCurrentPercentOfHealth}%
                         </div>
                     </div>
-                </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <c:set var="interlocutor" scope="page" value="${personageName}"/>
+                            <img src="${pageContext.request.contextPath}/images/${interlocutor}.jpeg" class="img-fluid"
+                                 alt="Tramp">
+                                <%--                        <c:choose>--%>
+                                <%--                            <c:when test="${interlocutor == 'Guarder'}">--%>
+                                <%--                                <img src="${pageContext.request.contextPath}/images/Guarder.jpeg" class="img-fluid"--%>
+                                <%--                                     alt="Tramp">--%>
+                                <%--                            </c:when>--%>
+                                <%--                            <c:when test="${interlocutor == 'Forester'}">--%>
+                                <%--                                <img src="${pageContext.request.contextPath}/images/Forester.jpeg" class="img-fluid"--%>
+                                <%--                                     alt="Tramp">--%>
+                                <%--                            </c:when>--%>
+                                <%--                            <c:when test="${interlocutor == 'Prisoner'}">--%>
+                                <%--                                <img src="${pageContext.request.contextPath}/images/Prisoner.jpeg"--%>
+                                <%--                                     class="img-fluid" alt="Tramp">--%>
+                                <%--                            </c:when>--%>
+                                <%--                            <c:when test="${interlocutor == 'Gnome'}">--%>
+                                <%--                                <img src="${pageContext.request.contextPath}/images/Gnome.jpeg" class="img-fluid"--%>
+                                <%--                                     alt="Tramp">--%>
+                                <%--                            </c:when>--%>
+                                <%--                            <c:when test="${interlocutor == 'Tramp'}">--%>
+                                <%--                                <img src="${pageContext.request.contextPath}/images/Tramp.jpeg" class="img-fluid"--%>
+                                <%--                                     alt="Tramp">--%>
+                                <%--                            </c:when>--%>
+                                <%--                            <c:when test="${interlocutor == 'Hermit'}">--%>
+                                <%--                                <img src="${pageContext.request.contextPath}/images/Hermit.jpeg" class="img-fluid"--%>
+                                <%--                                     alt="Tramp">--%>
+                                <%--                            </c:when>--%>
+                                <%--                            <c:when test="${interlocutor == 'Cheater'}">--%>
+                                <%--                                <img src="${pageContext.request.contextPath}/images/Cheater.jpeg" class="img-fluid"--%>
+                                <%--                                     alt="Tramp">--%>
+                                <%--                            </c:when>--%>
+                                <%--                        </c:choose>--%>
+                        </div>
+                        <div class="col">
+                            <p>Strength: ${personageStrength}</p>
+                            <p>Dexterity: ${personageDexterity}</p>
+                            <div class="fighting-history">
+                                <p>${personageReport}</p>
+                            </div>
+                        </div>
+                    </div>
+                </c:if>
             </div>
         </div>
         <br>
         <input type="hidden" name="personageName" value="${personageName}">
         <input type="hidden" name="lastLocation" value="${lastLocation}">
         <input type="hidden" name="kick" value="kick">
-        <input type="submit" value="Kick ${personageName}"/>
+        <c:if test="${personages_is_present}">
+            <input type="submit" value="Kick ${personageName}"/>
+        </c:if>
     </form>
 </div>
 <jsp:include page="parts/footer_game.jsp"/>

@@ -6,26 +6,24 @@ import java.lang.Math;
 import java.util.List;
 import java.util.Random;
 
+import com.ivanov_sergey.game.entity.Location;
 import com.ivanov_sergey.game.entity.Personage;
 import com.ivanov_sergey.game.entity.Storage;
 import com.ivanov_sergey.game.service.exceptions.LocationInvalidParameters;
 
 public class FightingServiceImpl implements FightingService {
 
-    private List<String> personageBloke;
-    private List<String> personageAttack;
-    Storage sessionRepo;
-    Random random;
+    private final List<String> personageBloke;
+    private final List<String> personageAttack;
+    private final Storage sessionRepo;
+    private final Random random;
 
-    public FightingServiceImpl() {
+    public FightingServiceImpl(Storage sessionRepo) {
+        this.sessionRepo = sessionRepo;
         random = new Random();
         personageBloke = List.of("head", "body", "legs");
         personageAttack = List.of("head", "body", "legs");
     }
-
-//    public FightingServiceImpl(Storage sessionRepo) {
-//        this.sessionRepo = sessionRepo;
-//    }
 
     public String personageKickHero(Hero hero, Personage personage, String block) {
         checkParametersByNull(hero, personage, block);
@@ -59,7 +57,18 @@ public class FightingServiceImpl implements FightingService {
                 + personageBloke.get(personageRandomBlock) + ". Damage by " + hero.getStrength() + ".";
     }
 
-    public void checkParametersByNull(Hero hero, Personage personage, String action) {
+    @Override
+    public void deletePersonage(Personage personage, Location location) {
+        if (personage == null) {
+            throw new LocationInvalidParameters("Parameter: personage - is null");
+        }
+        if (location == null) {
+            throw new LocationInvalidParameters("Parameter: location - is null");
+        }
+        location.getPersonages().remove(personage);
+    }
+
+    private void checkParametersByNull(Hero hero, Personage personage, String action) {
         if (hero == null) {
             throw new LocationInvalidParameters("Parameter: hero - is null");
         }
