@@ -23,10 +23,10 @@ public class StartGameServlet extends HttpServlet {
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        ServletContext servletContext = config.getServletContext();
-        ModuleService moduleService = (ModuleServiceImpl) servletContext.getAttribute("moduleService");
-        Repository mainRepo = (Repository) servletContext.getAttribute("mainRepo");
-        sessionRepo =  moduleService.copyObject(mainRepo);
+//        ServletContext servletContext = config.getServletContext();
+//        ModuleService moduleService = (ModuleServiceImpl) servletContext.getAttribute("moduleService");
+//        Repository mainRepo = (Repository) servletContext.getAttribute("mainRepo");
+//        sessionRepo =  moduleService.copyObject(mainRepo);
     }
 
     @Override

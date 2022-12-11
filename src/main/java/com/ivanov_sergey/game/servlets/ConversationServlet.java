@@ -34,7 +34,7 @@ public class ConversationServlet extends HttpServlet {
 
         String lastLocation = req.getParameter("lastLocation");
         HttpSession httpSession = req.getSession();
-        locationService = (LocationServiceImpl)httpSession.getAttribute("locationService");
+        locationService = (LocationServiceImpl) httpSession.getAttribute("locationService");
 
         httpSession.setAttribute("lastLocation", lastLocation);
         String personageName = req.getParameter("personageName");
@@ -60,10 +60,18 @@ public class ConversationServlet extends HttpServlet {
         req.setAttribute("personageName", personageName);
         req.setAttribute("lastLocation", lastLocation);
 
-        RequestDispatcher requestDispatcher;
-        req.setAttribute("issue", locationService.getIssue(personageName, nextQuestion, lastLocation));
+        if ("".equals(nextQuestion)) {
+            resp.sendRedirect(req.getContextPath() + "/location");
+            return;
+        }
 
-        requestDispatcher = getServletContext()
+        if ("fight".equals(nextQuestion)) {
+            req.setAttribute("fighting", "fighting");
+        } else {
+            req.setAttribute("issue", locationService.getIssue(personageName, nextQuestion, lastLocation));
+        }
+
+        RequestDispatcher requestDispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/game_view/conversation.jsp");
         requestDispatcher.forward(req, resp);
     }

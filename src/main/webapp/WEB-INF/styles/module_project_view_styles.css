@@ -16,6 +16,9 @@ button.btn-sm:hover {
 
 h1 {
     text-shadow: 3px 3px 5px rgb(141, 153, 207);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
 }
 
 h2 {

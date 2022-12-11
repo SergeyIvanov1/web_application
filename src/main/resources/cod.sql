@@ -241,7 +241,7 @@ VALUES ('Hi. I have a very important letter. I know what I can to find here a hu
        ('I want to fight with you.', 4, 'fight'),
        ('I search Tramp.', 4, 'You will help me, I will can help you. Escape prisoner was here and steal my present for my wife. Find him and take my present. He is in the Town.'),
        ('Ok. I will find present for you.', 5, null),
-       ('You must speak with me and tell me about how I can to find Tramp.', 7, null),
+       ('You must speak with me and tell me about how I can to find Tramp.', 7, 'fight'),
        ('Sorry. I walk away.', 7, null),
        ('I want to fight with you.', 8, 'fight'),
        ('I need the key. I have a very important letter, but it encripted, you must to help me to decrypt my letter.', 8, 'I so long no eating sweets, what I ready to anything. Give me sweets and I give you hint, where you will can to find key for decrypting.'),

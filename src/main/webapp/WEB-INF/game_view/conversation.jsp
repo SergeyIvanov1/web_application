@@ -7,7 +7,7 @@
 <head>
     <title>Personage description</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
 </head>
 
 <body class="background">
@@ -16,7 +16,8 @@
 
 <div class="container">
     <div class="container">
-        <h2>${personageName}</h2>
+        <br>
+        <h1>${personageName}</h1>
     </div>
     <div class="container text-center border">
         <div class="row border">
@@ -25,25 +26,32 @@
                     <c:set var="interlocutor" scope="page" value="${personageName}"/>
                     <c:choose>
                         <c:when test="${interlocutor == 'Guarder'}">
-                            <img src="${pageContext.request.contextPath}/images/Guarder.jpeg" class="img-fluid" alt="Tramp">
+                            <img src="${pageContext.request.contextPath}/images/Guarder.jpeg" class="img-fluid"
+                                 alt="Tramp">
                         </c:when>
                         <c:when test="${interlocutor == 'Forester'}">
-                            <img src="${pageContext.request.contextPath}/images/Forester.jpeg" class="img-fluid" alt="Tramp">
+                            <img src="${pageContext.request.contextPath}/images/Forester.jpeg" class="img-fluid"
+                                 alt="Tramp">
                         </c:when>
                         <c:when test="${interlocutor == 'Prisoner'}">
-                            <img src="${pageContext.request.contextPath}/images/Prisoner.jpeg" class="img-fluid" alt="Tramp">
+                            <img src="${pageContext.request.contextPath}/images/Prisoner.jpeg" class="img-fluid"
+                                 alt="Tramp">
                         </c:when>
                         <c:when test="${interlocutor == 'Gnome'}">
-                            <img src="${pageContext.request.contextPath}/images/Gnome.jpeg" class="img-fluid" alt="Tramp">
+                            <img src="${pageContext.request.contextPath}/images/Gnome.jpeg" class="img-fluid"
+                                 alt="Tramp">
                         </c:when>
                         <c:when test="${interlocutor == 'Tramp'}">
-                            <img src="${pageContext.request.contextPath}/images/Tramp.jpeg" class="img-fluid" alt="Tramp">
+                            <img src="${pageContext.request.contextPath}/images/Tramp.jpeg" class="img-fluid"
+                                 alt="Tramp">
                         </c:when>
                         <c:when test="${interlocutor == 'Hermit'}">
-                            <img src="${pageContext.request.contextPath}/images/Hermit.jpeg" class="img-fluid" alt="Tramp">
+                            <img src="${pageContext.request.contextPath}/images/Hermit.jpeg" class="img-fluid"
+                                 alt="Tramp">
                         </c:when>
                         <c:when test="${interlocutor == 'Cheater'}">
-                            <img src="${pageContext.request.contextPath}/images/Cheater.jpeg" class="img-fluid" alt="Tramp">
+                            <img src="${pageContext.request.contextPath}/images/Cheater.jpeg" class="img-fluid"
+                                 alt="Tramp">
                         </c:when>
                     </c:choose>
                 </div>
@@ -52,6 +60,17 @@
             <div class="col border">
                 <div class="container">
                     <br><br>
+<%--                    <c:set var="fighting" scope="page" value="${issue == 'fight'}"/>--%>
+                    <c:if test="${fighting == 'fighting'}">
+                        <h6>${personageName} was humiliated. He wants to kill you.</h6>
+                        <div>
+                            <form action="${pageContext.request.contextPath}/fight" method="POST">
+                                <input type="hidden" name="lastLocation" value="${lastLocation}">
+                                <input type="hidden" name="personageName" value="${personageName}">
+                                <input class="nice_button" type="submit" value="Fight"/>
+                            </form>
+                        </div>
+                    </c:if>
                     <h6>${issue.getText()}</h6>
                     <c:forEach var="reply" items="${issue.getReplies()}">
                         <div>
