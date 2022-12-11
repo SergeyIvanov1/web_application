@@ -24,10 +24,10 @@ import java.util.List;
 
 @WebServlet("/location")
 public class LocationServlet extends HttpServlet {
-    static final Logger LOGGER = LogManager.getRootLogger();
+    private static final Logger LOGGER = LogManager.getRootLogger();
     private static final String STARTING_ROOM = "Gates";
-    ModuleService moduleService;
-    LocationServiceImpl locationService;
+    private ModuleService moduleService;
+    private LocationServiceImpl locationService;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -82,6 +82,7 @@ public class LocationServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String nextLocationName = req.getParameter("nextLocationName");
+        String personageName = req.getParameter("personageName");
         HttpSession httpSession = req.getSession();
         locationService = (LocationServiceImpl)httpSession.getAttribute("locationService");
         httpSession.setAttribute("currentLocal", nextLocationName);
@@ -90,6 +91,7 @@ public class LocationServlet extends HttpServlet {
         LOGGER.debug("LocationServlet, doPost is started with nextLocationName = " + nextLocationName);
 
             req.setAttribute("currentLocation", locationService.getLocation(nextLocationName));
+            req.setAttribute("personageName", personageName);
             req.setAttribute("armors", locationService.getArmors(nextLocationName));
             req.setAttribute("potions", locationService.getPotions(nextLocationName));
             req.setAttribute("helpers", locationService.getHelpers(nextLocationName));
