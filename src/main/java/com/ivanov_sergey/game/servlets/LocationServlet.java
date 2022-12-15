@@ -2,6 +2,7 @@ package com.ivanov_sergey.game.servlets;
 
 import com.ivanov_sergey.game.entity.Hero;
 import com.ivanov_sergey.game.entity.Location;
+import com.ivanov_sergey.game.entity.Wicket;
 import com.ivanov_sergey.game.service.LocationServiceImpl;
 import com.ivanov_sergey.game.service.ModuleService;
 import com.ivanov_sergey.game.service.ModuleServiceImpl;
@@ -41,13 +42,13 @@ public class LocationServlet extends HttpServlet {
         DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("MM-dd-yyyy, HH-mm");
         String timeOfCreateGame = dateTimeFormatter.format(LocalDateTime.now());
         HttpSession session = req.getSession();
-        locationService = (LocationServiceImpl)session.getAttribute("locationService");
+        locationService = (LocationServiceImpl) session.getAttribute("locationService");
 
         String heroName = req.getParameter("heroName");
         Hero hero;
         Location currentLocation;
         List<Hero> heroes;
-        if (heroName == null){
+        if (heroName == null) {
             hero = (Hero) session.getAttribute("hero");
             currentLocation = locationService.getLocation((String) session.getAttribute("currentLocal"));
             heroes = (List<Hero>) session.getAttribute("heroes");
@@ -57,8 +58,12 @@ public class LocationServlet extends HttpServlet {
             LOGGER.debug("LocationServlet, game started with hero = " + heroName);
             currentLocation = locationService.getLocation(STARTING_ROOM);
         }
-
+        List<Wicket> wickets = currentLocation.getWickets();
+        if (currentLocation.getPersonages().isEmpty()){
+            locationService.toOpenWickets(wickets);
+        }
         req.setAttribute("currentLocation", currentLocation);
+        session.setAttribute("wickets", wickets);
         req.setAttribute("armors", locationService.getArmors(currentLocation.getName()));
         req.setAttribute("potions", locationService.getPotions(currentLocation.getName()));
         req.setAttribute("helpers", locationService.getHelpers(currentLocation.getName()));
@@ -81,21 +86,26 @@ public class LocationServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        HttpSession session = req.getSession();
         String nextLocationName = req.getParameter("nextLocationName");
         String personageName = req.getParameter("personageName");
         HttpSession httpSession = req.getSession();
-        locationService = (LocationServiceImpl)httpSession.getAttribute("locationService");
+        locationService = (LocationServiceImpl) httpSession.getAttribute("locationService");
         httpSession.setAttribute("currentLocal", nextLocationName);
         System.out.println("LocationServlet, doPost, nextLocationName = " + nextLocationName);
 
         LOGGER.debug("LocationServlet, doPost is started with nextLocationName = " + nextLocationName);
 
-            req.setAttribute("currentLocation", locationService.getLocation(nextLocationName));
-            req.setAttribute("personageName", personageName);
-            req.setAttribute("armors", locationService.getArmors(nextLocationName));
-            req.setAttribute("potions", locationService.getPotions(nextLocationName));
-            req.setAttribute("helpers", locationService.getHelpers(nextLocationName));
-            req.setAttribute("weapons", locationService.getWeapons(nextLocationName));
+        Location currentLocation = locationService.getLocation(nextLocationName);
+        List<Wicket> wickets = currentLocation.getWickets();
+
+        req.setAttribute("currentLocation", currentLocation);
+        session.setAttribute("wickets", wickets);
+        req.setAttribute("personageName", personageName);
+        req.setAttribute("armors", locationService.getArmors(nextLocationName));
+        req.setAttribute("potions", locationService.getPotions(nextLocationName));
+        req.setAttribute("helpers", locationService.getHelpers(nextLocationName));
+        req.setAttribute("weapons", locationService.getWeapons(nextLocationName));
 
         RequestDispatcher requestDispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/game_view/location.jsp");

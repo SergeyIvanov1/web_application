@@ -275,3 +275,30 @@ img.defeat {
     width: 450px;
     height: 350px;
 }
+
+div.location{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    /*border: 1px solid grey;*/
+    padding: 0;
+    /*background-color: linen;*/
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.left-square{
+    width: 49%;
+    /*border: 1px solid grey;*/
+    /*height: 70px;*/
+    border-right: 0;
+}
+
+.right-square{
+    width: 49%;
+    /*border: 1px solid grey;*/
+    border-left: 0;
+    /*height: 70px;*/
+}

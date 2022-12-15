@@ -24,5 +24,5 @@ public class Wicket implements Serializable {
     private String name;
 
     @Column(name = "is_opened")
-    private boolean isOpened;
+    private Boolean isOpened;
 }

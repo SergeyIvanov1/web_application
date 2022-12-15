@@ -24,7 +24,7 @@ public class Quest implements Serializable {
     private String text;
 
     @Column(name = "is_finished")
-    private boolean isFinished;
+    private Boolean isFinished;
 
     @Column(name = "personage_id")
     private int personageId;

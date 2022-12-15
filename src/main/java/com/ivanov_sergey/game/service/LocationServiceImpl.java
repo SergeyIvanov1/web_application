@@ -122,4 +122,8 @@ public class LocationServiceImpl implements LocationService {
             throw new LocationInvalidParameters("Parameter is null");
         }
     }
+
+    public void toOpenWickets(List<Wicket> wickets) {
+        wickets.forEach((wicket -> wicket.setIsOpened(true)));
+    }
 }

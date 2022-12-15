@@ -13,4 +13,5 @@ public interface LocationService extends Storage {
     public Location getLocation(String locationName);
     public List<Location> getLocations();
     public Storage getSessionRepo();
+    public void toOpenWickets(List<Wicket> wickets);
 }

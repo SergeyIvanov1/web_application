@@ -33,20 +33,28 @@
                     <c:forEach var="personage" items="${currentLocation.getPersonages()}">
                         <div>${personage.name}
                             <br><br>
-                            <c:set var="interlocutor" scope="page" value="${personage.name}"/>
-                            <img src="${pageContext.request.contextPath}/images/${interlocutor}.jpeg" class="img-fluid"
+                            <c:set var="personageName" scope="page" value="${personage.name}"/>
+                            <img src="${pageContext.request.contextPath}/images/${personageName}.jpeg" class="img-fluid"
                                  alt="Tramp">
                             <br><br>
-                            <form action="${pageContext.request.contextPath}/conversation" method="GET">
-                                <input type="hidden" name="personageName" value="${personage.name}">
-                                <input type="hidden" name="lastLocation" value="${currentLocation.getName()}">
-                                <input class="nice_button" type="submit" value="Speak"/>
-                            </form>
-                            <form action="${pageContext.request.contextPath}/fight" method="POST">
-                                <input type="hidden" name="personageName" value="${personage.name}">
-                                <input type="hidden" name="lastLocation" value="${currentLocation.getName()}">
-                                <input class="nice_button" type="submit" value="Attack"/>
-                            </form>
+                            <div class="location">
+                                <div class="left-square">
+                                    <form action="${pageContext.request.contextPath}/conversation" method="GET">
+                                        <input type="hidden" name="personageName" value="${personage.name}">
+                                        <input type="hidden" name="lastLocation" value="${currentLocation.getName()}">
+<%--                                        <input class="nice_button" type="submit" value="Speak"/>--%>
+                                        <button type="button" class="btn btn-secondary">   Speak   </button>
+                                    </form>
+                                </div>
+                                <div class="right-square">
+                                    <form action="${pageContext.request.contextPath}/fight" method="POST">
+                                        <input type="hidden" name="personageName" value="${personage.name}">
+                                        <input type="hidden" name="lastLocation" value="${currentLocation.getName()}">
+<%--                                        <input class="nice_button" type="submit" value="Attack"/>--%>
+                                        <button type="button" class="btn btn-secondary">  Attack  </button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                         <h6>Quest: ${personage.getQuests()}</h6>
                     </c:forEach>
@@ -54,7 +62,7 @@
                 <c:set var="personages_is_not_present" scope="page"
                        value="${currentLocation.getPersonages().isEmpty()}"/>
                 <c:if test="${personages_is_not_present}">
-                    <h3>Personage killed</h3>
+                    <h3>${personageName} killed</h3>
                 </c:if>
             </div>
         </div>
@@ -69,13 +77,32 @@
                     <img src="${pageContext.request.contextPath}/images/${thisLocation}.jpeg" class="img-fluid"
                          alt="Tramp">
                     <br><br>
-                    <h6>Available locations:</h6>
-                    <c:forEach var="location" items="${locations}">
-                        <form action="${pageContext.request.contextPath}/location" method="POST">
-                            <input type="hidden" name="nextLocationName" value="${location.name}">
-                            <input class="nice_button" type="submit" value="${location.name}"/>
-                        </form>
-                    </c:forEach>
+                    <div class="location">
+                        <div class="left-square">
+                            <h6>Available wickets:</h6>
+                            <c:forEach var="wicket" items="${wickets}">
+                                <c:set var="wicket_is_opened" scope="page" value="${wicket.isOpened}"/>
+                                <c:if test="${wicket_is_opened}">
+                                    <form action="${pageContext.request.contextPath}/location" method="POST">
+                                        <input type="hidden" name="nextLocationName" value="${wicket.name}">
+                                        <input class="nice_button" type="submit" value="${wicket.name}"/>
+                                    </form>
+                                </c:if>
+                            </c:forEach>
+                        </div>
+                        <div class="right-square">
+                            <h6>Closed wickets:</h6>
+                            <c:forEach var="wicket" items="${wickets}">
+                                <c:if test="${!wicket_is_opened}">
+                                    <form action="${pageContext.request.contextPath}/location" method="POST">
+                                        <input class="nice_button" type="submit" value="${wicket.name}"
+                                               title="${personageName} does not allow you pass there." disabled/>
+                                    </form>
+                                </c:if>
+                            </c:forEach>
+                        </div>
+                    </div>
+
                 </c:if>
             </div>
         </div>
@@ -86,7 +113,7 @@
                 <form action="${pageContext.request.contextPath}/things" method="post">
                     <input type="hidden" name="nextLocationName" value="${currentLocation.getName()}">
                     <%--                    <input type="hidden" name="nextLocationName" value="${currentLocation.getName()}">--%>
-                    <button class="btn btn-default btn-sm my_svg box" title="coffee" type="submit" value="Submit">
+                    <button class="btn btn-default btn-sm my_svg box" title="Chest" type="submit" value="Submit">
                         <img class="box" src="${pageContext.request.contextPath}/images/box3.jpg" alt="Box">
                     </button>
                 </form>
