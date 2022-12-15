@@ -12,6 +12,7 @@ drop table my_db.inventories;
 drop table my_db.helpers;
 drop table my_db.repositoryes;
 drop table my_db.quests;
+drop table my_db.wickets;
 
 drop table my_db.issues;
 drop table my_db.replies;
@@ -197,6 +198,39 @@ CREATE TABLE my_db.quests
     personage_id int,
     PRIMARY KEY (id)
 );
+
+-- ________________________
+
+CREATE TABLE my_db.wickets
+(
+    id   int NOT NULL AUTO_INCREMENT,
+    name varchar(20),
+    location_id int,
+    is_opened tinyint(1),
+    PRIMARY KEY (id)
+);
+
+INSERT INTO my_db.wickets (name, location_id, is_opened)
+VALUES ('Forest', 1, 1),
+
+       ('Gates', 2, 1),
+       ('Town', 2, 1),
+       ('Mountain', 2, 0),
+
+       ('Forest', 3, 1),
+
+       ('Forest', 4, 1),
+       ('Field', 4, 0),
+
+       ('Mountain', 5, 1),
+       ('Swamp', 5, 0),
+       ('Village', 5, 0),
+
+       ('Field', 6, 1),
+
+       ('Field', 7, 1);
+
+-- ________________________
 
 CREATE TABLE my_db.issues
 (

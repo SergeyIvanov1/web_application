@@ -19,6 +19,7 @@
     <div class="container text-center">
         <div class="row">
             <h1>${currentLocation.getName()}</h1>
+            <h4>${currentLocation.getWickets()}</h4>
         </div>
     </div>
 </header>

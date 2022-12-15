@@ -13,13 +13,16 @@ import java.io.Serializable;
 @ToString
 @NoArgsConstructor
 @Entity
-@Table(name = "doors")
-public class Door implements Serializable {
+@Table(name = "wickets")
+public class Wicket implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private int id;
 
-    @Column(name = "text")
-    private String text;
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "is_opened")
+    private boolean isOpened;
 }

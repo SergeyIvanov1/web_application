@@ -55,6 +55,11 @@ public class Location implements Serializable {
     @JoinColumn(name = "location_id")
     List<Helper> helpers;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @JoinColumn(name = "location_id")
+    List<Wicket> wickets;
+
     public Location(String name) {
         this.name = name;
     }

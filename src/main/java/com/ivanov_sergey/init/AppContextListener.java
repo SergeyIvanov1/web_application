@@ -36,6 +36,7 @@ public class AppContextListener implements ServletContextListener {
                 .addAnnotatedClass(Inventory.class)
                 .addAnnotatedClass(Issue.class)
                 .addAnnotatedClass(Reply.class)
+                .addAnnotatedClass(Wicket.class)
                 .addAnnotatedClass(Quest.class);
         LOGGER.info("Hibernate Configuration created successfully");
 

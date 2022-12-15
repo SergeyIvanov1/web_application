@@ -39,34 +39,53 @@ public class ModuleDAOImpl implements ModuleDAO {
 
     @Override
     public Location getLocation(int id) {
-        session = sessionFactory.getCurrentSession();
-        session.beginTransaction();
-        Location location = session.get(Location.class, id);
-        session.getTransaction().commit();
+//        session = sessionFactory.getCurrentSession();
+        Location location;
+        try {
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            location = session.get(Location.class, id);
+            session.getTransaction().commit();
+        } finally {
+            session.close();
+        }
         return location;
     }
 
     @Override
     public Repository getRepository(int id) {
-        session = sessionFactory.getCurrentSession();
-        session.beginTransaction();
-        Repository repository = session.get(Repository.class, id);
-        session.getTransaction().commit();
+        Repository repository;
+        try {
+//            session = sessionFactory.getCurrentSession();
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            repository = session.get(Repository.class, id);
+            session.getTransaction().commit();
+        } finally {
+            session.close();
+        }
         return repository;
     }
 
     @Override
     public Optional<Location> getLocation(String nextLocation) {
-        session = sessionFactory.getCurrentSession();
-        session.beginTransaction();
-        Query<Location> query = session.createQuery("from Location where name = '" + nextLocation + "'");
-        List<Location> resultList = query.getResultList();
-
         Optional<Location> optional;
-        if (resultList.size() > 0) {
-            optional = Optional.of(query.getResultList().get(0));
-        } else {
-            optional = Optional.empty();
+//        session = sessionFactory.getCurrentSession();
+        try {
+            session = sessionFactory.openSession();
+
+            session.beginTransaction();
+            Query<Location> query = session.createQuery("from Location where name = '" + nextLocation + "'");
+            List<Location> resultList = query.getResultList();
+
+
+            if (resultList.size() > 0) {
+                optional = Optional.of(query.getResultList().get(0));
+            } else {
+                optional = Optional.empty();
+            }
+        } finally {
+            session.close();
         }
         session.getTransaction().commit();
         return optional;
@@ -74,37 +93,54 @@ public class ModuleDAOImpl implements ModuleDAO {
 
     @Override
     public Optional<Hero> getHero(String nameHero) {
-        session = sessionFactory.getCurrentSession();
-        session.beginTransaction();
-        Query<Hero> query = session.createQuery("from Hero where name = '" + nameHero + "'");
-        List<Hero> resultList = query.getResultList();
-
+//        session = sessionFactory.getCurrentSession();
         Optional<Hero> optional;
-        if (resultList.size() > 0) {
-            optional = Optional.of(query.getResultList().get(0));
-        } else {
-            optional = Optional.empty();
+        try {
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            Query<Hero> query = session.createQuery("from Hero where name = '" + nameHero + "'");
+            List<Hero> resultList = query.getResultList();
+
+
+            if (resultList.size() > 0) {
+                optional = Optional.of(query.getResultList().get(0));
+            } else {
+                optional = Optional.empty();
+            }
+            session.getTransaction().commit();
+        } finally {
+            session.close();
         }
-        session.getTransaction().commit();
         return optional;
     }
 
     @Override
     public List<Hero> getAllHero() {
-        session = sessionFactory.getCurrentSession();
-        session.beginTransaction();
-        Query<Hero> query = session.createQuery("from Hero", Hero.class);
-        List<Hero> resultList = query.getResultList();
+//        session = sessionFactory.getCurrentSession();
+        List<Hero> resultList;
+        try {
+            session = sessionFactory.openSession();
 
+            session.beginTransaction();
+            Query<Hero> query = session.createQuery("from Hero", Hero.class);
+            resultList = query.getResultList();
+        } finally {
+            session.close();
+        }
         return resultList;
     }
 
     @Override
     public void saveHero(Hero hero) {
-        session = sessionFactory.getCurrentSession();
-        session.beginTransaction();
-        session.save(hero);
-        session.getTransaction().commit();
+//        session = sessionFactory.getCurrentSession();
+        try {
+            session = sessionFactory.openSession();
+            session.beginTransaction();
+            session.save(hero);
+            session.getTransaction().commit();
+        } finally {
+            session.close();
+        }
     }
 
     @Override
