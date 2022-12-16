@@ -29,6 +29,12 @@ public class FightingServiceImpl implements FightingService {
         checkParametersByNull(hero, personage, block);
 
         int personageRandomAttack = this.random.nextInt(personageAttack.size());
+        int chanceToDodge = this.random.nextInt(0, 100);
+        System.out.println("chanceToDodge = " + chanceToDodge);
+
+        if (hero.getDexterity() > chanceToDodge) {
+            return "Your dexterity equals " + hero.getDexterity()  + ". It allow you to be agile and dodges a direct hit. Damage by zero.";
+        }
 
         if (personageAttack.get(personageRandomAttack).equals(block)) {
             return personage.getName() + " attack to " + personageAttack.get(personageRandomAttack)
@@ -47,6 +53,12 @@ public class FightingServiceImpl implements FightingService {
         checkParametersByNull(hero, personage, attack);
 
         int personageRandomBlock = this.random.nextInt(personageBloke.size());
+        int chanceToDodge = this.random.nextInt(0, 100);
+        System.out.println("chanceToDodge = " + chanceToDodge);
+
+        if (personage.getDexterity() > chanceToDodge) {
+            return personage.getName() + " is agile and dodges a direct hit. Damage by zero.";
+        }
 
         if (personageBloke.get(personageRandomBlock).equals(attack)) {
             return personage.getName() + " put block of " + attack + ". Damage by zero.";

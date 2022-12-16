@@ -61,6 +61,6 @@ public class Hero implements Serializable {
         this.maxHealth = 150;
         this.currentHealth = 150;
         this.strength = 20;
-        this.dexterity = 50;
+        this.dexterity = 20;
     }
 }

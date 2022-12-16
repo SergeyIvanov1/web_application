@@ -42,16 +42,16 @@
                                     <form action="${pageContext.request.contextPath}/conversation" method="GET">
                                         <input type="hidden" name="personageName" value="${personage.name}">
                                         <input type="hidden" name="lastLocation" value="${currentLocation.getName()}">
-<%--                                        <input class="nice_button" type="submit" value="Speak"/>--%>
-                                        <button type="button" class="btn btn-secondary">   Speak   </button>
+                                        <input class="custom_button" type="submit" value="Speak"/>
+<%--                                        <button type="button" class="btn btn-secondary">   Speak   </button>--%>
                                     </form>
                                 </div>
                                 <div class="right-square">
                                     <form action="${pageContext.request.contextPath}/fight" method="POST">
                                         <input type="hidden" name="personageName" value="${personage.name}">
                                         <input type="hidden" name="lastLocation" value="${currentLocation.getName()}">
-<%--                                        <input class="nice_button" type="submit" value="Attack"/>--%>
-                                        <button type="button" class="btn btn-secondary">  Attack  </button>
+                                        <input class="custom_button" type="submit" value="Attack"/>
+<%--                                        <button type="button" class="btn btn-secondary">  Attack  </button>--%>
                                     </form>
                                 </div>
                             </div>
@@ -62,7 +62,7 @@
                 <c:set var="personages_is_not_present" scope="page"
                        value="${currentLocation.getPersonages().isEmpty()}"/>
                 <c:if test="${personages_is_not_present}">
-                    <h3>${personageName} killed</h3>
+                    <h3>Personage killed</h3>
                 </c:if>
             </div>
         </div>
@@ -93,7 +93,7 @@
                         <div class="right-square">
                             <h6>Closed wickets:</h6>
                             <c:forEach var="wicket" items="${wickets}">
-                                <c:if test="${!wicket_is_opened}">
+                                <c:if test="${!wicket.isOpened}">
                                     <form action="${pageContext.request.contextPath}/location" method="POST">
                                         <input class="nice_button" type="submit" value="${wicket.name}"
                                                title="${personageName} does not allow you pass there." disabled/>
@@ -206,7 +206,7 @@
                         </div>
                     </c:if>
                     <c:if test="${personages_is_present}">
-                        <H6>Personage is not allow you to open this chest!</H6>
+                        <H6>${personageName} is not allow you to open this chest!</H6>
                     </c:if>
                 </c:if>
             </div>
