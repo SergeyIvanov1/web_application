@@ -1,5 +1,7 @@
 package com.ivanov_sergey.game.servlets;
 
+import com.ivanov_sergey.game.entity.Helper;
+import com.ivanov_sergey.game.entity.Hero;
 import com.ivanov_sergey.game.entity.Personage;
 import com.ivanov_sergey.game.service.LocationServiceImpl;
 import org.apache.logging.log4j.LogManager;
@@ -7,7 +9,6 @@ import org.apache.logging.log4j.Logger;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -53,12 +54,28 @@ public class ConversationServlet extends HttpServlet {
         String lastLocation = req.getParameter("lastLocation");
         String personageName = req.getParameter("personageName");
         String nextQuestion = req.getParameter("nextQuestion");
+        String currentReply = req.getParameter("currentReply");
+        HttpSession httpSession = req.getSession();
+        Hero hero = (Hero) httpSession.getAttribute("hero");
         LOGGER.debug("ConversationServlet, doPost started. " +
                 "LastLocation = " + lastLocation + ", personageName = " + personageName +
                 ", nextQuestion = " + nextQuestion);
 
         req.setAttribute("personageName", personageName);
         req.setAttribute("lastLocation", lastLocation);
+
+//        Helper helper;
+
+        for (Helper helper : hero.getInventory().getHelpers()) {
+            if (helper.getName().equals("present") && personageName.equals("Forester")){
+
+            }
+        }
+
+
+        if (currentReply.startsWith("Ok")) {
+            locationService.passQuestToHero(personageName, lastLocation, hero);
+        }
 
         if ("".equals(nextQuestion)) {
             resp.sendRedirect(req.getContextPath() + "/location");

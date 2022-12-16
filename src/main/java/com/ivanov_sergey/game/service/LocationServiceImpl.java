@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 public class LocationServiceImpl implements LocationService {
+    private static final int FIRST_QUEST = 0;
     Storage sessionRepo;
 
     public LocationServiceImpl(Storage sessionRepo) {
@@ -70,6 +71,16 @@ public class LocationServiceImpl implements LocationService {
         return sessionRepo.getLocations();
     }
 
+    @Override
+    public void passQuestToHero(String personageName, String lastLocation, Hero hero) {
+        Personage personage = getPersonage(personageName, lastLocation);
+        List<Quest> personageQuests = personage.getQuests();
+        if(!personageQuests.isEmpty()) {
+            Quest quest = personageQuests.remove(FIRST_QUEST);
+            hero.getQuests().add(quest);
+        }
+    }
+
     public Storage getSessionRepo() {
         return sessionRepo;
     }
@@ -117,13 +128,14 @@ public class LocationServiceImpl implements LocationService {
         return issue;
     }
 
-    public void checkParameterByNull(String parameter) {
+    public void toOpenWickets(List<Wicket> wickets) {
+        wickets.forEach((wicket -> wicket.setIsOpened(true)));
+    }
+
+
+    private void checkParameterByNull(String parameter) {
         if (parameter == null){
             throw new LocationInvalidParameters("Parameter is null");
         }
-    }
-
-    public void toOpenWickets(List<Wicket> wickets) {
-        wickets.forEach((wicket -> wicket.setIsOpened(true)));
     }
 }

@@ -49,6 +49,8 @@ public class Hero implements Serializable {
     private Inventory inventory;
 
     @Transient
+    List<Quest> quests = new ArrayList<>();
+    @Transient
     List<Armor> usingArmors = new ArrayList<>();
     @Transient
     List<Weapon> usingWeapons = new ArrayList<>();

@@ -29,10 +29,10 @@ public class FightingServiceImpl implements FightingService {
         checkParametersByNull(hero, personage, block);
 
         int personageRandomAttack = this.random.nextInt(personageAttack.size());
-        int chanceToDodge = this.random.nextInt(0, 100);
-        System.out.println("chanceToDodge = " + chanceToDodge);
+        int randomChanceToDodge = this.random.nextInt(0, 100);
+        System.out.println("randomChanceToDodge = " + randomChanceToDodge);
 
-        if (hero.getDexterity() > chanceToDodge) {
+        if (hero.getDexterity() > randomChanceToDodge) {
             return "Your dexterity equals " + hero.getDexterity()  + ". It allow you to be agile and dodges a direct hit. Damage by zero.";
         }
 
@@ -53,10 +53,10 @@ public class FightingServiceImpl implements FightingService {
         checkParametersByNull(hero, personage, attack);
 
         int personageRandomBlock = this.random.nextInt(personageBloke.size());
-        int chanceToDodge = this.random.nextInt(0, 100);
-        System.out.println("chanceToDodge = " + chanceToDodge);
+        int randomChanceToDodge = this.random.nextInt(0, 100);
+        System.out.println("randomChanceToDodge = " + randomChanceToDodge);
 
-        if (personage.getDexterity() > chanceToDodge) {
+        if (personage.getDexterity() > randomChanceToDodge) {
             return personage.getName() + " is agile and dodges a direct hit. Damage by zero.";
         }
 
@@ -65,8 +65,9 @@ public class FightingServiceImpl implements FightingService {
         }
         int personageCurrentHealth = personage.getCurrentHealth() - hero.getStrength();
         personage.setCurrentHealth(Math.max(personageCurrentHealth, 0));
-        return hero.getName() + " attack " + personage.getName() + " to " + attack + ". But " + personage.getName() + " put block of "
-                + personageBloke.get(personageRandomBlock) + ". Damage by " + hero.getStrength() + ".";
+        return hero.getName() + " attack " + personage.getName() + " to " + attack + ". But " + personage.getName()
+                + " mistakenly put block of "
+                + personageBloke.get(personageRandomBlock) + ", damage is " + hero.getStrength() + ".";
     }
 
     @Override

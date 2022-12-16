@@ -199,6 +199,10 @@ CREATE TABLE my_db.quests
     PRIMARY KEY (id)
 );
 
+INSERT INTO my_db.quests (text, is_finished, personage_id)
+VALUES ('Bring present to Forester', 0, 2),
+       ('Tramp wants sweets. Find it for him.', 0, 5);
+
 -- ________________________
 
 CREATE TABLE my_db.wickets
@@ -223,7 +227,7 @@ VALUES ('Forest', 1, 1),
        ('Field', 4, 0),
 
        ('Mountain', 5, 1),
-       ('Swamp', 5, 0),
+       ('Swamp', 5, 1),
        ('Village', 5, 0),
 
        ('Field', 6, 1),

@@ -60,7 +60,6 @@
             <div class="col border">
                 <div class="container">
                     <br><br>
-<%--                    <c:set var="fighting" scope="page" value="${issue == 'fight'}"/>--%>
                     <c:if test="${fighting == 'fighting'}">
                         <h6>${personageName} was humiliated. He wants to kill you.</h6>
                         <div>
@@ -72,12 +71,14 @@
                         </div>
                     </c:if>
                     <h6>${issue.getText()}</h6>
+                    <br>
                     <c:forEach var="reply" items="${issue.getReplies()}">
                         <div>
                             <form action="${pageContext.request.contextPath}/conversation" method="POST">
                                 <input type="hidden" name="lastLocation" value="${lastLocation}">
                                 <input type="hidden" name="personageName" value="${personageName}">
                                 <input type="hidden" name="nextQuestion" value="${reply.getNextQuestion()}">
+                                <input type="hidden" name="currentReply" value="${reply.getText()}">
                                 <input class="nice_button" type="submit" value="${reply.getText()}"/>
                             </form>
                         </div>

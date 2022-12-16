@@ -56,7 +56,8 @@
                                 </div>
                             </div>
                         </div>
-                        <h6>Quest: ${personage.getQuests()}</h6>
+                        <h6>Quest_personage: ${personage.getQuests()}</h6>
+                        <h6>Quest_hero: ${hero.getQuests()}</h6>
                     </c:forEach>
                 </c:if>
                 <c:set var="personages_is_not_present" scope="page"
@@ -79,7 +80,7 @@
                     <br><br>
                     <div class="location">
                         <div class="left-square">
-                            <h6>Available wickets:</h6>
+                            <h6>Available roads:</h6>
                             <c:forEach var="wicket" items="${wickets}">
                                 <c:set var="wicket_is_opened" scope="page" value="${wicket.isOpened}"/>
                                 <c:if test="${wicket_is_opened}">
@@ -91,7 +92,7 @@
                             </c:forEach>
                         </div>
                         <div class="right-square">
-                            <h6>Closed wickets:</h6>
+                            <h6>Closed roads:</h6>
                             <c:forEach var="wicket" items="${wickets}">
                                 <c:if test="${!wicket.isOpened}">
                                     <form action="${pageContext.request.contextPath}/location" method="POST">
