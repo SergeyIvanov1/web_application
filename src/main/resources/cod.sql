@@ -241,23 +241,26 @@ CREATE TABLE my_db.issues
     id   int NOT NULL AUTO_INCREMENT,
     text varchar(850),
     personage_id int,
+    helper_id int,
     PRIMARY KEY (id)
 );
 
-INSERT INTO my_db.issues (text, personage_id)
-VALUES ('Hello. What do you want?', 1),
-       ('This place is dangerous. You can to be killed here.', 1),
-       ('I do not know, where you can to find so human, but i know, Tramp help you. You can to find him on the Field.', 1),
-       ('Hi. Can I help you?.', 2),
-       ('You will help me, I will can help you. Escape prisoner was here and steal my present for my wife. Find him and take my present. He is in the Town.', 2),
-       ('Get out!!! While I not killed you.', 3),
-       ('You must pass by. I do not want speak with you!', 4),
-       ('Hello. What do you need?', 5),
-       ('I so long no eating sweets, what I ready to anything. Give me sweets and I give you hint, where you will can to find key for decrypting.', 5),
-       ('Who are you? Why do you walk on the Swamp?', 6),
-       ('Oh no, I have no key, but if i would have, I do not give you its.', 6),
-       ('I heard, that in our places walk something travelers. Who are you? ', 7),
-       ('I can find any things, of course, for small pay?', 7);
+INSERT INTO my_db.issues (text, personage_id, helper_id)
+VALUES ('Hello. What do you want?', 1, 0),
+       ('This place is dangerous. You can to be killed here.', 1, 0),
+       ('I do not know, where you can to find so human, but i know, Tramp help you. You can to find him on the Field.', 1, 0),
+       ('Hi. Can I help you?.', 2, 0),
+       ('You will help me, I will can help you. Escape prisoner was here and steal my present for my wife. Find him and take my present. He is in the Town.', 2, 0),
+       ('Get out!!! While I not killed you.', 3, 0),
+       ('You must pass by. I do not want speak with you!', 4, 0),
+       ('Hello. What do you need?', 5, 0),
+       ('I so long no eating sweets, what I ready to anything. Give me sweets and I give you hint, where you will can to find key for decrypting.', 5, 0),
+       ('Who are you? Why do you walk on the Swamp?', 6, 0),
+       ('Oh no, I have no key, but if i would have, I do not give you its.', 6, 0),
+       ('I heard, that in our places walk something travelers. Who are you? ', 7, 0),
+       ('I can find any things, of course, for small pay?', 7, 0),
+       ('I thank you what return my present and I am opening roads in front of you', 0, 1),
+       ('Oh, thank you very much. You helped me. I am allow you going to village. You can find you key there.', 0, 3);
 
 -- ________________________
 
@@ -290,7 +293,9 @@ VALUES ('Hi. I have a very important letter. I know what I can to find here a hu
        ('Tell me, where I can find it.', 11, null),
        ('None of your business.', 12, 'fight'),
        ('I want to pass for ended game.', 12, null),
-       ('Nothing do not need. I need to go.', 13, null);
+       ('Nothing do not need. I need to go.', 13, null),
+       ('Thank you.', 14, null),
+       ('I helped you, you helped me', 15, null);
 
 -- ________________________
 

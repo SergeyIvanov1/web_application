@@ -10,6 +10,7 @@ import java.util.Optional;
 
 public class LocationServiceImpl implements LocationService {
     private static final int FIRST_QUEST = 0;
+    private final int INITIAL_INDEX = 0;
     Storage sessionRepo;
 
     public LocationServiceImpl(Storage sessionRepo) {
@@ -75,17 +76,51 @@ public class LocationServiceImpl implements LocationService {
     public void passQuestToHero(String personageName, String lastLocation, Hero hero) {
         Personage personage = getPersonage(personageName, lastLocation);
         List<Quest> personageQuests = personage.getQuests();
-        if(!personageQuests.isEmpty()) {
+        if (!personageQuests.isEmpty()) {
             Quest quest = personageQuests.remove(FIRST_QUEST);
             hero.getQuests().add(quest);
         }
+    }
+
+    @Override
+    public Issue calculateIssue(String personageName, Hero hero, String lastLocation) {
+        System.out.println("calculateIssue: " + personageName + ", " + hero + ", " + lastLocation);
+        Issue issue;
+        Personage personage = getPersonage(personageName, lastLocation);
+        Inventory inventory = hero.getInventory();
+        List<Helper> helpers = inventory.getHelpers();
+        for (Helper helper : helpers) {
+            System.out.println("fore");
+            if (helper.getName().equals("present") && personageName.equals("Forester")) {
+                issue = finishQuest(helper, lastLocation, hero);
+                return issue;
+            } else if (helper.getName().equals("cookie") && personageName.equals("Tramp")) {
+                issue = finishQuest(helper, lastLocation, hero);
+                return issue;
+            }
+        }
+        issue = getFirstIssue(personage, INITIAL_INDEX);
+        System.out.println("issue = " + issue);
+        return issue;
+    }
+
+    public Issue finishQuest(Helper helper, String lastLocation, Hero hero) {
+        Issue issue = helper.getIssuesForQuest().get(INITIAL_INDEX);
+        hero.getInventory().getHelpers().remove(helper);
+
+        Location location = getLocation(lastLocation);
+        for (Wicket wicket: location.getWickets()) {
+            wicket.setIsOpened(true);
+        }
+
+        return issue;
     }
 
     public Storage getSessionRepo() {
         return sessionRepo;
     }
 
-    public Personage getPersonage(String personageName, String lastLocation){
+    public Personage getPersonage(String personageName, String lastLocation) {
 
         Optional<Personage> optional = getLocation(lastLocation)
                 .getPersonages()
@@ -100,7 +135,7 @@ public class LocationServiceImpl implements LocationService {
         }
     }
 
-    public Issue getIssue(String personageName, String nextQuestion, String lastLocation){
+    public Issue getIssue(String personageName, String nextQuestion, String lastLocation) {
         Optional<Issue> optional = getPersonage(personageName, lastLocation)
                 .getIssues()
                 .stream()
@@ -115,14 +150,18 @@ public class LocationServiceImpl implements LocationService {
         }
     }
 
-    public Issue getFirstIssue(Personage personage, int index){
-        if (personage == null){throw new LocationInvalidParameters("First parameter - personage is null");}
-        if (index < 0){throw new LocationInvalidParameters("Second parameter - index is negative");}
+    public Issue getFirstIssue(Personage personage, int index) {
+        if (personage == null) {
+            throw new LocationInvalidParameters("First parameter - personage is null");
+        }
+        if (index < 0) {
+            throw new LocationInvalidParameters("Second parameter - index is negative");
+        }
 
         Issue issue;
         try {
             issue = personage.getIssues().get(index);
-        } catch (IndexOutOfBoundsException ex){
+        } catch (IndexOutOfBoundsException ex) {
             throw new LocationInvalidParameters("Parameter index is out of list range", ex);
         }
         return issue;
@@ -134,7 +173,7 @@ public class LocationServiceImpl implements LocationService {
 
 
     private void checkParameterByNull(String parameter) {
-        if (parameter == null){
+        if (parameter == null) {
             throw new LocationInvalidParameters("Parameter is null");
         }
     }

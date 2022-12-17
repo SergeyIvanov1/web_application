@@ -50,11 +50,4 @@ public class Personage implements Serializable {
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "personage_id")
     List<Quest> quests;
-//
-//    public void initThanksConversation(){
-//        issues.clear();
-//        Issue issue = new Issue();
-//        issue.setText("I thank you for your job");
-//        issues.add()
-//    }
 }

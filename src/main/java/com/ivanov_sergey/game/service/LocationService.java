@@ -16,4 +16,8 @@ public interface LocationService extends Storage {
     public void toOpenWickets(List<Wicket> wickets);
 
     void passQuestToHero(String personageName, String lastLocation, Hero hero);
+
+    Issue calculateIssue(String personage, Hero hero, String lastLocation);
+
+//    Issue finishQuest(String personageName, String lastLocation);
 }

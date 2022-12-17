@@ -65,9 +65,9 @@
 </div>
 <div class="container text-center border">
     <br>
-    <h5>This is browser game. <br>
+    <h4>This is browser game. <br>
         Target of game - to implement quests and quit from game on last location.
-        Please, register, for begin game.</h5>
+        Please, register, for begin game.</h4>
     <br>
 </div>
 <div class="container text-center border">
@@ -77,7 +77,7 @@
         </div>
 
         <div class="col border">
-            <h4>Description</h4>
+            <h5>Description</h5>
             <div class="accordion" id="accordionPanelsStayOpenExample">
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="panelsStayOpen-headingOne">

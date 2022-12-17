@@ -1,7 +1,7 @@
 package com.ivanov_sergey.game.servlets;
 
-import com.ivanov_sergey.game.entity.Helper;
 import com.ivanov_sergey.game.entity.Hero;
+import com.ivanov_sergey.game.entity.Issue;
 import com.ivanov_sergey.game.entity.Personage;
 import com.ivanov_sergey.game.service.LocationServiceImpl;
 import org.apache.logging.log4j.LogManager;
@@ -20,7 +20,6 @@ import java.io.IOException;
 @WebServlet("/conversation")
 public class ConversationServlet extends HttpServlet {
     static final Logger LOGGER = LogManager.getRootLogger();
-    private final int INITIAL_INDEX = 0;
 
     LocationServiceImpl locationService;
 
@@ -34,15 +33,17 @@ public class ConversationServlet extends HttpServlet {
         LOGGER.debug("ConversationServlet, doGet started");
 
         String lastLocation = req.getParameter("lastLocation");
+        String personageName = req.getParameter("personageName");
+
         HttpSession httpSession = req.getSession();
+        httpSession.setAttribute("lastLocation", lastLocation);
         locationService = (LocationServiceImpl) httpSession.getAttribute("locationService");
 
-        httpSession.setAttribute("lastLocation", lastLocation);
-        String personageName = req.getParameter("personageName");
+        Hero hero = (Hero) httpSession.getAttribute("hero");
+        Issue issue = locationService.calculateIssue(personageName, hero, lastLocation);
+//        Personage personage = locationService.getPersonage(personageName, lastLocation);
         req.setAttribute("personageName", personageName);
-
-        Personage personage = locationService.getPersonage(personageName, lastLocation);
-        req.setAttribute("issue", locationService.getFirstIssue(personage, INITIAL_INDEX));
+        req.setAttribute("issue", issue);
 
         RequestDispatcher requestDispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/game_view/conversation.jsp");
@@ -64,15 +65,6 @@ public class ConversationServlet extends HttpServlet {
         req.setAttribute("personageName", personageName);
         req.setAttribute("lastLocation", lastLocation);
 
-//        Helper helper;
-
-        for (Helper helper : hero.getInventory().getHelpers()) {
-            if (helper.getName().equals("present") && personageName.equals("Forester")){
-
-            }
-        }
-
-
         if (currentReply.startsWith("Ok")) {
             locationService.passQuestToHero(personageName, lastLocation, hero);
         }
@@ -87,6 +79,13 @@ public class ConversationServlet extends HttpServlet {
         } else {
             req.setAttribute("issue", locationService.getIssue(personageName, nextQuestion, lastLocation));
         }
+
+//        for (Helper helper : hero.getInventory().getHelpers()) {
+//            if (helper.getName().equals("present") && personageName.equals("Forester")){
+//                Issue issue = locationService.finishQuest(personageName, lastLocation);
+//                req.setAttribute("issue", issue);
+//            }
+//        }
 
         RequestDispatcher requestDispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/game_view/conversation.jsp");
