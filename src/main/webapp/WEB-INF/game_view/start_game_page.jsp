@@ -77,6 +77,7 @@
         </div>
 
         <div class="col border">
+            <br>
             <h5>Description</h5>
             <div class="accordion" id="accordionPanelsStayOpenExample">
                 <div class="accordion-item">
@@ -112,7 +113,7 @@
                          aria-labelledby="panelsStayOpen-headingTwo">
                         <div class="accordion-body">
                             Hero can speak with any personage.
-                            Personage can give quest to hero. (To find anything or to bring).
+                            Personage can give quest to hero. (To find anything and to bring).
                             Also, personage can begin to fight with hero if he do not like conversation.
                         </div>
                     </div>

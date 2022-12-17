@@ -57,7 +57,7 @@
                                         src="${pageContext.request.contextPath}/images/svg/${armor.name}.svg"
                                         class="box1"
                                         alt="Box"
-                                        title="${armor.name}">
+                                        title="${armor.name} added ${armor.value} to dexterity">
                                 </div>
                             </c:forEach>
                         </div>
@@ -79,7 +79,7 @@
                                         src="${pageContext.request.contextPath}/images/svg/${weapon.name}.svg"
                                         class="box1"
                                         alt="Box"
-                                        title="${weapon.name}"></div>
+                                        title="${weapon.name} added ${weapon.value} to strength"></div>
                             </c:forEach>
                         </div>
                     </div>

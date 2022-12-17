@@ -19,7 +19,7 @@
     <div class="container text-center">
         <div class="row">
             <h1>${currentLocation.getName()}</h1>
-            <h4>${currentLocation.getWickets()}</h4>
+<%--            <h4>${currentLocation.getWickets()}</h4>--%>
         </div>
     </div>
 </header>
@@ -56,8 +56,8 @@
                                 </div>
                             </div>
                         </div>
-                        <h6>Quest_personage: ${personage.getQuests()}</h6>
-                        <h6>Quest_hero: ${hero.getQuests()}</h6>
+<%--                        <h6>Quest_personage: ${personage.getQuests()}</h6>--%>
+<%--                        <h6>Quest_hero: ${hero.getQuests()}</h6>--%>
                     </c:forEach>
                 </c:if>
                 <c:set var="personages_is_not_present" scope="page"
@@ -214,7 +214,8 @@
         </div>
     </div>
 </div>
-<jsp:include page="parts/footer_location_and_conversation.jsp"/>
+<jsp:include page="parts/footer_location.jsp"/>
 <br><br><br><br>
+<h3>${hero}</h3>
 </body>
 </html>

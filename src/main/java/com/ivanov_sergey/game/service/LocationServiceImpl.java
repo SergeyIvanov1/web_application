@@ -5,6 +5,7 @@ import com.ivanov_sergey.game.entity.Storage;
 import com.ivanov_sergey.game.service.exceptions.LocationInvalidParameters;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -84,35 +85,31 @@ public class LocationServiceImpl implements LocationService {
 
     @Override
     public Issue calculateIssue(String personageName, Hero hero, String lastLocation) {
-        System.out.println("calculateIssue: " + personageName + ", " + hero + ", " + lastLocation);
         Issue issue;
         Personage personage = getPersonage(personageName, lastLocation);
         Inventory inventory = hero.getInventory();
         List<Helper> helpers = inventory.getHelpers();
         for (Helper helper : helpers) {
-            System.out.println("fore");
             if (helper.getName().equals("present") && personageName.equals("Forester")) {
                 issue = finishQuest(helper, lastLocation, hero);
+                updateIssues(hero, personage);
                 return issue;
             } else if (helper.getName().equals("cookie") && personageName.equals("Tramp")) {
                 issue = finishQuest(helper, lastLocation, hero);
+                updateIssues(hero, personage);
                 return issue;
             }
         }
+
         issue = getFirstIssue(personage, INITIAL_INDEX);
-        System.out.println("issue = " + issue);
         return issue;
     }
 
     public Issue finishQuest(Helper helper, String lastLocation, Hero hero) {
         Issue issue = helper.getIssuesForQuest().get(INITIAL_INDEX);
         hero.getInventory().getHelpers().remove(helper);
-
         Location location = getLocation(lastLocation);
-        for (Wicket wicket: location.getWickets()) {
-            wicket.setIsOpened(true);
-        }
-
+        toOpenWickets(location.getWickets());
         return issue;
     }
 
@@ -125,7 +122,7 @@ public class LocationServiceImpl implements LocationService {
         Optional<Personage> optional = getLocation(lastLocation)
                 .getPersonages()
                 .stream()
-                .filter(personage -> personageName.equals(personage.getName()))
+                .filter(personage -> personage.getName().equals(personageName))
                 .findFirst();
         if (optional.isPresent()) {
             return optional.get();
@@ -171,10 +168,18 @@ public class LocationServiceImpl implements LocationService {
         wickets.forEach((wicket -> wicket.setIsOpened(true)));
     }
 
-
     private void checkParameterByNull(String parameter) {
         if (parameter == null) {
             throw new LocationInvalidParameters("Parameter is null");
         }
+    }
+
+    private static void updateIssues(Hero hero, Personage personage) {
+        personage.getIssues().clear();
+        List<Reply> replies = new ArrayList<>();
+        replies.add(new Reply("Ok"));
+        Issue issue1 = new Issue("I have nothing to tell you.", replies);
+        personage.getIssues().add(issue1);
+        hero.getQuests().clear();
     }
 }

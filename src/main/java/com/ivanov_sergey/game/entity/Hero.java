@@ -60,8 +60,8 @@ public class Hero implements Serializable {
     }
 
     public void initValuesOfFields() {
-        this.maxHealth = 150;
-        this.currentHealth = 150;
+        this.maxHealth = 180;
+        this.currentHealth = 180;
         this.strength = 20;
         this.dexterity = 20;
     }

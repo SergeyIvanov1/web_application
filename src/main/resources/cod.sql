@@ -117,9 +117,9 @@ CREATE TABLE my_db.heroes
 );
 
 INSERT INTO my_db.heroes (name, count_of_ended_games, count_of_killed_personages, max_health, current_health, strength, dexterity, inventory_id)
-VALUES ('Hero', 0, 0, 150, 150, 20, 20, 1),
-       ('Po', 0, 0, 150, 150, 20, 20, 1),
-       ('Nick', 0, 0, 150, 150, 20, 20, 1);
+VALUES ('Hero', 0, 0, 180, 180, 20, 20, 1),
+       ('Po', 0, 0, 180, 180, 20, 20, 1),
+       ('Nick', 0, 0, 180, 180, 20, 20, 1);
 
 -- ________________________
 
@@ -136,13 +136,13 @@ CREATE TABLE my_db.personages
 );
 
 INSERT INTO my_db.personages (name, max_health, current_health, strength, dexterity, location_id)
-VALUES ('Guarder', 80, 80, 40, 30, 1),
-       ('Forester', 50, 50, 40, 35, 2),
-       ('Prisoner', 40, 40, 20, 50, 3),
-       ('Gnome', 80, 80, 10, 30, 4),
-       ('Tramp', 70, 70, 30, 30, 5),
-       ('Hermit', 80, 80, 30, 40, 6),
-       ('Cheater', 55, 55, 30, 60, 7);
+VALUES ('Guarder', 60, 60, 40, 20, 1),
+       ('Forester', 50, 50, 40, 25, 2),
+       ('Prisoner', 40, 40, 20, 25, 3),
+       ('Gnome', 80, 80, 10, 20, 4),
+       ('Tramp', 70, 70, 30, 25, 5),
+       ('Hermit', 80, 80, 30, 30, 6),
+       ('Cheater', 55, 55, 30, 40, 7);
 
 -- ________________________
 
@@ -220,18 +220,13 @@ VALUES ('Forest', 1, 1),
        ('Gates', 2, 1),
        ('Town', 2, 1),
        ('Mountain', 2, 0),
-
        ('Forest', 3, 1),
-
        ('Forest', 4, 1),
        ('Field', 4, 0),
-
        ('Mountain', 5, 1),
        ('Swamp', 5, 1),
        ('Village', 5, 0),
-
        ('Field', 6, 1),
-
        ('Field', 7, 1);
 
 -- ________________________
@@ -256,11 +251,11 @@ VALUES ('Hello. What do you want?', 1, 0),
        ('Hello. What do you need?', 5, 0),
        ('I so long no eating sweets, what I ready to anything. Give me sweets and I give you hint, where you will can to find key for decrypting.', 5, 0),
        ('Who are you? Why do you walk on the Swamp?', 6, 0),
-       ('Oh no, I have no key, but if i would have, I do not give you its.', 6, 0),
+       ('Oh no, I have no key, but if I would have, I do not give you its.', 6, 0),
        ('I heard, that in our places walk something travelers. Who are you? ', 7, 0),
        ('I can find any things, of course, for small pay?', 7, 0),
-       ('I thank you what return my present and I am opening roads in front of you', 0, 1),
-       ('Oh, thank you very much. You helped me. I am allow you going to village. You can find you key there.', 0, 3);
+       ('I thank you, what returned my present and I am opening roads in front of you!', 0, 1),
+       ('Oh, thank you very much, cookie is good. You helped me. I am allow you going to village. You can find your key there.', 0, 3);
 
 -- ________________________
 

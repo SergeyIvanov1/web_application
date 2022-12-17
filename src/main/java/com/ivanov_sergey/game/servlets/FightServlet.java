@@ -54,7 +54,10 @@ public class FightServlet extends HttpServlet {
         Hero hero = (Hero) httpSession.getAttribute("hero");
         Inventory heroInventory = hero.getInventory();
 
-        Personage personage = locationService.getPersonage(personageName, currentLocal);
+        Personage personage = null;
+        if (!personageName.equals("")) {
+            personage = locationService.getPersonage(personageName, currentLocal);
+        }
         Location location = locationService.getLocation(currentLocal);
 
         String heroReport = "";
@@ -64,6 +67,8 @@ public class FightServlet extends HttpServlet {
             personageReport = fightingService.heroKickPersonage(hero, personage, attack);
             if (personage.getCurrentHealth() == 0) {
                 fightingService.deletePersonage(personage, location);
+                int count = hero.getCountOfKilledPersonages();
+                hero.setCountOfKilledPersonages(++count);
 
             } else {
                 heroReport = fightingService.personageKickHero(hero, personage, block);
@@ -94,7 +99,7 @@ public class FightServlet extends HttpServlet {
         req.setAttribute("heroPotions", heroInventory.getPotions());
         req.setAttribute("heroWeapons", heroInventory.getWeapons());
 
-        if (personage.getCurrentHealth() != 0) {
+        if (personage != null && personage.getCurrentHealth() != 0) {
             int personageCurrentHealth = personage.getCurrentHealth();
             req.setAttribute("personageName", personageName);
             req.setAttribute("personageHealth", personage.getMaxHealth());

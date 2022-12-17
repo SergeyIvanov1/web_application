@@ -10,7 +10,7 @@ public interface ThingsService {
 
     String usePotion(String usePotion, Location location, Hero hero);
 
-    void useHelper(String useHelper, Location location, Hero hero);
+    void useKey(String useHelper, Location location, Hero hero);
 
     String useWeapon(String useWeapon, Location location, Hero hero);
 

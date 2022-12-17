@@ -30,7 +30,6 @@ public class FightingServiceImpl implements FightingService {
 
         int personageRandomAttack = this.random.nextInt(personageAttack.size());
         int randomChanceToDodge = this.random.nextInt(0, 100);
-        System.out.println("randomChanceToDodge = " + randomChanceToDodge);
 
         if (hero.getDexterity() > randomChanceToDodge) {
             return "Your dexterity equals " + hero.getDexterity()  + ". It allow you to be agile and dodges a direct hit. Damage by zero.";
@@ -54,7 +53,6 @@ public class FightingServiceImpl implements FightingService {
 
         int personageRandomBlock = this.random.nextInt(personageBloke.size());
         int randomChanceToDodge = this.random.nextInt(0, 100);
-        System.out.println("randomChanceToDodge = " + randomChanceToDodge);
 
         if (personage.getDexterity() > randomChanceToDodge) {
             return personage.getName() + " is agile and dodges a direct hit. Damage by zero.";

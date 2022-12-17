@@ -29,4 +29,8 @@ public class Reply implements Serializable {
 
     @Column(name = "issue_id")
     private int issueId;
+
+    public Reply(String text) {
+        this.text = text;
+    }
 }

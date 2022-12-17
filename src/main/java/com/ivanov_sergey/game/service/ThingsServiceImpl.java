@@ -11,7 +11,7 @@ public class ThingsServiceImpl implements ThingsService{
 
     @Override
     public void transferThingFromBoxToInventory(String transferredThing, Location location, Hero hero) {
-
+        Inventory inventory = hero.getInventory();
         Optional<Armor> optional = location.getArmors().stream()
                 .filter((armor) -> transferredThing.equals(armor.getName()))
                 .findFirst();
@@ -19,7 +19,8 @@ public class ThingsServiceImpl implements ThingsService{
         if (optional.isPresent()){
             armor = optional.get();
             location.getArmors().remove(armor);
-            List<Armor> armors = hero.getInventory().getArmors();
+
+            List<Armor> armors = inventory.getArmors();
             armors.add(armor);
             return;
         }
@@ -31,7 +32,7 @@ public class ThingsServiceImpl implements ThingsService{
         if (optional2.isPresent()) {
             potion = optional2.get();
             location.getPotions().remove(potion);
-            List<Potion> potions = hero.getInventory().getPotions();
+            List<Potion> potions = inventory.getPotions();
             potions.add(potion);
             return;
         }
@@ -43,7 +44,7 @@ public class ThingsServiceImpl implements ThingsService{
         if (optional3.isPresent()) {
             helper = optional3.get();
             location.getHelpers().remove(helper);
-            List<Helper> helpers = hero.getInventory().getHelpers();
+            List<Helper> helpers = inventory.getHelpers();
             helpers.add(helper);
             return;
         }
@@ -55,7 +56,7 @@ public class ThingsServiceImpl implements ThingsService{
         if (optional4.isPresent()) {
             weapon = optional4.get();
             location.getWeapons().remove(weapon);
-            List<Weapon> weapons = hero.getInventory().getWeapons();
+            List<Weapon> weapons = inventory.getWeapons();
             weapons.add(weapon);
         }
     }
@@ -130,8 +131,15 @@ public class ThingsServiceImpl implements ThingsService{
     }
 
     @Override
-    public void useHelper(String useHelper, Location location, Hero hero) {
-
+    public void useKey(String helperName, Location location, Hero hero) {
+        Optional<Helper> optionalHelper = hero.getInventory().getHelpers().stream()
+                .filter(helper -> helperName.equals(helper.getName()))
+                .findFirst();
+        Helper helper;
+        if (optionalHelper.isPresent()) {
+            helper = optionalHelper.get();
+            hero.getInventory().getHelpers().remove(helper);
+        }
     }
 
     @Override

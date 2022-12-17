@@ -110,10 +110,13 @@
             <div class="modal-body">
                 Ymfsp dtz ktw uqfdji ymnx lfrj. N mtuj ny lfaj dtz uqjfxzwj.
             </div>
+            <c:if test="${letterDecrypted == 'letterDecrypted'}">
             <div class="modal-footer">
                 <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Decrypt
                 </button>
             </div>
+            </c:if>
+            <c:if test="${letterDecrypted == null}">
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary"
                         data-bs-toggle="popover" data-bs-placement="right"
@@ -123,6 +126,7 @@
                     Decrypt
                 </button>
             </div>
+            </c:if>
         </div>
     </div>
 </div>

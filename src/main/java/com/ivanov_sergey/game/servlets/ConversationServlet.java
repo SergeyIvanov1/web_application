@@ -41,7 +41,6 @@ public class ConversationServlet extends HttpServlet {
 
         Hero hero = (Hero) httpSession.getAttribute("hero");
         Issue issue = locationService.calculateIssue(personageName, hero, lastLocation);
-//        Personage personage = locationService.getPersonage(personageName, lastLocation);
         req.setAttribute("personageName", personageName);
         req.setAttribute("issue", issue);
 

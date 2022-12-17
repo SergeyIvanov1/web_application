@@ -9,19 +9,23 @@
     <title>Main page</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-            <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
 </head>
 
 <body>
+<br>
 <div class="container text-center border">
     <div class="row border">
 
         <div class="col">
-            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+            <!-- Scrollable modal -->
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop"
+                    aria-controls="staticBackdrop">
                 Global statistic
             </button>
 
-            <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+            <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
+                 aria-labelledby="staticBackdropLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="staticBackdropLabel">Global</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -57,11 +61,13 @@
         </div>
         <div class="col">
 
-            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight">
                 Hero inventory
             </button>
 
-            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+                 aria-labelledby="offcanvasRightLabel">
                 <div class="offcanvas-header">
                     <h5 class="offcanvas-title" id="offcanvasRightLabel">Hero inventory</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -73,19 +79,16 @@
                             <c:set var="armors_is_present" scope="page" value="${!heroArmors.isEmpty()}"/>
                             <c:if test="${armors_is_present}">
                                 <c:forEach var="armor" items="${heroArmors}">
-                                    <form action="${pageContext.request.contextPath}/fight" method="post">
-                                        <input type="hidden" name="nextLocationName"
-                                               value="${lastLocation}">
-                                        <input type="hidden" name="useThing" value="${armor.name}">
-                                        <input type="hidden" name="personageName" value="${personageName}">
-                                        <button class="btn btn-default btn-sm my_svg box" title="${armor.name} +${armor.value} dexterity"
-                                                type="submit"
+<%--                                    <form action="#" method="post">--%>
+                                    <p><button class="btn btn-default btn-sm my_svg box"
+                                                title="${armor.name} +${armor.value} dexterity"
+<%--                                                type="submit"--%>
                                                 value="Submit">
                                             <img src="${pageContext.request.contextPath}/images/svg/${armor.name}.svg"
                                                  class="box1"
                                                  alt="Box">
-                                        </button>
-                                    </form>
+                                        </button></p>
+<%--                                    </form>--%>
                                 </c:forEach>
                             </c:if>
                         </div>
@@ -94,20 +97,16 @@
                             <c:set var="potions_is_present" scope="page" value="${!heroPotions.isEmpty()}"/>
                             <c:if test="${potions_is_present}">
                                 <c:forEach var="potion" items="${heroPotions}">
-                                    <form action="${pageContext.request.contextPath}/fight" method="post">
-
-                                        <input type="hidden" name="nextLocationName" value="${lastLocation}">
-                                        <input type="hidden" name="useThing" value="${potion.name}">
-                                        <input type="hidden" name="personageName" value="${personageName}">
-
-                                        <button class="btn btn-default btn-sm my_svg box" title="${potion.name} +${potion.value} health"
-                                                type="submit"
+<%--                                    <form action="#" method="post">--%>
+                                    <p> <button class="btn btn-default btn-sm my_svg box"
+                                                title="${potion.name} +${potion.value} health"
+<%--                                                type="submit"--%>
                                                 value="Submit">
                                             <img src="${pageContext.request.contextPath}/images/svg/${potion.name}.svg"
                                                  class="box1"
                                                  alt="Box">
-                                        </button>
-                                    </form>
+                                        </button></p>
+<%--                                    </form>--%>
                                 </c:forEach>
                             </c:if>
                         </div>
@@ -116,19 +115,33 @@
                             <c:set var="helpers_is_present" scope="page" value="${!heroHelpers.isEmpty()}"/>
                             <c:if test="${helpers_is_present}">
                                 <c:forEach var="helper" items="${heroHelpers}">
-<%--                                    <form action="#" method="post">--%>
-                                    <p><input type="hidden" name="nextLocationName"
-                                               value="${lastLocation}">
-                                        <input type="hidden" name="useThing" value="${helper.name}">
-                                        <input type="hidden" name="personageName" value="${personageName}">
-                                        <button class="btn btn-default btn-sm my_svg box" title="${helper.name}"
-                                                type="submit"
-                                                value="Submit">
-                                            <img src="${pageContext.request.contextPath}/images/svg/${helper.name}.svg"
-                                                 class="box1"
-                                                 alt="Box">
-                                        </button></p>
-<%--                                    </form>--%>
+                                    <c:if test="${helper.name == 'key'}">
+                                        <form action="${pageContext.request.contextPath}/location" method="post">
+                                            <input type="hidden" name="nextLocationName" value="${currentLocal}">
+                                            <input type="hidden" name="useThing" value="${helper.name}">
+                                            <input type="hidden" name="personageName" value="${personageName}">
+
+                                            <button class="btn btn-default btn-sm my_svg box"
+                                                    title="using key for decrypt letter"
+                                                    type="submit"
+                                                    value="Submit">
+                                                <img src="${pageContext.request.contextPath}/images/svg/${helper.name}.svg"
+                                                     class="box1"
+                                                     alt="Box">
+                                            </button>
+                                        </form>
+                                    </c:if>
+                                    <c:if test="${helper.name != 'key'}">
+<%--                                        <form action="#" method="post">--%>
+                                            <p><button class="btn btn-default btn-sm my_svg box" title="${helper.name}"
+                                                    type="submit"
+                                                    value="Submit">
+                                                <img src="${pageContext.request.contextPath}/images/svg/${helper.name}.svg"
+                                                     class="box1"
+                                                     alt="Box">
+                                            </button></p>
+<%--                                        </form>--%>
+                                    </c:if>
                                 </c:forEach>
                             </c:if>
                         </div>
@@ -137,20 +150,16 @@
                             <c:set var="weapons_is_present" scope="page" value="${!heroWeapons.isEmpty()}"/>
                             <c:if test="${weapons_is_present}">
                                 <c:forEach var="weapon" items="${heroWeapons}">
-                                    <form action="${pageContext.request.contextPath}/fight" method="post">
-                                        <input type="hidden" name="nextLocationName"
-                                               value="${lastLocation}">
-                                        <input type="hidden" name="useThing" value="${weapon.name}">
-                                        <input type="hidden" name="personageName" value="${personageName}">
-
-                                        <button class="btn btn-default btn-sm my_svg box" title="${weapon.name} +${weapon.value} strength"
-                                                type="submit"
+<%--                                    <form action="#" method="post">--%>
+                                      <p><button class="btn btn-default btn-sm my_svg box"
+                                                title="${weapon.name} +${weapon.value} strength"
+<%--                                                type="submit"--%>
                                                 value="Submit">
                                             <img src="${pageContext.request.contextPath}/images/svg/${weapon.name}.svg"
                                                  class="box1"
                                                  alt="Box">
-                                        </button>
-                                    </form>
+                                        </button></p>
+<%--                                    </form>--%>
                                 </c:forEach>
                             </c:if>
                         </div>
@@ -160,7 +169,6 @@
         </div>
     </div>
 </div>
-
 
 </body>
 </html>

@@ -10,7 +10,7 @@ import java.util.List;
 
 @Getter
 @Setter
-//@ToString
+@ToString
 @NoArgsConstructor
 @Entity
 @Table(name = "inventories")

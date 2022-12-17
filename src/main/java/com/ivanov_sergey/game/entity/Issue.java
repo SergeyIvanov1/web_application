@@ -34,4 +34,9 @@ public class Issue implements Serializable {
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "issue_id")
     private List<Reply> replies;
+
+    public Issue(String text, List<Reply> replies) {
+        this.text = text;
+        this.replies = replies;
+    }
 }
