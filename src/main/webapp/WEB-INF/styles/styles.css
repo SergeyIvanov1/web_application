@@ -2,6 +2,7 @@ div#tablecont {
     display: table;
     width: 100%;
     border-collapse: collapse;
+    color: #babbbc;
 }
 
 div#tablecont > div {
@@ -14,15 +15,23 @@ div#tablecont > div > * {
 }
 
 nav {
-    background-color: #474A51;
     width: 150px;
     padding: 10px;
 }
 
 body {
-    background-color: lightslategrey;
+    /*background-color: lightslategrey;*/
+    background-image: url("/images/22336-arktika-gorizont-dnevnoe_vremya-atmosfera-spokojstvie-7680x4320.jpg");
     background-size: cover;
-    background-attachment: fixed;
+    background-attachment: scroll;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 100%;
+}
+
+div.main-page {
+    font-size: 16px;
+    color: springgreen;
 }
 
 A {
@@ -43,6 +52,7 @@ A:hover {
 
 h2 {
     text-align: center;
+    color: orange;
 }
 
 h5 {
@@ -62,8 +72,8 @@ footer {
     text-align: right;
 }
 
-nav, header, footer {
-    border: 2px solid darkslateblue;
+nav {
+    /*border: 2px solid darkslateblue;*/
 }
 
 div.button_crypto {

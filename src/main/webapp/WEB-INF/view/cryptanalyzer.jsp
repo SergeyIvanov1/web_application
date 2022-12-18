@@ -10,14 +10,13 @@
     <title>Cryptanalyzer page</title>
 </head>
 <body>
-<header>
+<br>
     <h2>Cryptanalyzer</h2>
-</header>
 <div id="tablecont">
     <div>
         <nav>
-            <br>
-            <div><a href="${pageContext.request.contextPath}/">Main page</a></div>
+<%--            <br>--%>
+            <div class="main-page"><h3><a href="${pageContext.request.contextPath}/">Main page</a></h3></div>
             <br><br>
 
             <div class="button_crypto"><a href="${pageContext.request.contextPath}/encrypt">Encryption</a></div>
@@ -34,16 +33,15 @@
                 analise method's</a></div>
             <br>
         </nav>
-        <main>
 
             <c:if test="${getForm == null && encrypt == null}">
 
                 <div class="container">
-                    <br><br>
-                    <img src="${pageContext.request.contextPath}/images/crypto.jpeg" class="img-fluid" alt="image">
-                    <br>
-                    <br>
-                    <h2>Description program:</h2>
+<%--                    <br>--%>
+<%--                    <br>--%>
+<%--                    <img src="${pageContext.request.contextPath}/images/crypto.jpeg" class="img-fluid" alt="image">--%>
+<%--                    <br><br>--%>
+<%--                    <h2>Description program:</h2>--%>
                     <p>Application encodes and decodes text Caesar's cipher.</p>
                     <p>In first part of application you can to get crypto analyzer.</p>
                     <p>On page this application you should specify path to file with text,
@@ -96,7 +94,7 @@
 
             <div class="container">
                 <c:if test="${getForm != null}">
-
+<%--                    <br><br>--%>
                     <h3>${nameAction}</h3>
                     <c:out value="${description}"/>
                     <br>
@@ -118,13 +116,8 @@
                     ${encrypt}
                 </c:if>
             </div>
-        </main>
     </div>
 </div>
 </body>
-<footer>
-    <br>
-    <p>Footer </p>
-    <br>
-</footer>
+
 </html>

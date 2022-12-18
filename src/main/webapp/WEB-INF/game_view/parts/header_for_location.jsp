@@ -23,33 +23,34 @@
                     <a class="nav-link" data-bs-toggle="modal" href="#exampleModalToggle" role="button">View the
                         letter</a>
                 </li>
-                <li class="nav-item">
-                    <div class="btn-group">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                            Quests
-                        </button>
-                        <c:set var="quests_is_present" scope="page" value="${hero.getQuests().size() > 0}"/>
-                        <c:if test="${quests_is_present}">
-                            <ul class="dropdown-menu">
-                                <c:forEach var="quest" items="${hero.getQuests()}">
-                                    <li><a class="dropdown-item" href="#">${quest.text}</a></li>
-                                </c:forEach>
-                            </ul>
-                        </c:if>
-                        <c:if test="${hero.getQuests().isEmpty()}">
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">You have no quests</a></li>
-                            </ul>
-                        </c:if>
-                    </div>
-                </li>
+<%--                <li class="nav-item">--%>
+<%--                   --%>
+<%--                </li>--%>
             </ul>
         </div>
         <div class="col">
 
         </div>
-        <div class="col">
+        <div class="col right-header">
+            <div class="btn-group">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                    Quests
+                </button>
+                <c:set var="quests_is_present" scope="page" value="${hero.getQuests().size() > 0}"/>
+                <c:if test="${quests_is_present}">
+                    <ul class="dropdown-menu">
+                        <c:forEach var="quest" items="${hero.getQuests()}">
+                            <li><a class="dropdown-item" href="#">${quest.text}</a></li>
+                        </c:forEach>
+                    </ul>
+                </c:if>
+                <c:if test="${hero.getQuests().isEmpty()}">
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">You have no quests</a></li>
+                    </ul>
+                </c:if>
+            </div>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalMap">
                 Map
             </button>
@@ -111,21 +112,21 @@
                 Ymfsp dtz ktw uqfdji ymnx lfrj. N mtuj ny lfaj dtz uqjfxzwj.
             </div>
             <c:if test="${letterDecrypted == 'letterDecrypted'}">
-            <div class="modal-footer">
-                <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Decrypt
-                </button>
-            </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle2" data-bs-toggle="modal">Decrypt
+                    </button>
+                </div>
             </c:if>
             <c:if test="${letterDecrypted == null}">
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary"
-                        data-bs-toggle="popover" data-bs-placement="right"
-                        data-bs-custom-class="custom-popover"
-                        data-bs-title="it is too early"
-                        data-bs-content="You need the key." title="You need key!">
-                    Decrypt
-                </button>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary"
+                            data-bs-toggle="popover" data-bs-placement="right"
+                            data-bs-custom-class="custom-popover"
+                            data-bs-title="it is too early"
+                            data-bs-content="You need the key." title="You need key!">
+                        Decrypt
+                    </button>
+                </div>
             </c:if>
         </div>
     </div>

@@ -274,7 +274,6 @@ img.defeat {
 }
 
 div.location{
-
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
