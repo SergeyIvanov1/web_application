@@ -12,7 +12,7 @@ import java.util.Optional;
 public class LocationServiceImpl implements LocationService {
     private static final int FIRST_QUEST = 0;
     private final int INITIAL_INDEX = 0;
-    Storage sessionRepo;
+    private Storage sessionRepo;
 
     public LocationServiceImpl(Storage sessionRepo) {
         this.sessionRepo = sessionRepo;
@@ -56,13 +56,13 @@ public class LocationServiceImpl implements LocationService {
 
     public Location getLocation(String locationName) {
         checkParameterByNull(locationName);
-        Optional<Location> optional = sessionRepo.getLocations()
+        Optional<Location> locationOptional = sessionRepo.getLocations()
                 .stream()
                 .filter((location) -> locationName.equals(location.getName()))
                 .findFirst();
 
-        if (optional.isPresent()) {
-            return optional.get();
+        if (locationOptional.isPresent()) {
+            return locationOptional.get();
         } else {
             throw new RuntimeException("Location is not found. LocationName = " + locationName);
         }
@@ -119,13 +119,13 @@ public class LocationServiceImpl implements LocationService {
 
     public Personage getPersonage(String personageName, String lastLocation) {
 
-        Optional<Personage> optional = getLocation(lastLocation)
+        Optional<Personage> personageOptional = getLocation(lastLocation)
                 .getPersonages()
                 .stream()
                 .filter(personage -> personage.getName().equals(personageName))
                 .findFirst();
-        if (optional.isPresent()) {
-            return optional.get();
+        if (personageOptional.isPresent()) {
+            return personageOptional.get();
         } else {
             throw new RuntimeException("Personage is not found. LastLocation = " + lastLocation +
                     ", personageName = " + personageName);
@@ -133,15 +133,15 @@ public class LocationServiceImpl implements LocationService {
     }
 
     public Issue getIssue(String personageName, String nextQuestion, String lastLocation) {
-        Optional<Issue> optional = getPersonage(personageName, lastLocation)
+        Optional<Issue> issueOptional = getPersonage(personageName, lastLocation)
                 .getIssues()
                 .stream()
                 .filter(issue -> nextQuestion.equals(issue.getText()))
                 .findFirst();
-        if (optional.isPresent()) {
-            return optional.get();
+        if (issueOptional.isPresent()) {
+            return issueOptional.get();
         } else {
-            throw new RuntimeException("Issue is not found. LastLocation = " + lastLocation +
+            throw new RuntimeException("Issue not found. LastLocation = " + lastLocation +
                     ", personageName = " + personageName +
                     ", nextQuestion = " + nextQuestion);
         }

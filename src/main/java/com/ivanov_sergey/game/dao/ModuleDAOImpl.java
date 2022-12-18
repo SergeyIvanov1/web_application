@@ -4,7 +4,6 @@ import com.ivanov_sergey.game.entity.*;
 import com.ivanov_sergey.game.entity.Repository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
 import java.util.List;
@@ -13,25 +12,7 @@ import java.util.Optional;
 public class ModuleDAOImpl implements ModuleDAO {
 
     private final SessionFactory sessionFactory;
-    Session session;
-
-//    {
-//        sessionFactory = new Configuration()
-//                .configure("hibernate.cfg.xml")
-//                .addAnnotatedClass(Location.class)
-//                .addAnnotatedClass(Hero.class)
-//                .addAnnotatedClass(Personage.class)
-//                .addAnnotatedClass(Armor.class)
-//                .addAnnotatedClass(Potion.class)
-//                .addAnnotatedClass(Weapon.class)
-//                .addAnnotatedClass(Repository.class)
-//                .addAnnotatedClass(Helper.class)
-//                .addAnnotatedClass(Inventory.class)
-//                .addAnnotatedClass(Issue.class)
-//                .addAnnotatedClass(Reply.class)
-//                .addAnnotatedClass(Quest.class)
-//                .buildSessionFactory();
-//    }
+    private Session session;
 
     public ModuleDAOImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
@@ -69,8 +50,7 @@ public class ModuleDAOImpl implements ModuleDAO {
 
     @Override
     public Optional<Location> getLocation(String nextLocation) {
-        Optional<Location> optional;
-//        session = sessionFactory.getCurrentSession();
+        Optional<Location> optionalLocation;
         try {
             session = sessionFactory.openSession();
 
@@ -80,21 +60,20 @@ public class ModuleDAOImpl implements ModuleDAO {
 
 
             if (resultList.size() > 0) {
-                optional = Optional.of(query.getResultList().get(0));
+                optionalLocation = Optional.of(query.getResultList().get(0));
             } else {
-                optional = Optional.empty();
+                optionalLocation = Optional.empty();
             }
         } finally {
             session.close();
         }
         session.getTransaction().commit();
-        return optional;
+        return optionalLocation;
     }
 
     @Override
     public Optional<Hero> getHero(String nameHero) {
-//        session = sessionFactory.getCurrentSession();
-        Optional<Hero> optional;
+        Optional<Hero> optionalHero;
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();
@@ -103,20 +82,19 @@ public class ModuleDAOImpl implements ModuleDAO {
 
 
             if (resultList.size() > 0) {
-                optional = Optional.of(query.getResultList().get(0));
+                optionalHero = Optional.of(query.getResultList().get(0));
             } else {
-                optional = Optional.empty();
+                optionalHero = Optional.empty();
             }
             session.getTransaction().commit();
         } finally {
             session.close();
         }
-        return optional;
+        return optionalHero;
     }
 
     @Override
     public List<Hero> getAllHero() {
-//        session = sessionFactory.getCurrentSession();
         List<Hero> resultList;
         try {
             session = sessionFactory.openSession();
@@ -132,7 +110,6 @@ public class ModuleDAOImpl implements ModuleDAO {
 
     @Override
     public void saveHero(Hero hero) {
-//        session = sessionFactory.getCurrentSession();
         try {
             session = sessionFactory.openSession();
             session.beginTransaction();

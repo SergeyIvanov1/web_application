@@ -15,7 +15,7 @@ import java.io.IOException;
 @WebServlet("/manual_decryption_brute_force")
 @MultipartConfig
 public class ManualDecryptionBruteForceServlet extends HttpServlet {
-    CryptoService service = new CryptoServiceImpl();
+    private CryptoService service = new CryptoServiceImpl();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setAttribute("getForm", "manual_decryption_brute_force");

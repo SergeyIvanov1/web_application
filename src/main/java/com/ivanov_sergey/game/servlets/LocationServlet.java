@@ -27,7 +27,7 @@ public class LocationServlet extends HttpServlet {
     private static final String STARTING_ROOM = "Gates";
     private ModuleService moduleService;
     private LocationServiceImpl locationService;
-    ThingsService thingsService = new ThingsServiceImpl();
+    private ThingsService thingsService = new ThingsServiceImpl();
 
     @Override
     public void init(ServletConfig config) throws ServletException {

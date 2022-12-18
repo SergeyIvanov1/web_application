@@ -14,11 +14,9 @@ div#tablecont > div > * {
 }
 
 nav {
-    /*background-color: lemonchiffon;*/
     background-color: #474A51;
     width: 150px;
     padding: 10px;
-    /*color: darkgrey;*/
 }
 
 body {
@@ -69,7 +67,6 @@ nav, header, footer {
 }
 
 div.button_crypto {
-    /*background-color: bisque;*/
     color: darkgrey;
 }
 

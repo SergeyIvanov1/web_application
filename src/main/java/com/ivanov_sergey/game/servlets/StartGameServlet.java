@@ -17,7 +17,8 @@ import java.io.IOException;
 
 @WebServlet("/start_game")
 public class StartGameServlet extends HttpServlet {
-    Storage sessionRepo;
+    private final int INTERVAL = 24*60*60;
+    private Storage sessionRepo;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -27,7 +28,7 @@ public class StartGameServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
-        session.setMaxInactiveInterval(24*60*60);
+        session.setMaxInactiveInterval(INTERVAL);
 
         ModuleService moduleService = (ModuleServiceImpl)getServletContext().getAttribute("moduleService");
         Repository mainRepo = (Repository)getServletContext().getAttribute("mainRepo");

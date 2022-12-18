@@ -79,7 +79,6 @@
                             <c:set var="armors_is_present" scope="page" value="${!heroArmors.isEmpty()}"/>
                             <c:if test="${armors_is_present}">
                                 <c:forEach var="armor" items="${heroArmors}">
-<%--                                    <form action="#" method="post">--%>
                                     <p><button class="btn btn-default btn-sm my_svg box"
                                                 title="${armor.name} +${armor.value} dexterity"
                                                 type="submit"
@@ -88,7 +87,6 @@
                                                  class="box1"
                                                  alt="Box">
                                         </button></p>
-<%--                                    </form>--%>
                                 </c:forEach>
                             </c:if>
                         </div>
@@ -97,7 +95,6 @@
                             <c:set var="potions_is_present" scope="page" value="${!heroPotions.isEmpty()}"/>
                             <c:if test="${potions_is_present}">
                                 <c:forEach var="potion" items="${heroPotions}">
-<%--                                    <form action="#" method="post">--%>
                                     <p><button class="btn btn-default btn-sm my_svg box"
                                                 title="${potion.name} +${potion.value} health"
                                                 type="submit"
@@ -106,7 +103,6 @@
                                                  class="box1"
                                                  alt="Box">
                                         </button></p>
-<%--                                    </form>--%>
                                 </c:forEach>
                             </c:if>
                         </div>
@@ -115,7 +111,6 @@
                             <c:set var="helpers_is_present" scope="page" value="${!heroHelpers.isEmpty()}"/>
                             <c:if test="${helpers_is_present}">
                                 <c:forEach var="helper" items="${heroHelpers}">
-<%--                                    <form action="#" method="post">--%>
                                     <p> <button class="btn btn-default btn-sm my_svg box" title="${helper.name}"
                                                 type="submit"
                                                 value="Submit">
@@ -123,7 +118,6 @@
                                                  class="box1"
                                                  alt="Box">
                                         </button></p>
-<%--                                    </form>--%>
                                 </c:forEach>
                             </c:if>
                         </div>
@@ -132,7 +126,6 @@
                             <c:set var="weapons_is_present" scope="page" value="${!heroWeapons.isEmpty()}"/>
                             <c:if test="${weapons_is_present}">
                                 <c:forEach var="weapon" items="${heroWeapons}">
-<%--                                    <form action="#" method="post">--%>
                                     <p><button class="btn btn-default btn-sm my_svg box"
                                                 title="${weapon.name} +${weapon.value} strength"
                                                 type="submit"
@@ -141,7 +134,6 @@
                                                  class="box1"
                                                  alt="Box">
                                         </button></p>
-<%--                                    </form>--%>
                                 </c:forEach>
                             </c:if>
                         </div>
@@ -151,6 +143,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>

@@ -136,11 +136,11 @@ CREATE TABLE my_db.personages
 );
 
 INSERT INTO my_db.personages (name, max_health, current_health, strength, dexterity, location_id)
-VALUES ('Guarder', 60, 60, 40, 20, 1),
-       ('Forester', 50, 50, 40, 25, 2),
-       ('Prisoner', 40, 40, 20, 25, 3),
-       ('Gnome', 80, 80, 10, 20, 4),
-       ('Tramp', 70, 70, 30, 25, 5),
+VALUES ('Guarder', 60, 60, 40, 25, 1),
+       ('Forester', 50, 50, 40, 30, 2),
+       ('Prisoner', 40, 40, 20, 30, 3),
+       ('Gnome', 80, 80, 10, 25, 4),
+       ('Tramp', 70, 70, 30, 30, 5),
        ('Hermit', 80, 80, 30, 30, 6),
        ('Cheater', 55, 55, 30, 40, 7);
 
@@ -216,7 +216,6 @@ CREATE TABLE my_db.wickets
 
 INSERT INTO my_db.wickets (name, location_id, is_opened)
 VALUES ('Forest', 1, 1),
-
        ('Gates', 2, 1),
        ('Town', 2, 1),
        ('Mountain', 2, 0),
@@ -282,7 +281,7 @@ VALUES ('Hi. I have a very important letter. I know what I can to find here a hu
        ('I want to fight with you.', 8, 'fight'),
        ('I need the key. I have a very important letter, but it encripted, you must to help me to decrypt my letter.', 8, 'I so long no eating sweets, what I ready to anything. Give me sweets and I give you hint, where you will can to find key for decrypting.'),
        ('Ok. I find sweets for you.', 9, null),
-       ('I need the key.', 10, 'Oh no, I have no key, but if i would have, I do not give you its.'),
+       ('I need the key.', 10, 'Oh no, I have no key, but if I would have, I do not give you its.'),
        ('Nothing. I am going to next location.', 10, null),
        ('You will give me my key or I take it myself.', 11, 'fight'),
        ('Tell me, where I can find it.', 11, null),

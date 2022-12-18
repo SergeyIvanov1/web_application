@@ -49,11 +49,11 @@ public class Hero implements Serializable {
     private Inventory inventory;
 
     @Transient
-    List<Quest> quests = new ArrayList<>();
+    private List<Quest> quests = new ArrayList<>();
     @Transient
-    List<Armor> usingArmors = new ArrayList<>();
+    private List<Armor> usingArmors = new ArrayList<>();
     @Transient
-    List<Weapon> usingWeapons = new ArrayList<>();
+    private List<Weapon> usingWeapons = new ArrayList<>();
 
     public Hero(String name) {
         this.name = name;

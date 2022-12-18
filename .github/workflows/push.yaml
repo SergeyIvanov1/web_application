@@ -15,12 +15,5 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 17
-      - name: Hello world
-        run: |
-          echo 'Hello World'
-          echo 'Hello World 2 '
-          pwd
-          ls -l
-          mvn -version
       - name: Maven Package
         run: mvn clean install

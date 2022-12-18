@@ -6,11 +6,12 @@ import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
-@ToString
+//@ToString
 @NoArgsConstructor
 @Entity
 @Table(name = "inventories")
@@ -26,24 +27,28 @@ public class Inventory implements Serializable {
     @OneToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "inventory_id")
-    List<Armor> armors;
+    private List<Armor> armors;
 
     @OneToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "inventory_id")
-    List<Potion> potions;
+    private List<Potion> potions;
 
     @OneToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "inventory_id")
-    List<Weapon> weapons;
+    private List<Weapon> weapons;
 
     @OneToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "inventory_id")
-    List<Helper> helpers;
+    private List<Helper> helpers;
 
     public Inventory(String name) {
         this.name = name;
+        armors = new ArrayList<>();
+        potions = new ArrayList<>();
+        weapons = new ArrayList<>();
+        helpers = new ArrayList<>();
     }
 }

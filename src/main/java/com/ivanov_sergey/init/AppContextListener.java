@@ -16,10 +16,10 @@ import javax.servlet.annotation.WebListener;
 
 @WebListener
 public class AppContextListener implements ServletContextListener {
-    static final Logger LOGGER = LogManager.getRootLogger();
+    private static final Logger LOGGER = LogManager.getRootLogger();
     public static final int INITIAL_ID = 1;
 
-    ModuleService moduleService;
+    private ModuleService moduleService;
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
 

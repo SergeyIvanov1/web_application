@@ -25,7 +25,6 @@
                      class="defeat"
                      alt="Box" title="Return to start game">
             </button>
-
         </form>
     </div>
     <div id="defeat3">

@@ -122,7 +122,6 @@
     </div>
 </div>
 </body>
-
 <footer>
     <br>
     <p>Footer </p>

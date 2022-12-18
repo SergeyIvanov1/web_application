@@ -247,16 +247,12 @@ div.used-things {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    /*border: 1px solid black;*/
     padding: 0;
-    /*background-color: slategrey;*/
 }
 
 #defeat1{
     /*width: 98px;*/
     width: 25%;
-    /*border: 1px solid black;*/
-    /*height: 165px;*/
     border-right: 0;
 }
 
@@ -266,16 +262,10 @@ div.used-things {
     text-align: center;
     margin-left: auto;
     margin-right: auto;
-
-    /*border: 1px solid dimgrey;*/
-    /*height: 165px;*/
 }
 #defeat3{
-    /*width: 98px;*/
     width: 25%;
-    /*border: 1px solid black;*/
     border-left: 0;
-    /*height: 165px;*/
 }
 
 img.defeat {
@@ -288,9 +278,7 @@ div.location{
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    /*border: 1px solid grey;*/
     padding: 0;
-    /*background-color: linen;*/
     text-align: center;
     margin-left: auto;
     margin-right: auto;
@@ -298,14 +286,10 @@ div.location{
 
 .left-square{
     width: 49%;
-    /*border: 1px solid grey;*/
-    /*height: 70px;*/
     border-right: 0;
 }
 
 .right-square{
     width: 49%;
-    /*border: 1px solid grey;*/
     border-left: 0;
-    /*height: 70px;*/
 }

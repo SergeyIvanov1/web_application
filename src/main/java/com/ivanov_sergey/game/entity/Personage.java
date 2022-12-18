@@ -44,10 +44,10 @@ public class Personage implements Serializable {
     @OneToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "personage_id")
-    List<Issue> issues;
+    private List<Issue> issues;
 
     @OneToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "personage_id")
-    List<Quest> quests;
+    private List<Quest> quests;
 }

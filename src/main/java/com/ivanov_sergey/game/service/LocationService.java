@@ -18,6 +18,4 @@ public interface LocationService extends Storage {
     void passQuestToHero(String personageName, String lastLocation, Hero hero);
 
     Issue calculateIssue(String personage, Hero hero, String lastLocation);
-
-//    Issue finishQuest(String personageName, String lastLocation);
 }

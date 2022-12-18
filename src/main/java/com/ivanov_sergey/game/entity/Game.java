@@ -26,9 +26,9 @@ public class Game implements Serializable {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "hero_id")
-    Hero hero;
+    private Hero hero;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "repository_id")
-    Repository repository;
+    private Repository repository;
 }

@@ -33,32 +33,32 @@ public class Location implements Serializable {
     @OneToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "location_id")
-    List<Personage> personages;
+    private List<Personage> personages;
 
     @OneToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "location_id")
-    List<Armor> armors;
+    private List<Armor> armors;
 
     @OneToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "location_id")
-    List<Potion> potions;
+    private List<Potion> potions;
 
     @OneToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "location_id")
-    List<Weapon> weapons;
+    private List<Weapon> weapons;
 
     @OneToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "location_id")
-    List<Helper> helpers;
+    private List<Helper> helpers;
 
     @OneToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "location_id")
-    List<Wicket> wickets;
+    private List<Wicket> wickets;
 
     public Location(String name) {
         this.name = name;

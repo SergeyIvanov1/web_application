@@ -2,7 +2,6 @@ package com.ivanov_sergey.game.servlets;
 
 import com.ivanov_sergey.game.entity.Hero;
 import com.ivanov_sergey.game.entity.Issue;
-import com.ivanov_sergey.game.entity.Personage;
 import com.ivanov_sergey.game.service.LocationServiceImpl;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -19,9 +18,9 @@ import java.io.IOException;
 
 @WebServlet("/conversation")
 public class ConversationServlet extends HttpServlet {
-    static final Logger LOGGER = LogManager.getRootLogger();
+    private static final Logger LOGGER = LogManager.getRootLogger();
 
-    LocationServiceImpl locationService;
+    private LocationServiceImpl locationService;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -76,15 +75,9 @@ public class ConversationServlet extends HttpServlet {
         if ("fight".equals(nextQuestion)) {
             req.setAttribute("fighting", "fighting");
         } else {
-            req.setAttribute("issue", locationService.getIssue(personageName, nextQuestion, lastLocation));
+            Issue issue = locationService.getIssue(personageName, nextQuestion, lastLocation);
+            req.setAttribute("issue", issue);
         }
-
-//        for (Helper helper : hero.getInventory().getHelpers()) {
-//            if (helper.getName().equals("present") && personageName.equals("Forester")){
-//                Issue issue = locationService.finishQuest(personageName, lastLocation);
-//                req.setAttribute("issue", issue);
-//            }
-//        }
 
         RequestDispatcher requestDispatcher = getServletContext()
                 .getRequestDispatcher("/WEB-INF/game_view/conversation.jsp");

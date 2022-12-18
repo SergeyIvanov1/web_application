@@ -13,7 +13,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@ToString
+//@ToString
 @NoArgsConstructor
 @Entity
 @Table(name = "helpers")
@@ -32,5 +32,5 @@ public class Helper implements Serializable {
     @OneToMany(cascade = CascadeType.ALL)
     @LazyCollection(LazyCollectionOption.FALSE)
     @JoinColumn(name = "helper_id")
-    List<Issue> issuesForQuest;
+    private List<Issue> issuesForQuest;
 }

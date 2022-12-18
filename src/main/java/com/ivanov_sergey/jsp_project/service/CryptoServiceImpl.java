@@ -17,30 +17,26 @@ public class CryptoServiceImpl implements CryptoService{
     public String autoDecryptionBruteForce(HttpServletRequest req) throws ServletException, IOException {
         StringBuilder stringBuilder = new StringBuilder();
         Decoder.autoDecryptionBruteForce(req, stringBuilder);
-        String string = stringBuilder.toString();
-        return string;
+        return stringBuilder.toString();
     }
 
     public String encryption(HttpServletRequest req) throws ServletException, IOException {
         StringBuilder stringBuilder = new StringBuilder();
         int key = Integer.parseInt(req.getParameter("key"));
         Coder.encryption(req, stringBuilder, key);
-        String string = stringBuilder.toString();
-        return string;
+        return stringBuilder.toString();
     }
 
     public String decryptionWithKey(HttpServletRequest req) throws IOException, ServletException {
         StringBuilder stringBuilder = new StringBuilder();
         int key = Integer.parseInt(req.getParameter("key"));
         Decoder.decryptionWithKey(req, stringBuilder, key);
-        String string = stringBuilder.toString();
-        return string;
+        return stringBuilder.toString();
     }
 
     public String autoDecryptionWithStatistic(HttpServletRequest req) throws ServletException, IOException {
         StringBuilder stringBuilder = new StringBuilder();
         Decoder.autoDecryptionWithStatistic(req, stringBuilder);
-        String string = stringBuilder.toString();
-        return string;
+        return stringBuilder.toString();
     }
 }

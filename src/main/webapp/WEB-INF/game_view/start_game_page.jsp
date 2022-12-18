@@ -34,7 +34,6 @@
                     </div>
                 </div>
             </nav>
-
         </div>
         <div class="col border">
 
@@ -194,6 +193,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>

@@ -56,7 +56,6 @@
 
         </div>
         <div class="col">
-
             <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                 Hero inventory
             </button>
@@ -116,7 +115,6 @@
                             <c:set var="helpers_is_present" scope="page" value="${!heroHelpers.isEmpty()}"/>
                             <c:if test="${helpers_is_present}">
                                 <c:forEach var="helper" items="${heroHelpers}">
-<%--                                    <form action="#" method="post">--%>
                                     <p><input type="hidden" name="nextLocationName"
                                                value="${lastLocation}">
                                         <input type="hidden" name="useThing" value="${helper.name}">
@@ -128,7 +126,6 @@
                                                  class="box1"
                                                  alt="Box">
                                         </button></p>
-<%--                                    </form>--%>
                                 </c:forEach>
                             </c:if>
                         </div>
@@ -160,7 +157,5 @@
         </div>
     </div>
 </div>
-
-
 </body>
 </html>

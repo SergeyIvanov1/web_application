@@ -223,7 +223,7 @@ public class TextProcessing {
     private static final char[] LATIN = new char[]{'a', 'b', 'c', 'd', 'e',
             'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 
-    // According to statistics, the any letters are meeting most frequently.
+    // According to statistics, any letters are meeting most frequently.
     private static final char[] MOST_FREQUENT_RUSSIAN_LETTERS = new char[]{'о', 'е', 'а', 'и', 'т', 'н'};
     private static final char[] MOST_FREQUENT_ENGLISH_LETTERS = new char[]{'e', 't', 'a', 'o', 'i', 'n'};
 

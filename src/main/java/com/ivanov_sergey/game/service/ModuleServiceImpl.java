@@ -10,8 +10,8 @@ import java.util.List;
 import java.util.Optional;
 
 public class ModuleServiceImpl implements ModuleService {
-    SessionFactory sessionFactory;
-    ModuleDAOImpl moduleDAO;
+    private SessionFactory sessionFactory;
+    private ModuleDAOImpl moduleDAO;
 
     public ModuleServiceImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
@@ -33,15 +33,15 @@ public class ModuleServiceImpl implements ModuleService {
         if (nameHero == null){
             throw new LocationInvalidParameters("Parameter nameHero is null");
         }
-        Optional<Hero> optional = moduleDAO.getHero(nameHero);
+        Optional<Hero> optionalHero = moduleDAO.getHero(nameHero);
         Hero hero;
-        if (optional.isEmpty()) {
+        if (optionalHero.isEmpty()) {
             hero = new Hero(nameHero);
             hero.initValuesOfFields();
             hero.setInventory(new Inventory(nameHero));
             moduleDAO.saveHero(hero);
         } else {
-            hero = optional.get();
+            hero = optionalHero.get();
         }
         return hero;
     }

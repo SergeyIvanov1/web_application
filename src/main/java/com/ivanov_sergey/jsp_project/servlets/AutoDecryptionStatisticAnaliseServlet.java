@@ -1,6 +1,5 @@
 package com.ivanov_sergey.jsp_project.servlets;
 
-import com.ivanov_sergey.cryptoanalyser.text_processing.Decoder;
 import com.ivanov_sergey.jsp_project.service.CryptoService;
 import com.ivanov_sergey.jsp_project.service.CryptoServiceImpl;
 
@@ -17,7 +16,7 @@ import java.io.IOException;
 @MultipartConfig
 public class AutoDecryptionStatisticAnaliseServlet extends HttpServlet {
 
-    CryptoService service = new CryptoServiceImpl();
+    private CryptoService service = new CryptoServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

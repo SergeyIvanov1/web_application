@@ -19,7 +19,6 @@
     <div class="container text-center">
         <div class="row">
             <h1>${currentLocation.getName()}</h1>
-<%--            <h4>${currentLocation.getWickets()}</h4>--%>
         </div>
     </div>
 </header>
@@ -43,7 +42,6 @@
                                         <input type="hidden" name="personageName" value="${personage.name}">
                                         <input type="hidden" name="lastLocation" value="${currentLocation.getName()}">
                                         <input class="custom_button" type="submit" value="Speak"/>
-<%--                                        <button type="button" class="btn btn-secondary">   Speak   </button>--%>
                                     </form>
                                 </div>
                                 <div class="right-square">
@@ -51,13 +49,10 @@
                                         <input type="hidden" name="personageName" value="${personage.name}">
                                         <input type="hidden" name="lastLocation" value="${currentLocation.getName()}">
                                         <input class="custom_button" type="submit" value="Attack"/>
-<%--                                        <button type="button" class="btn btn-secondary">  Attack  </button>--%>
                                     </form>
                                 </div>
                             </div>
                         </div>
-<%--                        <h6>Quest_personage: ${personage.getQuests()}</h6>--%>
-<%--                        <h6>Quest_hero: ${hero.getQuests()}</h6>--%>
                     </c:forEach>
                 </c:if>
                 <c:set var="personages_is_not_present" scope="page"
@@ -113,7 +108,6 @@
                 <br><br><br>
                 <form action="${pageContext.request.contextPath}/things" method="post">
                     <input type="hidden" name="nextLocationName" value="${currentLocation.getName()}">
-                    <%--                    <input type="hidden" name="nextLocationName" value="${currentLocation.getName()}">--%>
                     <button class="btn btn-default btn-sm my_svg box" title="Chest" type="submit" value="Submit">
                         <img class="box" src="${pageContext.request.contextPath}/images/box3.jpg" alt="Box">
                     </button>
@@ -216,6 +210,5 @@
 </div>
 <jsp:include page="parts/footer_location.jsp"/>
 <br><br><br><br>
-<h3>${hero}</h3>
 </body>
 </html>

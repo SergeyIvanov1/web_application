@@ -12,12 +12,12 @@ public class ThingsServiceImpl implements ThingsService{
     @Override
     public void transferThingFromBoxToInventory(String transferredThing, Location location, Hero hero) {
         Inventory inventory = hero.getInventory();
-        Optional<Armor> optional = location.getArmors().stream()
+        Optional<Armor> armorOptional = location.getArmors().stream()
                 .filter((armor) -> transferredThing.equals(armor.getName()))
                 .findFirst();
         Armor armor;
-        if (optional.isPresent()){
-            armor = optional.get();
+        if (armorOptional.isPresent()){
+            armor = armorOptional.get();
             location.getArmors().remove(armor);
 
             List<Armor> armors = inventory.getArmors();
@@ -25,36 +25,36 @@ public class ThingsServiceImpl implements ThingsService{
             return;
         }
 
-        Optional<Potion> optional2 = location.getPotions().stream()
+        Optional<Potion> potionOptional = location.getPotions().stream()
                 .filter((potion) -> transferredThing.equals(potion.getName()))
                 .findFirst();
         Potion potion;
-        if (optional2.isPresent()) {
-            potion = optional2.get();
+        if (potionOptional.isPresent()) {
+            potion = potionOptional.get();
             location.getPotions().remove(potion);
             List<Potion> potions = inventory.getPotions();
             potions.add(potion);
             return;
         }
 
-        Optional<Helper> optional3 = location.getHelpers().stream()
+        Optional<Helper> helperOptional = location.getHelpers().stream()
                 .filter((helper) -> transferredThing.equals(helper.getName()))
                 .findFirst();
         Helper helper;
-        if (optional3.isPresent()) {
-            helper = optional3.get();
+        if (helperOptional.isPresent()) {
+            helper = helperOptional.get();
             location.getHelpers().remove(helper);
             List<Helper> helpers = inventory.getHelpers();
             helpers.add(helper);
             return;
         }
 
-        Optional<Weapon> optional4 = location.getWeapons().stream()
+        Optional<Weapon> weaponOptional = location.getWeapons().stream()
                 .filter((weapon) -> transferredThing.equals(weapon.getName()))
                 .findFirst();
         Weapon weapon;
-        if (optional4.isPresent()) {
-            weapon = optional4.get();
+        if (weaponOptional.isPresent()) {
+            weapon = weaponOptional.get();
             location.getWeapons().remove(weapon);
             List<Weapon> weapons = inventory.getWeapons();
             weapons.add(weapon);
@@ -63,26 +63,26 @@ public class ThingsServiceImpl implements ThingsService{
 
     public String useThing(String thing, Location location, Hero hero) {
         String report = "";
-        Optional<Armor> optional = hero.getInventory().getArmors().stream()
+        Optional<Armor> armorOptional = hero.getInventory().getArmors().stream()
                 .filter((armor) -> thing.equals(armor.getName()))
                 .findFirst();
-        if (optional.isPresent()) {
+        if (armorOptional.isPresent()) {
             report = useArmor(thing, location, hero);
             return report;
         }
 
-        Optional<Potion> optional2 = hero.getInventory().getPotions().stream()
+        Optional<Potion> optionalPotion = hero.getInventory().getPotions().stream()
                 .filter((potion) -> thing.equals(potion.getName()))
                 .findFirst();
-        if (optional2.isPresent()) {
+        if (optionalPotion.isPresent()) {
             report = usePotion(thing, location, hero);
             return report;
         }
 
-        Optional<Weapon> optional3 = hero.getInventory().getWeapons().stream()
+        Optional<Weapon> optionalWeapon = hero.getInventory().getWeapons().stream()
                 .filter((weapon) -> thing.equals(weapon.getName()))
                 .findFirst();
-        if (optional3.isPresent()) {
+        if (optionalWeapon.isPresent()) {
             report = useWeapon(thing, location, hero);
             return report;
         }
@@ -91,12 +91,12 @@ public class ThingsServiceImpl implements ThingsService{
 
     @Override
     public String useArmor(String useArmor, Location location, Hero hero) {
-        Optional<Armor> optional = hero.getInventory().getArmors().stream()
+        Optional<Armor> optionalArmor = hero.getInventory().getArmors().stream()
                 .filter((armor) -> useArmor.equals(armor.getName()))
                 .findFirst();
         Armor armor;
-        if (optional.isPresent()) {
-            armor = optional.get();
+        if (optionalArmor.isPresent()) {
+            armor = optionalArmor.get();
             int newDexterity = hero.getDexterity() + armor.getValue();
             hero.setDexterity(newDexterity);
             hero.getInventory().getArmors().remove(armor);
@@ -110,11 +110,11 @@ public class ThingsServiceImpl implements ThingsService{
     @Override
     public String usePotion(String usePotion, Location location, Hero hero) {
         if (hero.getCurrentHealth() < hero.getMaxHealth()) {
-            Optional<Potion> optional = hero.getInventory().getPotions().stream()
+            Optional<Potion> optionalPotion = hero.getInventory().getPotions().stream()
                     .filter((potion) -> usePotion.equals(potion.getName()))
                     .findFirst();
-            if (optional.isPresent()) {
-                Potion potion = optional.get();
+            if (optionalPotion.isPresent()) {
+                Potion potion = optionalPotion.get();
                 hero.getInventory().getPotions().remove(potion);
 
                 int currentHealth = hero.getCurrentHealth() + potion.getValue();
@@ -144,11 +144,11 @@ public class ThingsServiceImpl implements ThingsService{
 
     @Override
     public String useWeapon(String useWeapon, Location location, Hero hero) {
-        Optional<Weapon> optional = hero.getInventory().getWeapons().stream()
+        Optional<Weapon> optionalWeapon = hero.getInventory().getWeapons().stream()
                 .filter((armor) -> useWeapon.equals(armor.getName()))
                 .findFirst();
         Weapon weapon;
-        if (optional.isPresent()) {
+        if (optionalWeapon.isPresent()) {
             List<Weapon> usingWeapons = hero.getUsingWeapons();
             if ( usingWeapons.size() > 0){
                 Weapon removedWeapon = usingWeapons.remove(ZERO_INDEX);
@@ -156,7 +156,7 @@ public class ThingsServiceImpl implements ThingsService{
                 int Strength = hero.getStrength() - removedWeapon.getValue();
                 hero.setStrength(Strength);
             }
-            weapon = optional.get();
+            weapon = optionalWeapon.get();
             int newStrength = hero.getStrength() + weapon.getValue();
             hero.setStrength(newStrength);
             hero.getInventory().getWeapons().remove(weapon);

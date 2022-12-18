@@ -22,10 +22,10 @@ import java.util.List;
 @WebServlet("/things")
 public class ThingsServlet extends HttpServlet {
 
-    static final Logger LOGGER = LogManager.getRootLogger();
+    private static final Logger LOGGER = LogManager.getRootLogger();
 
-    LocationServiceImpl locationService;
-    ThingsService thingsService = new ThingsServiceImpl();
+    private LocationServiceImpl locationService;
+    private ThingsService thingsService = new ThingsServiceImpl();
 
     @Override
     public void init(ServletConfig config) throws ServletException {

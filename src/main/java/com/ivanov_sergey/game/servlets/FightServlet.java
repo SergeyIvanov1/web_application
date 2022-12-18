@@ -21,19 +21,19 @@ import java.io.IOException;
 
 @WebServlet("/fight")
 public class FightServlet extends HttpServlet {
-    static final Logger LOGGER = LogManager.getRootLogger();
+    private static final Logger LOGGER = LogManager.getRootLogger();
 
-    ModuleService moduleService;
-    FightingService fightingService;
-    ThingsService thingsService = new ThingsServiceImpl();
+//    private ModuleService moduleService;
+    private FightingService fightingService;
+    private ThingsService thingsService = new ThingsServiceImpl();
 
-    LocationServiceImpl locationService;
+    private LocationServiceImpl locationService;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
-        ServletContext servletContext = config.getServletContext();
-        moduleService = (ModuleServiceImpl) servletContext.getAttribute("moduleService");
+//        ServletContext servletContext = config.getServletContext();
+//        moduleService = (ModuleServiceImpl) servletContext.getAttribute("moduleService");
     }
 
     @Override

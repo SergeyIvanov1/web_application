@@ -16,7 +16,7 @@ import java.io.IOException;
 @MultipartConfig
 public class DecryptionServlet extends HttpServlet {
 
-    CryptoService service = new CryptoServiceImpl();
+    private CryptoService service = new CryptoServiceImpl();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
