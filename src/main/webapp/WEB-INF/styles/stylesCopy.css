@@ -1,0 +1,69 @@
+body {
+    background-color: whitesmoke;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+A {
+    color: darkseagreen;
+    /*color: #F5F5F5;*/
+    text-decoration: none;
+}
+
+A:visited {
+    color: darksalmon;
+    /*color: #BEBEBE;*/
+    text-decoration: underline;!important;
+}
+
+A:active {color: limegreen}
+
+A:hover {
+    color: lightgreen
+}
+
+div.button_crypto {
+    color: darkgrey;
+}
+
+div.container{
+    width: 1280px;
+    display: flex;
+    flex-direction: row;
+    /*justify-content: flex-start;*/
+    padding: 0;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: linen;
+    /*justify-content: space-around;*/
+    box-shadow: 3px 3px 5px darkgrey;
+    border-radius: 5px;
+}
+
+.left-square{
+    padding: 20px;
+    width: 350px;
+    border: 1px solid skyblue;
+    margin: 10px 5px 10px 10px;
+    background-color: snow;
+    box-shadow: 0 0 3px 3px darkgrey;
+    border-radius: 5px;
+
+}
+
+.right-square{
+    padding: 20px;
+    width: 900px;
+    border: 1px solid skyblue;
+    margin: 10px 10px 10px 5px;
+    background-color: snow;
+    box-shadow: 0 0 3px 3px darkgrey;
+    border-radius: 5px;
+
+}
+
+svg {
+    fill: steelblue;
+    padding-right: 5px;
+}

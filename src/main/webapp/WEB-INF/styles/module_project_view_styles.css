@@ -1,0 +1,294 @@
+input.nice_button {
+    background-color: skyblue;
+    border-color: cornflowerblue;
+    font-size: x-small;
+}
+
+input.custom_button {
+    background-color: skyblue;
+    border-color: cornflowerblue;
+    font-size: smaller;
+}
+
+input:focus {border: thin solid black;}
+input:invalid {border: thin solid rgb(192, 98, 98);}
+
+button.btn-sm {
+    border: thin solid antiquewhite;
+}
+
+button.btn-sm:hover {
+    border: thin solid greenyellow;
+}
+
+h1 {
+    text-shadow: 3px 3px 5px rgb(141, 153, 207);
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+h2 {
+    margin-left: auto;
+    margin-right: auto;
+    width: 6em
+}
+
+div.border {
+    border: blue thin solid;
+}
+
+div.container img {
+    width: 500px;
+    height: 600px;
+}
+
+div.col img {
+    width: 300px;
+    height: 350px;
+}
+
+body.background {
+    background-size: cover;
+    background: lightgrey fixed;
+}
+
+div.accordion-collapse {
+    background-size: cover;
+    background: darkgrey fixed;
+}
+div.accordion-item {
+    background-size: cover;
+    background: slategrey fixed;
+}
+
+button.accordion-button {
+    background-size: cover;
+    background: slategrey fixed;
+}
+
+h2.accordion-header {
+    background-size: cover;
+    background: slategrey fixed;
+}
+
+div.progress-bar {
+    text-align: center;
+}
+
+option {
+    background-color: #bacbe6;
+}
+
+div.offcanvas {
+    background-color: #bacbe6;
+}
+
+table.statistic tbody {
+    counter-reset: rowNumber;
+}
+table.statistic tbody tr {
+    counter-increment: rowNumber;
+}
+table.statistic tr td:first-child::before {
+    content: counter(rowNumber);
+    min-width: 1em;
+    margin-right: 0.5em;
+}
+
+div.modal-content {
+    background-color: #bacbe6;
+}
+
+.parent > div {
+    background: #eee;
+    float: left;
+    width: 23.5%;
+    margin-right: 2%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.parent > div:last-child {
+    margin-right: 0;
+}
+
+div.parent{
+        border: grey thin solid;
+}
+
+.container2{
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border: 1px solid black;
+    padding: 0;
+    background-color: linen;
+}
+
+#con1{
+    /*width: 98px;*/
+    width: 25%;
+    border: 1px solid black;
+    height: 70px;
+    border-right: 0;
+}
+
+#con2{
+    width: 25%;
+    border: 1px solid black;
+    height: 70px;
+}
+#con3{
+    width: 25%;
+    border: 1px solid black;
+    border-left: 0;
+    height: 70px;
+}
+#con4{
+    width: 25%;
+    border: 1px solid black;
+    border-left: 0;
+    height: 70px;
+}
+
+div.container img.box {
+    width: 150px;
+    height: 100px;
+}
+
+div.container img.box1 {
+    width: 21px;
+    height: 21px;
+}
+
+button.title {
+    background-color: #badce3;
+    border: 1px solid grey;
+}
+
+.container_inventory {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border: 1px solid black;
+    padding: 0;
+    background-color: slategrey;
+}
+
+#con-inv1{
+    /*width: 98px;*/
+    width: 25%;
+    border: 1px solid black;
+    height: 165px;
+    border-right: 0;
+}
+
+#con-inv2{
+    /*width: 98px;*/
+    width: 25%;
+    border: 1px solid black;
+    height: 165px;
+}
+#con-inv3{
+    /*width: 98px;*/
+    width: 25%;
+    border: 1px solid black;
+    border-left: 0;
+    height: 165px;
+}
+#con-inv4{
+    /*width: 98px;*/
+    width: 25%;
+    border: 1px solid black;
+    border-left: 0;
+    height: 165px;
+}
+
+.fighting-history {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border: 1px solid dimgrey;
+    padding: 0;
+    background-color: linen;
+    width: 210px;
+    height: 270px;
+    margin-left: auto;
+}
+
+.fight-tools {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    border: 1px solid dimgrey;
+    padding: 0;
+    background-color: linen;
+    /*width: 142px;*/
+    width: 98%;
+    height: 90px;
+}
+
+div.used-things {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container_defeat {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0;
+}
+
+#defeat1{
+    /*width: 98px;*/
+    width: 25%;
+    border-right: 0;
+}
+
+#defeat2{
+    /*width: 98px;*/
+    width: 49%;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+#defeat3{
+    width: 25%;
+    border-left: 0;
+}
+
+img.defeat {
+    width: 450px;
+    height: 350px;
+}
+
+div.location{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.left-square{
+    width: 49%;
+    border-right: 0;
+}
+
+.right-square{
+    width: 49%;
+    border-left: 0;
+}
