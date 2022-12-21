@@ -17,7 +17,7 @@
         <nav>
 <%--            <br>--%>
             <div class="main-page"><h3><a href="${pageContext.request.contextPath}/">Main page</a></h3></div>
-            <br><br>
+            <br>
 
             <div class="button_crypto"><a href="${pageContext.request.contextPath}/encrypt">Encryption</a></div>
             <br>
@@ -111,7 +111,7 @@
                 </c:if>
 
                 <c:if test="${encrypt != null}">
-                    <br>
+
                     <p><strong>Result:</strong></p>
                     ${encrypt}
                 </c:if>
