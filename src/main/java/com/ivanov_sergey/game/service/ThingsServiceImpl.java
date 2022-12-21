@@ -1,8 +1,8 @@
 package com.ivanov_sergey.game.service;
 
 import com.ivanov_sergey.game.entity.*;
+import com.ivanov_sergey.game.service.exceptions.InvalidParameters;
 
-import javax.servlet.RequestDispatcher;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,6 +11,7 @@ public class ThingsServiceImpl implements ThingsService{
 
     @Override
     public void transferThingFromBoxToInventory(String transferredThing, Location location, Hero hero) {
+        checkParametersByNull(transferredThing, location, hero);
         Inventory inventory = hero.getInventory();
         Optional<Armor> armorOptional = location.getArmors().stream()
                 .filter((armor) -> transferredThing.equals(armor.getName()))
@@ -62,6 +63,8 @@ public class ThingsServiceImpl implements ThingsService{
     }
 
     public String useThing(String thing, Location location, Hero hero) {
+        checkParametersByNull(thing, location, hero);
+
         String report = "";
         Optional<Armor> armorOptional = hero.getInventory().getArmors().stream()
                 .filter((armor) -> thing.equals(armor.getName()))
@@ -91,6 +94,8 @@ public class ThingsServiceImpl implements ThingsService{
 
     @Override
     public String useArmor(String useArmor, Location location, Hero hero) {
+        checkParametersByNull(useArmor, location, hero);
+
         Optional<Armor> optionalArmor = hero.getInventory().getArmors().stream()
                 .filter((armor) -> useArmor.equals(armor.getName()))
                 .findFirst();
@@ -109,6 +114,8 @@ public class ThingsServiceImpl implements ThingsService{
 
     @Override
     public String usePotion(String usePotion, Location location, Hero hero) {
+        checkParametersByNull(usePotion, location, hero);
+
         if (hero.getCurrentHealth() < hero.getMaxHealth()) {
             Optional<Potion> optionalPotion = hero.getInventory().getPotions().stream()
                     .filter((potion) -> usePotion.equals(potion.getName()))
@@ -132,6 +139,8 @@ public class ThingsServiceImpl implements ThingsService{
 
     @Override
     public void useKey(String helperName, Location location, Hero hero) {
+        checkParametersByNull(helperName, location, hero);
+
         Optional<Helper> optionalHelper = hero.getInventory().getHelpers().stream()
                 .filter(helper -> helperName.equals(helper.getName()))
                 .findFirst();
@@ -144,6 +153,8 @@ public class ThingsServiceImpl implements ThingsService{
 
     @Override
     public String useWeapon(String useWeapon, Location location, Hero hero) {
+        checkParametersByNull(useWeapon, location, hero);
+
         Optional<Weapon> optionalWeapon = hero.getInventory().getWeapons().stream()
                 .filter((armor) -> useWeapon.equals(armor.getName()))
                 .findFirst();
@@ -167,5 +178,17 @@ public class ThingsServiceImpl implements ThingsService{
                     + ". Strength increase by " + weapon.getValue() + ".";
         }
         return "";
+    }
+
+    private void checkParametersByNull(String parameter, Location location, Hero hero) {
+        if (parameter == null) {
+            throw new InvalidParameters("First parameter is null");
+        }
+        if (location == null) {
+            throw new InvalidParameters("Parameter location is null");
+        }
+        if (hero == null) {
+            throw new InvalidParameters("Parameter hero is null");
+        }
     }
 }

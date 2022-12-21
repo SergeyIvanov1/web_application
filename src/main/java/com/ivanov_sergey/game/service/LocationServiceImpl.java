@@ -2,7 +2,7 @@ package com.ivanov_sergey.game.service;
 
 import com.ivanov_sergey.game.entity.*;
 import com.ivanov_sergey.game.entity.Storage;
-import com.ivanov_sergey.game.service.exceptions.LocationInvalidParameters;
+import com.ivanov_sergey.game.service.exceptions.InvalidParameters;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
@@ -19,6 +19,9 @@ public class LocationServiceImpl implements LocationService {
     }
 
     public String getClientIPAddress(HttpServletRequest request) {
+        if (request == null) {
+            throw new InvalidParameters("Parameter: request - is null");
+        }
         String remoteAddress = "";
         if (request != null) {
             remoteAddress = request.getHeader("X-FORWARDED-FOR");
@@ -32,7 +35,6 @@ public class LocationServiceImpl implements LocationService {
     @Override
     public List<Armor> getArmors(String locationName) {
         checkParameterByNull(locationName);
-
         return getLocation(locationName).getArmors();
     }
 
@@ -75,6 +77,7 @@ public class LocationServiceImpl implements LocationService {
 
     @Override
     public void passQuestToHero(String personageName, String lastLocation, Hero hero) {
+        checkParametersByNull(personageName, lastLocation, hero);
         Personage personage = getPersonage(personageName, lastLocation);
         List<Quest> personageQuests = personage.getQuests();
         if (!personageQuests.isEmpty()) {
@@ -85,6 +88,7 @@ public class LocationServiceImpl implements LocationService {
 
     @Override
     public Issue calculateIssue(String personageName, Hero hero, String lastLocation) {
+        checkParametersByNull(personageName, lastLocation, hero);
         Issue issue;
         Personage personage = getPersonage(personageName, lastLocation);
         Inventory inventory = hero.getInventory();
@@ -106,6 +110,15 @@ public class LocationServiceImpl implements LocationService {
     }
 
     public Issue finishQuest(Helper helper, String lastLocation, Hero hero) {
+        if (helper == null) {
+            throw new InvalidParameters("Parameter: helper - is null");
+        }
+        if (lastLocation == null) {
+            throw new InvalidParameters("Parameter: lastLocation - is null");
+        }
+        if (hero == null) {
+            throw new InvalidParameters("Parameter: hero - is null");
+        }
         Issue issue = helper.getIssuesForQuest().get(INITIAL_INDEX);
         hero.getInventory().getHelpers().remove(helper);
         Location location = getLocation(lastLocation);
@@ -118,7 +131,12 @@ public class LocationServiceImpl implements LocationService {
     }
 
     public Personage getPersonage(String personageName, String lastLocation) {
-
+        if (personageName == null) {
+            throw new InvalidParameters("Parameter: personageName - is null");
+        }
+        if (lastLocation == null) {
+            throw new InvalidParameters("Parameter: lastLocation - is null");
+        }
         Optional<Personage> personageOptional = getLocation(lastLocation)
                 .getPersonages()
                 .stream()
@@ -133,6 +151,15 @@ public class LocationServiceImpl implements LocationService {
     }
 
     public Issue getIssue(String personageName, String nextQuestion, String lastLocation) {
+        if (personageName == null) {
+            throw new InvalidParameters("Parameter: personageName - is null");
+        }
+        if (nextQuestion == null) {
+            throw new InvalidParameters("Parameter: nextQuestion - is null");
+        }
+        if (lastLocation == null) {
+            throw new InvalidParameters("Parameter: lastLocation - is null");
+        }
         Optional<Issue> issueOptional = getPersonage(personageName, lastLocation)
                 .getIssues()
                 .stream()
@@ -149,29 +176,45 @@ public class LocationServiceImpl implements LocationService {
 
     public Issue getFirstIssue(Personage personage, int index) {
         if (personage == null) {
-            throw new LocationInvalidParameters("First parameter - personage is null");
+            throw new InvalidParameters("First parameter - personage is null");
         }
         if (index < 0) {
-            throw new LocationInvalidParameters("Second parameter - index is negative");
+            throw new InvalidParameters("Second parameter - index is negative");
         }
 
         Issue issue;
         try {
             issue = personage.getIssues().get(index);
         } catch (IndexOutOfBoundsException ex) {
-            throw new LocationInvalidParameters("Parameter index is out of list range", ex);
+            throw new InvalidParameters("Parameter index is out of list range", ex);
         }
         return issue;
     }
 
     public void toOpenWickets(List<Wicket> wickets) {
+        if (wickets == null) {
+            throw new InvalidParameters("Parameter - wickets is null");
+        }
         wickets.forEach((wicket -> wicket.setIsOpened(true)));
     }
 
     private void checkParameterByNull(String parameter) {
         if (parameter == null) {
-            throw new LocationInvalidParameters("Parameter is null");
+            throw new InvalidParameters("Parameter is null");
         }
+    }
+
+    private void checkParametersByNull(String parameter, String stringParameter, Hero hero) {
+        if (parameter == null) {
+            throw new InvalidParameters("Parameter is null");
+        }
+        if (stringParameter == null) {
+            throw new InvalidParameters("Parameter  is null");
+        }
+        if (hero == null) {
+            throw new InvalidParameters("Parameter hero is null");
+        }
+
     }
 
     private static void updateIssues(Hero hero, Personage personage) {

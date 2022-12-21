@@ -9,7 +9,7 @@ import java.util.Random;
 import com.ivanov_sergey.game.entity.Location;
 import com.ivanov_sergey.game.entity.Personage;
 import com.ivanov_sergey.game.entity.Storage;
-import com.ivanov_sergey.game.service.exceptions.LocationInvalidParameters;
+import com.ivanov_sergey.game.service.exceptions.InvalidParameters;
 
 public class FightingServiceImpl implements FightingService {
 
@@ -71,23 +71,23 @@ public class FightingServiceImpl implements FightingService {
     @Override
     public void deletePersonage(Personage personage, Location location) {
         if (personage == null) {
-            throw new LocationInvalidParameters("Parameter: personage - is null");
+            throw new InvalidParameters("Parameter: personage - is null");
         }
         if (location == null) {
-            throw new LocationInvalidParameters("Parameter: location - is null");
+            throw new InvalidParameters("Parameter: location - is null");
         }
         location.getPersonages().remove(personage);
     }
 
     private void checkParametersByNull(Hero hero, Personage personage, String action) {
         if (hero == null) {
-            throw new LocationInvalidParameters("Parameter: hero - is null");
+            throw new InvalidParameters("Parameter: hero - is null");
         }
         if (personage == null) {
-            throw new LocationInvalidParameters("Parameter: personage - is null");
+            throw new InvalidParameters("Parameter: personage - is null");
         }
         if (action == null) {
-            throw new LocationInvalidParameters("Parameter: action - is null");
+            throw new InvalidParameters("Parameter: action - is null");
         }
     }
 }

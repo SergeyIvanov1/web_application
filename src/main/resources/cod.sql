@@ -1,21 +1,21 @@
 USE my_db;
-drop table my_db.weapons;
-drop table my_db.potions;
+drop table if exists my_db.weapons;
+drop table if exists my_db.potions;
 
-drop table my_db.armors;
-drop table my_db.personages;
-drop table my_db.games;
+drop table if exists my_db.armors;
+drop table if exists my_db.personages;
+drop table if exists my_db.games;
 
-drop table my_db.heroes;
-drop table my_db.locations;
-drop table my_db.inventories;
-drop table my_db.helpers;
-drop table my_db.repositoryes;
-drop table my_db.quests;
-drop table my_db.wickets;
+drop table if exists my_db.heroes;
+drop table if exists my_db.locations;
+drop table if exists my_db.inventories;
+drop table if exists my_db.helpers;
+drop table if exists my_db.repositoryes;
+drop table if exists my_db.quests;
+drop table if exists my_db.wickets;
 
-drop table my_db.issues;
-drop table my_db.replies;
+drop table if exists my_db.issues;
+drop table if exists my_db.replies;
 
 -- ________________________
 

@@ -2,7 +2,7 @@ package com.ivanov_sergey.game.service;
 
 import com.ivanov_sergey.game.dao.ModuleDAOImpl;
 import com.ivanov_sergey.game.entity.*;
-import com.ivanov_sergey.game.service.exceptions.LocationInvalidParameters;
+import com.ivanov_sergey.game.service.exceptions.InvalidParameters;
 import org.hibernate.SessionFactory;
 
 import java.io.*;
@@ -20,18 +20,24 @@ public class ModuleServiceImpl implements ModuleService {
 
     @Override
     public Location getLocation(int id) {
+        if (id < 0) {
+            throw new InvalidParameters("Parameter: id - is negative");
+        }
         return moduleDAO.getLocation(id);
     }
 
     @Override
     public Optional<Location> getLocation(String nextLocation) {
+        if (nextLocation == null) {
+            throw new InvalidParameters("Parameter: nextLocation - is null");
+        }
         return moduleDAO.getLocation(nextLocation);
     }
 
     @Override
     public Hero getOrCreateHero(String nameHero){
         if (nameHero == null){
-            throw new LocationInvalidParameters("Parameter nameHero is null");
+            throw new InvalidParameters("Parameter nameHero is null");
         }
         Optional<Hero> optionalHero = moduleDAO.getHero(nameHero);
         Hero hero;
@@ -48,16 +54,25 @@ public class ModuleServiceImpl implements ModuleService {
 
     @Override
     public void saveHero(Hero hero) {
+        if (hero == null){
+            throw new InvalidParameters("Parameter hero is null");
+        }
         moduleDAO.saveHero(hero);
     }
 
     @Override
     public Integer increaseCountOfGame(Hero hero) {
+        if (hero == null){
+            throw new InvalidParameters("Parameter hero is null");
+        }
         return moduleDAO.increaseCountOfGame(hero);
     }
 
     @Override
     public Repository fillRepositoryDBData(int id) {
+        if (id < 0) {
+            throw new InvalidParameters("Parameter: id - is negative");
+        }
         return moduleDAO.getRepository(id);
     }
 
@@ -68,7 +83,9 @@ public class ModuleServiceImpl implements ModuleService {
 
      @Override
     public <T extends Object> T copyObject(T sourceObject) {
-
+         if (sourceObject == null){
+             throw new InvalidParameters("Parameter sourceObject is null");
+         }
         T copyObject = null;
 
         try {
