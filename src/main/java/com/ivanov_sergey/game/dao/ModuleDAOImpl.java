@@ -4,6 +4,7 @@ import com.ivanov_sergey.game.entity.*;
 import com.ivanov_sergey.game.entity.Repository;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import java.util.List;
@@ -37,11 +38,10 @@ public class ModuleDAOImpl implements ModuleDAO {
     public Repository getRepository(int id) {
         Repository repository;
         try {
-//            session = sessionFactory.getCurrentSession();
             session = sessionFactory.openSession();
-            session.beginTransaction();
+            Transaction transaction = session.beginTransaction();
             repository = session.get(Repository.class, id);
-            session.getTransaction().commit();
+            transaction.commit();
         } finally {
             session.close();
         }

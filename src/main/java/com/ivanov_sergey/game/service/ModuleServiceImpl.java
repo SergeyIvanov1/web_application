@@ -10,11 +10,9 @@ import java.util.List;
 import java.util.Optional;
 
 public class ModuleServiceImpl implements ModuleService {
-    private SessionFactory sessionFactory;
     private ModuleDAOImpl moduleDAO;
 
     public ModuleServiceImpl(SessionFactory sessionFactory) {
-        this.sessionFactory = sessionFactory;
         moduleDAO = new ModuleDAOImpl(sessionFactory);
     }
 

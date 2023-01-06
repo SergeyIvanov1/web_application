@@ -1,6 +1,5 @@
 package com.ivanov_sergey.game.servlets;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

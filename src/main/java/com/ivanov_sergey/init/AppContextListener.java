@@ -17,14 +17,15 @@ import javax.servlet.annotation.WebListener;
 @WebListener
 public class AppContextListener implements ServletContextListener {
     private static final Logger LOGGER = LogManager.getRootLogger();
-    public static final int INITIAL_ID = 1;
+    private static final int INITIAL_ID = 1;
+
+    private SessionFactory sessionFactory;
 
     private ModuleService moduleService;
     @Override
     public void contextInitialized(ServletContextEvent servletContextEvent) {
 
-        Configuration configuration = new Configuration();
-        configuration.configure("hibernate.cfg.xml")
+        sessionFactory = new Configuration()
                 .addAnnotatedClass(Location.class)
                 .addAnnotatedClass(Hero.class)
                 .addAnnotatedClass(Personage.class)
@@ -37,19 +38,13 @@ public class AppContextListener implements ServletContextListener {
                 .addAnnotatedClass(Issue.class)
                 .addAnnotatedClass(Reply.class)
                 .addAnnotatedClass(Wicket.class)
-                .addAnnotatedClass(Quest.class);
-        LOGGER.info("Hibernate Configuration created successfully");
-
-        ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties()).build();
-        LOGGER.info("ServiceRegistry created successfully");
-        SessionFactory sessionFactory = configuration
-                .buildSessionFactory(serviceRegistry);
-        LOGGER.info("SessionFactory created successfully");
-
-        servletContextEvent.getServletContext().setAttribute("SessionFactory", sessionFactory);
-        LOGGER.info("Hibernate SessionFactory Configured successfully");
+                .addAnnotatedClass(Quest.class)
+                .buildSessionFactory();
 
         ServletContext servletContext = servletContextEvent.getServletContext();
+        servletContext.setAttribute("SessionFactory", sessionFactory);
+        LOGGER.info("Hibernate SessionFactory Configured successfully");
+
         moduleService = new ModuleServiceImpl(sessionFactory);
         servletContext.setAttribute("moduleService", moduleService);
         Storage mainRepo = moduleService.fillRepositoryDBData(INITIAL_ID);
